@@ -22,17 +22,20 @@ public class InputManager : MonoBehaviour
     {
         //instantiate singleton
         if (Instance != null && Instance != this)
+        {
             Destroy(this);
+            return;
+        }
 
-        else
-            Instance = this;
-
+        Instance = this;
     }
 
     // Start is called before the first frame update
     void Start()
     {
         //create the events
+        if (LeftPunch != null)
+            return;
         LeftPunch = new UnityEvent();
         RightPunch = new UnityEvent();
         LeftDodge = new UnityEvent();
