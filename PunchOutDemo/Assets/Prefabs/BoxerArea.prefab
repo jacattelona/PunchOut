@@ -216,6 +216,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7092919270156010283}
+  - component: {fileID: 9042788376245218478}
   m_Layer: 0
   m_Name: BoxerArea
   m_TagString: Untagged
@@ -240,6 +241,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9042788376245218478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5386118290319069070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e17b978b54573ee4a951d49dcb95bb4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxer: {fileID: 3222150164395872745}
+  enemy: {fileID: 7350749809598966176}
+  scoreText: {fileID: 1459143071108805353}
 --- !u!1001 &3222150163569115974
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -329,6 +345,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16f8cd74a0d5585428af22365130ceaa, type: 3}
+--- !u!1 &7350749809598966176 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5383064348265261798, guid: 16f8cd74a0d5585428af22365130ceaa,
+    type: 3}
+  m_PrefabInstance: {fileID: 3222150163569115974}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7350749809598966207 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5383064348265261817, guid: 16f8cd74a0d5585428af22365130ceaa,
@@ -342,16 +364,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7092919270156010283}
     m_Modifications:
-    - target: {fileID: 5383064348265261798, guid: 6d08ac6b6f7df0646b6eacd941433d84,
-        type: 3}
-      propertyPath: m_Name
-      value: Boxer
-      objectReference: {fileID: 0}
-    - target: {fileID: 5383064348265261798, guid: 6d08ac6b6f7df0646b6eacd941433d84,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5383064348265261817, guid: 6d08ac6b6f7df0646b6eacd941433d84,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -407,6 +419,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5383064348265261798, guid: 6d08ac6b6f7df0646b6eacd941433d84,
+        type: 3}
+      propertyPath: m_Name
+      value: Boxer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5383064348265261798, guid: 6d08ac6b6f7df0646b6eacd941433d84,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5383064348265261816, guid: 6d08ac6b6f7df0646b6eacd941433d84,
         type: 3}
       propertyPath: m_Enabled
@@ -422,9 +444,25 @@ PrefabInstance:
       propertyPath: score
       value: 
       objectReference: {fileID: 1459143071108805353}
+    - target: {fileID: 2141641038728987984, guid: 6d08ac6b6f7df0646b6eacd941433d84,
+        type: 3}
+      propertyPath: score
+      value: 
+      objectReference: {fileID: 1459143071108805353}
+    - target: {fileID: 2141641038728987984, guid: 6d08ac6b6f7df0646b6eacd941433d84,
+        type: 3}
+      propertyPath: keepingScore
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5383064348265261816, guid: 6d08ac6b6f7df0646b6eacd941433d84, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6d08ac6b6f7df0646b6eacd941433d84, type: 3}
+--- !u!1 &3222150164395872745 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5383064348265261798, guid: 6d08ac6b6f7df0646b6eacd941433d84,
+    type: 3}
+  m_PrefabInstance: {fileID: 7350749810382863119}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3222150164395872758 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5383064348265261817, guid: 6d08ac6b6f7df0646b6eacd941433d84,

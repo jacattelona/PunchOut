@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5383064348265261817}
-  - component: {fileID: 5383064348265261816}
+  - component: {fileID: 2141641038728987984}
   m_Layer: 0
   m_Name: Boxer
   m_TagString: Untagged
@@ -65,7 +65,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5383064348265261816
+--- !u!114 &2141641038728987984
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,9 +74,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5383064348265261798}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c55a246466e69a04a8d87eafce0bbf7f, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Script: {fileID: 11500000, guid: 9e2e0ae3ad926d44bb863ea19ec35be9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   brain: {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
   agentParameters:
     agentCameras: []

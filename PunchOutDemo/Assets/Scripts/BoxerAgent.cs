@@ -70,21 +70,25 @@ public class BoxerAgent : Agent
         if (vectorAction[0] == 1)
         {
             LeftDodge();
+            lastAction = -1;
         }
 
         else if (vectorAction[0] == 2)
         {
             RightDodge();
+            lastAction = -1;
         }
 
         else if (vectorAction[0] == 3)
         {
             BackDodge();
+            lastAction = -1;
         }
 
         else if (vectorAction[0] == 4)
         {
             Block();
+            lastAction = -1;
         }
 
         else 
@@ -95,9 +99,9 @@ public class BoxerAgent : Agent
         if (vectorAction[1] == 1)
         {
             LeftPunch();
-            if (lastAction == 2)
+            if (!isPunching && !isDodging && lastAction == 2)
             {
-                AddReward(1f);
+                AddReward(20f);
                 timeBetweenPunches = 0;
             }
             lastAction = 1;
@@ -106,15 +110,17 @@ public class BoxerAgent : Agent
         else if (vectorAction[1] == 2)
         {
             RightPunch();
-            if (lastAction == 1)
+            if (!isPunching && !isDodging && lastAction == 1)
             {
-                AddReward(1f);
+                AddReward(20f);
                 timeBetweenPunches = 0;
             }
             lastAction = 2;
         }
 
-        if (timeBetweenPunches > 100)
+        AddReward(-0.04f);
+
+        if (GetCumulativeReward() < -10)
         {
             Done();
         }
@@ -123,7 +129,7 @@ public class BoxerAgent : Agent
         // If hit,
         if (keepingScore)
         {          
-            score.text = Mathf.Round(GetCumulativeReward()) + "";
+            score.text = GetCumulativeReward().ToString("0.00");
         }
 
         timeBetweenPunches++;

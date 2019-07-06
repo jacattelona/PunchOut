@@ -182,7 +182,7 @@ PrefabInstance:
     - target: {fileID: 1346856852922572271, guid: b4bcf3410a35d314b85aeadb4bc5f9c3,
         type: 3}
       propertyPath: m_Mesh
-      value:
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1459143071108805353, guid: b4bcf3410a35d314b85aeadb4bc5f9c3,
         type: 3}
@@ -417,7 +417,7 @@ PrefabInstance:
     - target: {fileID: 1346856852922572271, guid: b4bcf3410a35d314b85aeadb4bc5f9c3,
         type: 3}
       propertyPath: m_Mesh
-      value:
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1459143071108805353, guid: b4bcf3410a35d314b85aeadb4bc5f9c3,
         type: 3}
@@ -457,7 +457,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1170079166}
-  m_Text:
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -531,7 +531,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1450679161}
-  - component: {fileID: 1450679162}
+  - component: {fileID: 1450679160}
   m_Layer: 0
   m_Name: Academy
   m_TagString: Untagged
@@ -539,37 +539,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1450679161
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1450679159}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1450679162
+--- !u!114 &1450679160
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 534669902}
+  m_GameObject: {fileID: 1450679159}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc193541220d02040a03dfedb8d4b595, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   broadcastHub:
     broadcastingBrains:
+    - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
     - {fileID: 11400000, guid: 28327d844c23eec458c5328c80d86790, type: 2}
     - {fileID: 11400000, guid: c0d7a72fc72b3ad4d8471cceafaec095, type: 2}
-    - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
     _brainsToControl:
     - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
   maxSteps: 0
@@ -587,6 +573,20 @@ MonoBehaviour:
     targetFrameRate: 60
   resetParameters:
     resetParameters: []
+--- !u!4 &1450679161
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450679159}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1579738792
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -657,7 +657,7 @@ PrefabInstance:
     - target: {fileID: 1346856852922572271, guid: b4bcf3410a35d314b85aeadb4bc5f9c3,
         type: 3}
       propertyPath: m_Mesh
-      value:
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1459143071108805353, guid: b4bcf3410a35d314b85aeadb4bc5f9c3,
         type: 3}
@@ -741,7 +741,7 @@ PrefabInstance:
     - target: {fileID: 1346856852922572271, guid: b4bcf3410a35d314b85aeadb4bc5f9c3,
         type: 3}
       propertyPath: m_Mesh
-      value:
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1459143071108805353, guid: b4bcf3410a35d314b85aeadb4bc5f9c3,
         type: 3}
@@ -826,7 +826,7 @@ PrefabInstance:
     - target: {fileID: 1346856852922572271, guid: b4bcf3410a35d314b85aeadb4bc5f9c3,
         type: 3}
       propertyPath: m_Mesh
-      value:
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1459143071108805353, guid: b4bcf3410a35d314b85aeadb4bc5f9c3,
         type: 3}
