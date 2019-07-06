@@ -41,9 +41,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5383064348265261817}
-  - component: {fileID: 5383064348265261816}
+  - component: {fileID: 4643281895491225236}
+  - component: {fileID: 5995756943615620223}
   m_Layer: 0
-  m_Name: Boxer
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,7 +66,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5383064348265261816
+--- !u!114 &4643281895491225236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5383064348265261798}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e2e0ae3ad926d44bb863ea19ec35be9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brain: {fileID: 11400000, guid: c0d7a72fc72b3ad4d8471cceafaec095, type: 2}
+  agentParameters:
+    agentCameras: []
+    agentRenderTextures: []
+    maxStep: 0
+    resetOnDone: 1
+    onDemandDecision: 0
+    numberOfActionsBetweenDecisions: 1
+  reverse: 0
+  DEFAULT: {x: 0, y: 0, z: 0}
+--- !u!114 &5995756943615620223
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,10 +97,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5383064348265261798}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c55a246466e69a04a8d87eafce0bbf7f, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  brain: {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
+  m_Script: {fileID: 11500000, guid: ba586e3aeaf117945817007a40a9da12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brain: {fileID: 11400000, guid: c0d7a72fc72b3ad4d8471cceafaec095, type: 2}
   agentParameters:
     agentCameras: []
     agentRenderTextures: []
@@ -85,8 +108,6 @@ MonoBehaviour:
     resetOnDone: 1
     onDemandDecision: 0
     numberOfActionsBetweenDecisions: 1
-  keepingScore: 0
-  score: {fileID: 0}
   reverse: 0
   DEFAULT: {x: 0, y: 0, z: 0}
 --- !u!1 &5383064348276748157
@@ -147,7 +168,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6f379632e918933458e6b849a14d4d84, type: 2}
+  - {fileID: 2100000, guid: faf95c26e83c73b4ab9c09f4adc33978, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -329,7 +350,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6f379632e918933458e6b849a14d4d84, type: 2}
+  - {fileID: 2100000, guid: faf95c26e83c73b4ab9c09f4adc33978, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
