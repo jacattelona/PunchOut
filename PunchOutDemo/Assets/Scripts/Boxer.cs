@@ -69,10 +69,10 @@ public class Boxer : Agent
 
         if (vectorAction[1] == 1)
         {
-            Punch(PunchSide.RIGHT);
+            Punch(PunchSide.LEFT);
         } else if (vectorAction[1] == 2)
         {
-            Punch(PunchSide.LEFT);
+            Punch(PunchSide.RIGHT);
         } else
         {
             ResetPunchState();
@@ -151,12 +151,20 @@ public class Boxer : Agent
 
     void ResetDodgeState()
     {
+        if (dodgeState == DodgeState.NONE)
+        {
+            return;
+        }
         dodgeState = DodgeState.NONE;
         dodge.Invoke();
     }
 
     void ResetPunchState()
     {
+        if (punchState == PunchState.NONE)
+        {
+            return;
+        }
         punchState = PunchState.NONE;
         punch.Invoke();
     }
@@ -166,16 +174,18 @@ public class Boxer : Agent
         health -= damage;
     }
 
-    private void Punch(PunchSide punchSide)
+    private void Punch(PunchSide punchSide) // TODO: Set timer
     {
+        if (punchState != PunchState.NONE || dodgeState != DodgeState.NONE)
+        {
+            return;
+        }
         switch (punchSide)
         {
             case PunchSide.LEFT:
-                // Update UI
                 punchState = PunchState.LEFT;
                 break;
             case PunchSide.RIGHT:
-                // Update UI
                 punchState = PunchState.RIGHT;
                 break;
         }
@@ -183,9 +193,13 @@ public class Boxer : Agent
         punch.Invoke();
     }
 
-    private void Dodge(DodgeDirection dodeDirection)
+    private void Dodge(DodgeDirection dodgeDirection)
     {
-        switch (dodeDirection)
+        if (dodgeState != DodgeState.NONE || punchState != PunchState.NONE)
+        {
+            return;
+        }
+        switch (dodgeDirection)
         {
             case DodgeDirection.LEFT:
                 dodgeState = DodgeState.LEFT;
