@@ -1,0 +1,4960 @@
+fileFormatVersion: 2
+guid: 4b24e7a9c417f1d40858d0cfbf162bdc
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: ring concept 3.7_0
+    21300002: ring concept 3.7_1
+    21300004: ring concept 3.7_2
+    21300006: ring concept 3.7_3
+    21300008: ring concept 3.7_4
+    21300010: ring concept 3.7_5
+    21300012: ring concept 3.7_6
+    21300014: ring concept 3.7_7
+    21300016: ring concept 3.7_8
+    21300018: ring concept 3.7_9
+    21300020: ring concept 3.7_10
+    21300022: ring concept 3.7_11
+    21300024: ring concept 3.7_12
+    21300026: ring concept 3.7_13
+    21300028: ring concept 3.7_14
+    21300030: ring concept 3.7_15
+    21300032: ring concept 3.7_16
+    21300034: ring concept 3.7_17
+    21300036: ring concept 3.7_18
+    21300038: ring concept 3.7_19
+    21300040: ring concept 3.7_20
+    21300042: ring concept 3.7_21
+    21300044: ring concept 3.7_22
+    21300046: ring concept 3.7_23
+    21300048: ring concept 3.7_24
+    21300050: ring concept 3.7_25
+    21300052: ring concept 3.7_26
+    21300054: ring concept 3.7_27
+    21300056: ring concept 3.7_28
+    21300058: ring concept 3.7_29
+    21300060: ring concept 3.7_30
+    21300062: ring concept 3.7_31
+    21300064: ring concept 3.7_32
+    21300066: ring concept 3.7_33
+    21300068: ring concept 3.7_34
+    21300070: ring concept 3.7_35
+    21300072: ring concept 3.7_36
+    21300074: ring concept 3.7_37
+    21300076: ring concept 3.7_38
+    21300078: ring concept 3.7_39
+    21300080: ring concept 3.7_40
+    21300082: ring concept 3.7_41
+    21300084: ring concept 3.7_42
+    21300086: ring concept 3.7_43
+    21300088: ring concept 3.7_44
+    21300090: ring concept 3.7_45
+    21300092: ring concept 3.7_46
+    21300094: ring concept 3.7_47
+    21300096: ring concept 3.7_48
+    21300098: ring concept 3.7_49
+    21300100: ring concept 3.7_50
+    21300102: ring concept 3.7_51
+    21300104: ring concept 3.7_52
+    21300106: ring concept 3.7_53
+    21300108: ring concept 3.7_54
+    21300110: ring concept 3.7_55
+    21300112: ring concept 3.7_56
+    21300114: ring concept 3.7_57
+    21300116: ring concept 3.7_58
+    21300118: ring concept 3.7_59
+    21300120: ring concept 3.7_60
+    21300122: ring concept 3.7_61
+    21300124: ring concept 3.7_62
+    21300126: ring concept 3.7_63
+    21300128: ring concept 3.7_64
+    21300130: ring concept 3.7_65
+    21300132: ring concept 3.7_66
+    21300134: ring concept 3.7_67
+    21300136: ring concept 3.7_68
+    21300138: ring concept 3.7_69
+    21300140: ring concept 3.7_70
+    21300142: ring concept 3.7_71
+    21300144: ring concept 3.7_72
+    21300146: ring concept 3.7_73
+    21300148: ring concept 3.7_74
+    21300150: ring concept 3.7_75
+    21300152: ring concept 3.7_76
+    21300154: ring concept 3.7_77
+    21300156: ring concept 3.7_78
+    21300158: ring concept 3.7_79
+    21300160: ring concept 3.7_80
+    21300162: ring concept 3.7_81
+    21300164: ring concept 3.7_82
+    21300166: ring concept 3.7_83
+    21300168: ring concept 3.7_84
+    21300170: ring concept 3.7_85
+    21300172: ring concept 3.7_86
+    21300174: ring concept 3.7_87
+    21300176: ring concept 3.7_88
+    21300178: ring concept 3.7_89
+    21300180: ring concept 3.7_90
+    21300182: ring concept 3.7_91
+    21300184: ring concept 3.7_92
+    21300186: ring concept 3.7_93
+    21300188: ring concept 3.7_94
+    21300190: ring concept 3.7_95
+    21300192: ring concept 3.7_96
+    21300194: ring concept 3.7_97
+    21300196: ring concept 3.7_98
+    21300198: ring concept 3.7_99
+    21300200: ring concept 3.7_100
+    21300202: ring concept 3.7_101
+    21300204: ring concept 3.7_102
+    21300206: ring concept 3.7_103
+    21300208: ring concept 3.7_104
+    21300210: ring concept 3.7_105
+    21300212: ring concept 3.7_106
+    21300214: ring concept 3.7_107
+    21300216: ring concept 3.7_108
+    21300218: ring concept 3.7_109
+    21300220: ring concept 3.7_110
+    21300222: ring concept 3.7_111
+    21300224: ring concept 3.7_112
+    21300226: ring concept 3.7_113
+    21300228: ring concept 3.7_114
+    21300230: ring concept 3.7_115
+    21300232: ring concept 3.7_116
+    21300234: ring concept 3.7_117
+    21300236: ring concept 3.7_118
+    21300238: ring concept 3.7_119
+    21300240: ring concept 3.7_120
+    21300242: ring concept 3.7_121
+    21300244: ring concept 3.7_122
+    21300246: ring concept 3.7_123
+    21300248: ring concept 3.7_124
+    21300250: ring concept 3.7_125
+    21300252: ring concept 3.7_126
+    21300254: ring concept 3.7_127
+    21300256: ring concept 3.7_128
+    21300258: ring concept 3.7_129
+    21300260: ring concept 3.7_130
+    21300262: ring concept 3.7_131
+    21300264: ring concept 3.7_132
+    21300266: ring concept 3.7_133
+    21300268: ring concept 3.7_134
+    21300270: ring concept 3.7_135
+    21300272: ring concept 3.7_136
+    21300274: ring concept 3.7_137
+    21300276: ring concept 3.7_138
+    21300278: ring concept 3.7_139
+    21300280: ring concept 3.7_140
+    21300282: ring concept 3.7_141
+    21300284: ring concept 3.7_142
+    21300286: ring concept 3.7_143
+    21300288: ring concept 3.7_144
+    21300290: ring concept 3.7_145
+    21300292: ring concept 3.7_146
+    21300294: ring concept 3.7_147
+    21300296: ring concept 3.7_148
+    21300298: ring concept 3.7_149
+    21300300: ring concept 3.7_150
+    21300302: ring concept 3.7_151
+    21300304: ring concept 3.7_152
+    21300306: ring concept 3.7_153
+    21300308: ring concept 3.7_154
+    21300310: ring concept 3.7_155
+    21300312: ring concept 3.7_156
+    21300314: ring concept 3.7_157
+    21300316: ring concept 3.7_158
+    21300318: ring concept 3.7_159
+    21300320: ring concept 3.7_160
+    21300322: ring concept 3.7_161
+    21300324: ring concept 3.7_162
+    21300326: ring concept 3.7_163
+    21300328: ring concept 3.7_164
+    21300330: ring concept 3.7_165
+    21300332: ring concept 3.7_166
+    21300334: ring concept 3.7_167
+    21300336: ring concept 3.7_168
+    21300338: ring concept 3.7_169
+    21300340: ring concept 3.7_170
+    21300342: ring concept 3.7_171
+    21300344: ring concept 3.7_172
+    21300346: ring concept 3.7_173
+    21300348: ring concept 3.7_174
+    21300350: ring concept 3.7_175
+    21300352: ring concept 3.7_176
+    21300354: ring concept 3.7_177
+    21300356: ring concept 3.7_178
+    21300358: ring concept 3.7_179
+    21300360: ring concept 3.7_180
+    21300362: ring concept 3.7_181
+    21300364: ring concept 3.7_182
+    21300366: ring concept 3.7_183
+    21300368: ring concept 3.7_184
+    21300370: ring concept 3.7_185
+    21300372: ring concept 3.7_186
+    21300374: ring concept 3.7_187
+    21300376: ring concept 3.7_188
+    21300378: ring concept 3.7_189
+    21300380: ring concept 3.7_190
+    21300382: ring concept 3.7_191
+    21300384: ring concept 3.7_192
+    21300386: ring concept 3.7_193
+    21300388: ring concept 3.7_194
+    21300390: ring concept 3.7_195
+    21300392: ring concept 3.7_196
+    21300394: ring concept 3.7_197
+    21300396: ring concept 3.7_198
+    21300398: ring concept 3.7_199
+    21300400: ring concept 3.7_200
+    21300402: ring concept 3.7_201
+    21300404: ring concept 3.7_202
+    21300406: ring concept 3.7_203
+    21300408: ring concept 3.7_204
+    21300410: ring concept 3.7_205
+    21300412: ring concept 3.7_206
+    21300414: ring concept 3.7_207
+    21300416: ring concept 3.7_208
+    21300418: ring concept 3.7_209
+    21300420: ring concept 3.7_210
+    21300422: ring concept 3.7_211
+    21300424: ring concept 3.7_212
+    21300426: ring concept 3.7_213
+    21300428: ring concept 3.7_214
+    21300430: ring concept 3.7_215
+    21300432: ring concept 3.7_216
+    21300434: ring concept 3.7_217
+    21300436: ring concept 3.7_218
+    21300438: ring concept 3.7_219
+    21300440: ring concept 3.7_220
+    21300442: ring concept 3.7_221
+    21300444: ring concept 3.7_222
+    21300446: ring concept 3.7_223
+    21300448: ring concept 3.7_224
+    21300450: ring concept 3.7_225
+    21300452: ring concept 3.7_226
+    21300454: ring concept 3.7_227
+    21300456: ring concept 3.7_228
+    21300458: ring concept 3.7_229
+    21300460: ring concept 3.7_230
+    21300462: ring concept 3.7_231
+    21300464: ring concept 3.7_232
+    21300466: ring concept 3.7_233
+    21300468: ring concept 3.7_234
+    21300470: ring concept 3.7_235
+    21300472: ring concept 3.7_236
+    21300474: ring concept 3.7_237
+    21300476: ring concept 3.7_238
+    21300478: ring concept 3.7_239
+    21300480: ring concept 3.7_240
+    21300482: ring concept 3.7_241
+    21300484: ring concept 3.7_242
+    21300486: ring concept 3.7_243
+    21300488: ring concept 3.7_244
+    21300490: ring concept 3.7_245
+    21300492: ring concept 3.7_246
+    21300494: ring concept 3.7_247
+    21300496: ring concept 3.7_248
+    21300498: ring concept 3.7_249
+    21300500: ring concept 3.7_250
+    21300502: ring concept 3.7_251
+    21300504: ring concept 3.7_252
+    21300506: ring concept 3.7_253
+    21300508: ring concept 3.7_254
+    21300510: ring concept 3.7_255
+    21300512: ring concept 3.7_256
+    21300514: ring concept 3.7_257
+    21300516: ring concept 3.7_258
+    21300518: ring concept 3.7_259
+    21300520: ring concept 3.7_260
+    21300522: ring concept 3.7_261
+    21300524: ring concept 3.7_262
+    21300526: ring concept 3.7_263
+    21300528: ring concept 3.7_264
+    21300530: ring concept 3.7_265
+    21300532: ring concept 3.7_266
+    21300534: ring concept 3.7_267
+    21300536: ring concept 3.7_268
+    21300538: ring concept 3.7_269
+    21300540: ring concept 3.7_270
+    21300542: ring concept 3.7_271
+    21300544: ring concept 3.7_272
+    21300546: ring concept 3.7_273
+    21300548: ring concept 3.7_274
+    21300550: ring concept 3.7_275
+    21300552: ring concept 3.7_276
+    21300554: ring concept 3.7_277
+    21300556: ring concept 3.7_278
+    21300558: ring concept 3.7_279
+    21300560: ring concept 3.7_280
+    21300562: ring concept 3.7_281
+    21300564: ring concept 3.7_282
+    21300566: ring concept 3.7_283
+    21300568: ring concept 3.7_284
+    21300570: ring concept 3.7_285
+    21300572: ring concept 3.7_286
+    21300574: ring concept 3.7_287
+    21300576: ring concept 3.7_288
+    21300578: ring concept 3.7_289
+    21300580: ring concept 3.7_290
+    21300582: ring concept 3.7_291
+    21300584: ring concept 3.7_292
+    21300586: ring concept 3.7_293
+    21300588: ring concept 3.7_294
+    21300590: ring concept 3.7_295
+    21300592: ring concept 3.7_296
+    21300594: ring concept 3.7_297
+    21300596: ring concept 3.7_298
+    21300598: ring concept 3.7_299
+    21300600: ring concept 3.7_300
+    21300602: ring concept 3.7_301
+    21300604: ring concept 3.7_302
+    21300606: ring concept 3.7_303
+    21300608: ring concept 3.7_304
+    21300610: ring concept 3.7_305
+    21300612: ring concept 3.7_306
+    21300614: ring concept 3.7_307
+    21300616: ring concept 3.7_308
+    21300618: ring concept 3.7_309
+    21300620: ring concept 3.7_310
+    21300622: ring concept 3.7_311
+    21300624: ring concept 3.7_312
+    21300626: ring concept 3.7_313
+    21300628: ring concept 3.7_314
+    21300630: ring concept 3.7_315
+    21300632: ring concept 3.7_316
+    21300634: ring concept 3.7_317
+    21300636: ring concept 3.7_318
+    21300638: ring concept 3.7_319
+    21300640: ring concept 3.7_320
+    21300642: ring concept 3.7_321
+    21300644: ring concept 3.7_322
+    21300646: ring concept 3.7_323
+    21300648: ring concept 3.7_324
+    21300650: ring concept 3.7_325
+    21300652: ring concept 3.7_326
+    21300654: ring concept 3.7_327
+    21300656: ring concept 3.7_328
+    21300658: ring concept 3.7_329
+    21300660: ring concept 3.7_330
+    21300662: ring concept 3.7_331
+    21300664: ring concept 3.7_332
+    21300666: ring concept 3.7_333
+    21300668: ring concept 3.7_334
+    21300670: ring concept 3.7_335
+    21300672: ring concept 3.7_336
+    21300674: ring concept 3.7_337
+    21300676: ring concept 3.7_338
+    21300678: ring concept 3.7_339
+    21300680: ring concept 3.7_340
+    21300682: ring concept 3.7_341
+    21300684: ring concept 3.7_342
+    21300686: ring concept 3.7_343
+    21300688: ring concept 3.7_344
+    21300690: ring concept 3.7_345
+    21300692: ring concept 3.7_346
+    21300694: ring concept 3.7_347
+    21300696: ring concept 3.7_348
+    21300698: ring concept 3.7_349
+    21300700: ring concept 3.7_350
+    21300702: ring concept 3.7_351
+    21300704: ring concept 3.7_352
+    21300706: ring concept 3.7_353
+    21300708: ring concept 3.7_354
+    21300710: ring concept 3.7_355
+    21300712: ring concept 3.7_356
+    21300714: ring concept 3.7_357
+    21300716: ring concept 3.7_358
+    21300718: ring concept 3.7_359
+    21300720: ring concept 3.7_360
+    21300722: ring concept 3.7_361
+    21300724: ring concept 3.7_362
+    21300726: ring concept 3.7_363
+    21300728: ring concept 3.7_364
+    21300730: ring concept 3.7_365
+    21300732: ring concept 3.7_366
+    21300734: ring concept 3.7_367
+    21300736: ring concept 3.7_368
+    21300738: ring concept 3.7_369
+    21300740: ring concept 3.7_370
+    21300742: ring concept 3.7_371
+    21300744: ring concept 3.7_372
+    21300746: ring concept 3.7_373
+    21300748: ring concept 3.7_374
+    21300750: ring concept 3.7_375
+    21300752: ring concept 3.7_376
+    21300754: ring concept 3.7_377
+    21300756: ring concept 3.7_378
+    21300758: ring concept 3.7_379
+    21300760: ring concept 3.7_380
+    21300762: ring concept 3.7_381
+    21300764: ring concept 3.7_382
+    21300766: ring concept 3.7_383
+    21300768: ring concept 3.7_384
+    21300770: ring concept 3.7_385
+    21300772: ring concept 3.7_386
+    21300774: ring concept 3.7_387
+    21300776: ring concept 3.7_388
+    21300778: ring concept 3.7_389
+    21300780: ring concept 3.7_390
+    21300782: ring concept 3.7_391
+    21300784: ring concept 3.7_392
+    21300786: ring concept 3.7_393
+    21300788: ring concept 3.7_394
+    21300790: ring concept 3.7_395
+    21300792: ring concept 3.7_396
+    21300794: ring concept 3.7_397
+    21300796: ring concept 3.7_398
+    21300798: ring concept 3.7_399
+    21300800: ring concept 3.7_400
+    21300802: ring concept 3.7_401
+    21300804: ring concept 3.7_402
+    21300806: ring concept 3.7_403
+    21300808: ring concept 3.7_404
+    21300810: ring concept 3.7_405
+    21300812: ring concept 3.7_406
+    21300814: ring concept 3.7_407
+    21300816: ring concept 3.7_408
+    21300818: ring concept 3.7_409
+    21300820: ring concept 3.7_410
+    21300822: ring concept 3.7_411
+    21300824: ring concept 3.7_412
+    21300826: ring concept 3.7_413
+    21300828: ring concept 3.7_414
+    21300830: ring concept 3.7_415
+    21300832: ring concept 3.7_416
+    21300834: ring concept 3.7_417
+    21300836: ring concept 3.7_418
+    21300838: ring concept 3.7_419
+    21300840: ring concept 3.7_420
+    21300842: ring concept 3.7_421
+    21300844: ring concept 3.7_422
+    21300846: ring concept 3.7_423
+    21300848: ring concept 3.7_424
+    21300850: ring concept 3.7_425
+    21300852: ring concept 3.7_426
+    21300854: ring concept 3.7_427
+    21300856: ring concept 3.7_428
+    21300858: ring concept 3.7_429
+    21300860: ring concept 3.7_430
+    21300862: ring concept 3.7_431
+    21300864: ring concept 3.7_432
+    21300866: ring concept 3.7_433
+    21300868: ring concept 3.7_434
+    21300870: ring concept 3.7_435
+    21300872: ring concept 3.7_436
+    21300874: ring concept 3.7_437
+    21300876: ring concept 3.7_438
+    21300878: ring concept 3.7_439
+    21300880: ring concept 3.7_440
+    21300882: ring concept 3.7_441
+    21300884: ring concept 3.7_442
+    21300886: ring concept 3.7_443
+    21300888: ring concept 3.7_444
+    21300890: ring concept 3.7_445
+    21300892: ring concept 3.7_446
+    21300894: ring concept 3.7_447
+    21300896: ring concept 3.7_448
+    21300898: ring concept 3.7_449
+    21300900: ring concept 3.7_450
+    21300902: ring concept 3.7_451
+    21300904: ring concept 3.7_452
+    21300906: ring concept 3.7_453
+    21300908: ring concept 3.7_454
+    21300910: ring concept 3.7_455
+    21300912: ring concept 3.7_456
+    21300914: ring concept 3.7_457
+    21300916: ring concept 3.7_458
+    21300918: ring concept 3.7_459
+    21300920: ring concept 3.7_460
+    21300922: ring concept 3.7_461
+    21300924: ring concept 3.7_462
+    21300926: ring concept 3.7_463
+    21300928: ring concept 3.7_464
+    21300930: ring concept 3.7_465
+    21300932: ring concept 3.7_466
+    21300934: ring concept 3.7_467
+    21300936: ring concept 3.7_468
+    21300938: ring concept 3.7_469
+    21300940: ring concept 3.7_470
+    21300942: ring concept 3.7_471
+    21300944: ring concept 3.7_472
+    21300946: ring concept 3.7_473
+    21300948: ring concept 3.7_474
+    21300950: ring concept 3.7_475
+    21300952: ring concept 3.7_476
+    21300954: ring concept 3.7_477
+    21300956: ring concept 3.7_478
+    21300958: ring concept 3.7_479
+    21300960: ring concept 3.7_480
+    21300962: ring concept 3.7_481
+    21300964: ring concept 3.7_482
+    21300966: ring concept 3.7_483
+    21300968: ring concept 3.7_484
+    21300970: ring concept 3.7_485
+    21300972: ring concept 3.7_486
+    21300974: ring concept 3.7_487
+    21300976: ring concept 3.7_488
+    21300978: ring concept 3.7_489
+    21300980: ring concept 3.7_490
+    21300982: ring concept 3.7_491
+    21300984: ring concept 3.7_492
+    21300986: ring concept 3.7_493
+    21300988: ring concept 3.7_494
+    21300990: ring concept 3.7_495
+    21300992: ring concept 3.7_496
+    21300994: ring concept 3.7_497
+    21300996: ring concept 3.7_498
+    21300998: ring concept 3.7_499
+    21301000: ring concept 3.7_500
+    21301002: ring concept 3.7_501
+    21301004: ring concept 3.7_502
+    21301006: ring concept 3.7_503
+    21301008: ring concept 3.7_504
+    21301010: ring concept 3.7_505
+    21301012: ring concept 3.7_506
+    21301014: ring concept 3.7_507
+    21301016: ring concept 3.7_508
+    21301018: ring concept 3.7_509
+    21301020: ring concept 3.7_510
+    21301022: ring concept 3.7_511
+    21301024: ring concept 3.7_512
+    21301026: ring concept 3.7_513
+    21301028: ring concept 3.7_514
+    21301030: ring concept 3.7_515
+    21301032: ring concept 3.7_516
+    21301034: ring concept 3.7_517
+    21301036: ring concept 3.7_518
+    21301038: ring concept 3.7_519
+    21301040: ring concept 3.7_520
+    21301042: ring concept 3.7_521
+    21301044: ring concept 3.7_522
+    21301046: ring concept 3.7_523
+    21301048: ring concept 3.7_524
+    21301050: ring concept 3.7_525
+    21301052: ring concept 3.7_526
+    21301054: ring concept 3.7_527
+    21301056: ring concept 3.7_528
+    21301058: ring concept 3.7_529
+    21301060: ring concept 3.7_530
+    21301062: ring concept 3.7_531
+    21301064: ring concept 3.7_532
+    21301066: ring concept 3.7_533
+    21301068: ring concept 3.7_534
+    21301070: ring concept 3.7_535
+    21301072: ring concept 3.7_536
+    21301074: ring concept 3.7_537
+    21301076: ring concept 3.7_538
+    21301078: ring concept 3.7_539
+    21301080: ring concept 3.7_540
+    21301082: ring concept 3.7_541
+    21301084: ring concept 3.7_542
+    21301086: ring concept 3.7_543
+    21301088: ring concept 3.7_544
+    21301090: ring concept 3.7_545
+    21301092: ring concept 3.7_546
+    21301094: ring concept 3.7_547
+    21301096: ring concept 3.7_548
+    21301098: ring concept 3.7_549
+    21301100: ring concept 3.7_550
+    21301102: ring concept 3.7_551
+    21301104: ring concept 3.7_552
+    21301106: ring concept 3.7_553
+    21301108: ring concept 3.7_554
+    21301110: ring concept 3.7_555
+    21301112: ring concept 3.7_556
+    21301114: ring concept 3.7_557
+    21301116: ring concept 3.7_558
+    21301118: ring concept 3.7_559
+    21301120: ring concept 3.7_560
+    21301122: ring concept 3.7_561
+    21301124: ring concept 3.7_562
+    21301126: ring concept 3.7_563
+    21301128: ring concept 3.7_564
+    21301130: ring concept 3.7_565
+    21301132: ring concept 3.7_566
+    21301134: ring concept 3.7_567
+    21301136: ring concept 3.7_568
+    21301138: ring concept 3.7_569
+    21301140: ring concept 3.7_570
+    21301142: ring concept 3.7_571
+    21301144: ring concept 3.7_572
+    21301146: ring concept 3.7_573
+    21301148: ring concept 3.7_574
+    21301150: ring concept 3.7_575
+    21301152: ring concept 3.7_576
+    21301154: ring concept 3.7_577
+    21301156: ring concept 3.7_578
+    21301158: ring concept 3.7_579
+    21301160: ring concept 3.7_580
+    21301162: ring concept 3.7_581
+    21301164: ring concept 3.7_582
+    21301166: ring concept 3.7_583
+    21301168: ring concept 3.7_584
+    21301170: ring concept 3.7_585
+    21301172: ring concept 3.7_586
+    21301174: ring concept 3.7_587
+    21301176: ring concept 3.7_588
+    21301178: ring concept 3.7_589
+    21301180: ring concept 3.7_590
+    21301182: ring concept 3.7_591
+    21301184: ring concept 3.7_592
+    21301186: ring concept 3.7_593
+    21301188: ring concept 3.7_594
+    21301190: ring concept 3.7_595
+    21301192: ring concept 3.7_596
+    21301194: ring concept 3.7_597
+    21301196: ring concept 3.7_598
+    21301198: ring concept 3.7_599
+    21301200: ring concept 3.7_600
+    21301202: ring concept 3.7_601
+    21301204: ring concept 3.7_602
+    21301206: ring concept 3.7_603
+    21301208: ring concept 3.7_604
+    21301210: ring concept 3.7_605
+    21301212: ring concept 3.7_606
+    21301214: ring concept 3.7_607
+    21301216: ring concept 3.7_608
+    21301218: ring concept 3.7_609
+    21301220: ring concept 3.7_610
+    21301222: ring concept 3.7_611
+    21301224: ring concept 3.7_612
+    21301226: ring concept 3.7_613
+    21301228: ring concept 3.7_614
+    21301230: ring concept 3.7_615
+    21301232: ring concept 3.7_616
+    21301234: ring concept 3.7_617
+    21301236: ring concept 3.7_618
+    21301238: ring concept 3.7_619
+    21301240: ring concept 3.7_620
+    21301242: ring concept 3.7_621
+    21301244: ring concept 3.7_622
+    21301246: ring concept 3.7_623
+    21301248: ring concept 3.7_624
+    21301250: ring concept 3.7_625
+    21301252: ring concept 3.7_626
+    21301254: ring concept 3.7_627
+    21301256: ring concept 3.7_628
+    21301258: ring concept 3.7_629
+    21301260: ring concept 3.7_630
+    21301262: ring concept 3.7_631
+    21301264: ring concept 3.7_632
+    21301266: ring concept 3.7_633
+    21301268: ring concept 3.7_634
+    21301270: ring concept 3.7_635
+    21301272: ring concept 3.7_636
+    21301274: ring concept 3.7_637
+    21301276: ring concept 3.7_638
+    21301278: ring concept 3.7_639
+    21301280: ring concept 3.7_640
+    21301282: ring concept 3.7_641
+    21301284: ring concept 3.7_642
+    21301286: ring concept 3.7_643
+    21301288: ring concept 3.7_644
+    21301290: ring concept 3.7_645
+    21301292: ring concept 3.7_646
+    21301294: ring concept 3.7_647
+    21301296: ring concept 3.7_648
+    21301298: ring concept 3.7_649
+    21301300: ring concept 3.7_650
+    21301302: ring concept 3.7_651
+    21301304: ring concept 3.7_652
+    21301306: ring concept 3.7_653
+    21301308: ring concept 3.7_654
+    21301310: ring concept 3.7_655
+    21301312: ring concept 3.7_656
+    21301314: ring concept 3.7_657
+    21301316: ring concept 3.7_658
+    21301318: ring concept 3.7_659
+    21301320: ring concept 3.7_660
+    21301322: ring concept 3.7_661
+    21301324: ring concept 3.7_662
+    21301326: ring concept 3.7_663
+    21301328: ring concept 3.7_664
+    21301330: ring concept 3.7_665
+    21301332: ring concept 3.7_666
+    21301334: ring concept 3.7_667
+    21301336: ring concept 3.7_668
+    21301338: ring concept 3.7_669
+    21301340: ring concept 3.7_670
+    21301342: ring concept 3.7_671
+    21301344: ring concept 3.7_672
+    21301346: ring concept 3.7_673
+    21301348: ring concept 3.7_674
+    21301350: ring concept 3.7_675
+    21301352: ring concept 3.7_676
+    21301354: ring concept 3.7_677
+    21301356: ring concept 3.7_678
+    21301358: ring concept 3.7_679
+    21301360: ring concept 3.7_680
+    21301362: ring concept 3.7_681
+    21301364: ring concept 3.7_682
+    21301366: ring concept 3.7_683
+    21301368: ring concept 3.7_684
+    21301370: ring concept 3.7_685
+    21301372: ring concept 3.7_686
+    21301374: ring concept 3.7_687
+    21301376: ring concept 3.7_688
+    21301378: ring concept 3.7_689
+    21301380: ring concept 3.7_690
+    21301382: ring concept 3.7_691
+    21301384: ring concept 3.7_692
+    21301386: ring concept 3.7_693
+    21301388: ring concept 3.7_694
+    21301390: ring concept 3.7_695
+    21301392: ring concept 3.7_696
+    21301394: ring concept 3.7_697
+    21301396: ring concept 3.7_698
+    21301398: ring concept 3.7_699
+    21301400: ring concept 3.7_700
+    21301402: ring concept 3.7_701
+    21301404: ring concept 3.7_702
+    21301406: ring concept 3.7_703
+    21301408: ring concept 3.7_704
+    21301410: ring concept 3.7_705
+    21301412: ring concept 3.7_706
+    21301414: ring concept 3.7_707
+    21301416: ring concept 3.7_708
+    21301418: ring concept 3.7_709
+    21301420: ring concept 3.7_710
+    21301422: ring concept 3.7_711
+    21301424: ring concept 3.7_712
+    21301426: ring concept 3.7_713
+    21301428: ring concept 3.7_714
+    21301430: ring concept 3.7_715
+    21301432: ring concept 3.7_716
+    21301434: ring concept 3.7_717
+    21301436: ring concept 3.7_718
+    21301438: ring concept 3.7_719
+    21301440: ring concept 3.7_720
+    21301442: ring concept 3.7_721
+    21301444: ring concept 3.7_722
+    21301446: ring concept 3.7_723
+    21301448: ring concept 3.7_724
+    21301450: ring concept 3.7_725
+    21301452: ring concept 3.7_726
+    21301454: ring concept 3.7_727
+    21301456: ring concept 3.7_728
+    21301458: ring concept 3.7_729
+    21301460: ring concept 3.7_730
+    21301462: ring concept 3.7_731
+    21301464: ring concept 3.7_732
+    21301466: ring concept 3.7_733
+    21301468: ring concept 3.7_734
+    21301470: ring concept 3.7_735
+    21301472: ring concept 3.7_736
+    21301474: ring concept 3.7_737
+    21301476: ring concept 3.7_738
+    21301478: ring concept 3.7_739
+    21301480: ring concept 3.7_740
+    21301482: ring concept 3.7_741
+    21301484: ring concept 3.7_742
+    21301486: ring concept 3.7_743
+    21301488: ring concept 3.7_744
+    21301490: ring concept 3.7_745
+    21301492: ring concept 3.7_746
+    21301494: ring concept 3.7_747
+    21301496: ring concept 3.7_748
+    21301498: ring concept 3.7_749
+    21301500: ring concept 3.7_750
+    21301502: ring concept 3.7_751
+    21301504: ring concept 3.7_752
+    21301506: ring concept 3.7_753
+    21301508: ring concept 3.7_754
+    21301510: ring concept 3.7_755
+    21301512: ring concept 3.7_756
+    21301514: ring concept 3.7_757
+    21301516: ring concept 3.7_758
+    21301518: ring concept 3.7_759
+    21301520: ring concept 3.7_760
+    21301522: ring concept 3.7_761
+    21301524: ring concept 3.7_762
+    21301526: ring concept 3.7_763
+    21301528: ring concept 3.7_764
+    21301530: ring concept 3.7_765
+    21301532: ring concept 3.7_766
+    21301534: ring concept 3.7_767
+    21301536: ring concept 3.7_768
+    21301538: ring concept 3.7_769
+    21301540: ring concept 3.7_770
+    21301542: ring concept 3.7_771
+    21301544: ring concept 3.7_772
+    21301546: ring concept 3.7_773
+    21301548: ring concept 3.7_774
+    21301550: ring concept 3.7_775
+    21301552: ring concept 3.7_776
+    21301554: ring concept 3.7_777
+    21301556: ring concept 3.7_778
+    21301558: ring concept 3.7_779
+    21301560: ring concept 3.7_780
+    21301562: ring concept 3.7_781
+    21301564: ring concept 3.7_782
+    21301566: ring concept 3.7_783
+    21301568: ring concept 3.7_784
+    21301570: ring concept 3.7_785
+    21301572: ring concept 3.7_786
+    21301574: ring concept 3.7_787
+    21301576: ring concept 3.7_788
+    21301578: ring concept 3.7_789
+    21301580: ring concept 3.7_790
+    21301582: ring concept 3.7_791
+    21301584: ring concept 3.7_792
+    21301586: ring concept 3.7_793
+    21301588: ring concept 3.7_794
+    21301590: ring concept 3.7_795
+    21301592: ring concept 3.7_796
+    21301594: ring concept 3.7_797
+    21301596: ring concept 3.7_798
+    21301598: ring concept 3.7_799
+    21301600: ring concept 3.7_800
+    21301602: ring concept 3.7_801
+    21301604: ring concept 3.7_802
+    21301606: ring concept 3.7_803
+    21301608: ring concept 3.7_804
+    21301610: ring concept 3.7_805
+    21301612: ring concept 3.7_806
+    21301614: ring concept 3.7_807
+    21301616: ring concept 3.7_808
+    21301618: ring concept 3.7_809
+    21301620: ring concept 3.7_810
+    21301622: ring concept 3.7_811
+    21301624: ring concept 3.7_812
+    21301626: ring concept 3.7_813
+    21301628: ring concept 3.7_814
+    21301630: ring concept 3.7_815
+    21301632: ring concept 3.7_816
+    21301634: ring concept 3.7_817
+    21301636: ring concept 3.7_818
+    21301638: ring concept 3.7_819
+    21301640: ring concept 3.7_820
+    21301642: ring concept 3.7_821
+    21301644: ring concept 3.7_822
+    21301646: ring concept 3.7_823
+    21301648: ring concept 3.7_824
+    21301650: ring concept 3.7_825
+    21301652: ring concept 3.7_826
+    21301654: ring concept 3.7_827
+    21301656: ring concept 3.7_828
+    21301658: ring concept 3.7_829
+    21301660: ring concept 3.7_830
+    21301662: ring concept 3.7_831
+    21301664: ring concept 3.7_832
+    21301666: ring concept 3.7_833
+    21301668: ring concept 3.7_834
+    21301670: ring concept 3.7_835
+    21301672: ring concept 3.7_836
+    21301674: ring concept 3.7_837
+    21301676: ring concept 3.7_838
+    21301678: ring concept 3.7_839
+    21301680: ring concept 3.7_840
+    21301682: ring concept 3.7_841
+    21301684: ring concept 3.7_842
+    21301686: ring concept 3.7_843
+    21301688: ring concept 3.7_844
+    21301690: ring concept 3.7_845
+    21301692: ring concept 3.7_846
+    21301694: ring concept 3.7_847
+    21301696: ring concept 3.7_848
+    21301698: ring concept 3.7_849
+    21301700: ring concept 3.7_850
+    21301702: ring concept 3.7_851
+    21301704: ring concept 3.7_852
+    21301706: ring concept 3.7_853
+    21301708: ring concept 3.7_854
+    21301710: ring concept 3.7_855
+    21301712: ring concept 3.7_856
+    21301714: ring concept 3.7_857
+    21301716: ring concept 3.7_858
+    21301718: ring concept 3.7_859
+    21301720: ring concept 3.7_860
+    21301722: ring concept 3.7_861
+    21301724: ring concept 3.7_862
+    21301726: ring concept 3.7_863
+    21301728: ring concept 3.7_864
+    21301730: ring concept 3.7_865
+    21301732: ring concept 3.7_866
+    21301734: ring concept 3.7_867
+    21301736: ring concept 3.7_868
+    21301738: ring concept 3.7_869
+    21301740: ring concept 3.7_870
+    21301742: ring concept 3.7_871
+    21301744: ring concept 3.7_872
+    21301746: ring concept 3.7_873
+    21301748: ring concept 3.7_874
+    21301750: ring concept 3.7_875
+    21301752: ring concept 3.7_876
+    21301754: ring concept 3.7_877
+    21301756: ring concept 3.7_878
+    21301758: ring concept 3.7_879
+    21301760: ring concept 3.7_880
+    21301762: ring concept 3.7_881
+    21301764: ring concept 3.7_882
+    21301766: ring concept 3.7_883
+    21301768: ring concept 3.7_884
+    21301770: ring concept 3.7_885
+    21301772: ring concept 3.7_886
+    21301774: ring concept 3.7_887
+    21301776: ring concept 3.7_888
+    21301778: ring concept 3.7_889
+    21301780: ring concept 3.7_890
+    21301782: ring concept 3.7_891
+    21301784: ring concept 3.7_892
+    21301786: ring concept 3.7_893
+    21301788: ring concept 3.7_894
+    21301790: ring concept 3.7_895
+    21301792: ring concept 3.7_896
+    21301794: ring concept 3.7_897
+    21301796: ring concept 3.7_898
+    21301798: ring concept 3.7_899
+    21301800: ring concept 3.7_900
+    21301802: ring concept 3.7_901
+    21301804: ring concept 3.7_902
+    21301806: ring concept 3.7_903
+    21301808: ring concept 3.7_904
+    21301810: ring concept 3.7_905
+    21301812: ring concept 3.7_906
+    21301814: ring concept 3.7_907
+    21301816: ring concept 3.7_908
+    21301818: ring concept 3.7_909
+    21301820: ring concept 3.7_910
+    21301822: ring concept 3.7_911
+    21301824: ring concept 3.7_912
+    21301826: ring concept 3.7_913
+    21301828: ring concept 3.7_914
+    21301830: ring concept 3.7_915
+    21301832: ring concept 3.7_916
+    21301834: ring concept 3.7_917
+    21301836: ring concept 3.7_918
+    21301838: ring concept 3.7_919
+    21301840: ring concept 3.7_920
+    21301842: ring concept 3.7_921
+    21301844: ring concept 3.7_922
+    21301846: ring concept 3.7_923
+    21301848: ring concept 3.7_924
+    21301850: ring concept 3.7_925
+    21301852: ring concept 3.7_926
+    21301854: ring concept 3.7_927
+    21301856: ring concept 3.7_928
+    21301858: ring concept 3.7_929
+    21301860: ring concept 3.7_930
+    21301862: ring concept 3.7_931
+    21301864: ring concept 3.7_932
+    21301866: ring concept 3.7_933
+    21301868: ring concept 3.7_934
+    21301870: ring concept 3.7_935
+    21301872: ring concept 3.7_936
+    21301874: ring concept 3.7_937
+    21301876: ring concept 3.7_938
+    21301878: ring concept 3.7_939
+    21301880: ring concept 3.7_940
+    21301882: ring concept 3.7_941
+    21301884: ring concept 3.7_942
+    21301886: ring concept 3.7_943
+    21301888: ring concept 3.7_944
+    21301890: ring concept 3.7_945
+    21301892: ring concept 3.7_946
+    21301894: ring concept 3.7_947
+    21301896: ring concept 3.7_948
+    21301898: ring concept 3.7_949
+    21301900: ring concept 3.7_950
+    21301902: ring concept 3.7_951
+    21301904: ring concept 3.7_952
+    21301906: ring concept 3.7_953
+    21301908: ring concept 3.7_954
+    21301910: ring concept 3.7_955
+    21301912: ring concept 3.7_956
+    21301914: ring concept 3.7_957
+    21301916: ring concept 3.7_958
+    21301918: ring concept 3.7_959
+    21301920: ring concept 3.7_960
+  externalObjects: {}
+  serializedVersion: 7
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ring concept 3.7_0
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 1872
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 479f80eeea4b0064a96fc63c5f6b26f7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_1
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 1872
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b92ddc721c82562478511b828732910d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_2
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 1872
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80a002f5bd3c1b6419486f5ebe64d3a1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_3
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 1872
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 024fd2de11a034f4e9272da98aa618d7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_4
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 1872
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5ba6cf6e57504143b6218533b7b4c51
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_5
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 1872
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c515f38029b150499e03fc076c538e7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_6
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 1872
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e82012853d218de4eadad99490d340f8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_7
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 1872
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 507d5135f75fe9e4cb66a58fbb6602dc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_8
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 1872
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11bb837856d3997409a1b2421a2d04cb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_9
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 1872
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b521ed293baffc4785b0e82ef90a5b5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_10
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 1872
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32fc3bb0bd47b74418b97a3b6d5c3bc3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_11
+      rect:
+        serializedVersion: 2
+        x: 1675
+        y: 1872
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cae8ddce74922840a5ac53aa7cc484e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_12
+      rect:
+        serializedVersion: 2
+        x: 1825
+        y: 1872
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acf3ba37dd09efd4e97665ab51a10977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_13
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 1744
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68ae8e555370e5d45a8577cc190da31c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_14
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 1744
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6084267215bf4514a95ab2c68c6959b9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_15
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 1744
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bd5582aac0ab254eb9b26279adf8a36
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_16
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 1744
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08cd6af3018d09144aec1c6179af53f1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_17
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 1744
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e3d583d5352b3649a189743fce5c564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_18
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 1744
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cf529ba045263a48aa8e9e570689fa5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_19
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 1744
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c4230c4babecc94ea0df9072197e0c2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_20
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 1744
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eafb1558e8d5cda4c98062532ec80349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_21
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 1744
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60a020b29ddae454487224146c60ce8f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_22
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 1744
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dec9da1d664b39498bb10494c502b48
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_23
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 1744
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 356329a35bf82a5468a9238b27bf1d3a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_24
+      rect:
+        serializedVersion: 2
+        x: 1675
+        y: 1744
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aa23c6fb21bde04888cc0777ba5d982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_25
+      rect:
+        serializedVersion: 2
+        x: 1825
+        y: 1744
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 965dcc17ea8103343bceecdb3cfc625c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_26
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 1616
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6835a1c1e71b4b34794a7b0f2c2bbb92
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_27
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 1616
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 763aebbbf8a004540aa1008305272deb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_28
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 1616
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97117454e2705e84eb390b7aaf3c0908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_29
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 1616
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a329720d4b10b447a648f42b338e18c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_30
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 1616
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca615cf3f11be37478deb28a1d64f53b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_31
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 1616
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a2ebc72781660b4388925dc989aad83
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_32
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 1616
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e55a6ee87a8bef04da941ed2e38c8a60
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_33
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 1616
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c148a29d0f276e243b9ed37ccbc1a07d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_34
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 1616
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e86a86f847dbe264b9e411a6df9e2f64
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_35
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 1616
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a61d25faaa09614d87e5e150f0da6bd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_36
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 1616
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f44aad50f0028a648a4b44b0326be031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_37
+      rect:
+        serializedVersion: 2
+        x: 1675
+        y: 1616
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef2bea6349312bf4e9dc509a230484e1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_38
+      rect:
+        serializedVersion: 2
+        x: 1825
+        y: 1616
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4af9adc7d10b04840bd86594de90b347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_39
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 1488
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71c40e940a2a9984da3634d6e0ff9969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_40
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 1488
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e07ae78cd9a8504a82137e6aee6dd75
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_41
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 1488
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8db602cef607e9143b793c05277ae139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_42
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 1488
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d08b7391401ffe446b163fb084090784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_43
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 1488
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 070a0761897d77949a2ec728c1414caa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_44
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 1488
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afa5e42919721aa499e1de22a3f464a5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_45
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 1488
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6857a29a269be74886417a6cd023f20
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_46
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 1488
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c0cc7e00da4aad4aa2e4dd3bc511132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_47
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 1488
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98671eaba6b013b4e84364abbb1cb555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_48
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 1488
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af0cd7e4fd37c144ab89e790ce95e693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_49
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 1488
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8de8d33b7cb0e3349a4b5b22a2b85610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_50
+      rect:
+        serializedVersion: 2
+        x: 1675
+        y: 1488
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44e58e7986e495340a0a2ae56a466ae7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_51
+      rect:
+        serializedVersion: 2
+        x: 1825
+        y: 1488
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 062015cb788b01f4cb50950e4ac58073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_52
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 1360
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9150fceefaaca30449ebb986ebefd7a9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_53
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 1360
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8607cf68424b17c4cb3d7928f09bdc1e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_54
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 1360
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72666412fabe9554492b542f8a3f3579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_55
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 1360
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5e24a6458cfef04ea9406b2b7879b73
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_56
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 1360
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36784600104c203448962724ae382a37
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_57
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 1360
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85c685b51daa4344388dc569434091e6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_58
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 1360
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cabc3a2021ffd941a9ea00f4a10881e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_59
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 1360
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8e69981c0822ef45a29cc295e4ec0fd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_60
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 1360
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59f4353700484234694412e3a682a7ef
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_61
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 1360
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cb6a0a0b5b4df8429acbad0489a38fb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_62
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 1360
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba01227593219d147a6127bf3b97054a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_63
+      rect:
+        serializedVersion: 2
+        x: 1675
+        y: 1360
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e55c98453dd0df4ca43acc3d34a39c4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_64
+      rect:
+        serializedVersion: 2
+        x: 1825
+        y: 1360
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c65c08013cc56fe418b7b95d059392a2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_65
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 1232
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08069956697839a44a49baf1378d7bf1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_66
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 1232
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b58e144bf225704798493b65d31787e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_67
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 1232
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03a8fd1450e9649418d7b858ead0ba77
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_68
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 1232
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc1210fff89a44d49a04142921ce32d5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_69
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 1232
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afc8fe94ee3f3294ba5cc01062560d38
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_70
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 1232
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6851ea5a90725c4e9c4ad4d4c288432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_71
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 1232
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30da5379edb7e2440b31e0528da3a955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_72
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 1232
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30258467a9de9444083d71d61b59d968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_73
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 1232
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 229486b6b5100fc409cad3e685af5536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_74
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 1232
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb3ece903a4e90647aba1955c4cbb45f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_75
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 1232
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9deb1144d87fae543abe2fd96f6940db
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_76
+      rect:
+        serializedVersion: 2
+        x: 1675
+        y: 1232
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36b629bf4843102418787730c78b0b04
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_77
+      rect:
+        serializedVersion: 2
+        x: 1825
+        y: 1232
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55e5ca93206ea53479d87759370347da
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_78
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 1104
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c910919ce9c0b64393eada9246b43ed
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_79
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 1104
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bdca72966c91f743a4070759e66f946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_80
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 1104
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5202be12f583ec43b3d7f1ed1821df3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_81
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 1104
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f392ba19389e4742937d6c8d70b447a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_82
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 1104
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ff4734d012e66142acf3189e90aacd6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_83
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 1104
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92cff62c05db7364f87d49057b391239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_84
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 1104
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc029a4deaa047c4aac00e51bc0c7780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_85
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 1104
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9af9419c43bb22147afeebe2f1c8763d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_86
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 1104
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 956d469e7617d634bb6b930ba1fcd4ca
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_87
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 1104
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dba820a48b4706242bdd10342725d3cf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_88
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 1104
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29f0bdb2069440c47b6376b0d0437f11
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_89
+      rect:
+        serializedVersion: 2
+        x: 1675
+        y: 1104
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f16dc5be98b030f4b8823dbd4d5cebe6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_90
+      rect:
+        serializedVersion: 2
+        x: 1825
+        y: 1104
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2010999a460d04c49b911d9d72cfd53b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_91
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 976
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 727e04da7f43bd340a3d097b2bbe8ffe
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_92
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 976
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c68f87b8ef2e6c45b3bf33ac2d8a1bb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_93
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 976
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b94cb2f567a2fd4db64cc3e03a10de1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_94
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 976
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2c2250bbedbc98449e3c0ebc8b3a87e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_95
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 976
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73ffc30d5bc06414bbe47494aae4a773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_96
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 976
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56a2d23dbb5db994788a163d534558b0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_97
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 976
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c66867750d0a7bf4da0e73eb85778979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_98
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 976
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3665893b631c5004fb6b21f24c14acf7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_99
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 976
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5328e44d1740b394899e3107ea8ef4f2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_100
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 976
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f3b9af3525a304468fc8ee2b4e3e83b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_101
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 976
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76dbc12eebba1f842b02ea9477df899e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_102
+      rect:
+        serializedVersion: 2
+        x: 1675
+        y: 976
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 487f9be90206bc2408990dad0abdd5e4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_103
+      rect:
+        serializedVersion: 2
+        x: 1825
+        y: 976
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84acabcf000f51c4cb281799362e69d1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_104
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 848
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cf1b66f5f28d15408f37bdf220f82b8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_105
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 848
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0833b3d6fa030da47b66be8479bea87a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_106
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 848
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 970a5351300724a4b8c1c7d818ff53cf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_107
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 848
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e30d74a478baac94aa157a9da72b5451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_108
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 848
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 479bb75bfebf9b149b47b462a0cf0d79
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_109
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 848
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee4def2618dc6834ea586cc233f23442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_110
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 848
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ca71269b8935d8459d754f3909117de
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_111
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 848
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: add8cf79201bdc946b300d4f10068d16
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_112
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 848
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbd0055859ac69c46b53b0af73204a5f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_113
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 848
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74e8a6d4196eca14686d46a3a07fa6fd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_114
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 848
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80e97f2d3a7e5c945be47cfbef6ef549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_115
+      rect:
+        serializedVersion: 2
+        x: 1675
+        y: 848
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12eca7b5835e07d4b94bee2367efeee5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_116
+      rect:
+        serializedVersion: 2
+        x: 1825
+        y: 848
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b17935d114a17bf43ba19f21bb737afb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_117
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 720
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 937ca690aa835764eade6735a0bc9abb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_118
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 720
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7573f4261562ec940843b29ad23713b9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_119
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 720
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa4e7780c67753b46ba8aff84b49d1e9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_120
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 720
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80d3f65415532bc43a9f22cd10ce6701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_121
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 720
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54ee840d0d0d4654aaeb4a00a8a48d59
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_122
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 720
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59c24a35a5b4e204e8b094bb04e65159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_123
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 720
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5f409c3390330848b2e1fd41f5755c1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_124
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 720
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e83cf174f72b99e49875063aea858d12
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_125
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 720
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bec840b6cdfe8974b949e4b071b96bb1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_126
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 720
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1432b9f6974df04eb575fa329ad0cda
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_127
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 720
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a4950e803b364d43ab468c3f9d76ffd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_128
+      rect:
+        serializedVersion: 2
+        x: 1675
+        y: 720
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dc70180c7fe22a49a44614f1f44aec6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_129
+      rect:
+        serializedVersion: 2
+        x: 1825
+        y: 720
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3fd12295abf086498b21b66dcbed72a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_130
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 592
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fd3a298751b6d740a2fbb7801cba848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_131
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 592
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0916c076587a68c44802b176f79248b8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_132
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 592
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcb7d6bcb05a03b49ae7d541ebf56562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_133
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 592
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14dcbd7e3085178498ba2c8574d69dd4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_134
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 592
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c113feec0be4aa4284ffcd6d121d0a3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_135
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 592
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87eaa9fd872b82b41b0a72de4219734b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_136
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 592
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43a767f3c6127d54dabc079107ea998c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_137
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 592
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6808332a9c9c68d40bd2ff82a75577e0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_138
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 592
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3992e7da5a46844eb5719e76a544de5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_139
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 592
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ccc88f97d5b44543a5c5367b206aad0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_140
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 592
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dd02ff593bdf664ab7d5522dad5bf6b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_141
+      rect:
+        serializedVersion: 2
+        x: 1675
+        y: 592
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d102131a905b64a4285ed685d7736ea4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_142
+      rect:
+        serializedVersion: 2
+        x: 1825
+        y: 592
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 633aada7ef407214e877620b97c99a76
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_143
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 464
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ab1752db60ab5540877d9ea0459aeec
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_144
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 464
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 915ef5805c8622747aea4afcce0047da
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_145
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 464
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a029d72a4916e5d45a092fc8aa3b9fbd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_146
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 464
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f3b7e7d2fe754e4e826436828fdb42f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_147
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 464
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5aa3d5ce6451d6428a06192cfc68ea0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_148
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 464
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f16c541ef3d21dd4495aaac452182607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_149
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 464
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9cad77e29184ec43a1e5eb837375dc6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_150
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 464
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3051e1ba316c7345b3f323e3a3bb77a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_151
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 464
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf5d996031ec7c74cbb56c24ae467b8e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_152
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 464
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50a27c90d3cbf9742ad7da7fe3b1d784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_153
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 464
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 488e54e12a411d94bb09d2439974dbf8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_154
+      rect:
+        serializedVersion: 2
+        x: 1675
+        y: 464
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af6c87073773d2947aa6e539ddbcd53d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_155
+      rect:
+        serializedVersion: 2
+        x: 1825
+        y: 464
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2405ee1be1b0c3148a3c284e31a0f4e8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_156
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 336
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 272c556fbda94064b8029851087d4de4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_157
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 336
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 337771104ac3eef42a3e3996f9a04f87
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_158
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 336
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d71d5dbb3411e0e4aaf23bf363b3ab06
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_159
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 336
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b23bae1e1ae4e1d49b3950b9901648ff
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_160
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 336
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df8abd64f0dde1b49894194cc2df06d6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_161
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 336
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dc475d49dc31d645ad58709586204b1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_162
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 336
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05501fc3d2c1c9545b00253f7ba1e0eb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_163
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 336
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8be4c23ba5904c4184f4b4954c8bb88
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_164
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 336
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec795f4646b27dc4eae293bef06dfafd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_165
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 336
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 911094a92c035e846b8132cba7671252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_166
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 336
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f577ee33fc8e55a4ab2b3a141996d3b7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_167
+      rect:
+        serializedVersion: 2
+        x: 1675
+        y: 336
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2544288471ae07942b92908536c45f39
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_168
+      rect:
+        serializedVersion: 2
+        x: 1825
+        y: 336
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54e130fdb95cc9f4dbfe8272b94fe1f7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_169
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 208
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a81d95bb85b0de4399b628f9f1365ab
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_170
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 208
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53bcb240f7f388947b9c2217c43a3b9e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_171
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 208
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c78cd23809218f54dafc5cf07a912610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_172
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 208
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adfc96189cf48da4e951f791e9086f54
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_173
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 208
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21c64892b2f214f419b0264fc54c4a80
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_174
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 208
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffc117d1c57a0514bb7d9a8a2147bebb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_175
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 208
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5bc342ba5cab4a45ad499491e08b580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_176
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 208
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59080d61f8c3d7447a6594d0a4adec5e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_177
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 208
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6390c13df2994d42a75687183a3022d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_178
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 208
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61d830450fbe9c54089402c89cca1cd9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_179
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 208
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc9b9327b98e5cb41b3b040786cf7505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_180
+      rect:
+        serializedVersion: 2
+        x: 1675
+        y: 208
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b343bd02e06b76649bf2189211649a8b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_181
+      rect:
+        serializedVersion: 2
+        x: 1825
+        y: 208
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae9b9e28fa9fe7940b5cdcfcab897b3d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_182
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 80
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cdf1fb1d2a411a4782200888f7cf84a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_183
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 80
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17be777f872f63041bc6f937c91968f8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_184
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 80
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b80b609bcc136144a8e84122b01a3a6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_185
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 80
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10cfefe2c8eb5954ba5c1116e5651270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_186
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 80
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24ed41f7e2351124996f429b6fde030f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_187
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 80
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e06adab0eab67d46b5714bb07e7069f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_188
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 80
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25ff2c32d3b4d99418b7d289b6587106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_189
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 80
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24cda2657becf85449a5aef66d52bb9a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_190
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 80
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 607782445d06cd3418e2c28dd99652e3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_191
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 80
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 067fa95a6a9c32240a0d182a4fd176e0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_192
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 80
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77a5d8ca23755c9489f8769b625ede58
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_193
+      rect:
+        serializedVersion: 2
+        x: 1675
+        y: 80
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8621bafa8eb719e44ae5eb9e57d1ae23
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ring concept 3.7_194
+      rect:
+        serializedVersion: 2
+        x: 1825
+        y: 80
+        width: 150
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08febf7cba8bd3043883333d9b83a302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 1db9099f2af614144aea9f95b16df195
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
