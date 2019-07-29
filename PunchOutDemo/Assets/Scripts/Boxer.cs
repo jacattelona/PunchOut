@@ -79,34 +79,57 @@ public class Boxer : Agent
         }
     }
 
+    /// <summary>
+    /// Get the current dodge state of the boxer
+    /// </summary>
+    /// <returns>The dodge state</returns>
     public DodgeState GetDodgeState()
     {
         return dodgeState;
     }
 
+    /// <summary>
+    /// Get the current punch state of the boxer
+    /// </summary>
+    /// <returns>The punch state</returns>
     public PunchState GetPunchState()
     {
         return punchState;
     }
 
+    /// <summary>
+    /// Get the amount of damage given per punch
+    /// </summary>
+    /// <returns>The damage per punch</returns>
     public float GetPunchDamage()
     {
         return punchDamage;
     }
 
+    /// <summary>
+    /// Get the current health level of the boxer
+    /// </summary>
+    /// <returns>The health level</returns>
     public float GetHealth()
     {
         return health;
     }
 
+    /// <summary>
+    /// Get the maximum health level of the boxer
+    /// </summary>
+    /// <returns>The maximum health level</returns>
     public float GetMaxHealth()
     {
         return maxHealth;
     }
 
-    /**
-     * Called when punched by the opponent 
-     */
+    /// <summary>
+    /// Handles the damage taken from an opposing punch
+    /// </summary>
+    /// <param name="punchSide">The side the opponent punched with</param>
+    /// <param name="incomingDamage">The amount of damage the opponent deals per punch</param>
+    /// <returns>The outcome of the punch</returns>
     public PunchOutcome onPunched(PunchSide punchSide, float incomingDamage)
     {
 
@@ -144,11 +167,18 @@ public class Boxer : Agent
         }
     }
 
+    /// <summary>
+    /// Determines if the boxer is knocked out
+    /// </summary>
+    /// <returns>True if the boxer is KO, false otherwise</returns>
     public bool IsKO()
     {
         return health == 0;
     }
 
+    /// <summary>
+    /// Reset the dodge state of the boxer
+    /// </summary>
     void ResetDodgeState()
     {
         if (dodgeState == DodgeState.NONE)
@@ -159,6 +189,9 @@ public class Boxer : Agent
         dodge.Invoke();
     }
 
+    /// <summary>
+    /// Reset the punch state of the boxer
+    /// </summary>
     void ResetPunchState()
     {
         if (punchState == PunchState.NONE)
@@ -169,11 +202,19 @@ public class Boxer : Agent
         punch.Invoke();
     }
 
+    /// <summary>
+    /// Take damage from a punch (decreases health)
+    /// </summary>
+    /// <param name="damage">The amount of damage to take</param>
     private void TakeDamage(float damage)
     {
         health -= damage;
     }
 
+    /// <summary>
+    /// Punch with the given hand
+    /// </summary>
+    /// <param name="punchSide">The side to punch with</param>
     private void Punch(PunchSide punchSide) // TODO: Set timer
     {
         if (punchState != PunchState.NONE || dodgeState != DodgeState.NONE)
@@ -193,6 +234,10 @@ public class Boxer : Agent
         punch.Invoke();
     }
 
+    /// <summary>
+    /// Dodge in the given direction
+    /// </summary>
+    /// <param name="dodgeDirection">The direction to dodge</param>
     private void Dodge(DodgeDirection dodgeDirection)
     {
         if (dodgeState != DodgeState.NONE || punchState != PunchState.NONE)

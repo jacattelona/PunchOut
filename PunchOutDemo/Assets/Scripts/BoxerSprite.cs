@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoxerSprite : MonoBehaviour
+/// <summary>
+/// A representation of the boxer sprite
+/// </summary>
+public class BoxerSprite : MonoBehaviour // TODO: Break this apart
 {
 
     public Boxer boxer;

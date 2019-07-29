@@ -1,4 +1,7 @@
-﻿public enum DodgeDirection
+﻿/// <summary>
+/// The direction of the dodge
+/// </summary>
+public enum DodgeDirection
 {
     LEFT,
     RIGHT,
