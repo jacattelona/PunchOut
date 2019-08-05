@@ -21,7 +21,7 @@ public class BoxerSprite : MonoBehaviour // TODO: Break this apart
     Vector3 BLOCKANGLE = new Vector3(0, 0, 45);                     //Angle to move arms inward when blocking
 
     protected int punchTime = 0;                                    //number of frames left in punch animation
-    private PunchState lastPunchState;
+    private Punch lastPunchState;
     private DodgeState lastDodgeState;
 
     public Vector3 DEFAULT = new Vector3(0, 0, 0);                  //Default position of the boxer
@@ -39,12 +39,14 @@ public class BoxerSprite : MonoBehaviour // TODO: Break this apart
     {
         if (boxer.GetPunchState() != lastPunchState) // TODO: Use the unity events
         {
-            if (boxer.GetPunchState() == PunchState.LEFT)
+
+            // TODO: Draw different punches here
+            if (boxer.GetPunchState().GetHand() == Hand.LEFT)
             {
                 Transform t = this.transform.GetChild(0);
                 t.localPosition = t.localPosition + PUNCH;
             }
-            else if (boxer.GetPunchState() == PunchState.RIGHT)
+            else if (boxer.GetPunchState().GetHand() == Hand.RIGHT)
             {
                 Transform t = this.transform.GetChild(1);
                 t.localPosition = t.localPosition + PUNCH;

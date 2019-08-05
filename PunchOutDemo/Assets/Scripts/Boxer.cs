@@ -24,7 +24,7 @@ public class Boxer : Agent
     public float blockMultiplier = 0.1f;
 
     private DodgeState dodgeState = DodgeState.NONE;
-    private PunchState punchState = PunchState.NONE;
+    private Punch punchState = Punch.NULL_PUNCH;
 
 
     // Start is called before the first frame update
@@ -36,8 +36,8 @@ public class Boxer : Agent
     public override void CollectObservations()
     {
         // Internal senses
-        AddVectorObs(punchState == PunchState.RIGHT ? 1.0f : 0.0f);
-        AddVectorObs(punchState == PunchState.LEFT ? 1.0f : 0.0f);
+        AddVectorObs(punchState.GetHand() == Hand.RIGHT ? 1.0f : 0.0f);
+        AddVectorObs(punchState.GetHand() == Hand.LEFT ? 1.0f : 0.0f);
         AddVectorObs(dodgeState == DodgeState.LEFT ? 1.0f : 0.0f);
         AddVectorObs(dodgeState == DodgeState.RIGHT ? 1.0f : 0.0f);
         AddVectorObs(dodgeState == DodgeState.FRONT ? 1.0f : 0.0f);
@@ -68,11 +68,11 @@ public class Boxer : Agent
         }
 
         if (vectorAction[1] == 1)
-        {
-            Punch(PunchSide.LEFT);
+        { // TODO: Throw different punches here - make each have different damages
+            ThrowPunch(new Punch(PunchType.STRAIGHT, Hand.LEFT, punchDamage));
         } else if (vectorAction[1] == 2)
         {
-            Punch(PunchSide.RIGHT);
+            ThrowPunch(new Punch(PunchType.STRAIGHT, Hand.RIGHT, punchDamage));
         } else
         {
             ResetPunchState();
@@ -92,7 +92,7 @@ public class Boxer : Agent
     /// Get the current punch state of the boxer
     /// </summary>
     /// <returns>The punch state</returns>
-    public PunchState GetPunchState()
+    public Punch GetPunchState()
     {
         return punchState;
     }
@@ -127,17 +127,16 @@ public class Boxer : Agent
     /// <summary>
     /// Handles the damage taken from an opposing punch
     /// </summary>
-    /// <param name="punchSide">The side the opponent punched with</param>
-    /// <param name="incomingDamage">The amount of damage the opponent deals per punch</param>
+    /// <param name="punch">The punch</param>
     /// <returns>The outcome of the punch</returns>
-    public PunchOutcome onPunched(PunchSide punchSide, float incomingDamage)
+    public PunchOutcome onPunched(Punch punch)
     {
 
         // Dodged
-        if (dodgeState == DodgeState.LEFT && punchSide == PunchSide.RIGHT)
+        if (dodgeState == DodgeState.LEFT && punch.GetHand() == Hand.RIGHT)
         {
             return PunchOutcome.DODGED;
-        } else if (dodgeState == DodgeState.RIGHT && punchSide == PunchSide.LEFT)
+        } else if (dodgeState == DodgeState.RIGHT && punch.GetHand() == Hand.LEFT)
         {
             return PunchOutcome.DODGED;
         }
@@ -145,7 +144,7 @@ public class Boxer : Agent
         // Blocked
         if (dodgeState != DodgeState.NONE)
         {
-            TakeDamage(incomingDamage * blockMultiplier);
+            TakeDamage(punch.GetDamage() * blockMultiplier);
             if (IsKO())
             {
                 return PunchOutcome.KO;
@@ -156,7 +155,7 @@ public class Boxer : Agent
         }
 
         // Hit
-        TakeDamage(incomingDamage);
+        TakeDamage(punch.GetDamage());
         if (IsKO())
         {
             return PunchOutcome.KO;
@@ -194,12 +193,12 @@ public class Boxer : Agent
     /// </summary>
     void ResetPunchState()
     {
-        if (punchState == PunchState.NONE)
+        if (punchState == Punch.NULL_PUNCH)
         {
             return;
         }
-        punchState = PunchState.NONE;
-        punch.Invoke();
+        punchState = Punch.NULL_PUNCH;
+        punch.Invoke(); // Is this correct?
     }
 
     /// <summary>
@@ -212,26 +211,17 @@ public class Boxer : Agent
     }
 
     /// <summary>
-    /// Punch with the given hand
+    /// Throw a punch
     /// </summary>
-    /// <param name="punchSide">The side to punch with</param>
-    private void Punch(PunchSide punchSide) // TODO: Set timer
+    /// <param name="punch">The punch</param>
+    private void ThrowPunch(Punch punch) // TODO: Set timer
     {
-        if (punchState != PunchState.NONE || dodgeState != DodgeState.NONE)
+        if (punchState != Punch.NULL_PUNCH || dodgeState != DodgeState.NONE)
         {
             return;
         }
-        switch (punchSide)
-        {
-            case PunchSide.LEFT:
-                punchState = PunchState.LEFT;
-                break;
-            case PunchSide.RIGHT:
-                punchState = PunchState.RIGHT;
-                break;
-        }
-
-        punch.Invoke();
+        punchState = punch;
+        this.punch.Invoke();
     }
 
     /// <summary>
@@ -240,7 +230,7 @@ public class Boxer : Agent
     /// <param name="dodgeDirection">The direction to dodge</param>
     private void Dodge(DodgeDirection dodgeDirection)
     {
-        if (dodgeState != DodgeState.NONE || punchState != PunchState.NONE)
+        if (dodgeState != DodgeState.NONE || punchState != Punch.NULL_PUNCH)
         {
             return;
         }
