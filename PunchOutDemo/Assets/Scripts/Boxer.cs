@@ -144,7 +144,7 @@ public class Boxer : Agent
         // Blocked
         if (dodgeState != DodgeState.NONE)
         {
-            TakeDamage(punch.GetDamage() * blockMultiplier);
+            TakeDamage(punch.GetStrength() * blockMultiplier);
             if (IsKO())
             {
                 return PunchOutcome.KO;
@@ -155,7 +155,7 @@ public class Boxer : Agent
         }
 
         // Hit
-        TakeDamage(punch.GetDamage());
+        TakeDamage(punch.GetStrength());
         if (IsKO())
         {
             return PunchOutcome.KO;

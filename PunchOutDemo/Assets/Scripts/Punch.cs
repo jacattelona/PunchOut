@@ -8,19 +8,19 @@ public class Punch
 
     private PunchType type;
     private Hand side;
-    private float damage;
+    private float strength;
 
     /// <summary>
     /// Default constructor
     /// </summary>
     /// <param name="type">The type of the punch</param>
     /// <param name="side">The side of the punch</param>
-    /// <param name="damage">The damage of the punch</param>
-    public Punch(PunchType type, Hand side, float damage)
+    /// <param name="strength">The strength of the punch</param>
+    public Punch(PunchType type, Hand side, float strength)
     {
         this.type = type;
         this.side = side;
-        this.damage = damage;
+        this.strength = strength;
     }
 
     /// <summary>
@@ -42,12 +42,12 @@ public class Punch
     }
 
     /// <summary>
-    /// The damage of the punch
+    /// The strength of the punch
     /// </summary>
-    /// <returns>The amount of damage caused by the punch</returns>
-    public float GetDamage()
+    /// <returns>The strength of the punch</returns>
+    public float GetStrength()
     {
-        return this.damage;
+        return this.strength;
     }
 
 }
