@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: BoxerBrain_Player
   m_EditorClassIdentifier: 
   brainParameters:
-    vectorObservationSize: 5
+    vectorObservationSize: 7
     numStackedVectorObservations: 20
-    vectorActionSize: 0500000003000000
+    vectorActionSize: 0500000005000000
     cameraResolutions: []
     vectorActionDescriptions:
     - Dodge
@@ -42,3 +42,9 @@ MonoBehaviour:
   - key: 324
     branchIndex: 1
     value: 2
+  - key: 113
+    branchIndex: 1
+    value: 3
+  - key: 122
+    branchIndex: 1
+    value: 4
