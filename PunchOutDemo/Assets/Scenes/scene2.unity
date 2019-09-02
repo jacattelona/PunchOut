@@ -216,8 +216,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 5386e1be819b5324c8358238fd75c0e1, type: 2}
     - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
     - {fileID: 11400000, guid: c0d7a72fc72b3ad4d8471cceafaec095, type: 2}
-    _brainsToControl:
-    - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
+    _brainsToControl: []
   maxSteps: 0
   trainingConfiguration:
     width: 80
@@ -406,7 +405,7 @@ PrefabInstance:
         type: 3}
       propertyPath: brain
       value: 
-      objectReference: {fileID: 11400000, guid: 5386e1be819b5324c8358238fd75c0e1,
+      objectReference: {fileID: 11400000, guid: c0d7a72fc72b3ad4d8471cceafaec095,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5a892c658e726446a45e2b1e66f3e43, type: 3}

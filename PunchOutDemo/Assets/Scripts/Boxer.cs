@@ -95,8 +95,8 @@ public class Boxer : Agent
         AddVectorObs(dodgeState == DodgeState.RIGHT);
         //AddVectorObs(dodgeState == DodgeState.FRONT);
 
-        //AddVectorObs(punchState.GetPunchType() == PunchType.NONE && dodgeState == DodgeState.NONE); // Can punch
-        //AddVectorObs(punchState.GetPunchType() == PunchType.NONE && dodgeState == DodgeState.NONE); // Can block 
+        //AddVectorObs(Time.fixedTime - lastPunchTime >= punchDuration + punchCooldown); // Can punch
+        //AddVectorObs(Time.fixedTime - lastDodgeTime >= dodgeDuration + dodgeCooldown); // Can block 
 
         //AddVectorObs(true); // Play defensively
 
@@ -401,6 +401,25 @@ public class Boxer : Agent
                 ThrowPunch(new Punch(strongPunch, Hand.RIGHT, strongPunchStrength));
             }
             lastPunchTime = Time.fixedTime;
+        }
+    }
+
+    public void RewardOutcome(PunchOutcome outcome)
+    {
+        switch (outcome)
+        {
+            case PunchOutcome.BLOCKED:
+                AddReward(0.01f);
+                break;
+            case PunchOutcome.DODGED:
+                AddReward(-0.01f);
+                break;
+            case PunchOutcome.HIT:
+                AddReward(0.1f);
+                break;
+            case PunchOutcome.KO:
+                AddReward(1f);
+                break;
         }
     }
 }

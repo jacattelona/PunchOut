@@ -21,5 +21,5 @@ MonoBehaviour:
     - Dodge
     - Punch
     vectorActionSpaceType: 0
-  model: {fileID: 0}
+  model: {fileID: 11400000, guid: 5c7438a3aa8769d4aa7a54b7a2f86b98, type: 3}
   inferenceDevice: 0

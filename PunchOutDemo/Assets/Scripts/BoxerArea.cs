@@ -22,6 +22,7 @@ public class BoxerArea : Area
     private void PlayerPunched()
     {
         PunchOutcome outcome = playerBoxer.onPunched(opponentBoxer.GetPunchState());
+        playerBoxer.RewardOutcome(outcome);
         if (outcome == PunchOutcome.KO)
         {
             ResetArea();
@@ -31,6 +32,7 @@ public class BoxerArea : Area
     private void OpponentPunched()
     {
         PunchOutcome outcome = opponentBoxer.onPunched(playerBoxer.GetPunchState());
+        opponentBoxer.RewardOutcome(outcome);
         if (outcome == PunchOutcome.KO)
         {
             ResetArea();
