@@ -21,12 +21,27 @@ public class BoxerArea : Area
 
     private void PlayerPunched()
     {
-        playerBoxer.onPunched(opponentBoxer.GetPunchState());
+        PunchOutcome outcome = playerBoxer.onPunched(opponentBoxer.GetPunchState());
+        if (outcome == PunchOutcome.KO)
+        {
+            ResetArea();
+        }
     }
 
     private void OpponentPunched()
     {
-        opponentBoxer.onPunched(playerBoxer.GetPunchState());
+        PunchOutcome outcome = opponentBoxer.onPunched(playerBoxer.GetPunchState());
+        if (outcome == PunchOutcome.KO)
+        {
+            ResetArea();
+        }
+    }
+
+    public override void ResetArea()
+    {
+        base.ResetArea();
+        playerBoxer.AgentReset();
+        opponentBoxer.AgentReset();
     }
 
 }

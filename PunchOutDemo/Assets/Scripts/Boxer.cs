@@ -10,6 +10,14 @@ public class Boxer : Agent
     public GameObject area;
     private BoxerArea myArea;
 
+    public float punchCooldown = 0.1f;
+    public float dodgeCooldown = 0.1f;
+    public float punchDuration = 0.1f;
+    public float dodgeDuration = 0.1f;
+
+    private float lastPunchTime = -1f;
+    private float lastDodgeTime = -1f;
+
     /// <summary>
     /// The name of the boxer
     /// </summary>
@@ -124,7 +132,6 @@ public class Boxer : Agent
         base.AgentAction(vectorAction, textAction);
         if (IsKO())
         {
-            Done();
             return;
         }
         HandleDodgeInput(vectorAction[0]);
@@ -137,11 +144,10 @@ public class Boxer : Agent
     /// </summary>
     public override void AgentReset()
     {
+        Done();
         health = maxHealth;
         ResetDodgeState();
         ResetPunchState();
-        // Reset area?
-        myArea.ResetArea();
     }
 
     /// <summary>
@@ -189,11 +195,11 @@ public class Boxer : Agent
     {
 
         // Dodged
-        if (dodgeState == DodgeState.LEFT && punch.GetHand() == Hand.RIGHT)
+        if (dodgeState == DodgeState.LEFT && punch.GetHand() == Hand.LEFT)
         {
             AddReward(0.1f);
             return PunchOutcome.DODGED;
-        } else if (dodgeState == DodgeState.RIGHT && punch.GetHand() == Hand.LEFT)
+        } else if (dodgeState == DodgeState.RIGHT && punch.GetHand() == Hand.RIGHT)
         {
             AddReward(0.1f);
             return PunchOutcome.DODGED;
@@ -234,7 +240,7 @@ public class Boxer : Agent
     /// <returns>True if the boxer is KO, false otherwise</returns>
     public bool IsKO()
     {
-        return health == 0;
+        return health <= 0;
     }
 
     /// <summary>
@@ -319,25 +325,39 @@ public class Boxer : Agent
     /// <param name="dodgeInput">The dodge input value</param>
     private void HandleDodgeInput(float dodgeInput)
     {
-        if (dodgeInput == 1)
+        if (Time.fixedTime - lastDodgeTime < dodgeDuration) // Can't do anything while still dodging
         {
-            Dodge(DodgeDirection.LEFT);
-        }
-        else if (dodgeInput == 2)
-        {
-            Dodge(DodgeDirection.RIGHT);
-        }
-        else if (dodgeInput == 3)
-        {
-            Dodge(DodgeDirection.FRONT);
-        }
-        else if (dodgeInput == 4)
-        {
-            Dodge(DodgeDirection.FRONT);
+            return;
         }
         else
         {
             ResetDodgeState();
+        }
+
+        if (dodgeInput == 0)
+        {
+            return;
+        }
+
+        if (Time.fixedTime - lastDodgeTime > dodgeCooldown + dodgeDuration) // Can only dodge when past cooldown
+        {
+            if (dodgeInput == 1)
+            {
+                Dodge(DodgeDirection.LEFT);
+            }
+            else if (dodgeInput == 2)
+            {
+                Dodge(DodgeDirection.RIGHT);
+            }
+            else if (dodgeInput == 3)
+            {
+                Dodge(DodgeDirection.FRONT);
+            }
+            else if (dodgeInput == 4)
+            {
+                Dodge(DodgeDirection.FRONT);
+            }
+            lastDodgeTime = Time.fixedTime;
         }
     }
 
@@ -347,25 +367,40 @@ public class Boxer : Agent
     /// <param name="punchInput">The punch input value</param>
     private void HandlePunchInput(float punchInput)
     {
-        if (punchInput == 1)
+
+        if (Time.fixedTime - lastPunchTime < punchDuration) // Can't do anything while still punching
         {
-            ThrowPunch(new Punch(weakPunch, Hand.LEFT, weakPunchStrength));
-        }
-        else if (punchInput == 2)
-        {
-            ThrowPunch(new Punch(weakPunch, Hand.RIGHT, weakPunchStrength));
-        }
-        else if (punchInput == 3)
-        {
-            ThrowPunch(new Punch(strongPunch, Hand.LEFT, strongPunchStrength));
-        }
-        else if (punchInput == 4)
-        {
-            ThrowPunch(new Punch(strongPunch, Hand.RIGHT, strongPunchStrength));
+            return;
         }
         else
         {
             ResetPunchState();
+        }
+
+        if (punchInput == 0)
+        {
+            return;
+        }
+
+        if (Time.fixedTime - lastPunchTime > punchCooldown + punchDuration)
+        {
+            if (punchInput == 1)
+            {
+                ThrowPunch(new Punch(weakPunch, Hand.LEFT, weakPunchStrength));
+            }
+            else if (punchInput == 2)
+            {
+                ThrowPunch(new Punch(weakPunch, Hand.RIGHT, weakPunchStrength));
+            }
+            else if (punchInput == 3)
+            {
+                ThrowPunch(new Punch(strongPunch, Hand.LEFT, strongPunchStrength));
+            }
+            else if (punchInput == 4)
+            {
+                ThrowPunch(new Punch(strongPunch, Hand.RIGHT, strongPunchStrength));
+            }
+            lastPunchTime = Time.fixedTime;
         }
     }
 }
