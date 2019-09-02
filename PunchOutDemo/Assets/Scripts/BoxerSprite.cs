@@ -45,13 +45,11 @@ public class BoxerSprite : MonoBehaviour // TODO: Break this apart
             {
                 Transform t = this.transform.GetChild(0);
                 t.localPosition = t.localPosition + PUNCH;
-                Debug.Log("Left punch: " + boxer.GetPunchState().GetStrength());
             }
             else if (boxer.GetPunchState().GetHand() == Hand.RIGHT)
             {
                 Transform t = this.transform.GetChild(1);
                 t.localPosition = t.localPosition + PUNCH;
-                Debug.Log("Right punch: " + boxer.GetPunchState().GetStrength());
             }
             else
             {

@@ -1,8 +1,19 @@
 ﻿using MLAgents;
+using UnityEngine;
 using UnityEngine.Events;
 
 public class Boxer : Agent
 {
+    /// <summary>
+    /// The boxing area
+    /// </summary>
+    public GameObject area;
+    private BoxerArea myArea;
+
+    /// <summary>
+    /// The name of the boxer
+    /// </summary>
+    public string name;
 
     /// <summary>
     /// The punch event
@@ -50,10 +61,12 @@ public class Boxer : Agent
 
 
     /// <summary>
-    /// Start is called before the first frame update
+    /// Initialize the agent
     /// </summary>
-    void Awake()
+    public override void InitializeAgent()
     {
+        base.InitializeAgent();
+        myArea = area.GetComponent<BoxerArea>();
         health = maxHealth;
     }
 
@@ -63,15 +76,39 @@ public class Boxer : Agent
     public override void CollectObservations()
     {
         // Current punch state
-        AddVectorObs(punchState.GetHand() == Hand.RIGHT ? 1.0f : 0.0f);
-        AddVectorObs(punchState.GetHand() == Hand.LEFT ? 1.0f : 0.0f);
-        AddVectorObs(punchState.GetPunchType() == weakPunch ? 1.0f : 0.0f);
-        AddVectorObs(punchState.GetPunchType() == strongPunch ? 1.0f : 0.0f);
+        AddVectorObs(health / maxHealth);
+        AddVectorObs(punchState.GetHand() == Hand.RIGHT);
+        AddVectorObs(punchState.GetHand() == Hand.LEFT);
+        //AddVectorObs(punchState.GetPunchType() == weakPunch ? 1.0f : 0.0f);
+        //AddVectorObs(punchState.GetPunchType() == strongPunch ? 1.0f : 0.0f);
 
         // Current dodge state
-        AddVectorObs(dodgeState == DodgeState.LEFT ? 1.0f : 0.0f);
-        AddVectorObs(dodgeState == DodgeState.RIGHT ? 1.0f : 0.0f);
-        AddVectorObs(dodgeState == DodgeState.FRONT ? 1.0f : 0.0f);
+        AddVectorObs(dodgeState == DodgeState.LEFT);
+        AddVectorObs(dodgeState == DodgeState.RIGHT);
+        //AddVectorObs(dodgeState == DodgeState.FRONT);
+
+        //AddVectorObs(punchState.GetPunchType() == PunchType.NONE && dodgeState == DodgeState.NONE); // Can punch
+        //AddVectorObs(punchState.GetPunchType() == PunchType.NONE && dodgeState == DodgeState.NONE); // Can block 
+
+        //AddVectorObs(true); // Play defensively
+
+        if (this == myArea.player)
+        {
+            AddVectorObs(myArea.opponentBoxer.GetHealth() / myArea.opponentBoxer.GetMaxHealth());
+            AddVectorObs(myArea.opponentBoxer.GetPunchState().GetHand() == Hand.RIGHT);
+            AddVectorObs(myArea.opponentBoxer.GetPunchState().GetHand() == Hand.LEFT);
+            AddVectorObs(myArea.opponentBoxer.GetDodgeState() == DodgeState.LEFT);
+            AddVectorObs(myArea.opponentBoxer.GetDodgeState() == DodgeState.RIGHT);
+        } else
+        {
+            AddVectorObs(myArea.playerBoxer.GetHealth() / myArea.opponentBoxer.GetMaxHealth());
+            AddVectorObs(myArea.playerBoxer.GetPunchState().GetHand() == Hand.RIGHT);
+            AddVectorObs(myArea.playerBoxer.GetPunchState().GetHand() == Hand.LEFT);
+            AddVectorObs(myArea.playerBoxer.GetDodgeState() == DodgeState.LEFT);
+            AddVectorObs(myArea.playerBoxer.GetDodgeState() == DodgeState.RIGHT);
+        }
+        
+
 
         // Camera view of enemy?
         // Or maybe there is a reference to the opponent object in here
@@ -85,8 +122,26 @@ public class Boxer : Agent
     public override void AgentAction(float[] vectorAction, string textAction)
     {
         base.AgentAction(vectorAction, textAction);
+        if (IsKO())
+        {
+            Done();
+            return;
+        }
         HandleDodgeInput(vectorAction[0]);
         HandlePunchInput(vectorAction[1]);
+        Debug.Log(name + ": " + health);
+    }
+
+    /// <summary>
+    /// Reset the agent
+    /// </summary>
+    public override void AgentReset()
+    {
+        health = maxHealth;
+        ResetDodgeState();
+        ResetPunchState();
+        // Reset area?
+        myArea.ResetArea();
     }
 
     /// <summary>
@@ -136,9 +191,11 @@ public class Boxer : Agent
         // Dodged
         if (dodgeState == DodgeState.LEFT && punch.GetHand() == Hand.RIGHT)
         {
+            AddReward(0.1f);
             return PunchOutcome.DODGED;
         } else if (dodgeState == DodgeState.RIGHT && punch.GetHand() == Hand.LEFT)
         {
+            AddReward(0.1f);
             return PunchOutcome.DODGED;
         }
 
@@ -148,9 +205,11 @@ public class Boxer : Agent
             TakeDamage(punch.GetStrength() * blockMultiplier);
             if (IsKO())
             {
+                AddReward(-1.0f);
                 return PunchOutcome.KO;
             } else
             {
+                AddReward(0.1f);
                 return PunchOutcome.BLOCKED;
             }
         }
@@ -159,10 +218,12 @@ public class Boxer : Agent
         TakeDamage(punch.GetStrength());
         if (IsKO())
         {
+            AddReward(-1.0f);
             return PunchOutcome.KO;
         }
         else
         {
+            AddReward(-0.1f);
             return PunchOutcome.HIT;
         }
     }

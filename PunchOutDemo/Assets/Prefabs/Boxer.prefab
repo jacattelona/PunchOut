@@ -41,7 +41,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5383064348265261817}
-  - component: {fileID: 2141641038728987984}
+  - component: {fileID: 6146787714936220806}
+  - component: {fileID: 8167058400864053788}
   m_Layer: 0
   m_Name: Boxer
   m_TagString: Untagged
@@ -65,7 +66,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2141641038728987984
+--- !u!114 &6146787714936220806
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,10 +75,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5383064348265261798}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e2e0ae3ad926d44bb863ea19ec35be9, type: 3}
+  m_Script: {fileID: 11500000, guid: 737dac66e5c910c41b6abea29306a37f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brain: {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
+  brain: {fileID: 0}
   agentParameters:
     agentCameras: []
     agentRenderTextures: []
@@ -85,9 +86,35 @@ MonoBehaviour:
     resetOnDone: 1
     onDemandDecision: 0
     numberOfActionsBetweenDecisions: 1
-  keepingScore: 0
-  score: {fileID: 0}
-  reverse: 0
+  punch:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  dodge:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  maxHealth: 100
+  blockMultiplier: 0.1
+  weakPunch: 0
+  weakPunchStrength: 10
+  strongPunch: 1
+  strongPunchStrength: 20
+--- !u!114 &8167058400864053788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5383064348265261798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f0a3ac60bafa1499cfeb3def454c9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxer: {fileID: 6146787714936220806}
   DEFAULT: {x: 0, y: 0, z: 0}
 --- !u!1 &5383064348276748157
 GameObject:

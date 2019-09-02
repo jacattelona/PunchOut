@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: EnemyBrain_Player
   m_EditorClassIdentifier: 
   brainParameters:
-    vectorObservationSize: 1
-    numStackedVectorObservations: 20
-    vectorActionSize: 0500000003000000
+    vectorObservationSize: 10
+    numStackedVectorObservations: 32
+    vectorActionSize: 0300000003000000
     cameraResolutions: []
     vectorActionDescriptions:
     - Dodge

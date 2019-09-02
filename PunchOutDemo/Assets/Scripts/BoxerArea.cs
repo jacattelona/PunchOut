@@ -1,27 +1,32 @@
 ﻿using MLAgents;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BoxerArea : Area
 {
-    public GameObject boxer;
-    public GameObject enemy;
 
-    public TextMeshPro scoreText;
+    public GameObject player;
+    public GameObject opponent;
 
-    private Vector3 targetStartingPos;
+    public Boxer playerBoxer;
+    public Boxer opponentBoxer;
 
-    public override void ResetArea()
+    void Start()
     {
-        BoxerAgent boxerScript = boxer.GetComponent<BoxerAgent>();
-        boxerScript.ResetDodges();
+        playerBoxer = player.GetComponent<Boxer>();
+        opponentBoxer = opponent.GetComponent<Boxer>();
 
-        BoxerAgent enemyScript = enemy.GetComponent<BoxerAgent>();
-        enemyScript.ResetDodges();
+        playerBoxer.punch.AddListener(OpponentPunched);
+        opponentBoxer.punch.AddListener(PlayerPunched);
     }
 
-   
+    private void PlayerPunched()
+    {
+        playerBoxer.onPunched(opponentBoxer.GetPunchState());
+    }
+
+    private void OpponentPunched()
+    {
+        opponentBoxer.onPunched(playerBoxer.GetPunchState());
+    }
+
 }
