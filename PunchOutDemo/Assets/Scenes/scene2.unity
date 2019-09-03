@@ -216,7 +216,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 5386e1be819b5324c8358238fd75c0e1, type: 2}
     - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
     - {fileID: 11400000, guid: c0d7a72fc72b3ad4d8471cceafaec095, type: 2}
-    _brainsToControl: []
+    _brainsToControl:
+    - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
   maxSteps: 0
   trainingConfiguration:
     width: 80
@@ -401,11 +402,31 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1,
         type: 2}
+    - target: {fileID: 6990459775872305363, guid: e5a892c658e726446a45e2b1e66f3e43,
+        type: 3}
+      propertyPath: dodgeDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6990459776194564015, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
       propertyPath: brain
       value: 
-      objectReference: {fileID: 11400000, guid: c0d7a72fc72b3ad4d8471cceafaec095,
+      objectReference: {fileID: 11400000, guid: 5386e1be819b5324c8358238fd75c0e1,
         type: 2}
+    - target: {fileID: 6990459776194564015, guid: e5a892c658e726446a45e2b1e66f3e43,
+        type: 3}
+      propertyPath: dodgeDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4968468534350999503, guid: e5a892c658e726446a45e2b1e66f3e43,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4724728229003145789, guid: e5a892c658e726446a45e2b1e66f3e43,
+        type: 3}
+      propertyPath: record
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5a892c658e726446a45e2b1e66f3e43, type: 3}

@@ -13,7 +13,7 @@ public class Boxer : Agent
     public float punchCooldown = 0.1f;
     public float dodgeCooldown = 0.1f;
     public float punchDuration = 0.1f;
-    public float dodgeDuration = 0.1f;
+    public float dodgeDuration = 0.5f;
 
     private float lastPunchTime = -1f;
     private float lastDodgeTime = -1f;

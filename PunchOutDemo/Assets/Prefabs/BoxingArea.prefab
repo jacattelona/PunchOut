@@ -70,6 +70,20 @@ MonoBehaviour:
   positiveMessage: Good job, keep it up!
   negativeMessage: Don't do that again!
   display: {fileID: 9102917524061545900}
+--- !u!114 &4724728229003145789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9149802047769349811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50f710d360a49461cad67ff5e6bcefe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  record: 0
+  demonstrationName: boxer
 --- !u!1001 &2960540030529840275
 PrefabInstance:
   m_ObjectHideFlags: 0

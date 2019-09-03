@@ -105,18 +105,19 @@ HallwayLearning:
             encoding_size: 128
             demo_path: demos/ExpertHallway.demo
 
-ArcherLearning:
+BoxerLearning:
     summary_freq: 1000
     time_horizon: 128
     batch_size: 128
     buffer_size: 2048
-    hidden_units: 512
-    num_layers: 2
+    hidden_units: 128
+    num_layers: 3
     beta: 1.0e-2
     max_steps: 5.0e5
     num_epoch: 10
+    use_recurrent: true
     pretraining:
-        demo_path: ./Assets/Demonstrations/archer2.demo
+        demo_path: ./Assets/Demonstrations/boxer.demo
         strength: 0.6
         steps: 10000
     reward_signals:
@@ -127,4 +128,4 @@ ArcherLearning:
             strength: 0.1
             gamma: 0.99
             encoding_size: 128
-            demo_path: ./Assets/Demonstrations/archer2.demo
+            demo_path: ./Assets/Demonstrations/boxer.demo
