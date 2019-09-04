@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b23992c8eb17439887f5e944bf04a40, type: 3}
-  m_Name: BoxerLearning
+  m_Script: {fileID: 11500000, guid: 943466ab374444748a364f9d6c3e2fe2, type: 3}
+  m_Name: ExpertHeuristic
   m_EditorClassIdentifier: 
   brainParameters:
     vectorObservationSize: 10
@@ -21,5 +21,6 @@ MonoBehaviour:
     - Dodge
     - Punch
     vectorActionSpaceType: 0
-  model: {fileID: 11400000, guid: 30d5f66e1d09e604395ea53e040b3e66, type: 3}
-  inferenceDevice: 0
+  decision: {fileID: 0}
+  decisionScript: {fileID: 0}
+  c_decision: 

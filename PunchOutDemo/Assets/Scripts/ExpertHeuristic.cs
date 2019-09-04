@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleEnemyHeuristic : Decision
+public class ExpertHeuristic : Decision
 {
     private int state = 0;
     private float lastTime = -1;
-    private float maxTime = 0.6f;
+    private float maxTime = 0.59f;
 
     public override float[] Decide(List<float> vectorObs, List<Texture2D> visualObs, float reward, bool done, List<float> memory)
     {
@@ -21,37 +21,37 @@ public class SimpleEnemyHeuristic : Decision
             case 0:
                 if (changeState(1))
                 {
-                    return new float[] { 0f, 0f };
+                    return new float[] { 0f, 1f };
                 }
                 break;
             case 1:
                 if (changeState(2))
                 {
-                    return new float[] { 0f, 1f };
+                    return new float[] { 1f, 0f };
                 }
                 break;
             case 2:
                 if (changeState(3))
                 {
-                    return new float[] { 0f, 0f };
+                    return new float[] { 0f, 2f };
                 }
                 break;
             case 3:
                 if (changeState(4))
                 {
-                    return new float[] { 0f, 2f };
+                    return new float[] { 2f, 0f };
                 }
                 break;
             case 4:
                 if (changeState(5))
                 {
-                    return new float[] { 0f, 0f };
+                    return new float[] { 0f, 1f };
                 }
                 break;
             case 5:
                 if (changeState(0))
                 {
-                    return new float[] { 1f, 0f };
+                    return new float[] { 0f, 1f };
                 }
                 break;
         }
