@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// A representation of the boxer sprite
@@ -9,6 +10,7 @@ public class BoxerSprite : MonoBehaviour // TODO: Break this apart
 {
 
     public Boxer boxer;
+    public Text healthDisplay;
 
     //Const Values (you can't declare Vector3s const, so just pretend)
     protected Vector3 LDEFAULT = new Vector3(-1, 0, 0);             //Default position of the left glove
@@ -37,6 +39,7 @@ public class BoxerSprite : MonoBehaviour // TODO: Break this apart
     // Update is called once per frame
     void Update()
     {
+        healthDisplay.text = string.Format("Health: {0}", Mathf.RoundToInt(boxer.GetHealth() / boxer.GetMaxHealth() * 100));
         if (boxer.GetPunchState() != lastPunchState) // TODO: Use the unity events
         {
 

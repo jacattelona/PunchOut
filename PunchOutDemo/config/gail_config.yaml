@@ -117,7 +117,7 @@ BoxerLearning:
     num_epoch: 10
     use_recurrent: true
     pretraining:
-        demo_path: ./Assets/Demonstrations/boxer.demo
+        demo_path: ./Assets/Demonstrations/boxerexpert.demo
         strength: 0.6
         steps: 10000
     reward_signals:
@@ -128,4 +128,4 @@ BoxerLearning:
             strength: 0.1
             gamma: 0.99
             encoding_size: 128
-            demo_path: ./Assets/Demonstrations/boxer.demo
+            demo_path: ./Assets/Demonstrations/boxerexpert.demo

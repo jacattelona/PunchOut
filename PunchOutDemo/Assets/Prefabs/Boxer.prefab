@@ -86,6 +86,12 @@ MonoBehaviour:
     resetOnDone: 1
     onDemandDecision: 0
     numberOfActionsBetweenDecisions: 1
+  area: {fileID: 0}
+  punchCooldown: 0.1
+  dodgeCooldown: 0.1
+  punchDuration: 0.1
+  dodgeDuration: 0.5
+  name: 
   punch:
     m_PersistentCalls:
       m_Calls: []
@@ -115,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxer: {fileID: 6146787714936220806}
+  healthDisplay: {fileID: 0}
   DEFAULT: {x: 0, y: 0, z: 0}
 --- !u!1 &5383064348276748157
 GameObject:

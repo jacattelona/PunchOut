@@ -100,7 +100,7 @@ public class Boxer : Agent
 
         //AddVectorObs(true); // Play defensively
 
-        if (this == myArea.player)
+        if (gameObject == myArea.player)
         {
             AddVectorObs(myArea.opponentBoxer.GetHealth() / myArea.opponentBoxer.GetMaxHealth());
             AddVectorObs(myArea.opponentBoxer.GetPunchState().GetHand() == Hand.RIGHT);
@@ -136,7 +136,6 @@ public class Boxer : Agent
         }
         HandleDodgeInput(vectorAction[0]);
         HandlePunchInput(vectorAction[1]);
-        Debug.Log(name + ": " + health);
     }
 
     /// <summary>

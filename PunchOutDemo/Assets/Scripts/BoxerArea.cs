@@ -1,14 +1,18 @@
 ﻿using MLAgents;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BoxerArea : Area
 {
 
     public GameObject player;
     public GameObject opponent;
+    public Text matchNumberDisp;
 
     public Boxer playerBoxer;
     public Boxer opponentBoxer;
+
+    private float matchNumber;
 
     void Start()
     {
@@ -17,6 +21,8 @@ public class BoxerArea : Area
 
         playerBoxer.punch.AddListener(OpponentPunched);
         opponentBoxer.punch.AddListener(PlayerPunched);
+        matchNumber = 1;
+        matchNumberDisp.text = string.Format("Match {0}", matchNumber);
     }
 
     private void PlayerPunched()
@@ -44,6 +50,8 @@ public class BoxerArea : Area
         base.ResetArea();
         playerBoxer.AgentReset();
         opponentBoxer.AgentReset();
+        matchNumber += 0.5f;
+        matchNumberDisp.text = string.Format("Match {0}", matchNumber);
     }
 
 }
