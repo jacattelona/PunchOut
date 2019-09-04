@@ -216,7 +216,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 5386e1be819b5324c8358238fd75c0e1, type: 2}
     - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
     - {fileID: 11400000, guid: c0d7a72fc72b3ad4d8471cceafaec095, type: 2}
-    _brainsToControl: []
+    _brainsToControl:
+    - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
   maxSteps: 0
   trainingConfiguration:
     width: 80
@@ -430,7 +431,7 @@ PrefabInstance:
     - target: {fileID: 4724728229003145789, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
       propertyPath: demonstrationName
-      value: boxer
+      value: boxerexpert
       objectReference: {fileID: 0}
     - target: {fileID: 5429816124984200921, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}

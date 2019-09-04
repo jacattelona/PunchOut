@@ -1,4 +1,5 @@
 ﻿using MLAgents;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,6 +18,9 @@ public class Boxer : Agent
 
     private float lastPunchTime = -1f;
     private float lastDodgeTime = -1f;
+
+    private MoveMemory moveMemory;
+    private float timeSinceOpponentMoveChange = 0f;
 
     /// <summary>
     /// The name of the boxer
@@ -76,6 +80,7 @@ public class Boxer : Agent
         base.InitializeAgent();
         myArea = area.GetComponent<BoxerArea>();
         health = maxHealth;
+        moveMemory = new MoveMemory(5, new float[] { 0f, 0f, 0f, 0f });
     }
 
     /// <summary>
@@ -95,31 +100,51 @@ public class Boxer : Agent
         AddVectorObs(dodgeState == DodgeState.RIGHT);
         //AddVectorObs(dodgeState == DodgeState.FRONT);
 
-        //AddVectorObs(Time.fixedTime - lastPunchTime >= punchDuration + punchCooldown); // Can punch
-        //AddVectorObs(Time.fixedTime - lastDodgeTime >= dodgeDuration + dodgeCooldown); // Can block 
+        AddVectorObs(Time.fixedTime - lastPunchTime >= punchDuration + punchCooldown); // Can punch
+        AddVectorObs(Time.fixedTime - lastDodgeTime >= dodgeDuration + dodgeCooldown); // Can block 
 
         //AddVectorObs(true); // Play defensively
+
+        float[] move;
 
         if (gameObject == myArea.player)
         {
             AddVectorObs(myArea.opponentBoxer.GetHealth() / myArea.opponentBoxer.GetMaxHealth());
-            AddVectorObs(myArea.opponentBoxer.GetPunchState().GetHand() == Hand.RIGHT);
-            AddVectorObs(myArea.opponentBoxer.GetPunchState().GetHand() == Hand.LEFT);
-            AddVectorObs(myArea.opponentBoxer.GetDodgeState() == DodgeState.LEFT);
-            AddVectorObs(myArea.opponentBoxer.GetDodgeState() == DodgeState.RIGHT);
-        } else
+            move = new float[] {
+                myArea.opponentBoxer.GetPunchState().GetHand() == Hand.RIGHT ? 1f : 0f,
+                myArea.opponentBoxer.GetPunchState().GetHand() == Hand.LEFT ? 1f : 0f,
+                myArea.opponentBoxer.GetDodgeState() == DodgeState.LEFT ? 1f : 0f,
+                myArea.opponentBoxer.GetDodgeState() == DodgeState.RIGHT ? 1f : 0f
+            };
+        }
+        else
         {
             AddVectorObs(myArea.playerBoxer.GetHealth() / myArea.opponentBoxer.GetMaxHealth());
-            AddVectorObs(myArea.playerBoxer.GetPunchState().GetHand() == Hand.RIGHT);
-            AddVectorObs(myArea.playerBoxer.GetPunchState().GetHand() == Hand.LEFT);
-            AddVectorObs(myArea.playerBoxer.GetDodgeState() == DodgeState.LEFT);
-            AddVectorObs(myArea.playerBoxer.GetDodgeState() == DodgeState.RIGHT);
+
+            move = new float[] {
+                myArea.playerBoxer.GetPunchState().GetHand() == Hand.RIGHT ? 1f : 0f,
+                myArea.playerBoxer.GetPunchState().GetHand() == Hand.LEFT ? 1f : 0f,
+                myArea.playerBoxer.GetDodgeState() == DodgeState.LEFT ? 1f : 0f,
+                myArea.playerBoxer.GetDodgeState() == DodgeState.RIGHT ? 1f : 0f
+            };
         }
-        
 
+        timeSinceOpponentMoveChange += Time.deltaTime;
 
-        // Camera view of enemy?
-        // Or maybe there is a reference to the opponent object in here
+        if (!Enumerable.SequenceEqual(move, moveMemory.GetLastMove()))
+        {
+            moveMemory.Add(move);
+            timeSinceOpponentMoveChange = 0f;
+        }
+
+        float[][] moves = moveMemory.Get();
+
+        foreach(float[] m in moves)
+        {
+            AddVectorObs(m);
+        }
+
+        AddVectorObs(timeSinceOpponentMoveChange / 10f);
     }
 
     /// <summary>
@@ -147,6 +172,7 @@ public class Boxer : Agent
         health = maxHealth;
         ResetDodgeState();
         ResetPunchState();
+        moveMemory = new MoveMemory(5, new float[] { 0f, 0f, 0f, 0f });
     }
 
     /// <summary>

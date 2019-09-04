@@ -28,9 +28,10 @@ public class BoxerArea : Area
     private void PlayerPunched()
     {
         PunchOutcome outcome = playerBoxer.onPunched(opponentBoxer.GetPunchState());
-        playerBoxer.RewardOutcome(outcome);
+        opponentBoxer.RewardOutcome(outcome);
         if (outcome == PunchOutcome.KO)
         {
+            Debug.Log(playerBoxer.GetCumulativeReward());
             ResetArea();
         }
     }
@@ -38,9 +39,10 @@ public class BoxerArea : Area
     private void OpponentPunched()
     {
         PunchOutcome outcome = opponentBoxer.onPunched(playerBoxer.GetPunchState());
-        opponentBoxer.RewardOutcome(outcome);
+        playerBoxer.RewardOutcome(outcome);
         if (outcome == PunchOutcome.KO)
         {
+            Debug.Log(playerBoxer.GetCumulativeReward());
             ResetArea();
         }
     }
@@ -50,7 +52,7 @@ public class BoxerArea : Area
         base.ResetArea();
         playerBoxer.AgentReset();
         opponentBoxer.AgentReset();
-        matchNumber += 0.5f;
+        matchNumber += 1f;
         matchNumberDisp.text = string.Format("Match {0}", matchNumber);
     }
 
