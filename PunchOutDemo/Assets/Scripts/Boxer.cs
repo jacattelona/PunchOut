@@ -1,4 +1,5 @@
 ﻿using MLAgents;
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -18,6 +19,14 @@ public class Boxer : Agent
 
     private float lastPunchTime = -1f;
     private float lastDodgeTime = -1f;
+
+    public float gotPunchedPenalty = -0.01f;
+    public float punchedReward = 0.01f;
+    public float gotKOPenalty = 0f;
+    public float koReward = 0f;
+    public float existancePenalty = -0.0003f;
+    public float dodgedReward = 0.00f;
+    public float dodgedPenalty = -0.00f;
 
     private MoveMemory moveMemory;
     private float timeSinceOpponentMoveChange = 0f;
@@ -103,8 +112,6 @@ public class Boxer : Agent
         AddVectorObs(Time.fixedTime - lastPunchTime >= punchDuration + punchCooldown); // Can punch
         AddVectorObs(Time.fixedTime - lastDodgeTime >= dodgeDuration + dodgeCooldown); // Can block 
 
-        //AddVectorObs(true); // Play defensively
-
         float[] move;
 
         if (gameObject == myArea.player)
@@ -129,7 +136,7 @@ public class Boxer : Agent
             };
         }
 
-        timeSinceOpponentMoveChange += Time.deltaTime;
+        timeSinceOpponentMoveChange++;
 
         if (!Enumerable.SequenceEqual(move, moveMemory.GetLastMove()))
         {
@@ -144,7 +151,7 @@ public class Boxer : Agent
             AddVectorObs(m);
         }
 
-        AddVectorObs(timeSinceOpponentMoveChange / 10f);
+        AddVectorObs(timeSinceOpponentMoveChange / 100f);
     }
 
     /// <summary>
@@ -161,6 +168,7 @@ public class Boxer : Agent
         }
         HandleDodgeInput(vectorAction[0]);
         HandlePunchInput(vectorAction[1]);
+        AddReward(existancePenalty);
     }
 
     /// <summary>
@@ -168,11 +176,14 @@ public class Boxer : Agent
     /// </summary>
     public override void AgentReset()
     {
-        Done();
         health = maxHealth;
         ResetDodgeState();
         ResetPunchState();
+        lastPunchTime = -1;
+        lastDodgeTime = -1;
         moveMemory = new MoveMemory(5, new float[] { 0f, 0f, 0f, 0f });
+        timeSinceOpponentMoveChange = 0f;
+        Done();
     }
 
     /// <summary>
@@ -222,39 +233,38 @@ public class Boxer : Agent
         // Dodged
         if (dodgeState == DodgeState.LEFT && punch.GetHand() == Hand.LEFT)
         {
-            AddReward(0.1f);
+            AddReward(dodgedReward);
             return PunchOutcome.DODGED;
         } else if (dodgeState == DodgeState.RIGHT && punch.GetHand() == Hand.RIGHT)
         {
-            AddReward(0.1f);
+            AddReward(dodgedReward);
             return PunchOutcome.DODGED;
         }
 
         // Blocked
-        if (dodgeState != DodgeState.NONE)
-        {
-            TakeDamage(punch.GetStrength() * blockMultiplier);
-            if (IsKO())
-            {
-                AddReward(-1.0f);
-                return PunchOutcome.KO;
-            } else
-            {
-                AddReward(0.1f);
-                return PunchOutcome.BLOCKED;
-            }
-        }
+        //if (dodgeState != DodgeState.NONE)
+        //{
+        //    TakeDamage(punch.GetStrength() * blockMultiplier);
+        //    if (IsKO())
+        //    {
+        //        AddReward(gotKOPenalty);
+        //        return PunchOutcome.KO;
+        //    } else
+        //    {
+        //        return PunchOutcome.BLOCKED;
+        //    }
+        //}
 
         // Hit
         TakeDamage(punch.GetStrength());
         if (IsKO())
         {
-            AddReward(-1.0f);
+            AddReward(gotKOPenalty);
             return PunchOutcome.KO;
         }
         else
         {
-            AddReward(-0.1f);
+            AddReward(gotPunchedPenalty * punch.GetStrength());
             return PunchOutcome.HIT;
         }
     }
@@ -434,16 +444,15 @@ public class Boxer : Agent
         switch (outcome)
         {
             case PunchOutcome.BLOCKED:
-                AddReward(0.01f);
                 break;
             case PunchOutcome.DODGED:
-                AddReward(-0.01f);
+                AddReward(dodgedPenalty);
                 break;
             case PunchOutcome.HIT:
-                AddReward(0.1f);
+                AddReward(punchedReward * punchState.GetStrength());
                 break;
             case PunchOutcome.KO:
-                AddReward(1f);
+                AddReward(koReward);
                 break;
         }
     }

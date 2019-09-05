@@ -106,25 +106,25 @@ HallwayLearning:
             demo_path: demos/ExpertHallway.demo
 
 BoxerLearning:
-    summary_freq: 1000
-    time_horizon: 128
+    summary_freq: 2000
+    time_horizon: 64
     batch_size: 128
     buffer_size: 1024
     hidden_units: 128
-    num_layers: 1
+    num_layers: 4
     beta: 1.0e-2
-    max_steps: 5.0e4
-    num_epoch: 10
+    max_steps: 5.0e5
+    num_epoch: 6
     pretraining:
         demo_path: ./Assets/Demonstrations/boxerexpert.demo
-        strength: 0.6
+        strength: 0.9
         steps: 10000
     reward_signals:
         extrinsic:
-            strength: 0.85
-            gamma: 0.9
+            strength: 1.0
+            gamma: 0.99
         gail:
-            strength: 0.15
-            gamma: 0.9
+            strength: 0.3
+            gamma: 0.99
             encoding_size: 128
             demo_path: ./Assets/Demonstrations/boxerexpert.demo

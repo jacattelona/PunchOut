@@ -5,6 +5,7 @@ using UnityEngine;
 public class MoveMemory
 {
     private Queue<float[]> memory;
+    private float[] lastMemory;
 
     /// <summary>
     /// Creates a MoveMemory instance
@@ -18,6 +19,7 @@ public class MoveMemory
         {
             memory.Enqueue(fill);
         }
+        lastMemory = fill;
     }
 
     /// <summary>
@@ -28,6 +30,7 @@ public class MoveMemory
     {
         memory.Dequeue();
         memory.Enqueue(moves);
+        lastMemory = moves;
     }
 
     /// <summary>
@@ -45,6 +48,6 @@ public class MoveMemory
     /// <returns>The last move</returns>
     public float[] GetLastMove()
     {
-        return memory.Peek();
+        return lastMemory;
     }
 }
