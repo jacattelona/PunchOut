@@ -648,5 +648,10 @@ PrefabInstance:
       propertyPath: existancePenalty
       value: -0.0003
       objectReference: {fileID: 0}
+    - target: {fileID: 4620351072944787848, guid: e5a892c658e726446a45e2b1e66f3e43,
+        type: 3}
+      propertyPath: dodgedReward
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5a892c658e726446a45e2b1e66f3e43, type: 3}

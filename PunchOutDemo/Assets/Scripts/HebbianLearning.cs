@@ -7,8 +7,8 @@ public class HebbianLearning : Decision
 {
     public int numInput = 29;
     public int numOutput = 4;
-    public int numHidden = 32;
-    public int hiddenLayers = 4;
+    public int numHidden = 128;
+    public int hiddenLayers = 2;
 
     private Neuron[][] neurons;
     private List<Synapse> synapses;
@@ -53,15 +53,22 @@ public class HebbianLearning : Decision
 
     public override float[] Decide(List<float> vectorObs, List<Texture2D> visualObs, float reward, bool done, List<float> memory)
     {
+        if (done)
+        {
+            for (var i = 0; i < neurons.Length; i++)
+            {
+                foreach (Neuron n in neurons[i])
+                {
+                    n.Reset();
+                }
+            }
+        }
+
         foreach (Synapse synapse in synapses)
         {
-            if (synapse.fired)
+            if (synapse.fired && synapse.toFired)
             {
                 synapse.weight += 0.1f * reward;
-            }
-            else
-            {
-                synapse.weight -= 0.1f * reward;
             }
         }
 

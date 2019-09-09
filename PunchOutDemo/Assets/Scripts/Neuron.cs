@@ -52,6 +52,13 @@ public class Neuron
         return internalVoltage;
     }
 
+    public void Reset()
+    {
+        internalVoltage = RESTING_POTENTIAL;
+        channelOpenPercent = 0;
+        activationStartTime = 0;
+    }
+
     /**
      * Draws in ions, increasing its internal voltage if it is ready to fire.
      * @return True if the neuron has exceeded the threshold potential.

@@ -15,6 +15,7 @@ public class Synapse
     public float weight;
     private Type type;
     public bool fired;
+    public bool toFired;
 
     public Synapse(Neuron from, float weight)
     {
@@ -98,20 +99,19 @@ public class Synapse
     {
         if (fired && toFired)
         {
-            weight += 0.001f;
+            weight += 0.01f;
         }
-        else if (toFired)
+        else if (toFired ^ fired)
         {
             weight -= 0.0001f;
-        }
-        else if (fired)
-        {
-            weight -= 0.00001f;
         }
         else
         {
             // Nothing
+            weight -= 0.00001f;
         }
+
+        this.toFired = toFired;
     }
 
 }
