@@ -24,7 +24,7 @@ public class Boxer : Agent
     public float punchedReward = 0.01f;
     public float gotKOPenalty = 0f;
     public float koReward = 0f;
-    public float existancePenalty = -0.0003f;
+    public float existancePenalty = 0f;//-0.0003f;
     public float dodgedReward = 0.00f;
     public float dodgedPenalty = -0.00f;
 

@@ -214,6 +214,7 @@ MonoBehaviour:
     broadcastingBrains:
     - {fileID: 11400000, guid: 28327d844c23eec458c5328c80d86790, type: 2}
     - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
+    - {fileID: 11400000, guid: 15997ed1b87432a46843048f49322a90, type: 2}
     _brainsToControl: []
   maxSteps: 0
   trainingConfiguration:
@@ -397,7 +398,7 @@ PrefabInstance:
         type: 3}
       propertyPath: brain
       value: 
-      objectReference: {fileID: 11400000, guid: 15997ed1b87432a46843048f49322a90,
+      objectReference: {fileID: 11400000, guid: 28327d844c23eec458c5328c80d86790,
         type: 2}
     - target: {fileID: 6990459775872305363, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
@@ -624,6 +625,28 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4248751057049514296, guid: e5a892c658e726446a45e2b1e66f3e43,
+        type: 3}
+      propertyPath: brain
+      value: 
+      objectReference: {fileID: 11400000, guid: 5386e1be819b5324c8358238fd75c0e1,
+        type: 2}
+    - target: {fileID: 4248751057049514296, guid: e5a892c658e726446a45e2b1e66f3e43,
+        type: 3}
+      propertyPath: name
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620351072944787848, guid: e5a892c658e726446a45e2b1e66f3e43,
+        type: 3}
+      propertyPath: brain
+      value: 
+      objectReference: {fileID: 11400000, guid: 15997ed1b87432a46843048f49322a90,
+        type: 2}
+    - target: {fileID: 4620351072944787848, guid: e5a892c658e726446a45e2b1e66f3e43,
+        type: 3}
+      propertyPath: existancePenalty
+      value: -0.0003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5a892c658e726446a45e2b1e66f3e43, type: 3}

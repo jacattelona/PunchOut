@@ -8,12 +8,12 @@ public class HebbianLearning : Decision
     public int numInput = 29;
     public int numOutput = 4;
     public int numHidden = 32;
-    public int hiddenLayers = 2;
+    public int hiddenLayers = 4;
 
     private Neuron[][] neurons;
     private List<Synapse> synapses;
 
-    void Start()
+    public HebbianLearning()
     {
         synapses = new List<Synapse>();
         neurons = new Neuron[2 + hiddenLayers][];
@@ -32,14 +32,19 @@ public class HebbianLearning : Decision
             }
         }
 
+        System.Random r = new System.Random();
+
         for (var i = 0; i < neurons.Length - 1; i++)
         {
             for (var j = 0; j < neurons[i].Length; j++)
             {
                 for (var k = 0; k < neurons[i + 1].Length; k++)
                 {
-                    var synapse = neurons[i][j].AddOutgoingConnection(neurons[i + 1][k]);
-                    synapses.Add(synapse);
+                    if (r.NextDouble() > 0.5)
+                    {
+                        var synapse = neurons[i][j].AddOutgoingConnection(neurons[i + 1][k]);
+                        synapses.Add(synapse);
+                    }
                 }
             }
         }
@@ -48,22 +53,18 @@ public class HebbianLearning : Decision
 
     public override float[] Decide(List<float> vectorObs, List<Texture2D> visualObs, float reward, bool done, List<float> memory)
     {
+        foreach (Synapse synapse in synapses)
+        {
+            if (synapse.fired)
+            {
+                synapse.weight += 0.1f * reward;
+            }
+            else
+            {
+                synapse.weight -= 0.1f * reward;
+            }
+        }
 
-        if (reward < 0) // Flood brain with inhibitors
-        {
-            foreach (Synapse synapse in synapses)
-            {
-                synapse.SetConnectionType(Synapse.Type.INHIBITOR);
-            }
-        }
-        else if (reward >= 0) // Flood brain with stimulants
-        {
-            foreach (Synapse synapse in synapses)
-            {
-                synapse.SetConnectionType(Synapse.Type.STIMULANT);
-            }
-        }
-       
         for (var i = 0; i < vectorObs.Count; i++)
         {
             neurons[0][i].StimulateChannels(vectorObs[i]);

@@ -612,6 +612,55 @@ MonoBehaviour:
   positiveMessage: Good job, keep it up!
   negativeMessage: Don't do that again!
   display: {fileID: 9102917524061545900}
+--- !u!114 &4620351072944787848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9149802047769349811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 737dac66e5c910c41b6abea29306a37f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brain: {fileID: 0}
+  agentParameters:
+    agentCameras: []
+    agentRenderTextures: []
+    maxStep: 0
+    resetOnDone: 1
+    onDemandDecision: 0
+    numberOfActionsBetweenDecisions: 1
+  area: {fileID: 3769192919336372829}
+  punchCooldown: 0.1
+  dodgeCooldown: 0.1
+  punchDuration: 0.1
+  dodgeDuration: 0.5
+  gotPunchedPenalty: -0.01
+  punchedReward: 0.01
+  gotKOPenalty: 0
+  koReward: 0
+  existancePenalty: -0.0003
+  dodgedReward: 0
+  dodgedPenalty: -0
+  name: Player
+  punch:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  dodge:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  maxHealth: 100
+  blockMultiplier: 0.1
+  weakPunch: 0
+  weakPunchStrength: 10
+  strongPunch: 1
+  strongPunchStrength: 20
 --- !u!114 &4724728229003145789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,6 +675,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   record: 0
   demonstrationName: boxer
+--- !u!114 &4248751057049514296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9149802048388221391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c24fcd2099f3d744a80969c55b596d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brain: {fileID: 0}
+  agentParameters:
+    agentCameras: []
+    agentRenderTextures: []
+    maxStep: 0
+    resetOnDone: 1
+    onDemandDecision: 0
+    numberOfActionsBetweenDecisions: 1
+  area: {fileID: 3769192919336372829}
+  punchCooldown: 0.1
+  dodgeCooldown: 0.1
+  punchDuration: 0.1
+  dodgeDuration: 0.5
+  gotPunchedPenalty: -0.01
+  punchedReward: 0.01
+  gotKOPenalty: 0
+  koReward: 0
+  existancePenalty: -0.0003
+  dodgedReward: 0
+  dodgedPenalty: -0
+  name: Opponent
+  punch:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  dodge:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  maxHealth: 100
+  blockMultiplier: 0.1
+  weakPunch: 0
+  weakPunchStrength: 10
+  strongPunch: 1
+  strongPunchStrength: 20
 --- !u!1001 &2960540030529840275
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -816,6 +914,11 @@ PrefabInstance:
       propertyPath: healthDisplay
       value: 
       objectReference: {fileID: 4372663284901064423}
+    - target: {fileID: 8167058400864053788, guid: 6d08ac6b6f7df0646b6eacd941433d84,
+        type: 3}
+      propertyPath: boxer
+      value: 
+      objectReference: {fileID: 4620351072944787848}
     - target: {fileID: 6146787714936220806, guid: 6d08ac6b6f7df0646b6eacd941433d84,
         type: 3}
       propertyPath: brain
@@ -933,6 +1036,11 @@ PrefabInstance:
       propertyPath: healthDisplay
       value: 
       objectReference: {fileID: 889998793221216953}
+    - target: {fileID: 8167058400864053788, guid: 6d08ac6b6f7df0646b6eacd941433d84,
+        type: 3}
+      propertyPath: boxer
+      value: 
+      objectReference: {fileID: 4248751057049514296}
     - target: {fileID: 6146787714936220806, guid: 6d08ac6b6f7df0646b6eacd941433d84,
         type: 3}
       propertyPath: brain
@@ -952,15 +1060,15 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 6d08ac6b6f7df0646b6eacd941433d84, type: 3}
---- !u!1 &9149802048388221391 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5383064348265261798, guid: 6d08ac6b6f7df0646b6eacd941433d84,
-    type: 3}
-  m_PrefabInstance: {fileID: 3769192918183174953}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9149802048388221392 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5383064348265261817, guid: 6d08ac6b6f7df0646b6eacd941433d84,
+    type: 3}
+  m_PrefabInstance: {fileID: 3769192918183174953}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9149802048388221391 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5383064348265261798, guid: 6d08ac6b6f7df0646b6eacd941433d84,
     type: 3}
   m_PrefabInstance: {fileID: 3769192918183174953}
   m_PrefabAsset: {fileID: 0}

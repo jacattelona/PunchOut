@@ -81,9 +81,10 @@ public class Neuron
 
     public Synapse AddOutgoingConnection(Neuron to)
     {
-        Synapse connection = new Synapse(this, 0.1f);
+        System.Random r = new System.Random();
+        Synapse connection = new Synapse(this, (float) r.NextDouble());
         connection.SetTo(to);
-        connection.SetConnectionType(Synapse.Type.STIMULANT);
+        connection.SetConnectionType(Synapse.Type.NORMAL);
         outgoing.Add(connection);
         to.AddIncomingConnection(connection);
         return connection;
@@ -111,7 +112,7 @@ public class Neuron
     public void Fire()
     {
         channelOpenPercent = 0;
-        activationStartTime = Time.time;
+        activationStartTime = Time.time * 1000;
         internalVoltage = RESTING_POTENTIAL;
         // TODO: broadcast activation
         foreach (Synapse synapse in incoming)
@@ -127,6 +128,6 @@ public class Neuron
 
     private bool IsReadyToFire()
     {
-        return Time.time - activationStartTime >= REFACTORY_PERIOD_MS;
+        return (Time.time * 1000) - activationStartTime >= REFACTORY_PERIOD_MS;
     }
 }

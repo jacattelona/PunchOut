@@ -7,19 +7,20 @@ public class Synapse
     public enum Type
     {
         STIMULANT,
-        INHIBITOR
+        INHIBITOR,
+        NORMAL
     }
 
     private Neuron from, to;
-    private float weight;
+    public float weight;
     private Type type;
-    private bool fired;
+    public bool fired;
 
     public Synapse(Neuron from, float weight)
     {
         this.from = from;
         this.weight = weight;
-        this.type = Type.STIMULANT;
+        this.type = Type.NORMAL;
         this.to = null;
     }
 
@@ -76,15 +77,17 @@ public class Synapse
             return;
         }
 
-        switch (type)
-        {
-            case Type.STIMULANT:
-                to.StimulateChannels(Mathf.Max(0, weight));
-                break;
-            case Type.INHIBITOR:
-                to.InhibitChannels(Mathf.Max(0, weight));
-                break;
-        }
+        //switch (type)
+        //{
+        //    case Type.STIMULANT:
+        //    case Type.NORMAL:
+        //        to.StimulateChannels(Mathf.Max(0, weight));
+        //        break;
+        //    case Type.INHIBITOR:
+        //        to.InhibitChannels(Mathf.Max(0, weight));
+        //        break;
+        //}
+        to.StimulateChannels(Mathf.Max(0, weight));
 
         //        to.pullInIons();
 
