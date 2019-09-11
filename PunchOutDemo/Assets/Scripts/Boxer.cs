@@ -19,6 +19,8 @@ public class Boxer : Agent
 
     private float lastPunchTime = -1f;
     private float lastDodgeTime = -1f;
+    private float stopDodgeTime = -1f;
+    private float lastDodgeInput = 0f;
 
     public float gotPunchedPenalty = -0.01f;
     public float punchedReward = 0.01f;
@@ -28,6 +30,7 @@ public class Boxer : Agent
     public float dodgedReward = 0.00f;
     public float dodgedPenalty = -0.00f;
 
+    public int memorySize = 3;
     private MoveMemory moveMemory;
     private float timeSinceOpponentMoveChange = 0f;
 
@@ -89,7 +92,7 @@ public class Boxer : Agent
         base.InitializeAgent();
         myArea = area.GetComponent<BoxerArea>();
         health = maxHealth;
-        moveMemory = new MoveMemory(5, new float[] { 0f, 0f, 0f, 0f });
+        moveMemory = new MoveMemory(memorySize, new float[] { 0f, 0f, 0f, 0f });
     }
 
     /// <summary>
@@ -98,19 +101,18 @@ public class Boxer : Agent
     public override void CollectObservations()
     {
         // Current punch state
-        AddVectorObs(health / maxHealth);
-        AddVectorObs(punchState.GetHand() == Hand.RIGHT);
-        AddVectorObs(punchState.GetHand() == Hand.LEFT);
+        //AddVectorObs(health / maxHealth > 0.5);
+        //AddVectorObs(punchState.GetHand() == Hand.RIGHT);
+        //AddVectorObs(punchState.GetHand() == Hand.LEFT);
         //AddVectorObs(punchState.GetPunchType() == weakPunch ? 1.0f : 0.0f);
         //AddVectorObs(punchState.GetPunchType() == strongPunch ? 1.0f : 0.0f);
 
         // Current dodge state
-        AddVectorObs(dodgeState == DodgeState.LEFT);
-        AddVectorObs(dodgeState == DodgeState.RIGHT);
+        //AddVectorObs(dodgeState == DodgeState.LEFT);
+        //AddVectorObs(dodgeState == DodgeState.RIGHT);
         //AddVectorObs(dodgeState == DodgeState.FRONT);
 
         AddVectorObs(Time.fixedTime - lastPunchTime >= punchDuration + punchCooldown); // Can punch
-        AddVectorObs(Time.fixedTime - lastDodgeTime >= dodgeDuration + dodgeCooldown); // Can block 
 
         float[] move;
 
@@ -138,7 +140,7 @@ public class Boxer : Agent
 
         timeSinceOpponentMoveChange++;
 
-        if (!Enumerable.SequenceEqual(move, moveMemory.GetLastMove()))
+        if (!Enumerable.SequenceEqual(move, moveMemory.GetLastMove()) && !Enumerable.SequenceEqual(move, new float[] { 0, 0, 0, 0}))
         {
             moveMemory.Add(move);
             timeSinceOpponentMoveChange = 0f;
@@ -151,7 +153,7 @@ public class Boxer : Agent
             AddVectorObs(m);
         }
 
-        AddVectorObs(timeSinceOpponentMoveChange / 100f);
+        //AddVectorObs(timeSinceOpponentMoveChange / 100f);
     }
 
     /// <summary>
@@ -181,7 +183,8 @@ public class Boxer : Agent
         ResetPunchState();
         lastPunchTime = -1;
         lastDodgeTime = -1;
-        moveMemory = new MoveMemory(5, new float[] { 0f, 0f, 0f, 0f });
+        stopDodgeTime = -1;
+        moveMemory = new MoveMemory(memorySize, new float[] { 0f, 0f, 0f, 0f });
         timeSinceOpponentMoveChange = 0f;
         Done();
     }
@@ -364,17 +367,21 @@ public class Boxer : Agent
         {
             return;
         }
-        else
-        {
-            ResetDodgeState();
-        }
 
-        if (dodgeInput == 0)
+        if (dodgeInput == 0 || dodgeInput != lastDodgeInput)
         {
+            if (dodgeState != DodgeState.NONE)
+            {
+                stopDodgeTime = Time.fixedTime;
+            }
+            lastDodgeInput = dodgeInput;
+            ResetDodgeState();
             return;
         }
 
-        if (Time.fixedTime - lastDodgeTime > dodgeCooldown + dodgeDuration) // Can only dodge when past cooldown
+        lastDodgeInput = dodgeInput;
+
+        if (Time.fixedTime - stopDodgeTime >= dodgeCooldown)
         {
             if (dodgeInput == 1)
             {

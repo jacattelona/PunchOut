@@ -25,11 +25,8 @@ public class ExpertHeuristic : Decision
                 }
                 break;
             case 1:
-                if (changeState(2))
-                {
-                    return new float[] { 1f, 0f };
-                }
-                break;
+                changeState(2);
+                return new float[] { 1f, 0f };
             case 2:
                 if (changeState(3))
                 {
@@ -37,11 +34,8 @@ public class ExpertHeuristic : Decision
                 }
                 break;
             case 3:
-                if (changeState(4))
-                {
-                    return new float[] { 2f, 0f };
-                }
-                break;
+                changeState(4);
+                return new float[] { 2f, 0f };
             case 4:
                 if (changeState(5))
                 {

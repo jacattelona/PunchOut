@@ -49,11 +49,8 @@ public class SimpleEnemyHeuristic : Decision
                 }
                 break;
             case 5:
-                if (changeState(0))
-                {
-                    return new float[] { 1f, 0f };
-                }
-                break;
+                changeState(0);
+                return new float[] { 1f, 0f };
         }
         return new float[] { 0f, 0f };
     }
