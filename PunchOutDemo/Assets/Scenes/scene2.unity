@@ -214,8 +214,8 @@ MonoBehaviour:
     broadcastingBrains:
     - {fileID: 11400000, guid: 28327d844c23eec458c5328c80d86790, type: 2}
     - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
-    - {fileID: 11400000, guid: 15997ed1b87432a46843048f49322a90, type: 2}
-    _brainsToControl: []
+    _brainsToControl:
+    - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
   maxSteps: 0
   trainingConfiguration:
     width: 80
@@ -637,6 +637,11 @@ PrefabInstance:
       propertyPath: name
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4248751057049514296, guid: e5a892c658e726446a45e2b1e66f3e43,
+        type: 3}
+      propertyPath: dodgeCooldown
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 4620351072944787848, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
       propertyPath: brain
@@ -652,6 +657,11 @@ PrefabInstance:
         type: 3}
       propertyPath: dodgedReward
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620351072944787848, guid: e5a892c658e726446a45e2b1e66f3e43,
+        type: 3}
+      propertyPath: dodgeCooldown
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5a892c658e726446a45e2b1e66f3e43, type: 3}
