@@ -106,9 +106,9 @@ HallwayLearning:
             demo_path: demos/ExpertHallway.demo
 
 BoxerLearning:
-    summary_freq: 2000
+    summary_freq: 100
     time_horizon: 64
-    batch_size: 128
+    batch_size: 64
     buffer_size: 1028
     hidden_units: 64
     num_layers: 2
