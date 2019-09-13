@@ -108,15 +108,15 @@ HallwayLearning:
 BoxerLearning:
     summary_freq: 2000
     time_horizon: 64
-    batch_size: 32
+    batch_size: 128
     buffer_size: 1028
-    hidden_units: 32
+    hidden_units: 64
     num_layers: 2
-    beta: 1.0e-4
-    epsilon: 0.3
-    learning_rate: 0.001
-    max_steps: 5.0e5
-    num_epoch: 3
+    beta: 1.0e-2
+    #epsilon: 0.3
+    #learning_rate: 0.001
+    max_steps: 5.0e6
+    num_epoch: 4
     pretraining:
         demo_path: ./Assets/Demonstrations/boxerexpert.demo
         strength: 0.5

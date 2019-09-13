@@ -1,68 +1,30 @@
 ﻿using MLAgents;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ExpertHeuristic : Decision
 {
-    private int state = 0;
-    private float lastTime = -1;
-    private float maxTime = 0.59f;
 
     public override float[] Decide(List<float> vectorObs, List<Texture2D> visualObs, float reward, bool done, List<float> memory)
     {
-        if (done)
+        if (vectorObs[10] == 1)
         {
-            state = 0;
-            lastTime = -1;
+            return new float[] { 1f, 0f };
         }
-        switch (state)
+
+        if (vectorObs[11] == 1)
         {
-            case 0:
-                if (changeState(1))
-                {
-                    return new float[] { 0f, 1f };
-                }
-                break;
-            case 1:
-                changeState(2);
-                return new float[] { 1f, 0f };
-            case 2:
-                if (changeState(3))
-                {
-                    return new float[] { 0f, 2f };
-                }
-                break;
-            case 3:
-                changeState(4);
-                return new float[] { 2f, 0f };
-            case 4:
-                if (changeState(5))
-                {
-                    return new float[] { 0f, 1f };
-                }
-                break;
-            case 5:
-                if (changeState(0))
-                {
-                    return new float[] { 0f, 1f };
-                }
-                break;
+            return new float[] { 2f, 0f };
         }
+
+        if (vectorObs[13] == 1)
+        {
+            return new float[] { 0f, 2f };
+        }
+        
         return new float[] { 0f, 0f };
     }
-
-    private bool changeState(int newState)
-    {
-        if (Time.fixedTime - lastTime >= maxTime)
-        {
-            state = newState;
-            lastTime = Time.fixedTime;
-            return true;
-        }
-        return false;
-    }
-
+    
     public override List<float> MakeMemory(List<float> vectorObs, List<Texture2D> visualObs, float reward, bool done, List<float> memory)
     {
         // DO nothing

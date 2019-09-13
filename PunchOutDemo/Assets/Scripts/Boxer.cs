@@ -32,7 +32,10 @@ public class Boxer : Agent
 
     public int memorySize = 3;
     private MoveMemory moveMemory;
-    private float timeSinceOpponentMoveChange = 0f;
+    private float lastOpponentPunchTime = -1f;
+
+    private ComboFSM myComboTracker;
+    public float comboTimeout = 1f;
 
     /// <summary>
     /// The name of the boxer
@@ -93,6 +96,7 @@ public class Boxer : Agent
         myArea = area.GetComponent<BoxerArea>();
         health = maxHealth;
         moveMemory = new MoveMemory(memorySize, new float[] { 0f, 0f, 0f, 0f });
+        myComboTracker = new ComboFSM();
     }
 
     /// <summary>
@@ -100,23 +104,12 @@ public class Boxer : Agent
     /// </summary>
     public override void CollectObservations()
     {
-        // Current punch state
-        //AddVectorObs(health / maxHealth > 0.5);
-        //AddVectorObs(punchState.GetHand() == Hand.RIGHT);
-        //AddVectorObs(punchState.GetHand() == Hand.LEFT);
-        //AddVectorObs(punchState.GetPunchType() == weakPunch ? 1.0f : 0.0f);
-        //AddVectorObs(punchState.GetPunchType() == strongPunch ? 1.0f : 0.0f);
-
-        // Current dodge state
-        //AddVectorObs(dodgeState == DodgeState.LEFT);
-        //AddVectorObs(dodgeState == DodgeState.RIGHT);
-        //AddVectorObs(dodgeState == DodgeState.FRONT);
-
         AddVectorObs(Time.fixedTime - lastPunchTime >= punchDuration + punchCooldown); // Can punch
 
         float[] move;
+        int opponentComboState = 0;
 
-        if (gameObject == myArea.player)
+        if (name == "Player")
         {
             AddVectorObs(myArea.opponentBoxer.GetHealth() / myArea.opponentBoxer.GetMaxHealth());
             move = new float[] {
@@ -125,6 +118,8 @@ public class Boxer : Agent
                 myArea.opponentBoxer.GetDodgeState() == DodgeState.LEFT ? 1f : 0f,
                 myArea.opponentBoxer.GetDodgeState() == DodgeState.RIGHT ? 1f : 0f
             };
+
+            opponentComboState = myArea.opponentBoxer.GetComboState();
         }
         else
         {
@@ -136,24 +131,19 @@ public class Boxer : Agent
                 myArea.playerBoxer.GetDodgeState() == DodgeState.LEFT ? 1f : 0f,
                 myArea.playerBoxer.GetDodgeState() == DodgeState.RIGHT ? 1f : 0f
             };
+
+            opponentComboState = myArea.playerBoxer.GetComboState();
         }
 
-        timeSinceOpponentMoveChange++;
 
-        if (!Enumerable.SequenceEqual(move, moveMemory.GetLastMove()) && !Enumerable.SequenceEqual(move, new float[] { 0, 0, 0, 0}))
-        {
-            moveMemory.Add(move);
-            timeSinceOpponentMoveChange = 0f;
-        }
+        AddVectorObs(Encoder.encodeInt(myComboTracker.GetState(), 0, myComboTracker.GetTotalStates()));
+        AddVectorObs(Encoder.encodeInt(opponentComboState, 0, myComboTracker.GetTotalStates()));
+        AddVectorObs(move);
+    }
 
-        float[][] moves = moveMemory.Get();
-
-        foreach(float[] m in moves)
-        {
-            AddVectorObs(m);
-        }
-
-        //AddVectorObs(timeSinceOpponentMoveChange / 100f);
+    public int GetComboState()
+    {
+        return myComboTracker.GetState();
     }
 
     /// <summary>
@@ -185,7 +175,8 @@ public class Boxer : Agent
         lastDodgeTime = -1;
         stopDodgeTime = -1;
         moveMemory = new MoveMemory(memorySize, new float[] { 0f, 0f, 0f, 0f });
-        timeSinceOpponentMoveChange = 0f;
+        lastOpponentPunchTime = -1;
+        myComboTracker = new ComboFSM();
         Done();
     }
 
@@ -328,6 +319,7 @@ public class Boxer : Agent
         }
         punchState = punch;
         this.punch.Invoke();
+        myComboTracker.ThrowPunch(punch);
     }
 
     /// <summary>
@@ -409,6 +401,10 @@ public class Boxer : Agent
     /// <param name="punchInput">The punch input value</param>
     private void HandlePunchInput(float punchInput)
     {
+        if (Time.time - lastPunchTime >= comboTimeout)
+        {
+            myComboTracker.ResetComboChain();
+        }
 
         if (Time.fixedTime - lastPunchTime < punchDuration) // Can't do anything while still punching
         {

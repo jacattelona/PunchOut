@@ -1,1 +1,1 @@
-mlagents-learn trainer_config.yaml --run-id=boxer_01 --train
+mlagents-learn config/gail_config.yaml --train
