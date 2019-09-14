@@ -10,7 +10,6 @@ public class BoxerSprite : MonoBehaviour // TODO: Break this apart
 {
 
     public Boxer boxer;
-    public Text healthDisplay;
 
     //Const Values (you can't declare Vector3s const, so just pretend)
     protected Vector3 LDEFAULT = new Vector3(-1, 0, 0);             //Default position of the left glove
@@ -86,7 +85,6 @@ public class BoxerSprite : MonoBehaviour // TODO: Break this apart
     // Update is called once per frame
     void Update()
     {
-        healthDisplay.text = string.Format("Health: {0}", Mathf.RoundToInt(boxer.GetHealth() / boxer.GetMaxHealth() * 100));
         if (boxer.punchAction.IsOnCooldown() || boxer.dodgeAction.IsRunning() || boxer.punchAction.IsRunning())
         {
             // Lower opacity of punch icon

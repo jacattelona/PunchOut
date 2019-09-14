@@ -637,6 +637,8 @@ MonoBehaviour:
   dodgeCooldown: 0.1
   punchDuration: 0.1
   dodgeDuration: 0.5
+  punchEventDelay: 0
+  dodgeEventDelay: 0
   gotPunchedPenalty: -0.01
   punchedReward: 0.01
   gotKOPenalty: 0
@@ -644,6 +646,8 @@ MonoBehaviour:
   existancePenalty: -0.0003
   dodgedReward: 0
   dodgedPenalty: -0
+  memorySize: 3
+  comboTimeout: 1
   name: Player
   punch:
     m_PersistentCalls:
@@ -655,12 +659,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  maxHealth: 100
   blockMultiplier: 0.1
   weakPunch: 0
   weakPunchStrength: 10
-  strongPunch: 1
-  strongPunchStrength: 20
 --- !u!114 &4724728229003145789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -700,6 +701,8 @@ MonoBehaviour:
   dodgeCooldown: 0.1
   punchDuration: 0.1
   dodgeDuration: 0.5
+  punchEventDelay: 0
+  dodgeEventDelay: 0
   gotPunchedPenalty: -0.01
   punchedReward: 0.01
   gotKOPenalty: 0
@@ -707,6 +710,8 @@ MonoBehaviour:
   existancePenalty: -0.0003
   dodgedReward: 0
   dodgedPenalty: -0
+  memorySize: 3
+  comboTimeout: 1
   name: Opponent
   punch:
     m_PersistentCalls:
@@ -718,12 +723,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  maxHealth: 100
   blockMultiplier: 0.1
   weakPunch: 0
   weakPunchStrength: 10
-  strongPunch: 1
-  strongPunchStrength: 20
 --- !u!1001 &2960540030529840275
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -935,6 +937,11 @@ PrefabInstance:
       propertyPath: name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1037476256704331572, guid: 6d08ac6b6f7df0646b6eacd941433d84,
+        type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 4372663284901064423}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d08ac6b6f7df0646b6eacd941433d84, type: 3}
 --- !u!1 &9149802047769349811 stripped
@@ -1057,6 +1064,11 @@ PrefabInstance:
       propertyPath: name
       value: Opponent
       objectReference: {fileID: 0}
+    - target: {fileID: 1037476256704331572, guid: 6d08ac6b6f7df0646b6eacd941433d84,
+        type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 889998793221216953}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 6d08ac6b6f7df0646b6eacd941433d84, type: 3}

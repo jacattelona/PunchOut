@@ -36,6 +36,8 @@ public class Boxer : Agent
     private ComboFSM myComboTracker;
     public float comboTimeout = 1f;
 
+    Health health;
+
     /// <summary>
     /// The name of the boxer
     /// </summary>
@@ -50,12 +52,6 @@ public class Boxer : Agent
     /// The dodge event
     /// </summary>
     public UnityEvent dodge = new UnityEvent();
-
-    /// <summary>
-    /// The maximum health points
-    /// </summary>
-    public float maxHealth = 100;
-    private float health;
 
     /// <summary>
     /// The multiplier to apply to incoming damage when blocking.
@@ -86,7 +82,7 @@ public class Boxer : Agent
     {
         base.InitializeAgent();
         myArea = area.GetComponent<BoxerArea>();
-        health = maxHealth;
+        health = GetComponent<Health>();
         moveMemory = new MoveMemory(memorySize, new float[] { 0f, 0f, 0f, 0f });
         myComboTracker = new ComboFSM();
 
@@ -119,7 +115,7 @@ public class Boxer : Agent
 
         if (name == "Player")
         {
-            AddVectorObs(myArea.opponentBoxer.GetHealth() / myArea.opponentBoxer.GetMaxHealth());
+            AddVectorObs(myArea.opponentBoxer.health.GetHealthPercentage() / 100f);
             move = new float[] {
                 myArea.opponentBoxer.GetPunchState().GetHand() == Hand.RIGHT ? 1f : 0f,
                 myArea.opponentBoxer.GetPunchState().GetHand() == Hand.LEFT ? 1f : 0f,
@@ -131,7 +127,7 @@ public class Boxer : Agent
         }
         else
         {
-            AddVectorObs(myArea.playerBoxer.GetHealth() / myArea.opponentBoxer.GetMaxHealth());
+            AddVectorObs(myArea.playerBoxer.health.GetHealthPercentage() / 100f);
 
             move = new float[] {
                 myArea.playerBoxer.GetPunchState().GetHand() == Hand.RIGHT ? 1f : 0f,
@@ -176,7 +172,7 @@ public class Boxer : Agent
     /// </summary>
     public override void AgentReset()
     {
-        health = maxHealth;
+        health.SetHealth(health.GetMaxHealth());
         ResetDodgeState();
         ResetPunchState();
         moveMemory = new MoveMemory(memorySize, new float[] { 0f, 0f, 0f, 0f });
@@ -201,24 +197,6 @@ public class Boxer : Agent
     public Punch GetPunchState()
     {
         return punchState;
-    }
-
-    /// <summary>
-    /// Get the current health level of the boxer
-    /// </summary>
-    /// <returns>The health level</returns>
-    public float GetHealth()
-    {
-        return health;
-    }
-
-    /// <summary>
-    /// Get the maximum health level of the boxer
-    /// </summary>
-    /// <returns>The maximum health level</returns>
-    public float GetMaxHealth()
-    {
-        return maxHealth;
     }
 
     /// <summary>
@@ -292,7 +270,7 @@ public class Boxer : Agent
     /// <returns>True if the boxer is KO, false otherwise</returns>
     public bool IsKO()
     {
-        return health <= 0;
+        return health.GetHealth() <= 0;
     }
 
     /// <summary>
@@ -317,7 +295,7 @@ public class Boxer : Agent
     /// <param name="damage">The amount of damage to take</param>
     private void TakeDamage(float damage)
     {
-        health -= damage;
+        health.SetHealth(health.GetHealth() - (int) damage);
     }
 
     private void RegisterDodge(int dodgeType)

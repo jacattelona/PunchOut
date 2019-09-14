@@ -42,8 +42,6 @@ public class BoxerArea : Area
         playerBoxer.RewardOutcome(outcome);
         if (outcome == PunchOutcome.KO)
         {
-            Debug.Log("Score: " + playerBoxer.GetCumulativeReward());
-            Debug.Log("Health: " + playerBoxer.GetHealth());
             ResetArea();
         }
     }
