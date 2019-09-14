@@ -225,15 +225,33 @@ public class Boxer : Agent
     {
 
         // Dodged
-        if (dodgeState == DodgeState.LEFT && punch.GetHand() == Hand.LEFT)
+        if (gameObject == myArea.player)
         {
-            AddReward(dodgedReward);
-            return PunchOutcome.DODGED;
-        } else if (dodgeState == DodgeState.RIGHT && punch.GetHand() == Hand.RIGHT)
-        {
-            AddReward(dodgedReward);
-            return PunchOutcome.DODGED;
+            if (dodgeState == DodgeState.LEFT && punch.GetHand() == Hand.LEFT)
+            {
+                AddReward(dodgedReward);
+                return PunchOutcome.DODGED;
+            }
+            else if (dodgeState == DodgeState.RIGHT && punch.GetHand() == Hand.RIGHT)
+            {
+                AddReward(dodgedReward);
+                return PunchOutcome.DODGED;
+            }
         }
+        else
+        {
+            if (dodgeState == DodgeState.RIGHT && punch.GetHand() == Hand.LEFT)
+            {
+                AddReward(dodgedReward);
+                return PunchOutcome.DODGED;
+            }
+            else if (dodgeState == DodgeState.LEFT && punch.GetHand() == Hand.RIGHT)
+            {
+                AddReward(dodgedReward);
+                return PunchOutcome.DODGED;
+            }
+        }
+        
 
         // Blocked
         //if (dodgeState != DodgeState.NONE)
