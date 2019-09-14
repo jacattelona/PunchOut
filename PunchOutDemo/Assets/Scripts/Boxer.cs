@@ -19,8 +19,6 @@ public class Boxer : Agent
     public float punchEventDelay = 0.0f;
     public float dodgeEventDelay = 0.0f;
 
-    private float lastPunchTime = -1f;
-
     public float gotPunchedPenalty = -0.01f;
     public float punchedReward = 0.01f;
     public float gotKOPenalty = 0f;
@@ -29,29 +27,14 @@ public class Boxer : Agent
     public float dodgedReward = 0.00f;
     public float dodgedPenalty = -0.00f;
 
-    public int memorySize = 3;
-    private MoveMemory moveMemory;
-    private float lastOpponentPunchTime = -1f;
-
-    private ComboFSM myComboTracker;
-    public float comboTimeout = 1f;
-
+    // COMPONENTS
     Health health;
+    ComboTracker comboTracker;
 
     /// <summary>
     /// The name of the boxer
     /// </summary>
     public string name;
-
-    /// <summary>
-    /// The punch event
-    /// </summary>
-    public UnityEvent punch = new UnityEvent();
-
-    /// <summary>
-    /// The dodge event
-    /// </summary>
-    public UnityEvent dodge = new UnityEvent();
 
     /// <summary>
     /// The multiplier to apply to incoming damage when blocking.
@@ -83,16 +66,13 @@ public class Boxer : Agent
         base.InitializeAgent();
         myArea = area.GetComponent<BoxerArea>();
         health = GetComponent<Health>();
-        moveMemory = new MoveMemory(memorySize, new float[] { 0f, 0f, 0f, 0f });
-        myComboTracker = new ComboFSM();
+        comboTracker = GetComponent<ComboTracker>();
 
         dodgeAction = new Action(dodgeDuration, dodgeCooldown, dodgeEventDelay);
-        dodgeAction.action.AddListener(Dodge);
         dodgeAction.animationStart.AddListener(RegisterDodge);
         dodgeAction.animationEnd.AddListener(DeregisterDodge);
 
         punchAction = new Action(punchDuration, punchCooldown, punchEventDelay);
-        punchAction.action.AddListener(ThrowPunch);
         punchAction.animationStart.AddListener(RegisterPunch);
         punchAction.animationEnd.AddListener(DeregisterPunch);
     }
@@ -108,14 +88,15 @@ public class Boxer : Agent
     /// </summary>
     public override void CollectObservations()
     {
-        AddVectorObs(Time.fixedTime - lastPunchTime >= punchDuration + punchCooldown); // Can punch
+        AddVectorObs(!punchAction.IsOnCooldown() && !punchAction.IsRunning() && !dodgeAction.IsRunning());
+        AddVectorObs(!dodgeAction.IsOnCooldown() && !dodgeAction.IsRunning() && !punchAction.IsRunning());
 
         float[] move;
         int opponentComboState = 0;
 
         if (name == "Player")
         {
-            AddVectorObs(myArea.opponentBoxer.health.GetHealthPercentage() / 100f);
+            //AddVectorObs(myArea.opponentBoxer.health.GetHealthPercentage() / 100f);
             move = new float[] {
                 myArea.opponentBoxer.GetPunchState().GetHand() == Hand.RIGHT ? 1f : 0f,
                 myArea.opponentBoxer.GetPunchState().GetHand() == Hand.LEFT ? 1f : 0f,
@@ -123,11 +104,12 @@ public class Boxer : Agent
                 myArea.opponentBoxer.GetDodgeState() == DodgeState.RIGHT ? 1f : 0f
             };
 
-            opponentComboState = myArea.opponentBoxer.GetComboState();
+            opponentComboState = myArea.opponentBoxer.comboTracker.GetState();
+            Debug.Log(opponentComboState);
         }
         else
         {
-            AddVectorObs(myArea.playerBoxer.health.GetHealthPercentage() / 100f);
+            //AddVectorObs(myArea.playerBoxer.health.GetHealthPercentage() / 100f);
 
             move = new float[] {
                 myArea.playerBoxer.GetPunchState().GetHand() == Hand.RIGHT ? 1f : 0f,
@@ -136,18 +118,13 @@ public class Boxer : Agent
                 myArea.playerBoxer.GetDodgeState() == DodgeState.RIGHT ? 1f : 0f
             };
 
-            opponentComboState = myArea.playerBoxer.GetComboState();
+            opponentComboState = myArea.playerBoxer.comboTracker.GetState();
         }
 
 
-        AddVectorObs(Encoder.encodeInt(myComboTracker.GetState(), 0, myComboTracker.GetTotalStates()));
-        AddVectorObs(Encoder.encodeInt(opponentComboState, 0, myComboTracker.GetTotalStates()));
+        AddVectorObs(Encoder.encodeInt(comboTracker.GetState(), 0, comboTracker.GetTotalStates()));
+        AddVectorObs(Encoder.encodeInt(opponentComboState, 0, comboTracker.GetTotalStates()));
         AddVectorObs(move);
-    }
-
-    public int GetComboState()
-    {
-        return myComboTracker.GetState();
     }
 
     /// <summary>
@@ -175,9 +152,7 @@ public class Boxer : Agent
         health.SetHealth(health.GetMaxHealth());
         ResetDodgeState();
         ResetPunchState();
-        moveMemory = new MoveMemory(memorySize, new float[] { 0f, 0f, 0f, 0f });
-        lastOpponentPunchTime = -1;
-        myComboTracker = new ComboFSM();
+        comboTracker.ResetComboChain();
         Done();
     }
 
@@ -286,7 +261,6 @@ public class Boxer : Agent
     {
         punchAction.Reset();
         punchState = Punch.NULL_PUNCH;
-        lastPunchTime = 0;
     }
 
     /// <summary>
@@ -327,31 +301,11 @@ public class Boxer : Agent
             punch = new Punch(weakPunch, Hand.RIGHT, weakPunchStrength);
         }
         punchState = punch;
-        lastPunchTime = Time.time;
     }
 
     private void DeregisterPunch(int punchType)
     {
         punchState = Punch.NULL_PUNCH;
-    }
-
-    /// <summary>
-    /// Throw a punch
-    /// </summary>
-    /// <param name="punch">The punch</param>
-    private void ThrowPunch(int punchType) // TODO: Set timer
-    {
-        this.punch.Invoke();
-        myComboTracker.ThrowPunch(punchState);
-    }
-
-    /// <summary>
-    /// Dodge in the given direction
-    /// </summary>
-    /// <param name="dodgeDirection">The direction to dodge</param>
-    private void Dodge(int dodgeDirection)
-    {
-        this.dodge.Invoke();
     }
 
 
@@ -377,11 +331,6 @@ public class Boxer : Agent
         if (punchInput != 0 && !dodgeAction.IsRunning())
         {
             punchAction.Run((int) punchInput);
-        }
-        
-        if (Time.time - lastPunchTime >= comboTimeout)
-        {
-            myComboTracker.ResetComboChain();
         }
     }
 

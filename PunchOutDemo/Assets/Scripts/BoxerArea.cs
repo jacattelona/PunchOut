@@ -19,13 +19,13 @@ public class BoxerArea : Area
         playerBoxer = player.GetComponent<Boxer>();
         opponentBoxer = opponent.GetComponent<Boxer>();
 
-        playerBoxer.punch.AddListener(OpponentPunched);
-        opponentBoxer.punch.AddListener(PlayerPunched);
+        playerBoxer.punchAction.action.AddListener(OpponentPunched);
+        opponentBoxer.punchAction.action.AddListener(PlayerPunched);
         matchNumber = 1;
         matchNumberDisp.text = string.Format("Match {0}", matchNumber);
     }
 
-    private void PlayerPunched()
+    private void PlayerPunched(int side)
     {
         PunchOutcome outcome = playerBoxer.onPunched(opponentBoxer.GetPunchState());
         opponentBoxer.RewardOutcome(outcome);
@@ -36,7 +36,7 @@ public class BoxerArea : Area
         }
     }
 
-    private void OpponentPunched()
+    private void OpponentPunched(int side)
     {
         PunchOutcome outcome = opponentBoxer.onPunched(playerBoxer.GetPunchState());
         playerBoxer.RewardOutcome(outcome);
@@ -49,14 +49,10 @@ public class BoxerArea : Area
     public override void ResetArea()
     {
         base.ResetArea();
-        playerBoxer.punch.RemoveAllListeners();
-        opponentBoxer.punch.RemoveAllListeners();
         playerBoxer.AgentReset();
         opponentBoxer.AgentReset();
         matchNumber += 1f;
         matchNumberDisp.text = string.Format("Match {0}", matchNumber);
-        playerBoxer.punch.AddListener(OpponentPunched);
-        opponentBoxer.punch.AddListener(PlayerPunched);
     }
 
 }

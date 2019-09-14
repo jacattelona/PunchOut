@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 8167058400864053788}
   - component: {fileID: 8272291051326517368}
   - component: {fileID: 1037476256704331572}
+  - component: {fileID: 5369214410026599877}
   m_Layer: 0
   m_Name: Boxer
   m_TagString: Untagged
@@ -108,6 +109,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 8272291051326517368}
   text: {fileID: 0}
+--- !u!114 &5369214410026599877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5383064348265261798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee69136e62f479d49afa7811789e9b28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comboTimeout: 1.5
 --- !u!1 &5383064348276748157
 GameObject:
   m_ObjectHideFlags: 0

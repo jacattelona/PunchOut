@@ -1,12 +1,16 @@
-﻿public class ComboFSM
+﻿using UnityEngine;
+
+public class ComboTracker: MonoBehaviour
 {
+
+    public float comboTimeout;
+    private Boxer boxer;
+
     private FSM fsm;
     private int numStates;
+    private float lastPunchTime;
 
-    /// <summary>
-    /// Default constructor
-    /// </summary>
-    public ComboFSM()
+    void Start()
     {
         fsm = new FSM(0);
 
@@ -43,28 +47,25 @@
 
         fsm.AddTransition(6, 1, 1);
         fsm.AddTransition(6, 2, 2);
+
+        lastPunchTime = 0;
+
+        boxer = GetComponent<Boxer>();
+        boxer.punchAction.action.AddListener(TrackPunch);
     }
 
-    /// <summary>
-    /// Throw a punch and update the FSM
-    /// </summary>
-    /// <param name="punch">The punch</param>
-    /// <returns>The new state of the FSM</returns>
-    public int ThrowPunch(Punch punch)
+    void Update()
     {
-        switch (punch.GetHand())
+        if (Time.time - lastPunchTime >= comboTimeout)
         {
-            case Hand.LEFT:
-                fsm.TakeAction(1);
-                break;
-            case Hand.RIGHT:
-                fsm.TakeAction(2);
-                break;
-            default:
-                fsm.TakeAction(0);
-                break;
+            ResetComboChain();
         }
-        return GetState();
+    }
+
+    private void TrackPunch(int side)
+    {
+        lastPunchTime = Time.time;
+        fsm.TakeAction(side);
     }
 
     /// <summary>
