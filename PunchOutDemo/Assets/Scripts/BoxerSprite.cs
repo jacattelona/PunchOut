@@ -34,66 +34,74 @@ public class BoxerSprite : MonoBehaviour // TODO: Break this apart
         DEFAULT = this.transform.localPosition;
         lastPunchState = boxer.GetPunchState();
         lastDodgeState = boxer.GetDodgeState();
+        boxer.dodgeAction.animationStart.AddListener(StartDodgeAnimation);
+        boxer.dodgeAction.animationEnd.AddListener(StopDodgeAnimation);
+        boxer.punchAction.animationStart.AddListener(StartPunchAnimation);
+        boxer.punchAction.animationEnd.AddListener(StopPunchAnimation);
+    }
+
+    private void StartDodgeAnimation(int direction)
+    {
+        if (direction == 1)
+        {
+            this.transform.localPosition = DEFAULT + LDODGELOC;
+        } else
+        {
+            this.transform.localPosition = DEFAULT + RDODGELOC;
+        }
+    }
+
+    private void StopDodgeAnimation(int direction)
+    {
+        this.transform.localPosition = DEFAULT;
+        Transform left = this.transform.GetChild(0);
+        Transform right = this.transform.GetChild(1);
+
+        left.localEulerAngles = new Vector3(0, 0, 0);
+        right.localEulerAngles = new Vector3(0, 0, 0);
+    }
+
+    private void StartPunchAnimation(int side)
+    {
+        if (side == 1)
+        {
+            Transform t = this.transform.GetChild(0);
+            t.localPosition = t.localPosition + PUNCH;
+        } else
+        {
+            Transform t = this.transform.GetChild(1);
+            t.localPosition = t.localPosition + PUNCH;
+        }
+    }
+
+    private void StopPunchAnimation(int side)
+    {
+        Transform left = this.transform.GetChild(0);
+        left.localPosition = LDEFAULT;
+
+        Transform right = this.transform.GetChild(1);
+        right.localPosition = RDEFAULT;
     }
 
     // Update is called once per frame
     void Update()
     {
         healthDisplay.text = string.Format("Health: {0}", Mathf.RoundToInt(boxer.GetHealth() / boxer.GetMaxHealth() * 100));
-        if (boxer.GetPunchState() != lastPunchState) // TODO: Use the unity events
+        if (boxer.punchAction.IsOnCooldown() || boxer.dodgeAction.IsRunning() || boxer.punchAction.IsRunning())
         {
-
-            // TODO: Draw different punches here
-            if (boxer.GetPunchState().GetHand() == Hand.LEFT)
-            {
-                Transform t = this.transform.GetChild(0);
-                t.localPosition = t.localPosition + PUNCH;
-            }
-            else if (boxer.GetPunchState().GetHand() == Hand.RIGHT)
-            {
-                Transform t = this.transform.GetChild(1);
-                t.localPosition = t.localPosition + PUNCH;
-            }
-            else
-            {
-                Transform left = this.transform.GetChild(0);
-                left.localPosition = LDEFAULT;
-
-                Transform right = this.transform.GetChild(1);
-                right.localPosition = RDEFAULT;
-            }
-
-            lastPunchState = boxer.GetPunchState();
+            // Lower opacity of punch icon
+        } else
+        {
+            // Reset opacity of punch icon
         }
 
-
-        if (boxer.GetDodgeState() != lastDodgeState) // TODO: Consider rotation
+        if (boxer.dodgeAction.IsOnCooldown() || boxer.punchAction.IsRunning() || boxer.dodgeAction.IsRunning())
         {
-            if (boxer.GetDodgeState() == DodgeState.FRONT)
-            {
-                Transform left = this.transform.GetChild(0);
-                Transform right = this.transform.GetChild(1);
-
-                //rotate both inward 45 degrees to show a blocking motion
-                left.localEulerAngles = BLOCKANGLE * -1;
-                right.localEulerAngles = BLOCKANGLE;
-            } else if (boxer.GetDodgeState() == DodgeState.RIGHT)
-            {
-                this.transform.localPosition = DEFAULT + RDODGELOC;
-            } else if (boxer.GetDodgeState() == DodgeState.LEFT)
-            {
-                this.transform.localPosition = DEFAULT + LDODGELOC;
-            } else 
-            {
-                this.transform.localPosition = DEFAULT;
-                Transform left = this.transform.GetChild(0);
-                Transform right = this.transform.GetChild(1);
-
-                left.localEulerAngles = new Vector3(0, 0, 0);
-                right.localEulerAngles = new Vector3(0, 0, 0);
-            }
-            lastDodgeState = boxer.GetDodgeState();
+            // Lower opacity of dodge icon
         }
-        
+        else
+        {
+            // Reset opacity of dodge icon
+        }
     }
 }

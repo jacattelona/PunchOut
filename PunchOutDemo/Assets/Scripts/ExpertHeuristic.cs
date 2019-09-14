@@ -16,22 +16,27 @@ public class ExpertHeuristic : Decision
             return new float[] { r.Next(0, 3), r.Next(0, 3) };
         }
 
-        if (vectorObs[10] == 1)
+        if (vectorObs[21] == 1)
+        {
+            return new float[] { 0f, 2f };
+        }
+
+        if (vectorObs[20] == 1)
+        {
+            return new float[] { 0f, 1f };
+        }
+
+        if (vectorObs[19] == 1)
         {
             return new float[] { 1f, 0f };
         }
 
-        if (vectorObs[11] == 1)
+        if (vectorObs[18] == 1)
         {
             return new float[] { 2f, 0f };
         }
-
-        if (vectorObs[13] == 1)
-        {
-            return new float[] { 0f, 2f };
-        }
         
-        return new float[] { 0f, 0f };
+        return new float[] { 0f, r.Next(1, 3) };
     }
     
     public override List<float> MakeMemory(List<float> vectorObs, List<Texture2D> visualObs, float reward, bool done, List<float> memory)

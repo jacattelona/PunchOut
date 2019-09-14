@@ -16,11 +16,10 @@ public class Boxer : Agent
     public float dodgeCooldown = 0.1f;
     public float punchDuration = 0.1f;
     public float dodgeDuration = 0.5f;
+    public float punchEventDelay = 0.0f;
+    public float dodgeEventDelay = 0.0f;
 
     private float lastPunchTime = -1f;
-    private float lastDodgeTime = -1f;
-    private float stopDodgeTime = -1f;
-    private float lastDodgeInput = 0f;
 
     public float gotPunchedPenalty = -0.01f;
     public float punchedReward = 0.01f;
@@ -73,18 +72,11 @@ public class Boxer : Agent
     /// </summary>
     public float weakPunchStrength = 10;
 
-    /// <summary>
-    /// The strong punch type
-    /// </summary>
-    public PunchType strongPunch = PunchType.HOOK;
-
-    /// <summary>
-    /// The strong punch strength
-    /// </summary>
-    public float strongPunchStrength = 20;
-
     private DodgeState dodgeState = DodgeState.NONE;
     private Punch punchState = Punch.NULL_PUNCH;
+
+    public Action punchAction;
+    public Action dodgeAction;
 
 
     /// <summary>
@@ -97,6 +89,22 @@ public class Boxer : Agent
         health = maxHealth;
         moveMemory = new MoveMemory(memorySize, new float[] { 0f, 0f, 0f, 0f });
         myComboTracker = new ComboFSM();
+
+        dodgeAction = new Action(dodgeDuration, dodgeCooldown, dodgeEventDelay);
+        dodgeAction.action.AddListener(Dodge);
+        dodgeAction.animationStart.AddListener(RegisterDodge);
+        dodgeAction.animationEnd.AddListener(DeregisterDodge);
+
+        punchAction = new Action(punchDuration, punchCooldown, punchEventDelay);
+        punchAction.action.AddListener(ThrowPunch);
+        punchAction.animationStart.AddListener(RegisterPunch);
+        punchAction.animationEnd.AddListener(DeregisterPunch);
+    }
+
+    void Update()
+    {
+        punchAction.Update();
+        dodgeAction.Update();
     }
 
     /// <summary>
@@ -171,9 +179,6 @@ public class Boxer : Agent
         health = maxHealth;
         ResetDodgeState();
         ResetPunchState();
-        lastPunchTime = -1;
-        lastDodgeTime = -1;
-        stopDodgeTime = -1;
         moveMemory = new MoveMemory(memorySize, new float[] { 0f, 0f, 0f, 0f });
         lastOpponentPunchTime = -1;
         myComboTracker = new ComboFSM();
@@ -295,25 +300,15 @@ public class Boxer : Agent
     /// </summary>
     void ResetDodgeState()
     {
-        if (dodgeState == DodgeState.NONE)
-        {
-            return;
-        }
+        dodgeAction.Reset();
         dodgeState = DodgeState.NONE;
-        dodge.Invoke();
     }
 
-    /// <summary>
-    /// Reset the punch state of the boxer
-    /// </summary>
     void ResetPunchState()
     {
-        if (punchState == Punch.NULL_PUNCH)
-        {
-            return;
-        }
+        punchAction.Reset();
         punchState = Punch.NULL_PUNCH;
-        punch.Invoke(); // Is this correct?
+        lastPunchTime = 0;
     }
 
     /// <summary>
@@ -325,45 +320,60 @@ public class Boxer : Agent
         health -= damage;
     }
 
+    private void RegisterDodge(int dodgeType)
+    {
+        if (dodgeType == 1)
+        {
+            dodgeState = DodgeState.LEFT;
+        }
+        else
+        {
+            dodgeState = DodgeState.RIGHT;
+        }
+    }
+
+    private void DeregisterDodge(int dodgeType)
+    {
+        dodgeState = DodgeState.NONE;
+    }
+
+    private void RegisterPunch(int punchType)
+    {
+        Punch punch;
+        if (punchType == 1)
+        {
+            punch = new Punch(weakPunch, Hand.LEFT, weakPunchStrength);
+        }
+        else
+        {
+            punch = new Punch(weakPunch, Hand.RIGHT, weakPunchStrength);
+        }
+        punchState = punch;
+        lastPunchTime = Time.time;
+    }
+
+    private void DeregisterPunch(int punchType)
+    {
+        punchState = Punch.NULL_PUNCH;
+    }
+
     /// <summary>
     /// Throw a punch
     /// </summary>
     /// <param name="punch">The punch</param>
-    private void ThrowPunch(Punch punch) // TODO: Set timer
+    private void ThrowPunch(int punchType) // TODO: Set timer
     {
-        if (punchState != Punch.NULL_PUNCH || dodgeState != DodgeState.NONE)
-        {
-            return;
-        }
-        punchState = punch;
         this.punch.Invoke();
-        myComboTracker.ThrowPunch(punch);
+        myComboTracker.ThrowPunch(punchState);
     }
 
     /// <summary>
     /// Dodge in the given direction
     /// </summary>
     /// <param name="dodgeDirection">The direction to dodge</param>
-    private void Dodge(DodgeDirection dodgeDirection)
+    private void Dodge(int dodgeDirection)
     {
-        if (dodgeState != DodgeState.NONE || punchState != Punch.NULL_PUNCH)
-        {
-            return;
-        }
-        switch (dodgeDirection)
-        {
-            case DodgeDirection.LEFT:
-                dodgeState = DodgeState.LEFT;
-                break;
-            case DodgeDirection.RIGHT:
-                dodgeState = DodgeState.RIGHT;
-                break;
-            case DodgeDirection.FRONT:
-                dodgeState = DodgeState.FRONT;
-                break;
-        }
-
-        dodge.Invoke();
+        this.dodge.Invoke();
     }
 
 
@@ -373,43 +383,9 @@ public class Boxer : Agent
     /// <param name="dodgeInput">The dodge input value</param>
     private void HandleDodgeInput(float dodgeInput)
     {
-        if (Time.fixedTime - lastDodgeTime < dodgeDuration) // Can't do anything while still dodging
+        if (dodgeInput != 0 && !punchAction.IsRunning())
         {
-            return;
-        }
-
-        if (dodgeInput == 0 || dodgeInput != lastDodgeInput)
-        {
-            if (dodgeState != DodgeState.NONE)
-            {
-                stopDodgeTime = Time.fixedTime;
-            }
-            lastDodgeInput = dodgeInput;
-            ResetDodgeState();
-            return;
-        }
-
-        lastDodgeInput = dodgeInput;
-
-        if (Time.fixedTime - stopDodgeTime >= dodgeCooldown)
-        {
-            if (dodgeInput == 1)
-            {
-                Dodge(DodgeDirection.LEFT);
-            }
-            else if (dodgeInput == 2)
-            {
-                Dodge(DodgeDirection.RIGHT);
-            }
-            else if (dodgeInput == 3)
-            {
-                Dodge(DodgeDirection.FRONT);
-            }
-            else if (dodgeInput == 4)
-            {
-                Dodge(DodgeDirection.FRONT);
-            }
-            lastDodgeTime = Time.fixedTime;
+            dodgeAction.Run((int)dodgeInput);
         }
     }
 
@@ -419,44 +395,15 @@ public class Boxer : Agent
     /// <param name="punchInput">The punch input value</param>
     private void HandlePunchInput(float punchInput)
     {
+
+        if (punchInput != 0 && !dodgeAction.IsRunning())
+        {
+            punchAction.Run((int) punchInput);
+        }
+        
         if (Time.time - lastPunchTime >= comboTimeout)
         {
             myComboTracker.ResetComboChain();
-        }
-
-        if (Time.fixedTime - lastPunchTime < punchDuration) // Can't do anything while still punching
-        {
-            return;
-        }
-        else
-        {
-            ResetPunchState();
-        }
-
-        if (punchInput == 0)
-        {
-            return;
-        }
-
-        if (Time.fixedTime - lastPunchTime > punchCooldown + punchDuration)
-        {
-            if (punchInput == 1)
-            {
-                ThrowPunch(new Punch(weakPunch, Hand.LEFT, weakPunchStrength));
-            }
-            else if (punchInput == 2)
-            {
-                ThrowPunch(new Punch(weakPunch, Hand.RIGHT, weakPunchStrength));
-            }
-            else if (punchInput == 3)
-            {
-                ThrowPunch(new Punch(strongPunch, Hand.LEFT, strongPunchStrength));
-            }
-            else if (punchInput == 4)
-            {
-                ThrowPunch(new Punch(strongPunch, Hand.RIGHT, strongPunchStrength));
-            }
-            lastPunchTime = Time.fixedTime;
         }
     }
 
