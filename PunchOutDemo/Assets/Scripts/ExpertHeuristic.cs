@@ -5,8 +5,17 @@ using UnityEngine;
 public class ExpertHeuristic : Decision
 {
 
+    public float noise = 0f;
+
     public override float[] Decide(List<float> vectorObs, List<Texture2D> visualObs, float reward, bool done, List<float> memory)
     {
+        System.Random r = new System.Random();
+
+        if (r.NextDouble() < noise)
+        {
+            return new float[] { r.Next(0, 3), r.Next(0, 3) };
+        }
+
         if (vectorObs[10] == 1)
         {
             return new float[] { 1f, 0f };
