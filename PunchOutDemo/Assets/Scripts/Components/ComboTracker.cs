@@ -54,9 +54,9 @@ public class ComboTracker: MonoBehaviour
         boxer.punchAction.action.AddListener(TrackPunch);
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (Time.time - lastPunchTime >= comboTimeout)
+        if (Time.fixedTime - lastPunchTime >= comboTimeout)
         {
             ResetComboChain();
         }
@@ -64,7 +64,7 @@ public class ComboTracker: MonoBehaviour
 
     private void TrackPunch(int side)
     {
-        lastPunchTime = Time.time;
+        lastPunchTime = Time.fixedTime;
         fsm.TakeAction(side);
     }
 

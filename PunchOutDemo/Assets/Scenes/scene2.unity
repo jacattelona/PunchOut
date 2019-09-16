@@ -215,7 +215,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 28327d844c23eec458c5328c80d86790, type: 2}
     - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
     - {fileID: 11400000, guid: 5551af24ea95a994083527fdaa432c95, type: 2}
-    _brainsToControl: []
+    _brainsToControl:
+    - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
   maxSteps: 0
   trainingConfiguration:
     width: 80
@@ -630,7 +631,7 @@ PrefabInstance:
         type: 3}
       propertyPath: brain
       value: 
-      objectReference: {fileID: 11400000, guid: 5386e1be819b5324c8358238fd75c0e1,
+      objectReference: {fileID: 11400000, guid: 5551af24ea95a994083527fdaa432c95,
         type: 2}
     - target: {fileID: 4248751057049514296, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
@@ -650,7 +651,7 @@ PrefabInstance:
     - target: {fileID: 4248751057049514296, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
       propertyPath: dodgedReward
-      value: 0.01
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4248751057049514296, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
@@ -660,12 +661,12 @@ PrefabInstance:
     - target: {fileID: 4248751057049514296, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
       propertyPath: punchDuration
-      value: 0.2
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4248751057049514296, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
       propertyPath: punchEventDelay
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4620351072944787848, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
@@ -681,7 +682,7 @@ PrefabInstance:
     - target: {fileID: 4620351072944787848, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
       propertyPath: dodgedReward
-      value: 0.01
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4620351072944787848, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
@@ -696,7 +697,7 @@ PrefabInstance:
     - target: {fileID: 4620351072944787848, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
       propertyPath: dodgedPenalty
-      value: 0
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4620351072944787848, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
@@ -707,6 +708,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620351072944787848, guid: e5a892c658e726446a45e2b1e66f3e43,
+        type: 3}
+      propertyPath: punchedReward
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4620351072944787848, guid: e5a892c658e726446a45e2b1e66f3e43,
+        type: 3}
+      propertyPath: gotPunchedPenalty
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 9149802048388221392, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}

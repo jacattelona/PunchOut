@@ -79,7 +79,7 @@ public class Boxer : Agent
         punchAction.animationEnd.AddListener(DeregisterPunch);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         punchAction.Update();
         dodgeAction.Update();
@@ -247,7 +247,7 @@ public class Boxer : Agent
         }
         else
         {
-            AddReward(gotPunchedPenalty * punch.GetStrength());
+            AddReward(gotPunchedPenalty);
             return PunchOutcome.HIT;
         }
     }
@@ -357,7 +357,7 @@ public class Boxer : Agent
                 AddReward(dodgedPenalty);
                 break;
             case PunchOutcome.HIT:
-                AddReward(punchedReward * punchState.GetStrength());
+                AddReward(punchedReward);
                 break;
             case PunchOutcome.KO:
                 AddReward(koReward);
@@ -369,7 +369,7 @@ public class Boxer : Agent
     private void SaveReward()
     {
         float reward = GetCumulativeReward();
-        float time = Time.time;
+        float time = Time.fixedTime;
 
         RewardHistory history = GetComponent<RewardHistory>();
 

@@ -83,7 +83,7 @@ public class BoxerSprite : MonoBehaviour // TODO: Break this apart
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (boxer.punchAction.IsOnCooldown() || boxer.dodgeAction.IsRunning() || boxer.punchAction.IsRunning())
         {
