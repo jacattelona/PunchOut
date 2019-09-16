@@ -29,28 +29,17 @@ public class BoxerArea : Area
     {
         PunchOutcome outcome = playerBoxer.onPunched(opponentBoxer.GetPunchState());
         opponentBoxer.RewardOutcome(outcome);
-        if (outcome == PunchOutcome.KO)
-        {
-            Debug.Log(playerBoxer.GetCumulativeReward());
-            ResetArea();
-        }
     }
 
     private void OpponentPunched(int side)
     {
         PunchOutcome outcome = opponentBoxer.onPunched(playerBoxer.GetPunchState());
         playerBoxer.RewardOutcome(outcome);
-        if (outcome == PunchOutcome.KO)
-        {
-            ResetArea();
-        }
     }
 
     public override void ResetArea()
     {
         base.ResetArea();
-        playerBoxer.AgentReset();
-        opponentBoxer.AgentReset();
         matchNumber += 1f;
         matchNumberDisp.text = string.Format("Match {0}", matchNumber);
     }

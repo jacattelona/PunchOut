@@ -12,6 +12,8 @@ public class Boxer : Agent
     public GameObject area;
     private BoxerArea myArea;
 
+    private bool firstGame = true;
+
     public float punchCooldown = 0.1f;
     public float dodgeCooldown = 0.1f;
     public float punchDuration = 0.1f;
@@ -154,7 +156,16 @@ public class Boxer : Agent
         ResetDodgeState();
         ResetPunchState();
         comboTracker.ResetComboChain();
-        Done();
+        if (!firstGame)
+        {
+            SaveReward();
+            if (gameObject == myArea.player)
+            {
+                myArea.ResetArea();
+            }
+        }
+        firstGame = false;
+        
     }
 
     /// <summary>
@@ -231,6 +242,7 @@ public class Boxer : Agent
         if (IsKO())
         {
             AddReward(gotKOPenalty);
+            Done();
             return PunchOutcome.KO;
         }
         else
@@ -349,7 +361,22 @@ public class Boxer : Agent
                 break;
             case PunchOutcome.KO:
                 AddReward(koReward);
+                Done();
                 break;
         }
+    }
+
+    private void SaveReward()
+    {
+        float reward = GetCumulativeReward();
+        float time = Time.time;
+
+        RewardHistory history = GetComponent<RewardHistory>();
+
+        if (history != null)
+        {
+            history.rewards.Add(new RewardHistory.Reward { Amount = reward, Time = time });
+        }
+
     }
 }
