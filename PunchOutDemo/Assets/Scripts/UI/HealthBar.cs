@@ -25,7 +25,7 @@ public class HealthBar : MonoBehaviour
         {
             return;
         }
-        float healthPct = health.health / (float)health.max;
+        float healthPct = health.health / (float)health.maxHealth;
         bar.localScale = new Vector3(healthPct, 1f);
         if (healthPct <= 0.3f)
         {

@@ -97,7 +97,7 @@ public class Boxer : Agent
         if (name == "Player")
         {
             Health opponentHealth = myArea.opponent.GetComponent<Health>();
-            AddVectorObs(opponentHealth.health / (float) opponentHealth.max);
+            AddVectorObs(opponentHealth.health / (float) opponentHealth.maxHealth);
             move = new float[] {
                 myArea.opponentBoxer.GetPunchState().GetHand() == Hand.RIGHT ? 1f : 0f,
                 myArea.opponentBoxer.GetPunchState().GetHand() == Hand.LEFT ? 1f : 0f,
@@ -110,7 +110,7 @@ public class Boxer : Agent
         else
         {
             Health opponentHealth = myArea.player.GetComponent<Health>();
-            AddVectorObs(opponentHealth.health / (float) opponentHealth.max);
+            AddVectorObs(opponentHealth.health / (float) opponentHealth.maxHealth);
 
             move = new float[] {
                 myArea.playerBoxer.GetPunchState().GetHand() == Hand.RIGHT ? 1f : 0f,
@@ -150,7 +150,7 @@ public class Boxer : Agent
     /// </summary>
     public override void AgentReset()
     {
-        health.health = health.max;
+        health.health = health.maxHealth;
         ResetDodgeState();
         ResetPunchState();
         comboTracker.ResetComboChain();

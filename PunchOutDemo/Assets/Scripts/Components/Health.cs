@@ -5,11 +5,11 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
 
-    public int max;
+    public int maxHealth;
     public int health;
 
     void Start()
     {
-        health = max;
+        health = maxHealth;
     }
 }
