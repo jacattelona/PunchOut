@@ -25,7 +25,7 @@ public class BoxerSprite : MonoBehaviour // TODO: Break this apart
     private Punch lastPunchState;
     private DodgeState lastDodgeState;
 
-    public Vector3 DEFAULT = new Vector3(0, 0, 0);                  //Default position of the boxer
+    private Vector3 DEFAULT = new Vector3(0, 0, 0);                  //Default position of the boxer
 
     // Start is called before the first frame update
     void Start()

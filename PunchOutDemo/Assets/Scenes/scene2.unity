@@ -215,8 +215,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 28327d844c23eec458c5328c80d86790, type: 2}
     - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
     - {fileID: 11400000, guid: 5551af24ea95a994083527fdaa432c95, type: 2}
-    _brainsToControl:
-    - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
+    _brainsToControl: []
   maxSteps: 0
   trainingConfiguration:
     width: 80
@@ -631,7 +630,7 @@ PrefabInstance:
         type: 3}
       propertyPath: brain
       value: 
-      objectReference: {fileID: 11400000, guid: 5551af24ea95a994083527fdaa432c95,
+      objectReference: {fileID: 11400000, guid: 5386e1be819b5324c8358238fd75c0e1,
         type: 2}
     - target: {fileID: 4248751057049514296, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
@@ -761,3 +760,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5a892c658e726446a45e2b1e66f3e43, type: 3}
+--- !u!114 &3769192917699701650 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4248751057049514296, guid: e5a892c658e726446a45e2b1e66f3e43,
+    type: 3}
+  m_PrefabInstance: {fileID: 3769192917699701649}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c24fcd2099f3d744a80969c55b596d51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &3769192917699701651 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9149802047769349811, guid: e5a892c658e726446a45e2b1e66f3e43,
+    type: 3}
+  m_PrefabInstance: {fileID: 3769192917699701649}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3769192917699701652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3769192917699701651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 600ea164314b67d42bc44323d39962eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teacher: {fileID: 3769192917699701650}
+  matchingReward: 0.1
+  differPenalty: -0.1
+  shouldImitate: 1
