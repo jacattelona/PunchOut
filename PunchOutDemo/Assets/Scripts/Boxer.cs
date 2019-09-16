@@ -88,15 +88,15 @@ public class Boxer : Agent
     /// </summary>
     public override void CollectObservations()
     {
-        AddVectorObs(!punchAction.IsOnCooldown() && !punchAction.IsRunning() && !dodgeAction.IsRunning());
-        AddVectorObs(!dodgeAction.IsOnCooldown() && !dodgeAction.IsRunning() && !punchAction.IsRunning());
+        AddVectorObs(!punchAction.IsOnCooldown() && !punchAction.IsRunning());
+        //AddVectorObs(!dodgeAction.IsOnCooldown() && !dodgeAction.IsRunning());
 
         float[] move;
         int opponentComboState = 0;
 
         if (name == "Player")
         {
-            //AddVectorObs(myArea.opponentBoxer.health.GetHealthPercentage() / 100f);
+            AddVectorObs(myArea.opponent.GetComponent<Health>().GetHealthPercentage() / 100f);
             move = new float[] {
                 myArea.opponentBoxer.GetPunchState().GetHand() == Hand.RIGHT ? 1f : 0f,
                 myArea.opponentBoxer.GetPunchState().GetHand() == Hand.LEFT ? 1f : 0f,
@@ -105,11 +105,10 @@ public class Boxer : Agent
             };
 
             opponentComboState = myArea.opponentBoxer.comboTracker.GetState();
-            Debug.Log(opponentComboState);
         }
         else
         {
-            //AddVectorObs(myArea.playerBoxer.health.GetHealthPercentage() / 100f);
+            AddVectorObs(myArea.player.GetComponent<Health>().GetHealthPercentage() / 100f);
 
             move = new float[] {
                 myArea.playerBoxer.GetPunchState().GetHand() == Hand.RIGHT ? 1f : 0f,
