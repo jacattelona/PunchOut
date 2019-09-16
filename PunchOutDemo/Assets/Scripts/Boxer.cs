@@ -96,7 +96,8 @@ public class Boxer : Agent
 
         if (name == "Player")
         {
-            AddVectorObs(myArea.opponent.GetComponent<Health>().GetHealthPercentage() / 100f);
+            Health opponentHealth = myArea.opponent.GetComponent<Health>();
+            AddVectorObs(opponentHealth.health / (float) opponentHealth.max);
             move = new float[] {
                 myArea.opponentBoxer.GetPunchState().GetHand() == Hand.RIGHT ? 1f : 0f,
                 myArea.opponentBoxer.GetPunchState().GetHand() == Hand.LEFT ? 1f : 0f,
@@ -108,7 +109,8 @@ public class Boxer : Agent
         }
         else
         {
-            AddVectorObs(myArea.player.GetComponent<Health>().GetHealthPercentage() / 100f);
+            Health opponentHealth = myArea.player.GetComponent<Health>();
+            AddVectorObs(opponentHealth.health / (float) opponentHealth.max);
 
             move = new float[] {
                 myArea.playerBoxer.GetPunchState().GetHand() == Hand.RIGHT ? 1f : 0f,
@@ -148,7 +150,7 @@ public class Boxer : Agent
     /// </summary>
     public override void AgentReset()
     {
-        health.SetHealth(health.GetMaxHealth());
+        health.health = health.max;
         ResetDodgeState();
         ResetPunchState();
         comboTracker.ResetComboChain();
@@ -244,7 +246,7 @@ public class Boxer : Agent
     /// <returns>True if the boxer is KO, false otherwise</returns>
     public bool IsKO()
     {
-        return health.GetHealth() <= 0;
+        return health.health <= 0;
     }
 
     /// <summary>
@@ -268,7 +270,7 @@ public class Boxer : Agent
     /// <param name="damage">The amount of damage to take</param>
     private void TakeDamage(float damage)
     {
-        health.SetHealth(health.GetHealth() - (int) damage);
+        health.health -= (int) damage;
     }
 
     private void RegisterDodge(int dodgeType)
