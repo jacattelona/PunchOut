@@ -6,13 +6,12 @@ public class Health : MonoBehaviour
 {
 
     public int max;
-
-    private int current;
+    public int health;
 
     // Start is called before the first frame update
     void Start()
     {
-        current = max;
+        health = max;
     }
 
     /// <summary>
@@ -21,7 +20,7 @@ public class Health : MonoBehaviour
     /// <returns>The health</returns>
     public int GetHealth()
     {
-        return current;
+        return health;
     }
 
     /// <summary>
@@ -39,7 +38,7 @@ public class Health : MonoBehaviour
     /// <param name="health">The health</param>
     public void SetHealth(int health)
     {
-        current = Mathf.Max(Mathf.Min(health, max), 0);
+        this.health = Mathf.Max(Mathf.Min(health, max), 0);
     }
 
     /// <summary>
@@ -48,6 +47,6 @@ public class Health : MonoBehaviour
     /// <returns>The health percentage</returns>
     public float GetHealthPercentage()
     {
-        return current / (float)max * 100;
+        return health / (float)max * 100;
     }
 }

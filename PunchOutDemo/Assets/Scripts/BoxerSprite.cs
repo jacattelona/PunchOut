@@ -30,7 +30,7 @@ public class BoxerSprite : MonoBehaviour // TODO: Break this apart
     // Start is called before the first frame update
     void Start()
     {
-        DEFAULT = this.transform.localPosition;
+        DEFAULT = this.transform.Find("Sprite").localPosition;
         lastPunchState = boxer.GetPunchState();
         lastDodgeState = boxer.GetDodgeState();
         boxer.dodgeAction.animationStart.AddListener(StartDodgeAnimation);
@@ -43,18 +43,18 @@ public class BoxerSprite : MonoBehaviour // TODO: Break this apart
     {
         if (direction == 1)
         {
-            this.transform.localPosition = DEFAULT + LDODGELOC;
+            this.transform.Find("Sprite").localPosition = DEFAULT + LDODGELOC;
         } else
         {
-            this.transform.localPosition = DEFAULT + RDODGELOC;
+            this.transform.Find("Sprite").localPosition = DEFAULT + RDODGELOC;
         }
     }
 
     private void StopDodgeAnimation(int direction)
     {
-        this.transform.localPosition = DEFAULT;
-        Transform left = this.transform.GetChild(0);
-        Transform right = this.transform.GetChild(1);
+        this.transform.Find("Sprite").localPosition = DEFAULT;
+        Transform left = this.transform.Find("Sprite").Find("LeftArm");
+        Transform right = this.transform.Find("Sprite").Find("RightArm");
 
         left.localEulerAngles = new Vector3(0, 0, 0);
         right.localEulerAngles = new Vector3(0, 0, 0);
@@ -64,21 +64,21 @@ public class BoxerSprite : MonoBehaviour // TODO: Break this apart
     {
         if (side == 1)
         {
-            Transform t = this.transform.GetChild(0);
+            Transform t = this.transform.Find("Sprite").Find("LeftArm");
             t.localPosition = t.localPosition + PUNCH;
         } else
         {
-            Transform t = this.transform.GetChild(1);
+            Transform t = this.transform.Find("Sprite").Find("RightArm");
             t.localPosition = t.localPosition + PUNCH;
         }
     }
 
     private void StopPunchAnimation(int side)
     {
-        Transform left = this.transform.GetChild(0);
+        Transform left = this.transform.Find("Sprite").Find("LeftArm");
         left.localPosition = LDEFAULT;
 
-        Transform right = this.transform.GetChild(1);
+        Transform right = this.transform.Find("Sprite").Find("RightArm");
         right.localPosition = RDEFAULT;
     }
 
