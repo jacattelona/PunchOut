@@ -14,6 +14,9 @@ public class BoxerArea : Area
 
     private float matchNumber;
 
+    public float matchTime = -1;
+    private float startTime = -1;
+
     void Start()
     {
         playerBoxer = player.GetComponent<Boxer>();
@@ -23,6 +26,17 @@ public class BoxerArea : Area
         opponentBoxer.punchAction.action.AddListener(PlayerPunched);
         matchNumber = 1;
         matchNumberDisp.text = string.Format("Match {0}", matchNumber);
+        startTime = Time.fixedTime;
+    }
+
+    private void FixedUpdate()
+    {
+        if (matchTime > 0 && Time.fixedTime - startTime >= matchTime)
+        {
+            opponentBoxer.Done();
+            playerBoxer.Done();
+            startTime = Time.fixedTime;
+        }
     }
 
     private void PlayerPunched(int side)
@@ -42,6 +56,7 @@ public class BoxerArea : Area
         base.ResetArea();
         matchNumber += 1f;
         matchNumberDisp.text = string.Format("Match {0}", matchNumber);
+        startTime = Time.fixedTime;
     }
 
 }
