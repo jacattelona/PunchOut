@@ -331,6 +331,30 @@ MonoBehaviour:
   existancePenalty: 0
   imitationReward: 0.1
   imitationPenalty: -0.1
+--- !u!114 &163735294831956829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9149802047769349811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c8be0bc1bc1d7d468c19552f7c74f20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7861423672693447839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9149802047769349811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acc96ff11dd34b2459af7ab3ea809a4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4248751057049514296
 MonoBehaviour:
   m_ObjectHideFlags: 0

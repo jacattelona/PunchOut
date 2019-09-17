@@ -150,6 +150,8 @@ public class Boxer : Agent
         ResetDodgeState();
         ResetPunchState();
         comboTracker.ResetComboChain();
+        MoveRecorderSystem recorder = GetComponent<MoveRecorderSystem>();
+        if (recorder != null) recorder.Clear();
         if (!firstGame)
         {
             SaveReward();
