@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ImitationSystem : MonoBehaviour
 {
@@ -8,8 +6,7 @@ public class ImitationSystem : MonoBehaviour
     private Boxer me;
     public Boxer teacher;
 
-    public float matchingReward = 0.1f;
-    public float differPenalty = -0.1f;
+    private RewardComponent myRewards;
 
     public bool shouldImitate = true;
 
@@ -17,6 +14,7 @@ public class ImitationSystem : MonoBehaviour
     void Start()
     {
         me = GetComponent<Boxer>();
+        myRewards = GetComponent<RewardComponent>();
     }
 
     // Update is called once per frame
@@ -33,17 +31,17 @@ public class ImitationSystem : MonoBehaviour
 
         if (teacherPunchState.GetHand() != myPunchState.GetHand())
         {
-            me.AddReward(differPenalty);
+            me.AddReward(myRewards.imitationPenalty);
             return;
         }
 
 
         if (teacherDodgeState.GetType() != myDodgeState.GetType())
         {
-            me.AddReward(differPenalty);
+            me.AddReward(myRewards.imitationPenalty);
             return;
         }
 
-        me.AddReward(matchingReward);
+        me.AddReward(myRewards.imitationReward);
     }
 }

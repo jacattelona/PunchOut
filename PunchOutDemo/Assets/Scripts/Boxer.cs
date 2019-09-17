@@ -21,17 +21,10 @@ public class Boxer : Agent
     public float punchEventDelay = 0.0f;
     public float dodgeEventDelay = 0.0f;
 
-    public float gotPunchedPenalty = -0.01f;
-    public float punchedReward = 0.01f;
-    public float gotKOPenalty = 0f;
-    public float koReward = 0f;
-    public float existancePenalty = 0f;//-0.0003f;
-    public float dodgedReward = 0.00f;
-    public float dodgedPenalty = -0.00f;
-
     // COMPONENTS
     Health health;
     ComboTracker comboTracker;
+    RewardComponent rewards;
 
     /// <summary>
     /// The name of the boxer
@@ -69,6 +62,7 @@ public class Boxer : Agent
         myArea = area.GetComponent<BoxerArea>();
         health = GetComponent<Health>();
         comboTracker = GetComponent<ComboTracker>();
+        rewards = GetComponent<RewardComponent>();
 
         dodgeAction = new Action(dodgeDuration, dodgeCooldown, dodgeEventDelay);
         dodgeAction.animationStart.AddListener(RegisterDodge);
@@ -144,7 +138,7 @@ public class Boxer : Agent
         }
         HandleDodgeInput(vectorAction[0]);
         HandlePunchInput(vectorAction[1]);
-        AddReward(existancePenalty);
+        if (rewards != null) AddReward(rewards.existancePenalty);
     }
 
     /// <summary>
@@ -199,12 +193,12 @@ public class Boxer : Agent
         {
             if (dodgeState == DodgeState.LEFT && punch.GetHand() == Hand.LEFT)
             {
-                AddReward(dodgedReward);
+                if (rewards != null) AddReward(rewards.dodgeReward);
                 return PunchOutcome.DODGED;
             }
             else if (dodgeState == DodgeState.RIGHT && punch.GetHand() == Hand.RIGHT)
             {
-                AddReward(dodgedReward);
+                if (rewards != null) AddReward(rewards.dodgeReward);
                 return PunchOutcome.DODGED;
             }
         }
@@ -212,12 +206,12 @@ public class Boxer : Agent
         {
             if (dodgeState == DodgeState.RIGHT && punch.GetHand() == Hand.LEFT)
             {
-                AddReward(dodgedReward);
+                if (rewards != null) AddReward(rewards.dodgeReward);
                 return PunchOutcome.DODGED;
             }
             else if (dodgeState == DodgeState.LEFT && punch.GetHand() == Hand.RIGHT)
             {
-                AddReward(dodgedReward);
+                if (rewards != null) AddReward(rewards.dodgeReward);
                 return PunchOutcome.DODGED;
             }
         }
@@ -241,13 +235,13 @@ public class Boxer : Agent
         TakeDamage(punch.GetStrength());
         if (IsKO())
         {
-            AddReward(gotKOPenalty);
+            if (rewards != null) AddReward(rewards.knockOutPenalty);
             Done();
             return PunchOutcome.KO;
         }
         else
         {
-            AddReward(gotPunchedPenalty);
+            if (rewards != null) AddReward(rewards.punchPenalty);
             return PunchOutcome.HIT;
         }
     }
@@ -354,13 +348,13 @@ public class Boxer : Agent
             case PunchOutcome.BLOCKED:
                 break;
             case PunchOutcome.DODGED:
-                AddReward(dodgedPenalty);
+                if (rewards != null) AddReward(rewards.dodgePenalty);
                 break;
             case PunchOutcome.HIT:
-                AddReward(punchedReward);
+                if (rewards != null) AddReward(rewards.punchReward);
                 break;
             case PunchOutcome.KO:
-                AddReward(koReward);
+                if (rewards != null) AddReward(rewards.knockOutReward);
                 Done();
                 break;
         }
