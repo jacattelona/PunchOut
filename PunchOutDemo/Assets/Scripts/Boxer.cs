@@ -381,4 +381,37 @@ public class Boxer : Agent
         }
 
     }
+
+    // Set the state of the agent
+
+    public void Imitate()
+    {
+        GetComponent<ImitationSystem>().shouldImitate = true;
+        // TODO: Save the reward component values
+        rewards.punchReward = 0;
+        rewards.punchPenalty = 0;
+        rewards.dodgePenalty = 0;
+        rewards.dodgeReward = 0;
+        rewards.knockOutPenalty = 0;
+        rewards.knockOutReward = 0;
+    }
+
+    public void LearnDefenses()
+    {
+        GetComponent<ImitationSystem>().shouldImitate = false;
+        // TODO: Load the reward component values
+    }
+
+    public void FightMatch()
+    {
+        GetComponent<ImitationSystem>().shouldImitate = false;
+        // TODO: Save the reward component values
+        rewards.punchReward = 0;
+        rewards.punchPenalty = 0;
+        rewards.dodgePenalty = 0;
+        rewards.dodgeReward = 0;
+        rewards.knockOutPenalty = 0;
+        rewards.knockOutReward = 0;
+    }
+
 }
