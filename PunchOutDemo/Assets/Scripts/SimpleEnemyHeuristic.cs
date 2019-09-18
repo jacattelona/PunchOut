@@ -19,13 +19,11 @@ public class SimpleEnemyHeuristic : Decision
     {
         moves = new float[][]
         {
-            NOTHING,
             LEFT_PUNCH,
             RIGHT_PUNCH,
             LEFT_PUNCH,
             RIGHT_DODGE,
-            RIGHT_PUNCH,
-            NOTHING
+            RIGHT_PUNCH
         };
 
         moveIdx = 0;

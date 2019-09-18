@@ -1,1 +1,1 @@
-mlagents-learn conig\boxer_config.yaml --train
+mlagents-learn config\boxer_config.yaml --train
