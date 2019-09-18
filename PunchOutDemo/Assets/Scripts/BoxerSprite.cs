@@ -6,10 +6,10 @@ using UnityEngine.UI;
 /// <summary>
 /// A representation of the boxer sprite
 /// </summary>
-public class BoxerSprite : MonoBehaviour // TODO: Break this apart
+public class BoxerSprite : MonoBehaviour
 {
 
-    public Boxer boxer;
+    private Boxer boxer;
 
     //Const Values (you can't declare Vector3s const, so just pretend)
     protected Vector3 LDEFAULT = new Vector3(-1, 0, 0);             //Default position of the left glove
@@ -25,11 +25,16 @@ public class BoxerSprite : MonoBehaviour // TODO: Break this apart
     private Punch lastPunchState;
     private DodgeState lastDodgeState;
 
+    private Renderer leftGloveRenderer, rightGloveRenderer, leftArmRenderer, rightArmRenderer;
+
+    private Color gloveColor, armColor;
+
     private Vector3 DEFAULT = new Vector3(0, 0, 0);                  //Default position of the boxer
 
     // Start is called before the first frame update
     void Start()
     {
+        boxer = GetComponent<Boxer>();
         DEFAULT = this.transform.Find("Sprite").localPosition;
         lastPunchState = boxer.GetPunchState();
         lastDodgeState = boxer.GetDodgeState();
@@ -37,10 +42,26 @@ public class BoxerSprite : MonoBehaviour // TODO: Break this apart
         boxer.dodgeAction.animationEnd.AddListener(StopDodgeAnimation);
         boxer.punchAction.animationStart.AddListener(StartPunchAnimation);
         boxer.punchAction.animationEnd.AddListener(StopPunchAnimation);
+        boxer.punchAction.action.AddListener(PunchAction);
+
+        GameObject lg = this.transform.Find("Sprite").Find("LeftArm").Find("Glove").gameObject;
+        leftGloveRenderer = lg.GetComponent<Renderer>();
+
+        GameObject rg = this.transform.Find("Sprite").Find("RightArm").Find("Glove").gameObject;
+        rightGloveRenderer = rg.GetComponent<Renderer>();
+
+        GameObject la = this.transform.Find("Sprite").Find("LeftArm").Find("Forearm").gameObject;
+        leftArmRenderer = la.GetComponent<Renderer>();
+
+        GameObject ra = this.transform.Find("Sprite").Find("RightArm").Find("Forearm").gameObject;
+        rightArmRenderer = ra.GetComponent<Renderer>();
+
+        gloveColor = rightGloveRenderer.material.color;
+        armColor = rightArmRenderer.material.color;
     }
 
     private void StartDodgeAnimation(int direction)
-    {
+    {     
         if (direction == 1)
         {
             this.transform.Find("Sprite").localPosition = DEFAULT + LDODGELOC;
@@ -62,13 +83,33 @@ public class BoxerSprite : MonoBehaviour // TODO: Break this apart
 
     private void StartPunchAnimation(int side)
     {
+        if (!boxer.broadcastPunch) return;
+        Color broadcastColor = Color.red;
+        if (side == 1)
+        {
+            leftGloveRenderer.material.color = broadcastColor;
+            leftArmRenderer.material.color = broadcastColor;
+        } else
+        {
+            rightGloveRenderer.material.color = broadcastColor;
+            rightArmRenderer.material.color = broadcastColor;
+        }
+    }
+
+    private void PunchAction(int side)
+    {
         if (side == 1)
         {
             Transform t = this.transform.Find("Sprite").Find("LeftArm");
+            leftGloveRenderer.material.color = gloveColor;
+            leftArmRenderer.material.color = armColor;
             t.localPosition = t.localPosition + PUNCH;
-        } else
+        }
+        else
         {
             Transform t = this.transform.Find("Sprite").Find("RightArm");
+            rightGloveRenderer.material.color = gloveColor;
+            rightArmRenderer.material.color = armColor;
             t.localPosition = t.localPosition + PUNCH;
         }
     }
@@ -80,6 +121,11 @@ public class BoxerSprite : MonoBehaviour // TODO: Break this apart
 
         Transform right = this.transform.Find("Sprite").Find("RightArm");
         right.localPosition = RDEFAULT;
+
+        leftGloveRenderer.material.color = gloveColor;
+        rightGloveRenderer.material.color = gloveColor;
+        leftArmRenderer.material.color = armColor;
+        rightArmRenderer.material.color = armColor;
     }
 
     // Update is called once per frame
