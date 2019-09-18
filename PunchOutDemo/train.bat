@@ -1,1 +1,1 @@
-mlagents-learn config/gail_config.yaml --train
+mlagents-learn conig\boxer_config.yaml --train

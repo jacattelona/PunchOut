@@ -24,10 +24,10 @@ MonoBehaviour:
   keyContinuousPlayerActions: []
   axisContinuousPlayerActions: []
   discretePlayerActions:
-  - key: 276
+  - key: 97
     branchIndex: 0
     value: 1
-  - key: 275
+  - key: 100
     branchIndex: 0
     value: 2
   - key: 274
