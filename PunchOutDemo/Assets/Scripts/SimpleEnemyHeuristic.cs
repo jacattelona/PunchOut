@@ -5,66 +5,48 @@ using UnityEngine;
 
 public class SimpleEnemyHeuristic : Decision
 {
-    private int state = 0;
-    private float lastTime = -1;
-    private float maxTime = 0.6f;
+    private float[] NOTHING = new float[] { 0f, 0f };
+    private float[] LEFT_PUNCH = new float[] { 0f, 1f };
+    private float[] RIGHT_PUNCH = new float[] { 0f, 2f };
+    private float[] LEFT_DODGE= new float[] { 1f, 0f };
+    private float[] RIGHT_DODGE = new float[] { 2f, 0f };
+
+    private float[][] moves;
+
+    private int moveIdx;
+
+    public SimpleEnemyHeuristic()
+    {
+        moves = new float[][]
+        {
+            NOTHING,
+            LEFT_PUNCH,
+            RIGHT_PUNCH,
+            LEFT_PUNCH,
+            RIGHT_DODGE,
+            RIGHT_PUNCH,
+            NOTHING
+        };
+
+        moveIdx = 0;
+    }
 
     public override float[] Decide(List<float> vectorObs, List<Texture2D> visualObs, float reward, bool done, List<float> memory)
     {
         if (done)
         {
-            state = 0;
-            lastTime = -1;
+            moveIdx = 0;
         }
-        switch (state)
+        
+        if (vectorObs[0] == 1 && vectorObs[1] == 1) // Can punch / dodge
         {
-            case 0:
-                if (changeState(1))
-                {
-                    return new float[] { 0f, 0f };
-                }
-                break;
-            case 1:
-                if (changeState(2))
-                {
-                    return new float[] { 0f, 1f };
-                }
-                break;
-            case 2:
-                if (changeState(3))
-                {
-                    return new float[] { 0f, 0f };
-                }
-                break;
-            case 3:
-                if (changeState(4))
-                {
-                    return new float[] { 0f, 2f };
-                }
-                break;
-            case 4:
-                if (changeState(5))
-                {
-                    return new float[] { 0f, 0f };
-                }
-                break;
-            case 5:
-                changeState(0);
-                return new float[] { 1f, 0f };
+            moveIdx = (moveIdx + 1) % moves.Length;
+            return moves[moveIdx];
         }
-        return new float[] { 0f, 0f };
-    }
 
-    private bool changeState(int newState)
-    {
-        if (Time.fixedTime - lastTime >= maxTime)
-        {
-            state = newState;
-            lastTime = Time.fixedTime;
-            return true;
-        }
-        return false;
+        return NOTHING;
     }
+    
 
     public override List<float> MakeMemory(List<float> vectorObs, List<Texture2D> visualObs, float reward, bool done, List<float> memory)
     {
