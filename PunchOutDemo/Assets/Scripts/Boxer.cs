@@ -12,6 +12,10 @@ public class Boxer : Agent
     public GameObject area;
     private BoxerArea myArea;
 
+    public bool broadcastPunch = false;
+
+    public float[] lastActions;
+
     private bool firstGame = true;
 
     public float punchCooldown = 0.1f;
@@ -85,15 +89,15 @@ public class Boxer : Agent
     public override void CollectObservations()
     {
         AddVectorObs(!punchAction.IsOnCooldown() && !punchAction.IsRunning());
-        //AddVectorObs(!dodgeAction.IsOnCooldown() && !dodgeAction.IsRunning());
+        AddVectorObs(!dodgeAction.IsOnCooldown() && !dodgeAction.IsRunning());
 
         float[] move;
         int opponentComboState = 0;
 
         if (name == "Player")
         {
-            Health opponentHealth = myArea.opponent.GetComponent<Health>();
-            AddVectorObs(opponentHealth.health / (float) opponentHealth.maxHealth);
+            //Health opponentHealth = myArea.opponent.GetComponent<Health>();
+            //AddVectorObs(opponentHealth.health / (float) opponentHealth.maxHealth);
             move = new float[] {
                 myArea.opponentBoxer.GetPunchState().GetHand() == Hand.RIGHT ? 1f : 0f,
                 myArea.opponentBoxer.GetPunchState().GetHand() == Hand.LEFT ? 1f : 0f,
@@ -105,8 +109,8 @@ public class Boxer : Agent
         }
         else
         {
-            Health opponentHealth = myArea.player.GetComponent<Health>();
-            AddVectorObs(opponentHealth.health / (float) opponentHealth.maxHealth);
+            //Health opponentHealth = myArea.player.GetComponent<Health>();
+            //AddVectorObs(opponentHealth.health / (float) opponentHealth.maxHealth);
 
             move = new float[] {
                 myArea.playerBoxer.GetPunchState().GetHand() == Hand.RIGHT ? 1f : 0f,
@@ -132,6 +136,7 @@ public class Boxer : Agent
     public override void AgentAction(float[] vectorAction, string textAction)
     {
         base.AgentAction(vectorAction, textAction);
+        lastActions = vectorAction;
         if (IsKO())
         {
             return;

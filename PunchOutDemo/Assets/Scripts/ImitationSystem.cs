@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 public class ImitationSystem : MonoBehaviour
 {
@@ -20,28 +21,15 @@ public class ImitationSystem : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!shouldImitate) { return;  }
+        if (!shouldImitate) { return; }
 
-        Punch teacherPunchState = teacher.GetPunchState();
-        Punch myPunchState = me.GetPunchState();
-
-        DodgeState teacherDodgeState = teacher.GetDodgeState();
-        DodgeState myDodgeState = me.GetDodgeState();
-
-
-        if (teacherPunchState.GetHand() != myPunchState.GetHand())
+        if (Enumerable.SequenceEqual(teacher.lastActions, me.lastActions))
+        {
+            me.AddReward(myRewards.imitationReward);
+        }
+        else
         {
             me.AddReward(myRewards.imitationPenalty);
-            return;
         }
-
-
-        if (teacherDodgeState.GetType() != myDodgeState.GetType())
-        {
-            me.AddReward(myRewards.imitationPenalty);
-            return;
-        }
-
-        me.AddReward(myRewards.imitationReward);
     }
 }

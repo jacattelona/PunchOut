@@ -424,16 +424,6 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 4248751057049514296, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
-      propertyPath: name
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4248751057049514296, guid: e5a892c658e726446a45e2b1e66f3e43,
-        type: 3}
-      propertyPath: dodgeCooldown
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4248751057049514296, guid: e5a892c658e726446a45e2b1e66f3e43,
-        type: 3}
       propertyPath: comboTimeout
       value: 1.5
       objectReference: {fileID: 0}
@@ -449,16 +439,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4248751057049514296, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
-      propertyPath: punchDuration
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4248751057049514296, guid: e5a892c658e726446a45e2b1e66f3e43,
-        type: 3}
-      propertyPath: punchEventDelay
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4248751057049514296, guid: e5a892c658e726446a45e2b1e66f3e43,
-        type: 3}
       propertyPath: weakPunchStrength
       value: 0
       objectReference: {fileID: 0}
@@ -466,7 +446,7 @@ PrefabInstance:
         type: 3}
       propertyPath: brain
       value: 
-      objectReference: {fileID: 11400000, guid: 28327d844c23eec458c5328c80d86790,
+      objectReference: {fileID: 11400000, guid: 5551af24ea95a994083527fdaa432c95,
         type: 2}
     - target: {fileID: 4620351072944787848, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
@@ -628,8 +608,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teacher: {fileID: 1113692311}
-  matchingReward: 0.1
-  differPenalty: -0.1
   shouldImitate: 0
 --- !u!1 &1892640594
 GameObject:
@@ -734,7 +712,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 28327d844c23eec458c5328c80d86790, type: 2}
     - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
     - {fileID: 11400000, guid: 5551af24ea95a994083527fdaa432c95, type: 2}
-    _brainsToControl: []
+    _brainsToControl:
+    - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
   maxSteps: 0
   trainingConfiguration:
     width: 80
@@ -1153,16 +1132,6 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 4248751057049514296, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
-      propertyPath: name
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4248751057049514296, guid: e5a892c658e726446a45e2b1e66f3e43,
-        type: 3}
-      propertyPath: dodgeCooldown
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4248751057049514296, guid: e5a892c658e726446a45e2b1e66f3e43,
-        type: 3}
       propertyPath: comboTimeout
       value: 1.5
       objectReference: {fileID: 0}
@@ -1175,16 +1144,6 @@ PrefabInstance:
         type: 3}
       propertyPath: existancePenalty
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4248751057049514296, guid: e5a892c658e726446a45e2b1e66f3e43,
-        type: 3}
-      propertyPath: punchDuration
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4248751057049514296, guid: e5a892c658e726446a45e2b1e66f3e43,
-        type: 3}
-      propertyPath: punchEventDelay
-      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4248751057049514296, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
@@ -1292,6 +1251,26 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 100000
       objectReference: {fileID: 0}
+    - target: {fileID: 7428343496194686065, guid: e5a892c658e726446a45e2b1e66f3e43,
+        type: 3}
+      propertyPath: punchReward
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428343496194686065, guid: e5a892c658e726446a45e2b1e66f3e43,
+        type: 3}
+      propertyPath: punchPenalty
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428343496194686065, guid: e5a892c658e726446a45e2b1e66f3e43,
+        type: 3}
+      propertyPath: dodgeReward
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428343496194686065, guid: e5a892c658e726446a45e2b1e66f3e43,
+        type: 3}
+      propertyPath: dodgePenalty
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5a892c658e726446a45e2b1e66f3e43, type: 3}
 --- !u!1 &3769192917699701651 stripped
@@ -1313,6 +1292,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teacher: {fileID: 1113692313}
-  matchingReward: 0.01
-  differPenalty: -0.1
   shouldImitate: 1

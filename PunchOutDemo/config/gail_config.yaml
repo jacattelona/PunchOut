@@ -114,7 +114,7 @@ BoxerLearning:
     num_layers: 2
     beta: 1.0e-2
     #epsilon: 0.3
-    #learning_rate: 0.001
+    learning_rate: 0.001
     max_steps: 5.0e6
     num_epoch: 4
     reward_signals:
