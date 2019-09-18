@@ -64,8 +64,9 @@ public class Graph : MonoBehaviour
         GameObject lastDot = null;
         for(int i = 0; i < values.Count; i++)
         {
+            float value = Mathf.Clamp01(values[i]);
             float xPos = xSize + i * xSize;
-            float yPos = values[i] * graphHeight;
+            float yPos = value * graphHeight;
             GameObject dot = CreateCircle(new Vector2(xPos, yPos));
             if (lastDot != null)
             {
