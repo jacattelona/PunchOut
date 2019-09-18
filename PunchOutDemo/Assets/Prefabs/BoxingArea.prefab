@@ -343,8 +343,8 @@ MonoBehaviour:
   knockOutReward: 0
   knockOutPenalty: 0
   existancePenalty: 0
-  imitationReward: 0.1
-  imitationPenalty: -0.1
+  imitationReward: 2
+  imitationPenalty: -2
 --- !u!114 &7861423672693447839
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -376,6 +376,7 @@ public class Boxer : Agent
 
         if (history != null)
         {
+            Debug.Log(reward);
             history.rewards.Add(new RewardHistory.Reward { Amount = reward, Time = time });
         }
 

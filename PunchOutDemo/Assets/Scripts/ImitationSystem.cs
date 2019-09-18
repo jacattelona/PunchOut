@@ -25,11 +25,11 @@ public class ImitationSystem : MonoBehaviour
 
         if (Enumerable.SequenceEqual(teacher.lastActions, me.lastActions))
         {
-            me.AddReward(myRewards.imitationReward);
+            me.AddReward(myRewards.imitationReward * Time.fixedDeltaTime);
         }
         else
         {
-            me.AddReward(myRewards.imitationPenalty);
+            me.AddReward(myRewards.imitationPenalty * Time.fixedDeltaTime);
         }
     }
 }
