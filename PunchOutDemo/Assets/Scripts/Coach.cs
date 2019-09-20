@@ -28,7 +28,7 @@ public class Coach : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetKeyDown(negativeKey))
         {

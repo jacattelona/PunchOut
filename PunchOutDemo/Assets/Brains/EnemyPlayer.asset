@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: EnemyPlayer
   m_EditorClassIdentifier: 
   brainParameters:
-    vectorObservationSize: 10
-    numStackedVectorObservations: 32
+    vectorObservationSize: 22
+    numStackedVectorObservations: 1
     vectorActionSize: 0300000003000000
     cameraResolutions: []
     vectorActionDescriptions:

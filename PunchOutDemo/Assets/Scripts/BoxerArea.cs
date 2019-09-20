@@ -1,49 +1,62 @@
 ﻿using MLAgents;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BoxerArea : Area
 {
 
     public GameObject player;
     public GameObject opponent;
+    public Text matchNumberDisp;
 
     public Boxer playerBoxer;
     public Boxer opponentBoxer;
+
+    private float matchNumber;
+
+    public float matchTime = -1;
+    private float startTime = -1;
 
     void Start()
     {
         playerBoxer = player.GetComponent<Boxer>();
         opponentBoxer = opponent.GetComponent<Boxer>();
 
-        playerBoxer.punch.AddListener(OpponentPunched);
-        opponentBoxer.punch.AddListener(PlayerPunched);
+        playerBoxer.punchAction.action.AddListener(OpponentPunched);
+        opponentBoxer.punchAction.action.AddListener(PlayerPunched);
+        matchNumber = 1;
+        matchNumberDisp.text = string.Format("Match {0}", matchNumber);
+        startTime = Time.fixedTime;
     }
 
-    private void PlayerPunched()
+    private void FixedUpdate()
+    {
+        if (matchTime > 0 && Time.fixedTime - startTime >= matchTime)
+        {
+            opponentBoxer.Done();
+            playerBoxer.Done();
+            startTime = Time.fixedTime;
+        }
+    }
+
+    private void PlayerPunched(int side)
     {
         PunchOutcome outcome = playerBoxer.onPunched(opponentBoxer.GetPunchState());
-        playerBoxer.RewardOutcome(outcome);
-        if (outcome == PunchOutcome.KO)
-        {
-            ResetArea();
-        }
+        opponentBoxer.RewardOutcome(outcome);
     }
 
-    private void OpponentPunched()
+    private void OpponentPunched(int side)
     {
         PunchOutcome outcome = opponentBoxer.onPunched(playerBoxer.GetPunchState());
-        opponentBoxer.RewardOutcome(outcome);
-        if (outcome == PunchOutcome.KO)
-        {
-            ResetArea();
-        }
+        playerBoxer.RewardOutcome(outcome);
     }
 
     public override void ResetArea()
     {
         base.ResetArea();
-        playerBoxer.AgentReset();
-        opponentBoxer.AgentReset();
+        matchNumber += 1f;
+        matchNumberDisp.text = string.Format("Match {0}", matchNumber);
+        startTime = Time.fixedTime;
     }
 
 }

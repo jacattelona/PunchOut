@@ -1,4 +1,6 @@
 ﻿using MLAgents;
+using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,34 +12,28 @@ public class Boxer : Agent
     public GameObject area;
     private BoxerArea myArea;
 
+    public bool broadcastPunch = false;
+
+    public float[] lastActions;
+
+    private bool firstGame = true;
+
     public float punchCooldown = 0.1f;
     public float dodgeCooldown = 0.1f;
     public float punchDuration = 0.1f;
-    public float dodgeDuration = 0.1f;
+    public float dodgeDuration = 0.5f;
+    public float punchEventDelay = 0.0f;
+    public float dodgeEventDelay = 0.0f;
 
-    private float lastPunchTime = -1f;
-    private float lastDodgeTime = -1f;
+    // COMPONENTS
+    Health health;
+    ComboTracker comboTracker;
+    RewardComponent rewards;
 
     /// <summary>
     /// The name of the boxer
     /// </summary>
     public string name;
-
-    /// <summary>
-    /// The punch event
-    /// </summary>
-    public UnityEvent punch = new UnityEvent();
-
-    /// <summary>
-    /// The dodge event
-    /// </summary>
-    public UnityEvent dodge = new UnityEvent();
-
-    /// <summary>
-    /// The maximum health points
-    /// </summary>
-    public float maxHealth = 100;
-    private float health;
 
     /// <summary>
     /// The multiplier to apply to incoming damage when blocking.
@@ -54,18 +50,11 @@ public class Boxer : Agent
     /// </summary>
     public float weakPunchStrength = 10;
 
-    /// <summary>
-    /// The strong punch type
-    /// </summary>
-    public PunchType strongPunch = PunchType.HOOK;
-
-    /// <summary>
-    /// The strong punch strength
-    /// </summary>
-    public float strongPunchStrength = 20;
-
     private DodgeState dodgeState = DodgeState.NONE;
     private Punch punchState = Punch.NULL_PUNCH;
+
+    public Action punchAction;
+    public Action dodgeAction;
 
 
     /// <summary>
@@ -75,7 +64,23 @@ public class Boxer : Agent
     {
         base.InitializeAgent();
         myArea = area.GetComponent<BoxerArea>();
-        health = maxHealth;
+        health = GetComponent<Health>();
+        comboTracker = GetComponent<ComboTracker>();
+        rewards = GetComponent<RewardComponent>();
+
+        dodgeAction = new Action(dodgeDuration, dodgeCooldown, dodgeEventDelay);
+        dodgeAction.animationStart.AddListener(RegisterDodge);
+        dodgeAction.animationEnd.AddListener(DeregisterDodge);
+
+        punchAction = new Action(punchDuration, punchCooldown, punchEventDelay);
+        punchAction.animationStart.AddListener(RegisterPunch);
+        punchAction.animationEnd.AddListener(DeregisterPunch);
+    }
+
+    void FixedUpdate()
+    {
+        punchAction.Update();
+        dodgeAction.Update();
     }
 
     /// <summary>
@@ -83,43 +88,44 @@ public class Boxer : Agent
     /// </summary>
     public override void CollectObservations()
     {
-        // Current punch state
-        AddVectorObs(health / maxHealth);
-        AddVectorObs(punchState.GetHand() == Hand.RIGHT);
-        AddVectorObs(punchState.GetHand() == Hand.LEFT);
-        //AddVectorObs(punchState.GetPunchType() == weakPunch ? 1.0f : 0.0f);
-        //AddVectorObs(punchState.GetPunchType() == strongPunch ? 1.0f : 0.0f);
+        AddVectorObs(!punchAction.IsOnCooldown() && !punchAction.IsRunning());
+        AddVectorObs(!dodgeAction.IsOnCooldown() && !dodgeAction.IsRunning());
 
-        // Current dodge state
-        AddVectorObs(dodgeState == DodgeState.LEFT);
-        AddVectorObs(dodgeState == DodgeState.RIGHT);
-        //AddVectorObs(dodgeState == DodgeState.FRONT);
+        float[] move;
+        int opponentComboState = 0;
 
-        //AddVectorObs(Time.fixedTime - lastPunchTime >= punchDuration + punchCooldown); // Can punch
-        //AddVectorObs(Time.fixedTime - lastDodgeTime >= dodgeDuration + dodgeCooldown); // Can block 
-
-        //AddVectorObs(true); // Play defensively
-
-        if (this == myArea.player)
+        if (name == "Player")
         {
-            AddVectorObs(myArea.opponentBoxer.GetHealth() / myArea.opponentBoxer.GetMaxHealth());
-            AddVectorObs(myArea.opponentBoxer.GetPunchState().GetHand() == Hand.RIGHT);
-            AddVectorObs(myArea.opponentBoxer.GetPunchState().GetHand() == Hand.LEFT);
-            AddVectorObs(myArea.opponentBoxer.GetDodgeState() == DodgeState.LEFT);
-            AddVectorObs(myArea.opponentBoxer.GetDodgeState() == DodgeState.RIGHT);
-        } else
-        {
-            AddVectorObs(myArea.playerBoxer.GetHealth() / myArea.opponentBoxer.GetMaxHealth());
-            AddVectorObs(myArea.playerBoxer.GetPunchState().GetHand() == Hand.RIGHT);
-            AddVectorObs(myArea.playerBoxer.GetPunchState().GetHand() == Hand.LEFT);
-            AddVectorObs(myArea.playerBoxer.GetDodgeState() == DodgeState.LEFT);
-            AddVectorObs(myArea.playerBoxer.GetDodgeState() == DodgeState.RIGHT);
+            //Health opponentHealth = myArea.opponent.GetComponent<Health>();
+            //AddVectorObs(opponentHealth.health / (float) opponentHealth.maxHealth);
+            move = new float[] {
+                myArea.opponentBoxer.GetPunchState().GetHand() == Hand.RIGHT ? 1f : 0f,
+                myArea.opponentBoxer.GetPunchState().GetHand() == Hand.LEFT ? 1f : 0f,
+                myArea.opponentBoxer.GetDodgeState() == DodgeState.LEFT ? 1f : 0f,
+                myArea.opponentBoxer.GetDodgeState() == DodgeState.RIGHT ? 1f : 0f
+            };
+
+            opponentComboState = myArea.opponentBoxer.comboTracker.GetState();
         }
-        
+        else
+        {
+            //Health opponentHealth = myArea.player.GetComponent<Health>();
+            //AddVectorObs(opponentHealth.health / (float) opponentHealth.maxHealth);
+
+            move = new float[] {
+                myArea.playerBoxer.GetPunchState().GetHand() == Hand.RIGHT ? 1f : 0f,
+                myArea.playerBoxer.GetPunchState().GetHand() == Hand.LEFT ? 1f : 0f,
+                myArea.playerBoxer.GetDodgeState() == DodgeState.LEFT ? 1f : 0f,
+                myArea.playerBoxer.GetDodgeState() == DodgeState.RIGHT ? 1f : 0f
+            };
+
+            opponentComboState = myArea.playerBoxer.comboTracker.GetState();
+        }
 
 
-        // Camera view of enemy?
-        // Or maybe there is a reference to the opponent object in here
+        AddVectorObs(Encoder.encodeInt(comboTracker.GetState(), 0, comboTracker.GetTotalStates()));
+        AddVectorObs(Encoder.encodeInt(opponentComboState, 0, comboTracker.GetTotalStates()));
+        AddVectorObs(move);
     }
 
     /// <summary>
@@ -130,13 +136,14 @@ public class Boxer : Agent
     public override void AgentAction(float[] vectorAction, string textAction)
     {
         base.AgentAction(vectorAction, textAction);
+        lastActions = vectorAction;
         if (IsKO())
         {
             return;
         }
         HandleDodgeInput(vectorAction[0]);
         HandlePunchInput(vectorAction[1]);
-        Debug.Log(name + ": " + health);
+        if (rewards != null) AddReward(rewards.existancePenalty);
     }
 
     /// <summary>
@@ -144,10 +151,22 @@ public class Boxer : Agent
     /// </summary>
     public override void AgentReset()
     {
-        Done();
-        health = maxHealth;
+        health.health = health.maxHealth;
         ResetDodgeState();
         ResetPunchState();
+        comboTracker.ResetComboChain();
+        MoveRecorderSystem recorder = GetComponent<MoveRecorderSystem>();
+        if (recorder != null) recorder.Clear();
+        if (!firstGame)
+        {
+            SaveReward();
+            if (gameObject == myArea.player)
+            {
+                myArea.ResetArea();
+            }
+        }
+        firstGame = false;
+        
     }
 
     /// <summary>
@@ -169,24 +188,6 @@ public class Boxer : Agent
     }
 
     /// <summary>
-    /// Get the current health level of the boxer
-    /// </summary>
-    /// <returns>The health level</returns>
-    public float GetHealth()
-    {
-        return health;
-    }
-
-    /// <summary>
-    /// Get the maximum health level of the boxer
-    /// </summary>
-    /// <returns>The maximum health level</returns>
-    public float GetMaxHealth()
-    {
-        return maxHealth;
-    }
-
-    /// <summary>
     /// Handles the damage taken from an opposing punch
     /// </summary>
     /// <param name="punch">The punch</param>
@@ -195,41 +196,59 @@ public class Boxer : Agent
     {
 
         // Dodged
-        if (dodgeState == DodgeState.LEFT && punch.GetHand() == Hand.LEFT)
+        if (gameObject == myArea.player)
         {
-            AddReward(0.1f);
-            return PunchOutcome.DODGED;
-        } else if (dodgeState == DodgeState.RIGHT && punch.GetHand() == Hand.RIGHT)
-        {
-            AddReward(0.1f);
-            return PunchOutcome.DODGED;
-        }
-
-        // Blocked
-        if (dodgeState != DodgeState.NONE)
-        {
-            TakeDamage(punch.GetStrength() * blockMultiplier);
-            if (IsKO())
+            if (dodgeState == DodgeState.LEFT && punch.GetHand() == Hand.LEFT)
             {
-                AddReward(-1.0f);
-                return PunchOutcome.KO;
-            } else
+                if (rewards != null) AddReward(rewards.dodgeReward);
+                return PunchOutcome.DODGED;
+            }
+            else if (dodgeState == DodgeState.RIGHT && punch.GetHand() == Hand.RIGHT)
             {
-                AddReward(0.1f);
-                return PunchOutcome.BLOCKED;
+                if (rewards != null) AddReward(rewards.dodgeReward);
+                return PunchOutcome.DODGED;
             }
         }
+        else
+        {
+            if (dodgeState == DodgeState.RIGHT && punch.GetHand() == Hand.LEFT)
+            {
+                if (rewards != null) AddReward(rewards.dodgeReward);
+                return PunchOutcome.DODGED;
+            }
+            else if (dodgeState == DodgeState.LEFT && punch.GetHand() == Hand.RIGHT)
+            {
+                if (rewards != null) AddReward(rewards.dodgeReward);
+                return PunchOutcome.DODGED;
+            }
+        }
+        
+
+        // Blocked
+        //if (dodgeState != DodgeState.NONE)
+        //{
+        //    TakeDamage(punch.GetStrength() * blockMultiplier);
+        //    if (IsKO())
+        //    {
+        //        AddReward(gotKOPenalty);
+        //        return PunchOutcome.KO;
+        //    } else
+        //    {
+        //        return PunchOutcome.BLOCKED;
+        //    }
+        //}
 
         // Hit
         TakeDamage(punch.GetStrength());
         if (IsKO())
         {
-            AddReward(-1.0f);
+            if (rewards != null) AddReward(rewards.knockOutPenalty);
+            Done();
             return PunchOutcome.KO;
         }
         else
         {
-            AddReward(-0.1f);
+            if (rewards != null) AddReward(rewards.punchPenalty);
             return PunchOutcome.HIT;
         }
     }
@@ -240,7 +259,7 @@ public class Boxer : Agent
     /// <returns>True if the boxer is KO, false otherwise</returns>
     public bool IsKO()
     {
-        return health <= 0;
+        return health.health <= 0;
     }
 
     /// <summary>
@@ -248,25 +267,14 @@ public class Boxer : Agent
     /// </summary>
     void ResetDodgeState()
     {
-        if (dodgeState == DodgeState.NONE)
-        {
-            return;
-        }
+        dodgeAction.Reset();
         dodgeState = DodgeState.NONE;
-        dodge.Invoke();
     }
 
-    /// <summary>
-    /// Reset the punch state of the boxer
-    /// </summary>
     void ResetPunchState()
     {
-        if (punchState == Punch.NULL_PUNCH)
-        {
-            return;
-        }
+        punchAction.Reset();
         punchState = Punch.NULL_PUNCH;
-        punch.Invoke(); // Is this correct?
     }
 
     /// <summary>
@@ -275,47 +283,43 @@ public class Boxer : Agent
     /// <param name="damage">The amount of damage to take</param>
     private void TakeDamage(float damage)
     {
-        health -= damage;
+        health.health -= (int) damage;
     }
 
-    /// <summary>
-    /// Throw a punch
-    /// </summary>
-    /// <param name="punch">The punch</param>
-    private void ThrowPunch(Punch punch) // TODO: Set timer
+    private void RegisterDodge(int dodgeType)
     {
-        if (punchState != Punch.NULL_PUNCH || dodgeState != DodgeState.NONE)
+        if (dodgeType == 1)
         {
-            return;
+            dodgeState = DodgeState.LEFT;
+        }
+        else
+        {
+            dodgeState = DodgeState.RIGHT;
+        }
+    }
+
+    private void DeregisterDodge(int dodgeType)
+    {
+        dodgeState = DodgeState.NONE;
+    }
+
+    private void RegisterPunch(int punchType)
+    {
+        Punch punch;
+        if (punchType == 1)
+        {
+            punch = new Punch(weakPunch, Hand.LEFT, weakPunchStrength);
+        }
+        else
+        {
+            punch = new Punch(weakPunch, Hand.RIGHT, weakPunchStrength);
         }
         punchState = punch;
-        this.punch.Invoke();
     }
 
-    /// <summary>
-    /// Dodge in the given direction
-    /// </summary>
-    /// <param name="dodgeDirection">The direction to dodge</param>
-    private void Dodge(DodgeDirection dodgeDirection)
+    private void DeregisterPunch(int punchType)
     {
-        if (dodgeState != DodgeState.NONE || punchState != Punch.NULL_PUNCH)
-        {
-            return;
-        }
-        switch (dodgeDirection)
-        {
-            case DodgeDirection.LEFT:
-                dodgeState = DodgeState.LEFT;
-                break;
-            case DodgeDirection.RIGHT:
-                dodgeState = DodgeState.RIGHT;
-                break;
-            case DodgeDirection.FRONT:
-                dodgeState = DodgeState.FRONT;
-                break;
-        }
-
-        dodge.Invoke();
+        punchState = Punch.NULL_PUNCH;
     }
 
 
@@ -325,39 +329,9 @@ public class Boxer : Agent
     /// <param name="dodgeInput">The dodge input value</param>
     private void HandleDodgeInput(float dodgeInput)
     {
-        if (Time.fixedTime - lastDodgeTime < dodgeDuration) // Can't do anything while still dodging
+        if (dodgeInput != 0 && !punchAction.IsRunning())
         {
-            return;
-        }
-        else
-        {
-            ResetDodgeState();
-        }
-
-        if (dodgeInput == 0)
-        {
-            return;
-        }
-
-        if (Time.fixedTime - lastDodgeTime > dodgeCooldown + dodgeDuration) // Can only dodge when past cooldown
-        {
-            if (dodgeInput == 1)
-            {
-                Dodge(DodgeDirection.LEFT);
-            }
-            else if (dodgeInput == 2)
-            {
-                Dodge(DodgeDirection.RIGHT);
-            }
-            else if (dodgeInput == 3)
-            {
-                Dodge(DodgeDirection.FRONT);
-            }
-            else if (dodgeInput == 4)
-            {
-                Dodge(DodgeDirection.FRONT);
-            }
-            lastDodgeTime = Time.fixedTime;
+            dodgeAction.Run((int)dodgeInput);
         }
     }
 
@@ -368,39 +342,9 @@ public class Boxer : Agent
     private void HandlePunchInput(float punchInput)
     {
 
-        if (Time.fixedTime - lastPunchTime < punchDuration) // Can't do anything while still punching
+        if (punchInput != 0 && !dodgeAction.IsRunning())
         {
-            return;
-        }
-        else
-        {
-            ResetPunchState();
-        }
-
-        if (punchInput == 0)
-        {
-            return;
-        }
-
-        if (Time.fixedTime - lastPunchTime > punchCooldown + punchDuration)
-        {
-            if (punchInput == 1)
-            {
-                ThrowPunch(new Punch(weakPunch, Hand.LEFT, weakPunchStrength));
-            }
-            else if (punchInput == 2)
-            {
-                ThrowPunch(new Punch(weakPunch, Hand.RIGHT, weakPunchStrength));
-            }
-            else if (punchInput == 3)
-            {
-                ThrowPunch(new Punch(strongPunch, Hand.LEFT, strongPunchStrength));
-            }
-            else if (punchInput == 4)
-            {
-                ThrowPunch(new Punch(strongPunch, Hand.RIGHT, strongPunchStrength));
-            }
-            lastPunchTime = Time.fixedTime;
+            punchAction.Run((int) punchInput);
         }
     }
 
@@ -409,17 +353,65 @@ public class Boxer : Agent
         switch (outcome)
         {
             case PunchOutcome.BLOCKED:
-                AddReward(0.01f);
                 break;
             case PunchOutcome.DODGED:
-                AddReward(-0.01f);
+                if (rewards != null) AddReward(rewards.dodgePenalty);
                 break;
             case PunchOutcome.HIT:
-                AddReward(0.1f);
+                if (rewards != null) AddReward(rewards.punchReward);
                 break;
             case PunchOutcome.KO:
-                AddReward(1f);
+                if (rewards != null) AddReward(rewards.knockOutReward);
+                Done();
                 break;
         }
     }
+
+    private void SaveReward()
+    {
+        float reward = GetCumulativeReward();
+        float time = Time.fixedTime;
+
+        RewardHistory history = GetComponent<RewardHistory>();
+
+        if (history != null)
+        {
+            Debug.Log(reward);
+            history.rewards.Add(new RewardHistory.Reward { Amount = reward, Time = time });
+        }
+
+    }
+
+    // Set the state of the agent
+
+    public void Imitate()
+    {
+        GetComponent<ImitationSystem>().shouldImitate = true;
+        // TODO: Save the reward component values
+        rewards.punchReward = 0;
+        rewards.punchPenalty = 0;
+        rewards.dodgePenalty = 0;
+        rewards.dodgeReward = 0;
+        rewards.knockOutPenalty = 0;
+        rewards.knockOutReward = 0;
+    }
+
+    public void LearnDefenses()
+    {
+        GetComponent<ImitationSystem>().shouldImitate = false;
+        // TODO: Load the reward component values
+    }
+
+    public void FightMatch()
+    {
+        GetComponent<ImitationSystem>().shouldImitate = false;
+        // TODO: Save the reward component values
+        rewards.punchReward = 0;
+        rewards.punchPenalty = 0;
+        rewards.dodgePenalty = 0;
+        rewards.dodgeReward = 0;
+        rewards.knockOutPenalty = 0;
+        rewards.knockOutReward = 0;
+    }
+
 }
