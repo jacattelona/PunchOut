@@ -832,7 +832,7 @@ PrefabInstance:
         type: 3}
       propertyPath: brain
       value: 
-      objectReference: {fileID: 11400000, guid: 5551af24ea95a994083527fdaa432c95,
+      objectReference: {fileID: 11400000, guid: 28327d844c23eec458c5328c80d86790,
         type: 2}
     - target: {fileID: 4620351072944787848, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
