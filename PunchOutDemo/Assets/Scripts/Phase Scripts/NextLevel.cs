@@ -23,7 +23,7 @@ public class NextLevel : MonoBehaviour
     {
         if (spirite1.activeSelf && spirite1.activeSelf && spirite1.activeSelf)
         {
-            
+
         }
     }
 
@@ -33,5 +33,7 @@ public class NextLevel : MonoBehaviour
         {
             SceneManager.LoadScene(nextLevel);
         }
+
     }
+
 }

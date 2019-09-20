@@ -4,4 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Phase Scenes/Fighting.unity
+    guid: 7a495da421e3fff4783f7d5148815d23
+  - enabled: 1
+    path: Assets/Scenes/Phase Scenes/Training.unity
+    guid: 483c9a147f09eb54dbbc156003db6463
+  m_configObjects: {}
