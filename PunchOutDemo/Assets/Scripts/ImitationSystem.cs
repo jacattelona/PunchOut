@@ -10,6 +10,7 @@ public class ImitationSystem : MonoBehaviour
     private RewardComponent myRewards;
 
     public bool shouldImitate = true;
+    public bool ignoreInaction = true;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,8 @@ public class ImitationSystem : MonoBehaviour
     void FixedUpdate()
     {
         if (!shouldImitate) { return; }
+
+        if (ignoreInaction && teacher.lastActions.All(value => value == 0)) { return; }
 
         if (Enumerable.SequenceEqual(teacher.lastActions, me.lastActions))
         {
