@@ -34,12 +34,14 @@ public class SimpleEnemyHeuristic : Decision
         if (done)
         {
             moveIdx = 0;
+            return NOTHING;
         }
-        
+
         if (vectorObs[0] == 1 && vectorObs[1] == 1) // Can punch / dodge
         {
+            float[] move = moves[moveIdx];
             moveIdx = (moveIdx + 1) % moves.Length;
-            return moves[moveIdx];
+            return move;
         }
 
         return NOTHING;

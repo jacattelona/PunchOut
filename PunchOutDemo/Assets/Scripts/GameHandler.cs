@@ -7,6 +7,8 @@ public class GameHandler : MonoBehaviour
 
     public GameObject offensiveTrainingCoachArea, offensiveTrainingAIArea;
 
+    private Vector3 coachAreaPos, aiAreaPos;
+
     private BoxerArea area;
 
     public float demoTime, viewTime;
@@ -17,27 +19,34 @@ public class GameHandler : MonoBehaviour
 
     private float lastCount;
 
-    private ImitationSystem imitationSystem;
-    private RewardHistory rewardHistory;
-    private Renderer[] coachRenderers, aiRenderers;
+    private ImitationSystem[] imitationSystems;
+    private List<RewardHistory> rewardHistories;
 
     // Start is called before the first frame update
     void Start()
     {
+        aiAreaPos = offensiveTrainingAIArea.transform.localPosition;
+        coachAreaPos = offensiveTrainingCoachArea.transform.localPosition;
 
-        imitationSystem = offensiveTrainingAIArea.GetComponentInChildren<ImitationSystem>();
-        coachRenderers = offensiveTrainingCoachArea.GetComponentsInChildren<Renderer>();
-        aiRenderers = offensiveTrainingAIArea.GetComponentsInChildren<Renderer>();
-        rewardHistory = offensiveTrainingAIArea.GetComponentInChildren<RewardHistory>();
+        imitationSystems = transform.parent.GetComponentsInChildren<ImitationSystem>();
+
+        RewardHistory[] allRewards = transform.parent.GetComponentsInChildren<RewardHistory>();
+
+        rewardHistories = new List<RewardHistory>();
+
+        foreach (RewardHistory reward in allRewards)
+        {
+            if (reward.isRecording)
+            {
+                rewardHistories.Add(reward);
+            }
+        }
+
+
+
         area = offensiveTrainingAIArea.GetComponent<BoxerArea>();
 
-        lastCount = area.matchNumber;
-        imitationSystem.shouldImitate = true;
-        rewardHistory.isRecording = true;
-
-        // DO SOMETHING BETTER WITH THE UI BELOW
-        SetAIEnabled(false);
-        SetCoachEnabled(true);
+        lastCount = 1;
     }
 
     // Update is called once per frame
@@ -46,29 +55,21 @@ public class GameHandler : MonoBehaviour
         switch (state)
         {
             case STATE_DEMO:
+                SetAIEnabled(false);
+                SetCoachEnabled(true);
                 if (area.matchNumber - lastCount >= demoTime)
                 {
                     state = STATE_VIEW;
                     lastCount = area.matchNumber;
-                    imitationSystem.shouldImitate = false;
-                    rewardHistory.isRecording = false;
-
-                    // DO SOMETHING BETTER WITH THE UI BELOW
-                    SetAIEnabled(true);
-                    SetCoachEnabled(false);
                 }
                 break;
             case STATE_VIEW:
+                SetAIEnabled(true);
+                SetCoachEnabled(false);
                 if (area.matchNumber - lastCount >= viewTime)
                 {
                     state = STATE_DEMO;
                     lastCount = area.matchNumber;
-                    imitationSystem.shouldImitate = true;
-                    rewardHistory.isRecording = true;
-
-                    // DO SOMETHING BETTER WITH THE UI BELOW
-                    SetAIEnabled(false);
-                    SetCoachEnabled(true);
                 }
                 break;
         }
@@ -76,17 +77,34 @@ public class GameHandler : MonoBehaviour
 
     private void SetAIEnabled(bool enabled)
     {
-        foreach (Renderer renderer in aiRenderers)
+        if (enabled)
         {
-            renderer.enabled = enabled;
+            offensiveTrainingAIArea.transform.localPosition = aiAreaPos;
+        } else
+        {
+            offensiveTrainingAIArea.transform.localPosition = new Vector3(0, 100, 0);
         }
     }
 
     private void SetCoachEnabled(bool enabled)
     {
-        foreach (Renderer renderer in coachRenderers)
+        if (enabled)
         {
-            renderer.enabled = enabled;
+            offensiveTrainingCoachArea.transform.localPosition = coachAreaPos;
+        }
+        else
+        {
+            offensiveTrainingCoachArea.transform.localPosition = new Vector3(0, 100, 0);
+        }
+
+        foreach (RewardHistory reward in rewardHistories)
+        {
+            reward.isRecording = enabled;
+        }
+        
+        foreach (ImitationSystem imitation in imitationSystems)
+        {
+            imitation.shouldImitate = enabled;
         }
     }
 }

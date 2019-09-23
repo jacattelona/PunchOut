@@ -374,7 +374,7 @@ public class Boxer : Agent
 
         RewardHistory history = GetComponent<RewardHistory>();
 
-        if (history != null && history.isRecording == true)
+        if (history != null && history.isRecording)
         {
             Debug.Log(reward);
             history.rewards.Add(new RewardHistory.Reward { Amount = reward, Time = time });
