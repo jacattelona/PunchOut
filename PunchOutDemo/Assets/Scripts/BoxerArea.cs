@@ -12,7 +12,7 @@ public class BoxerArea : Area
     public Boxer playerBoxer;
     public Boxer opponentBoxer;
 
-    private float matchNumber;
+    public float matchNumber;
 
     public float matchTime = -1;
     private float startTime = -1;

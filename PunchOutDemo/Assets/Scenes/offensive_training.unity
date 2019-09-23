@@ -816,7 +816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teacher: {fileID: 1113692311}
   shouldImitate: 0
-  ignoreInaction: 1
+  ignoreInaction: 0
 --- !u!1 &1113692315 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3769192919336372829, guid: e5a892c658e726446a45e2b1e66f3e43,
@@ -1451,7 +1451,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 28327d844c23eec458c5328c80d86790, type: 2}
     - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
     - {fileID: 11400000, guid: 5551af24ea95a994083527fdaa432c95, type: 2}
-    _brainsToControl: []
+    _brainsToControl:
+    - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
   maxSteps: 0
   trainingConfiguration:
     width: 80
@@ -1579,7 +1580,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2034596408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1594,8 +1595,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offensiveTrainingCoachArea: {fileID: 1113692315}
   offensiveTrainingAIArea: {fileID: 3769192917699701650}
-  demoTime: 15
-  viewTime: 7.5
+  demoTime: 2
+  viewTime: 1
 --- !u!4 &2034596409
 Transform:
   m_ObjectHideFlags: 0
@@ -2046,30 +2047,30 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 100000
       objectReference: {fileID: 0}
-    - target: {fileID: 7428343496194686065, guid: e5a892c658e726446a45e2b1e66f3e43,
-        type: 3}
-      propertyPath: punchReward
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7428343496194686065, guid: e5a892c658e726446a45e2b1e66f3e43,
-        type: 3}
-      propertyPath: punchPenalty
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7428343496194686065, guid: e5a892c658e726446a45e2b1e66f3e43,
-        type: 3}
-      propertyPath: dodgeReward
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7428343496194686065, guid: e5a892c658e726446a45e2b1e66f3e43,
-        type: 3}
-      propertyPath: dodgePenalty
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9149802048388221391, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
       propertyPath: m_TagString
       value: Dummy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428343496194686065, guid: e5a892c658e726446a45e2b1e66f3e43,
+        type: 3}
+      propertyPath: punchReward
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428343496194686065, guid: e5a892c658e726446a45e2b1e66f3e43,
+        type: 3}
+      propertyPath: punchPenalty
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428343496194686065, guid: e5a892c658e726446a45e2b1e66f3e43,
+        type: 3}
+      propertyPath: dodgeReward
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428343496194686065, guid: e5a892c658e726446a45e2b1e66f3e43,
+        type: 3}
+      propertyPath: dodgePenalty
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 506336679968626751, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
