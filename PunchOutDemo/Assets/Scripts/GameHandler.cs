@@ -34,6 +34,8 @@ public class GameHandler : MonoBehaviour
         lastCount = area.matchNumber;
         imitationSystem.shouldImitate = true;
         rewardHistory.isRecording = true;
+
+        // DO SOMETHING BETTER WITH THE UI BELOW
         SetAIEnabled(false);
         SetCoachEnabled(true);
     }
@@ -50,6 +52,8 @@ public class GameHandler : MonoBehaviour
                     lastCount = area.matchNumber;
                     imitationSystem.shouldImitate = false;
                     rewardHistory.isRecording = false;
+
+                    // DO SOMETHING BETTER WITH THE UI BELOW
                     SetAIEnabled(true);
                     SetCoachEnabled(false);
                 }
@@ -61,6 +65,8 @@ public class GameHandler : MonoBehaviour
                     lastCount = area.matchNumber;
                     imitationSystem.shouldImitate = true;
                     rewardHistory.isRecording = true;
+
+                    // DO SOMETHING BETTER WITH THE UI BELOW
                     SetAIEnabled(false);
                     SetCoachEnabled(true);
                 }
