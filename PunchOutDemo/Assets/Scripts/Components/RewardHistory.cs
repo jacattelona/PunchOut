@@ -10,5 +10,6 @@ public class RewardHistory : MonoBehaviour
         public float Time;
     }
 
+    public bool isRecording = false;
     public List<Reward> rewards = new List<Reward>();
 }
