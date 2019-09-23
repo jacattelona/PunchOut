@@ -17,6 +17,10 @@ public class BoxerArea : Area
     public float matchTime = -1;
     private float startTime = -1;
 
+    public bool isVisible = true;
+
+    private Renderer[] renderers;
+
     void Start()
     {
         playerBoxer = player.GetComponent<Boxer>();
@@ -27,10 +31,17 @@ public class BoxerArea : Area
         matchNumber = 1;
         matchNumberDisp.text = string.Format("Match {0}", matchNumber);
         startTime = Time.fixedTime;
+
+        renderers = GetComponentsInChildren<Renderer>();
     }
 
     private void FixedUpdate()
     {
+        foreach (Renderer renderer in renderers)
+        {
+            renderer.enabled = isVisible;
+        }
+
         if (matchTime > 0 && Time.fixedTime - startTime >= matchTime)
         {
             opponentBoxer.Done();
