@@ -18,6 +18,7 @@ public class MoveRecorderSystem : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (history == null) return;
         float[] move = new float[] {
             boxer.GetDodgeState() == DodgeState.LEFT ? 1f : 0f,
             boxer.GetDodgeState() == DodgeState.RIGHT ? 1f : 0f,
@@ -40,6 +41,7 @@ public class MoveRecorderSystem : MonoBehaviour
 
     public void Clear()
     {
+        if (history == null) return;
         history.moves.Clear();
     }
 

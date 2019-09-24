@@ -29,7 +29,7 @@ public class BoxerArea : Area
         playerBoxer.punchAction.action.AddListener(OpponentPunched);
         opponentBoxer.punchAction.action.AddListener(PlayerPunched);
         matchNumber = 1;
-        matchNumberDisp.text = string.Format("Match {0}", matchNumber);
+        matchNumberDisp.text = string.Format("Round {0}", matchNumber);
         startTime = Time.fixedTime;
 
         renderers = GetComponentsInChildren<Renderer>();
@@ -66,7 +66,7 @@ public class BoxerArea : Area
     {
         base.ResetArea();
         matchNumber += 1f;
-        matchNumberDisp.text = string.Format("Match {0}", matchNumber);
+        matchNumberDisp.text = string.Format("Round {0}", matchNumber);
         startTime = Time.fixedTime;
     }
 
