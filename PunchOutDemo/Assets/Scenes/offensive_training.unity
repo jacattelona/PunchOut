@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -939,17 +939,17 @@ PrefabInstance:
     - target: {fileID: 3769192919336372828, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.00916481
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3769192919336372828, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -22.88135
+      value: -22
       objectReference: {fileID: 0}
     - target: {fileID: 3769192919336372828, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.35507
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 3769192919336372828, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
@@ -3050,8 +3050,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 10
-  m_fontSizeBase: 10
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3068,7 +3068,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 11
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -3096,7 +3096,7 @@ MonoBehaviour:
     spaceCount: 1
     wordCount: 2
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
@@ -3727,6 +3727,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c51403fd769168642a0e224f725a430a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camTransform: {fileID: 2022119581}
+  coachCameraPos: {x: -11.5, y: 2, z: -15}
+  aiCameraPos: {x: 1.5, y: 2, z: -15}
   offensiveTrainingCoachArea: {fileID: 1113692315}
   offensiveTrainingAIArea: {fileID: 3769192917699701650}
   demoTime: 2
@@ -4238,17 +4241,17 @@ PrefabInstance:
     - target: {fileID: 3769192919336372828, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.009165
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3769192919336372828, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -22.88135
+      value: -22
       objectReference: {fileID: 0}
     - target: {fileID: 3769192919336372828, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.35507
+      value: -4.5
       objectReference: {fileID: 0}
     - target: {fileID: 3769192919336372828, guid: e5a892c658e726446a45e2b1e66f3e43,
         type: 3}
@@ -4764,7 +4767,7 @@ PrefabInstance:
     - target: {fileID: 8695530798762549704, guid: ea645e24650d374468497ef41475bee0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.35507
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 8695530798762549704, guid: ea645e24650d374468497ef41475bee0,
         type: 3}

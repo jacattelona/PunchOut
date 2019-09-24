@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameHandler : MonoBehaviour
 {
+    public Transform camTransform;
+    public Vector3 coachCameraPos, aiCameraPos;
+    private Vector3 velocity = Vector3.zero;
 
     public GameObject offensiveTrainingCoachArea, offensiveTrainingAIArea;
 
@@ -13,15 +16,24 @@ public class GameHandler : MonoBehaviour
 
     public float demoTime, viewTime;
 
-    private const int STATE_DEMO = 0, STATE_VIEW = 1;
+    private const int STATE_DEMO = 0, STATE_VIEW = 1, STATE_SWITCH_DEMO = 3, STATE_SWITCH_VIEW = 4;
 
-    private int state = STATE_DEMO;
+    private int state = STATE_SWITCH_DEMO;
 
     private float lastCount;
 
     private ImitationSystem[] imitationSystems;
     private List<RewardHistory> rewardHistories;
 
+    //public enum CameraState
+    //{
+    //    Coach,
+    //    Agent,
+    //    SwitchingToCoach,
+    //    SwitchingToAgent
+    //}
+
+    //public CameraState camState;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +64,11 @@ public class GameHandler : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+            state = STATE_SWITCH_DEMO;
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+            state = STATE_SWITCH_VIEW;
+
         switch (state)
         {
             case STATE_DEMO:
@@ -59,7 +76,7 @@ public class GameHandler : MonoBehaviour
                 SetCoachEnabled(true);
                 if (area.matchNumber - lastCount >= demoTime)
                 {
-                    state = STATE_VIEW;
+                    state = STATE_SWITCH_VIEW;
                     lastCount = area.matchNumber;
                 }
                 break;
@@ -68,8 +85,22 @@ public class GameHandler : MonoBehaviour
                 SetCoachEnabled(false);
                 if (area.matchNumber - lastCount >= viewTime)
                 {
-                    state = STATE_DEMO;
+                    state = STATE_SWITCH_DEMO;
                     lastCount = area.matchNumber;
+                }
+                break;
+            case STATE_SWITCH_DEMO:
+                camTransform.position = Vector3.SmoothDamp(camTransform.position, coachCameraPos, ref velocity, .5f);
+                if (Vector3.Distance(transform.position, coachCameraPos) < .01f)
+                {
+                    state = STATE_DEMO;
+                }
+                break;
+            case STATE_SWITCH_VIEW:
+                camTransform.position = Vector3.SmoothDamp(camTransform.position, aiCameraPos, ref velocity, .5f);
+                if (Vector3.Distance(transform.position, aiCameraPos) < .01f)
+                {
+                    state = STATE_VIEW;
                 }
                 break;
         }
@@ -82,7 +113,7 @@ public class GameHandler : MonoBehaviour
             offensiveTrainingAIArea.transform.localPosition = aiAreaPos;
         } else
         {
-            offensiveTrainingAIArea.transform.localPosition = new Vector3(0, 100, 0);
+            //offensiveTrainingAIArea.transform.localPosition = new Vector3(0, 100, 0);
         }
     }
 
@@ -94,7 +125,7 @@ public class GameHandler : MonoBehaviour
         }
         else
         {
-            offensiveTrainingCoachArea.transform.localPosition = new Vector3(0, 100, 0);
+            //offensiveTrainingCoachArea.transform.localPosition = new Vector3(0, 100, 0);
         }
 
         foreach (RewardHistory reward in rewardHistories)
