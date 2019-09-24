@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameHandler : MonoBehaviour
 {
     public Transform camTransform;
     public Vector3 coachCameraPos, aiCameraPos;
     private Vector3 velocity = Vector3.zero;
+
+    public Text viewText;
 
     public GameObject offensiveTrainingCoachArea, offensiveTrainingAIArea;
 
@@ -64,41 +67,50 @@ public class GameHandler : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha9))
-            state = STATE_SWITCH_DEMO;
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-            state = STATE_SWITCH_VIEW;
-
         switch (state)
         {
             case STATE_DEMO:
                 SetAIEnabled(false);
                 SetCoachEnabled(true);
-                if (area.matchNumber - lastCount >= demoTime)
+
+                if (Input.GetKeyDown(KeyCode.Space))
                 {
                     state = STATE_SWITCH_VIEW;
-                    lastCount = area.matchNumber;
                 }
+                //if (area.matchNumber - lastCount >= demoTime)
+                //{
+                 //   state = STATE_SWITCH_VIEW;
+                  //  lastCount = area.matchNumber;
+                //}
                 break;
             case STATE_VIEW:
                 SetAIEnabled(true);
                 SetCoachEnabled(false);
-                if (area.matchNumber - lastCount >= viewTime)
+
+                if (Input.GetKeyDown(KeyCode.Space))
                 {
                     state = STATE_SWITCH_DEMO;
-                    lastCount = area.matchNumber;
                 }
+                //if (area.matchNumber - lastCount >= viewTime)
+                //{
+                //    state = STATE_SWITCH_DEMO;
+                //   lastCount = area.matchNumber;
+                //}
                 break;
             case STATE_SWITCH_DEMO:
+                SetAIEnabled(false);
+                SetCoachEnabled(true);
                 camTransform.position = Vector3.SmoothDamp(camTransform.position, coachCameraPos, ref velocity, .5f);
-                if (Vector3.Distance(transform.position, coachCameraPos) < .01f)
+                if (Vector3.Distance(camTransform.position, coachCameraPos) < .01f)
                 {
                     state = STATE_DEMO;
                 }
                 break;
             case STATE_SWITCH_VIEW:
+                SetAIEnabled(true);
+                SetCoachEnabled(false);
                 camTransform.position = Vector3.SmoothDamp(camTransform.position, aiCameraPos, ref velocity, .5f);
-                if (Vector3.Distance(transform.position, aiCameraPos) < .01f)
+                if (Vector3.Distance(camTransform.position, aiCameraPos) < .01f)
                 {
                     state = STATE_VIEW;
                 }
@@ -108,24 +120,17 @@ public class GameHandler : MonoBehaviour
 
     private void SetAIEnabled(bool enabled)
     {
-        if (enabled)
-        {
-            offensiveTrainingAIArea.transform.localPosition = aiAreaPos;
-        } else
-        {
-            //offensiveTrainingAIArea.transform.localPosition = new Vector3(0, 100, 0);
-        }
+        // Do nothing
     }
 
     private void SetCoachEnabled(bool enabled)
     {
         if (enabled)
         {
-            offensiveTrainingCoachArea.transform.localPosition = coachAreaPos;
-        }
-        else
+            viewText.text = "Coach (demonstrate some moves)";
+        } else
         {
-            //offensiveTrainingCoachArea.transform.localPosition = new Vector3(0, 100, 0);
+            viewText.text = "AI (showing what it learned)";
         }
 
         foreach (RewardHistory reward in rewardHistories)
