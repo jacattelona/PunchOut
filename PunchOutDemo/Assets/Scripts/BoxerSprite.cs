@@ -14,7 +14,7 @@ public class BoxerSprite : MonoBehaviour
     //Const Values (you can't declare Vector3s const, so just pretend)
     protected Vector3 LDEFAULT = new Vector3(-1, 0, 0);             //Default position of the left glove
     protected Vector3 RDEFAULT = new Vector3(1, 0, 0);              //Default position of the right glove
-    protected Vector3 PUNCH = new Vector3(0, 2, 0);                 //Distance a glove moves forward during punch
+    protected Vector3 PUNCH = new Vector3(0, 1.7f, 0);                 //Distance a glove moves forward during punch
 
     Vector3 LDODGELOC = new Vector3(-2, 0, 0);                      //Number of units to move when dodging left
     Vector3 RDODGELOC = new Vector3(2, 0, 0);                       //Number of units to move when dodging right
@@ -25,9 +25,9 @@ public class BoxerSprite : MonoBehaviour
     private Punch lastPunchState;
     private DodgeState lastDodgeState;
 
-    private Renderer leftGloveRenderer, rightGloveRenderer, leftArmRenderer, rightArmRenderer;
+    private Renderer leftGloveRenderer, rightGloveRenderer;
 
-    private Color gloveColor, armColor;
+    private Color gloveColor;
 
     private Vector3 DEFAULT = new Vector3(0, 0, 0);                  //Default position of the boxer
 
@@ -44,20 +44,13 @@ public class BoxerSprite : MonoBehaviour
         boxer.punchAction.animationEnd.AddListener(StopPunchAnimation);
         boxer.punchAction.action.AddListener(PunchAction);
 
-        GameObject lg = this.transform.Find("Sprite").Find("LeftArm").Find("Glove").gameObject;
+        GameObject lg = this.transform.Find("Sprite").Find("LeftArm").gameObject;
         leftGloveRenderer = lg.GetComponent<Renderer>();
 
-        GameObject rg = this.transform.Find("Sprite").Find("RightArm").Find("Glove").gameObject;
+        GameObject rg = this.transform.Find("Sprite").Find("RightArm").gameObject;
         rightGloveRenderer = rg.GetComponent<Renderer>();
 
-        GameObject la = this.transform.Find("Sprite").Find("LeftArm").Find("Forearm").gameObject;
-        leftArmRenderer = la.GetComponent<Renderer>();
-
-        GameObject ra = this.transform.Find("Sprite").Find("RightArm").Find("Forearm").gameObject;
-        rightArmRenderer = ra.GetComponent<Renderer>();
-
         gloveColor = rightGloveRenderer.material.color;
-        armColor = rightArmRenderer.material.color;
     }
 
     private void StartDodgeAnimation(int direction)
@@ -88,11 +81,9 @@ public class BoxerSprite : MonoBehaviour
         if (side == 1)
         {
             leftGloveRenderer.material.color = broadcastColor;
-            leftArmRenderer.material.color = broadcastColor;
         } else
         {
             rightGloveRenderer.material.color = broadcastColor;
-            rightArmRenderer.material.color = broadcastColor;
         }
     }
 
@@ -102,14 +93,12 @@ public class BoxerSprite : MonoBehaviour
         {
             Transform t = this.transform.Find("Sprite").Find("LeftArm");
             leftGloveRenderer.material.color = gloveColor;
-            leftArmRenderer.material.color = armColor;
             t.localPosition = t.localPosition + PUNCH;
         }
         else
         {
             Transform t = this.transform.Find("Sprite").Find("RightArm");
             rightGloveRenderer.material.color = gloveColor;
-            rightArmRenderer.material.color = armColor;
             t.localPosition = t.localPosition + PUNCH;
         }
     }
@@ -124,8 +113,6 @@ public class BoxerSprite : MonoBehaviour
 
         leftGloveRenderer.material.color = gloveColor;
         rightGloveRenderer.material.color = gloveColor;
-        leftArmRenderer.material.color = armColor;
-        rightArmRenderer.material.color = armColor;
     }
 
     // Update is called once per frame
