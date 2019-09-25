@@ -1,16 +1,9 @@
 ﻿using MLAgents;
-using System;
-using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Boxer : Agent
 {
-    /// <summary>
-    /// The boxing area
-    /// </summary>
-    public GameObject area;
-    private BoxerArea myArea;
+    private Boxer opponent;
 
     public bool broadcastPunch = false;
 
@@ -24,6 +17,8 @@ public class Boxer : Agent
     public float dodgeDuration = 0.5f;
     public float punchEventDelay = 0.0f;
     public float dodgeEventDelay = 0.0f;
+
+    public bool isFighting = false;
 
     // COMPONENTS
     Health health;
@@ -63,7 +58,6 @@ public class Boxer : Agent
     public override void InitializeAgent()
     {
         base.InitializeAgent();
-        myArea = area.GetComponent<BoxerArea>();
         health = GetComponent<Health>();
         comboTracker = GetComponent<ComboTracker>();
         rewards = GetComponent<RewardComponent>();
@@ -94,34 +88,21 @@ public class Boxer : Agent
         float[] move;
         int opponentComboState = 0;
 
-        if (name == "Player")
+        if (opponent != null)
         {
-            //Health opponentHealth = myArea.opponent.GetComponent<Health>();
-            //AddVectorObs(opponentHealth.health / (float) opponentHealth.maxHealth);
             move = new float[] {
-                myArea.opponentBoxer.GetPunchState().GetHand() == Hand.RIGHT ? 1f : 0f,
-                myArea.opponentBoxer.GetPunchState().GetHand() == Hand.LEFT ? 1f : 0f,
-                myArea.opponentBoxer.GetDodgeState() == DodgeState.LEFT ? 1f : 0f,
-                myArea.opponentBoxer.GetDodgeState() == DodgeState.RIGHT ? 1f : 0f
+                opponent.GetPunchState().GetHand() == Hand.RIGHT ? 1f : 0f,
+                opponent.GetPunchState().GetHand() == Hand.LEFT ? 1f : 0f,
+                opponent.GetDodgeState() == DodgeState.LEFT ? 1f : 0f,
+                opponent.GetDodgeState() == DodgeState.RIGHT ? 1f : 0f
             };
 
-            opponentComboState = myArea.opponentBoxer.comboTracker.GetState();
-        }
-        else
+            opponentComboState = opponent.comboTracker.GetState();
+        } else
         {
-            //Health opponentHealth = myArea.player.GetComponent<Health>();
-            //AddVectorObs(opponentHealth.health / (float) opponentHealth.maxHealth);
-
-            move = new float[] {
-                myArea.playerBoxer.GetPunchState().GetHand() == Hand.RIGHT ? 1f : 0f,
-                myArea.playerBoxer.GetPunchState().GetHand() == Hand.LEFT ? 1f : 0f,
-                myArea.playerBoxer.GetDodgeState() == DodgeState.LEFT ? 1f : 0f,
-                myArea.playerBoxer.GetDodgeState() == DodgeState.RIGHT ? 1f : 0f
-            };
-
-            opponentComboState = myArea.playerBoxer.comboTracker.GetState();
+            move = new float[] { 0, 0, 0, 0 };
+            opponentComboState = 0;
         }
-
 
         AddVectorObs(Encoder.encodeInt(comboTracker.GetState(), 0, comboTracker.GetTotalStates()));
         AddVectorObs(Encoder.encodeInt(opponentComboState, 0, comboTracker.GetTotalStates()));
@@ -137,36 +118,12 @@ public class Boxer : Agent
     {
         base.AgentAction(vectorAction, textAction);
         lastActions = vectorAction;
-        if (IsKO())
-        {
-            return;
-        }
+
+        if (!isFighting) return;
+
         HandleDodgeInput(vectorAction[0]);
         HandlePunchInput(vectorAction[1]);
         if (rewards != null) AddReward(rewards.existancePenalty);
-    }
-
-    /// <summary>
-    /// Reset the agent
-    /// </summary>
-    public override void AgentReset()
-    {
-        health.health = health.maxHealth;
-        ResetDodgeState();
-        ResetPunchState();
-        comboTracker.ResetComboChain();
-        MoveRecorderSystem recorder = GetComponent<MoveRecorderSystem>();
-        if (recorder != null) recorder.Clear();
-        if (!firstGame)
-        {
-            SaveReward();
-            if (gameObject == myArea.player)
-            {
-                myArea.ResetArea();
-            }
-        }
-        firstGame = false;
-        
     }
 
     /// <summary>
@@ -196,7 +153,7 @@ public class Boxer : Agent
     {
 
         // Dodged
-        if (gameObject == myArea.player)
+        if (transform.Find("Sprite").localEulerAngles.z == 0) // If the player is flipped, this appears opposite
         {
             if (dodgeState == DodgeState.LEFT && punch.GetHand() == Hand.LEFT)
             {
@@ -243,7 +200,6 @@ public class Boxer : Agent
         if (IsKO())
         {
             if (rewards != null) AddReward(rewards.knockOutPenalty);
-            Done();
             return PunchOutcome.KO;
         }
         else
@@ -362,56 +318,53 @@ public class Boxer : Agent
                 break;
             case PunchOutcome.KO:
                 if (rewards != null) AddReward(rewards.knockOutReward);
-                Done();
                 break;
         }
     }
 
-    private void SaveReward()
+    /// <summary>
+    /// Tell the boxer to train on the previous rewards and reset the cumulative reward
+    /// </summary>
+    public void Train()
     {
-        float reward = GetCumulativeReward();
-        float time = Time.fixedTime;
-
-        RewardHistory history = GetComponent<RewardHistory>();
-
-        if (history != null && history.isRecording)
-        {
-            Debug.Log(reward);
-            history.rewards.Add(new RewardHistory.Reward { Amount = reward, Time = time });
-        }
-
+        Done();
     }
 
-    // Set the state of the agent
-
-    public void Imitate()
+    /// <summary>
+    /// Get the current score of the boxer (how they are performaning in the fight)
+    /// </summary>
+    /// <returns>The performance score of the boxer</returns>
+    public float GetPerformanceScore()
     {
-        GetComponent<ImitationSystem>().shouldImitate = true;
-        // TODO: Save the reward component values
-        rewards.punchReward = 0;
-        rewards.punchPenalty = 0;
-        rewards.dodgePenalty = 0;
-        rewards.dodgeReward = 0;
-        rewards.knockOutPenalty = 0;
-        rewards.knockOutReward = 0;
+        return GetCumulativeReward();
     }
 
-    public void LearnDefenses()
+    /// <summary>
+    /// Reset the boxer's state
+    /// </summary>
+    public void ResetBoxer()
     {
-        GetComponent<ImitationSystem>().shouldImitate = false;
-        // TODO: Load the reward component values
+        SetOpponent(null);
+        Revive();
+        ResetDodgeState();
+        ResetPunchState();
+        comboTracker.ResetComboChain();
     }
 
-    public void FightMatch()
+    /// <summary>
+    /// Revive the boxer (max out their health)
+    /// </summary>
+    public void Revive()
     {
-        GetComponent<ImitationSystem>().shouldImitate = false;
-        // TODO: Save the reward component values
-        rewards.punchReward = 0;
-        rewards.punchPenalty = 0;
-        rewards.dodgePenalty = 0;
-        rewards.dodgeReward = 0;
-        rewards.knockOutPenalty = 0;
-        rewards.knockOutReward = 0;
+        health.health = health.maxHealth;
     }
 
+    /// <summary>
+    /// Set the opponent that the boxer is fighting against
+    /// </summary>
+    /// <param name="boxer">The boxer</param>
+    public void SetOpponent(Boxer boxer)
+    {
+        opponent = boxer;
+    }
 }
