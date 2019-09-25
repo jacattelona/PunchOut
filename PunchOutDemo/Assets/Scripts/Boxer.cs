@@ -285,7 +285,7 @@ public class Boxer : Agent
     /// <param name="dodgeInput">The dodge input value</param>
     private void HandleDodgeInput(float dodgeInput)
     {
-        if (dodgeInput != 0 && !punchAction.IsRunning())
+        if (dodgeInput != 0)
         {
             dodgeAction.Run((int)dodgeInput);
         }
@@ -298,7 +298,7 @@ public class Boxer : Agent
     private void HandlePunchInput(float punchInput)
     {
 
-        if (punchInput != 0 && !dodgeAction.IsRunning())
+        if (punchInput != 0)
         {
             punchAction.Run((int) punchInput);
         }
