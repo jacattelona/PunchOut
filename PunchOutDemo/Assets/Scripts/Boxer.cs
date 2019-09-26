@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Boxer : Agent
 {
+    public Animator animate;
     private Boxer opponent;
 
     private BoxerStats stats;
@@ -300,6 +301,7 @@ public class Boxer : Agent
     {
         if (dodgeInput != 0 && (allowPunchWhileDodging || !punchAction.IsRunning()))
         {
+            animate.Play("DodgeLeft",-1,0);
             dodgeAction.Run((int)dodgeInput);
         }
     }
