@@ -12,7 +12,11 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
     public List<Match> aiMatches;
 
     [SerializeField]
-    public TrainingProgress trainingProgress;
+    public List<TrainingProgress> trainingProgress;
+
+    private int currentTrainingProgressIdx = 0;
+
+    public float minReward, maxReward;
 
     public float trainTime;
 
@@ -39,6 +43,14 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
         }
 
         ReviveKOBoxers();
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            ShowNextTrainingProgress();
+        } else
+        {
+            ShowCurrentTrainingProgress();
+        }
 
         // TODO: Determine when to switch to STATE_END
 
@@ -113,13 +125,32 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
     private void TrainAIs()
     {
-        trainingProgress.value = GetAveragePerformanceScore();
-        Debug.Log("Score: " + trainingProgress.value);
+        float reward = GetAveragePerformanceScore();
+        foreach (TrainingProgress progress in trainingProgress)
+        {
+            progress.SetProgress(MathUtils.Map01(reward, minReward, maxReward));
+        }
+        
         Train(coachMatch);
         foreach (Match match in aiMatches)
         {
             Train(match);
         }
+    }
+
+    private void ShowCurrentTrainingProgress()
+    {
+        for (int i = 0; i < trainingProgress.Count; i++)
+        {
+            trainingProgress[i].SetEnabled(i == currentTrainingProgressIdx);
+        }
+    }
+
+    private void ShowNextTrainingProgress()
+    {
+        currentTrainingProgressIdx++;
+        currentTrainingProgressIdx = currentTrainingProgressIdx % trainingProgress.Count;
+        ShowCurrentTrainingProgress();
     }
 
     private float GetAveragePerformanceScore()

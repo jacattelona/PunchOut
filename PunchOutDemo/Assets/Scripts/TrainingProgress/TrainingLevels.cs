@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TrainingProgress : MonoBehaviour
+public class TrainingLevels : TrainingProgress
 {
 
     public float value;
@@ -113,4 +113,18 @@ public class TrainingProgress : MonoBehaviour
 
     }
 
+    public override void SetProgress(float progress)
+    {
+        this.value = Mathf.Clamp(progress, 0, 1);
+    }
+
+    public override float GetProgress()
+    {
+        return value;
+    }
+
+    public override void Clear()
+    {
+        SetProgress(0);
+    }
 }

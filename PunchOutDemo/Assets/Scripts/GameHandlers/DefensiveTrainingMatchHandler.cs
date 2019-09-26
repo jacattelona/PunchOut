@@ -12,7 +12,7 @@ public class DefensiveTrainingMatchHandler : MonoBehaviour
     public Boxer aiBoxer;
 
     [SerializeField]
-    public TrainingProgress trainingProgress;
+    public TrainingLevels trainingProgress;
 
     private const int STATE_WAITING = 0, STATE_FIGHTING = 1, STATE_KO = 2, STATE_END = 3;
 
