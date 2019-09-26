@@ -7,6 +7,8 @@ public class Boxer : Agent
 
     private BoxerStats stats;
 
+    public bool allowPunchWhileDodging = false;
+
     public bool broadcastPunch = false;
 
     public float[] lastActions;
@@ -296,7 +298,7 @@ public class Boxer : Agent
     /// <param name="dodgeInput">The dodge input value</param>
     private void HandleDodgeInput(float dodgeInput)
     {
-        if (dodgeInput != 0)
+        if (dodgeInput != 0 && (allowPunchWhileDodging || !punchAction.IsRunning()))
         {
             dodgeAction.Run((int)dodgeInput);
         }
@@ -309,7 +311,7 @@ public class Boxer : Agent
     private void HandlePunchInput(float punchInput)
     {
 
-        if (punchInput != 0)
+        if (punchInput != 0 && (allowPunchWhileDodging || !dodgeAction.IsRunning()))
         {
             punchAction.Run((int) punchInput);
         }

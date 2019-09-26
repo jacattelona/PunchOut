@@ -16,8 +16,10 @@ public class BoxerSprite : MonoBehaviour
     protected Vector3 RDEFAULT = new Vector3(1, 0, 0);              //Default position of the right glove
     protected Vector3 PUNCH = new Vector3(0, 1.7f, 0);                 //Distance a glove moves forward during punch
 
-    Vector3 LDODGELOC = new Vector3(-2, 0, 0);                      //Number of units to move when dodging left
-    Vector3 RDODGELOC = new Vector3(2, 0, 0);                       //Number of units to move when dodging right
+    public float dodgeDistance = 3;
+
+    Vector3 LDODGELOC;                     //Number of units to move when dodging left
+    Vector3 RDODGELOC;                     //Number of units to move when dodging right
     Vector3 BDODGELOC = new Vector3(0, -2, 0);                      //Number of units to move when dodging back
     Vector3 BLOCKANGLE = new Vector3(0, 0, 45);                     //Angle to move arms inward when blocking
 
@@ -51,6 +53,9 @@ public class BoxerSprite : MonoBehaviour
         rightGloveRenderer = rg.GetComponent<Renderer>();
 
         gloveColor = rightGloveRenderer.material.color;
+
+        LDODGELOC = new Vector3(-dodgeDistance, 0, 0);
+        RDODGELOC = new Vector3(dodgeDistance, 0, 0);
     }
 
     private void StartDodgeAnimation(int direction)
@@ -116,7 +121,7 @@ public class BoxerSprite : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (boxer.punchAction.IsOnCooldown() || boxer.dodgeAction.IsRunning() || boxer.punchAction.IsRunning())
         {
