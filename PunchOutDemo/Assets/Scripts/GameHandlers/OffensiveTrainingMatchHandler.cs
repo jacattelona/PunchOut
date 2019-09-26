@@ -114,7 +114,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
     private void TrainAIs()
     {
         trainingProgress.value = GetAveragePerformanceScore();
-        Debug.Log(trainingProgress.value);
+        Debug.Log("Score: " + trainingProgress.value);
         Train(coachMatch);
         foreach (Match match in aiMatches)
         {

@@ -5,6 +5,8 @@ public class Boxer : Agent
 {
     private Boxer opponent;
 
+    private BoxerStats stats;
+
     public bool broadcastPunch = false;
 
     public float[] lastActions;
@@ -58,6 +60,7 @@ public class Boxer : Agent
     public override void InitializeAgent()
     {
         base.InitializeAgent();
+        stats = new BoxerStats();
         health = GetComponent<Health>();
         comboTracker = GetComponent<ComboTracker>();
         rewards = GetComponent<RewardComponent>();
@@ -152,17 +155,21 @@ public class Boxer : Agent
     public PunchOutcome onPunched(Punch punch)
     {
 
+        stats.AddOpponentPunch();
+
         // Dodged
         if (transform.Find("Sprite").localEulerAngles.z == 0) // If the player is flipped, this appears opposite
         {
             if (dodgeState == DodgeState.LEFT && punch.GetHand() == Hand.LEFT)
             {
                 if (rewards != null) AddReward(rewards.dodgeReward);
+                stats.AddSuccessfulDodge();
                 return PunchOutcome.DODGED;
             }
             else if (dodgeState == DodgeState.RIGHT && punch.GetHand() == Hand.RIGHT)
             {
                 if (rewards != null) AddReward(rewards.dodgeReward);
+                stats.AddSuccessfulDodge();
                 return PunchOutcome.DODGED;
             }
         }
@@ -171,11 +178,13 @@ public class Boxer : Agent
             if (dodgeState == DodgeState.RIGHT && punch.GetHand() == Hand.LEFT)
             {
                 if (rewards != null) AddReward(rewards.dodgeReward);
+                stats.AddSuccessfulDodge();
                 return PunchOutcome.DODGED;
             }
             else if (dodgeState == DodgeState.LEFT && punch.GetHand() == Hand.RIGHT)
             {
                 if (rewards != null) AddReward(rewards.dodgeReward);
+                stats.AddSuccessfulDodge();
                 return PunchOutcome.DODGED;
             }
         }
@@ -194,7 +203,7 @@ public class Boxer : Agent
         //        return PunchOutcome.BLOCKED;
         //    }
         //}
-
+        
         // Hit
         TakeDamage(punch.GetStrength());
         if (IsKO())
@@ -244,6 +253,7 @@ public class Boxer : Agent
 
     private void RegisterDodge(int dodgeType)
     {
+        stats.AddDodge();
         if (dodgeType == 1)
         {
             dodgeState = DodgeState.LEFT;
@@ -261,6 +271,7 @@ public class Boxer : Agent
 
     private void RegisterPunch(int punchType)
     {
+        stats.AddPunch();
         Punch punch;
         if (punchType == 1)
         {
@@ -315,9 +326,11 @@ public class Boxer : Agent
                 break;
             case PunchOutcome.HIT:
                 if (rewards != null) AddReward(rewards.punchReward);
+                stats.AddHit();
                 break;
             case PunchOutcome.KO:
                 if (rewards != null) AddReward(rewards.knockOutReward);
+                stats.AddHit();
                 break;
         }
     }
@@ -337,6 +350,11 @@ public class Boxer : Agent
     public float GetPerformanceScore()
     {
         return GetCumulativeReward();
+    }
+
+    public float GetOverallScore()
+    {
+        return GetPerformanceScore(); // TODO: make this a weighted combination of hit percentage, reward, dodge percentage, etc
     }
 
     /// <summary>
