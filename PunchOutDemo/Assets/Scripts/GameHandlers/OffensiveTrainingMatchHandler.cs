@@ -6,6 +6,9 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 {
 
     [SerializeField]
+    public GameObject waitingScreen;
+
+    [SerializeField]
     public Match coachMatch;
 
     [SerializeField]
@@ -57,8 +60,10 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
         switch (state)
         {
             case STATE_WAITING:
+                waitingScreen.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    waitingScreen.SetActive(false);
                     Demonstrate();
                     demoStartTime = Time.time;
                     startTime = Time.time;
