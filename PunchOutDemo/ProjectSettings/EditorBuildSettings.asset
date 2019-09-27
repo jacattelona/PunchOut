@@ -11,7 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Phase Scenes/Fight.unity
     guid: 483c9a147f09eb54dbbc156003db6463
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/offensive_training.unity
-    guid: c9ea301b61011fc4886543dcecbbb2d2
+    path: Assets/Scenes/scene1.unity
+    guid: 1053e66a913c7154da94941145f0f220
   m_configObjects: {}
