@@ -11,6 +11,8 @@ public class BrainProgress : TrainingProgress
 
     public string noValueText = "N/A";
 
+    public float fillSpeed = 2f;
+
     [SerializeField]
     private Color emptyColor, fullColor;
 
@@ -33,8 +35,17 @@ public class BrainProgress : TrainingProgress
     {
         if (hasProgress)
         {
-            text.text = (GetProgress() * 100).ToString("0") + " %";
-            bar.localScale = new Vector3(1, GetProgress());
+            float scale = bar.localScale.y;
+            float diff = scale - GetProgress();
+            if (Mathf.Abs(diff) < 0.01)
+            {
+                scale = GetProgress();
+            } else
+            {
+                scale -= diff * fillSpeed * Time.deltaTime;
+            }
+            text.text = (scale * 100).ToString("0") + " %";
+            bar.localScale = new Vector3(1, scale);
             barSpriteRenderer.color = GetCurrentColor();
         } else
         {
@@ -46,7 +57,17 @@ public class BrainProgress : TrainingProgress
     private Color GetCurrentColor()
     {
         float p = GetProgress();
-        return new Color(ToRange(p, emptyColor.r, fullColor.r), ToRange(p, emptyColor.g, fullColor.g), ToRange(p, emptyColor.b, fullColor.b));
+        float scale = bar.localScale.y;
+        Color lerped;
+        if (p < scale)
+        {
+            lerped = Color.Lerp(fullColor, emptyColor, 1 - scale);
+        } else
+        {
+            lerped = Color.Lerp(emptyColor, fullColor, scale);
+        }
+        
+        return new Color(lerped.r, lerped.g, lerped.b, 1);
     }
 
     private float ToRange(float value, float min, float max)
