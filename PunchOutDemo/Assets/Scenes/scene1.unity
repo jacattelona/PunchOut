@@ -216,7 +216,7 @@ MonoBehaviour:
   mainMenu: {fileID: 0}
   offensiveTraining: {fileID: 1550855244}
   defensiveTraining: {fileID: 549827271}
-  match: {fileID: 0}
+  match: {fileID: 8535763850500345762}
 --- !u!4 &1017104963
 Transform:
   m_ObjectHideFlags: 0
@@ -668,6 +668,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c559d5c15f040742a94e1e9e5cba59e, type: 3}
+--- !u!1 &8535763850500345762 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 55310362206732582, guid: f0b1da16af0632d4db5060961485f552,
+    type: 3}
+  m_PrefabInstance: {fileID: 8552792558114868868}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8552792558114868868
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -679,6 +685,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ActualMatch
+      objectReference: {fileID: 0}
+    - target: {fileID: 55310362206732582, guid: f0b1da16af0632d4db5060961485f552,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 55310362206732583, guid: f0b1da16af0632d4db5060961485f552,
         type: 3}
