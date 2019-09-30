@@ -1,20 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class DefensiveTrainingMatchHandler : MonoBehaviour
+public class MatchGameHandler : MonoBehaviour
 {
 
     [SerializeField]
     public Match match;
 
-    [SerializeField]
-    public Boxer aiBoxer;
-
-    [SerializeField]
-    public List<TrainingProgress> trainingProgress;
-
-    public float minScore, maxScore;
+    private string winner;
 
     private const int STATE_WAITING = 0, STATE_FIGHTING = 1, STATE_KO = 2, STATE_END = 3;
 
@@ -40,43 +32,39 @@ public class DefensiveTrainingMatchHandler : MonoBehaviour
                 if (match.GetPlayer1().IsKO() || match.GetPlayer2().IsKO())
                 {
                     OnBoxerKO();
+                    match.StopFight();
                     state = STATE_KO;
                 }
                 // If time out
                 break;
             case STATE_KO:
                 // Wait X seconds
-                match.StartFight();
-                state = STATE_FIGHTING;
+                Debug.Log(winner + " won!");
+                state = STATE_END;
                 // If time out
                 break;
             case STATE_END:
                 // Maybe wait a little
-                SwitchToNextScene();
+                EndGame();
                 break;
         }
-        
+
     }
 
     private void OnBoxerKO()
     {
-        // Notify of KO
-        Debug.Log(aiBoxer.GetPerformanceScore());
-        var performance = MathUtils.Map01(aiBoxer.GetPerformanceScore(), minScore, maxScore);
-        SetProgress(performance);
-        aiBoxer.Train();
-        match.ResetMatch();
-    }
 
-    private void SetProgress(float progress)
-    {
-        foreach (var tp in trainingProgress)
+        if (match.GetPlayer1().IsKO())
         {
-            tp.SetProgress(progress);
+            winner = "AI";
+        } else
+        {
+            winner = "Opponent";
         }
+
     }
 
-    private void SwitchToNextScene()
+    private void EndGame()
     {
         // TODO: Do something here
     }
