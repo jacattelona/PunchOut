@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class Boxer : Agent
 {
-    public Animator animate;
+    private Animator anim;
+
     private Boxer opponent;
 
     private BoxerStats stats;
@@ -56,7 +57,10 @@ public class Boxer : Agent
     public Action punchAction;
     public Action dodgeAction;
 
-
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
     /// <summary>
     /// Initialize the agent
     /// </summary>
@@ -301,8 +305,16 @@ public class Boxer : Agent
     {
         if (dodgeInput != 0 && (allowPunchWhileDodging || !punchAction.IsRunning()))
         {
-            animate.Play("DodgeLeft",-1,0);
-            dodgeAction.Run((int)dodgeInput);
+            //if (anim.GetCurrentAnimatorStateInfo(0).shortNameHash == Animator.StringToHash("Base"))
+            //{
+                int input = (int)dodgeInput;
+                //if (input == 1)
+                //    animate.Play("DodgeLeft", -1, 0);
+                //if (input == 2)
+                //    animate.Play("DodgeRight", -1, 0);
+                dodgeAction.Run(input);
+           // }
+
         }
     }
 
@@ -316,6 +328,7 @@ public class Boxer : Agent
         if (punchInput != 0 && (allowPunchWhileDodging || !dodgeAction.IsRunning()))
         {
             punchAction.Run((int) punchInput);
+
         }
     }
 

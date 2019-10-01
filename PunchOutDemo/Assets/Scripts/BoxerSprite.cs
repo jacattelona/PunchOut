@@ -8,6 +8,7 @@ using UnityEngine.UI;
 /// </summary>
 public class BoxerSprite : MonoBehaviour
 {
+    Animator anim;
 
     private Boxer boxer;
 
@@ -33,6 +34,17 @@ public class BoxerSprite : MonoBehaviour
 
     private Vector3 DEFAULT = new Vector3(0, 0, 0);                  //Default position of the boxer
 
+    enum Telegraphing
+    {
+        None,
+        PunchLeft,
+        PunchRight,
+        DodgeLeft,
+        DodgeRight
+    }
+    private Telegraphing tel = Telegraphing.None;
+    private float intensity = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,65 +68,78 @@ public class BoxerSprite : MonoBehaviour
 
         LDODGELOC = new Vector3(-dodgeDistance, 0, 0);
         RDODGELOC = new Vector3(dodgeDistance, 0, 0);
+
+        anim = GetComponent<Animator>();
     }
 
     private void StartDodgeAnimation(int direction)
     {     
         if (direction == 1)
         {
-            this.transform.Find("Sprite").localPosition = DEFAULT + LDODGELOC;
+            //this.transform.Find("Sprite").localPosition = DEFAULT + LDODGELOC;
+            anim.Play("DodgeLeft");
         } else
         {
-            this.transform.Find("Sprite").localPosition = DEFAULT + RDODGELOC;
+            //this.transform.Find("Sprite").localPosition = DEFAULT + RDODGELOC;
+            anim.Play("DodgeRight");
         }
     }
 
     private void StopDodgeAnimation(int direction)
     {
         this.transform.Find("Sprite").localPosition = DEFAULT;
-        Transform left = this.transform.Find("Sprite").Find("LeftArm");
-        Transform right = this.transform.Find("Sprite").Find("RightArm");
+        //Transform left = this.transform.Find("Sprite").Find("LeftArm");
+        //Transform right = this.transform.Find("Sprite").Find("RightArm");
 
-        left.localEulerAngles = new Vector3(0, 0, 0);
-        right.localEulerAngles = new Vector3(0, 0, 0);
+        //left.localEulerAngles = new Vector3(0, 0, 0);
+        //right.localEulerAngles = new Vector3(0, 0, 0);
     }
 
     private void StartPunchAnimation(int side)
     {
         if (!boxer.broadcastPunch) return;
         Color broadcastColor = Color.red;
+        anim.Play("None");
         if (side == 1)
         {
             leftGloveRenderer.material.color = broadcastColor;
+            tel = Telegraphing.PunchLeft;
         } else
         {
             rightGloveRenderer.material.color = broadcastColor;
+            tel = Telegraphing.PunchRight;
         }
     }
 
     private void PunchAction(int side)
     {
+        tel = Telegraphing.None;
+        intensity = 0;
         if (side == 1)
         {
             Transform t = this.transform.Find("Sprite").Find("LeftArm");
+            t.localPosition = LDEFAULT;
             leftGloveRenderer.material.color = gloveColor;
-            t.localPosition = t.localPosition + PUNCH;
+            //t.localPosition = t.localPosition + PUNCH;
+            anim.Play("PunchLeft");
         }
         else
         {
             Transform t = this.transform.Find("Sprite").Find("RightArm");
+            t.localPosition = RDEFAULT;
             rightGloveRenderer.material.color = gloveColor;
-            t.localPosition = t.localPosition + PUNCH;
+            anim.Play("PunchRight");
+            //t.localPosition = t.localPosition + PUNCH;
         }
     }
 
     private void StopPunchAnimation(int side)
     {
         Transform left = this.transform.Find("Sprite").Find("LeftArm");
-        left.localPosition = LDEFAULT;
+        //left.localPosition = LDEFAULT;
 
         Transform right = this.transform.Find("Sprite").Find("RightArm");
-        right.localPosition = RDEFAULT;
+        //right.localPosition = RDEFAULT;
 
         leftGloveRenderer.material.color = gloveColor;
         rightGloveRenderer.material.color = gloveColor;
@@ -138,6 +163,21 @@ public class BoxerSprite : MonoBehaviour
         else
         {
             // Reset opacity of dodge icon
+        }
+
+        if (tel == Telegraphing.PunchLeft)
+        {
+            Transform left = this.transform.Find("Sprite").Find("LeftArm");
+            intensity += Time.deltaTime;
+            left.localPosition = Random.insideUnitSphere*.5f*intensity + LDEFAULT;
+            //print("Telegraphing Left "+ left.localPosition);
+        }
+        if (tel == Telegraphing.PunchRight)
+        {
+            Transform right = this.transform.Find("Sprite").Find("RightArm");
+            intensity += Time.deltaTime;
+            right.localPosition = Random.insideUnitSphere*.5f*intensity + RDEFAULT;
+            //print("Telegraphing Right "+ right.localPosition);
         }
     }
 }
