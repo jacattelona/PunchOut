@@ -13,8 +13,6 @@ public class Boxer : Agent
 
     public float[] lastActions;
 
-    private bool firstGame = true;
-
     public float punchCooldown = 0.1f;
     public float dodgeCooldown = 0.1f;
     public float punchDuration = 0.1f;
@@ -24,15 +22,11 @@ public class Boxer : Agent
 
     public bool isFighting = false;
 
+    public Reward rewards;
+
     // COMPONENTS
     Health health;
     ComboTracker comboTracker;
-    RewardComponent rewards;
-
-    /// <summary>
-    /// The name of the boxer
-    /// </summary>
-    public string name;
 
     /// <summary>
     /// The multiplier to apply to incoming damage when blocking.
@@ -65,7 +59,6 @@ public class Boxer : Agent
         stats = new BoxerStats();
         health = GetComponent<Health>();
         comboTracker = GetComponent<ComboTracker>();
-        rewards = GetComponent<RewardComponent>();
 
         dodgeAction = new Action(dodgeDuration, dodgeCooldown, dodgeEventDelay);
         dodgeAction.animationStart.AddListener(RegisterDodge);

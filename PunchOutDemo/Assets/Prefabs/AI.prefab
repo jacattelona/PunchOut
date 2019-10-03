@@ -698,7 +698,6 @@ GameObject:
   - component: {fileID: 6354354638454309238}
   - component: {fileID: 6354354638454309236}
   - component: {fileID: 6354354638454309239}
-  - component: {fileID: 6354354638454309130}
   - component: {fileID: 6354354638454309237}
   m_Layer: 0
   m_Name: AI
@@ -755,6 +754,7 @@ MonoBehaviour:
   punchEventDelay: 0.25
   dodgeEventDelay: 0.25
   isFighting: 0
+  rewards: {fileID: 11400000, guid: 47087f9f46c325143aebf372bbffd33b, type: 2}
   name: 
   blockMultiplier: 0.1
   weakPunch: 0
@@ -811,27 +811,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79b6e82b11cb6cd4ca4d5138c5345f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6354354638454309130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6354354638454309234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56ee47ed00770ca429b9bffc319a9d1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  punchReward: 0.1
-  punchPenalty: -0.1
-  dodgeReward: 0.01
-  dodgePenalty: -0.01
-  knockOutReward: 0
-  knockOutPenalty: 0
-  existancePenalty: 0
-  imitationReward: 2
-  imitationPenalty: -2
 --- !u!114 &6354354638454309237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -847,6 +826,7 @@ MonoBehaviour:
   teacher: {fileID: 0}
   shouldImitate: 0
   ignoreInaction: 1
+  noOpKey: 99
 --- !u!1 &9091160625699738442
 GameObject:
   m_ObjectHideFlags: 0

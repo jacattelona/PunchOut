@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RewardComponent : MonoBehaviour
+[CreateAssetMenu]
+public class Reward: ScriptableObject
 {
     public float punchReward;
     public float punchPenalty;

@@ -7,7 +7,7 @@ public class ImitationSystem : MonoBehaviour
     private Boxer me;
     public Boxer teacher;
 
-    private RewardComponent myRewards;
+    private Reward myRewards;
 
     public bool shouldImitate = true;
     public bool ignoreInaction = true;
@@ -18,7 +18,7 @@ public class ImitationSystem : MonoBehaviour
     void Start()
     {
         me = GetComponent<Boxer>();
-        myRewards = GetComponent<RewardComponent>();
+        myRewards = me.rewards;
     }
 
     // Update is called once per frame
@@ -28,7 +28,7 @@ public class ImitationSystem : MonoBehaviour
 
         if (ignoreInaction && IsTeacherInactive() && !IsTeachingToPerformInaction()) { return; }
 
-        if (Enumerable.SequenceEqual(teacher.lastActions, me.lastActions))
+        if (ArePerformingSameAction())
         {
             me.AddReward(myRewards.imitationReward * Time.fixedDeltaTime);
         }
@@ -36,6 +36,13 @@ public class ImitationSystem : MonoBehaviour
         {
             me.AddReward(myRewards.imitationPenalty * Time.fixedDeltaTime);
         }
+    }
+
+    private bool ArePerformingSameAction()
+    {
+        // TODO: Maybe make this verify what actions they are currently doing instead
+        return teacher.GetPunchState().GetHand() == me.GetPunchState().GetHand() && teacher.GetDodgeState() == me.GetDodgeState();
+        //return Enumerable.SequenceEqual(teacher.lastActions, me.lastActions);
     }
 
     private bool IsTeachingToPerformInaction()
