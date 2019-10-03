@@ -12,6 +12,8 @@ public class ImitationSystem : MonoBehaviour
     public bool shouldImitate = true;
     public bool ignoreInaction = true;
 
+    public KeyCode noOpKey = KeyCode.C;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +22,11 @@ public class ImitationSystem : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (!shouldImitate) { return; }
 
-        if (ignoreInaction && teacher.lastActions.All(value => value == 0)) { return; }
+        if (ignoreInaction && IsTeacherInactive() && !IsTeachingToPerformInaction()) { return; }
 
         if (Enumerable.SequenceEqual(teacher.lastActions, me.lastActions))
         {
@@ -34,5 +36,16 @@ public class ImitationSystem : MonoBehaviour
         {
             me.AddReward(myRewards.imitationPenalty * Time.fixedDeltaTime);
         }
+    }
+
+    private bool IsTeachingToPerformInaction()
+    {
+        return Input.GetKey(noOpKey);
+    }
+
+    private bool IsTeacherInactive()
+    {
+        // Possibly only do this after X seconds of inactivity
+        return teacher.lastActions.All(value => value == 0);
     }
 }
