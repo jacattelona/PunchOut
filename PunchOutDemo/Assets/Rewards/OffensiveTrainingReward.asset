@@ -19,5 +19,5 @@ MonoBehaviour:
   knockOutReward: 0
   knockOutPenalty: 0
   existancePenalty: 0
-  imitationReward: 2
-  imitationPenalty: -2
+  imitationReward: 8
+  imitationPenalty: -8

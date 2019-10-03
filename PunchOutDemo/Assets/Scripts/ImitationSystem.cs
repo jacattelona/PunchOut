@@ -14,35 +14,43 @@ public class ImitationSystem : MonoBehaviour
 
     public KeyCode noOpKey = KeyCode.C;
 
-    // Start is called before the first frame update
+    public float inactivityTimeout = 2;
+
+    private float lastMoveTime;
+
     void Start()
     {
         me = GetComponent<Boxer>();
         myRewards = me.rewards;
+        lastMoveTime = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (!shouldImitate) { return; }
+        // Only runs if the boxer should be imitating something
+        if (!shouldImitate || !me.isFighting || !teacher.isFighting) { return; }
 
-        if (ignoreInaction && IsTeacherInactive() && !IsTeachingToPerformInaction()) { return; }
+        // If inaction should be ignored and the teacher is inactive
+        if (ignoreInaction && IsTeacherInactive() && !IsTeachingToPerformInaction()) {
+            // Teacher is inactive, so don't reward boxer
+            return;
+        }
 
         if (ArePerformingSameAction())
         {
+            // Reward the boxer for acting the same as the teacher
             me.AddReward(myRewards.imitationReward * Time.fixedDeltaTime);
         }
         else
-        {
+        { 
+            // Penalize the boxer for acting differently from the teacher
             me.AddReward(myRewards.imitationPenalty * Time.fixedDeltaTime);
         }
     }
 
     private bool ArePerformingSameAction()
     {
-        // TODO: Maybe make this verify what actions they are currently doing instead
         return teacher.GetPunchState().GetHand() == me.GetPunchState().GetHand() && teacher.GetDodgeState() == me.GetDodgeState();
-        //return Enumerable.SequenceEqual(teacher.lastActions, me.lastActions);
     }
 
     private bool IsTeachingToPerformInaction()
@@ -52,7 +60,18 @@ public class ImitationSystem : MonoBehaviour
 
     private bool IsTeacherInactive()
     {
-        // Possibly only do this after X seconds of inactivity
-        return teacher.lastActions.All(value => value == 0);
+        if (!IsTeacherDoingNothing())
+        {
+            lastMoveTime = Time.time;
+            return false;
+        } else
+        {
+            return Time.time - lastMoveTime >= inactivityTimeout;
+        }
+    }
+
+    private bool IsTeacherDoingNothing()
+    {
+        return teacher.GetPunchState().GetHand() == Hand.NONE && teacher.GetDodgeState() == DodgeState.NONE;
     }
 }
