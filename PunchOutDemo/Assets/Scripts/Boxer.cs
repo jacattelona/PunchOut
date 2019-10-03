@@ -278,11 +278,18 @@ public class Boxer : Agent
         if (punchType == 1)
         {
             punch = new Punch(weakPunch, Hand.LEFT, weakPunchStrength);
+            //print("Left Punch");
+           
+            
+            
         }
         else
         {
             punch = new Punch(weakPunch, Hand.RIGHT, weakPunchStrength);
+            //print("Right Punch");
         }
+        
+        //GUI.Label(Rect(0,0,100,100), punch.GetHand());
         punchState = punch;
     }
 
