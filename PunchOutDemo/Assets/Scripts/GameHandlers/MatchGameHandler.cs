@@ -12,6 +12,8 @@ public class MatchGameHandler : MonoBehaviour
 
     private int state;
 
+    private bool ready = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,8 +27,11 @@ public class MatchGameHandler : MonoBehaviour
         {
             case STATE_WAITING:
                 // When trigger condition
-                match.StartFight();
-                state = STATE_FIGHTING;
+                if (ready)
+                {
+                    match.StartFight();
+                    state = STATE_FIGHTING;
+                }
                 break;
             case STATE_FIGHTING:
                 if (match.GetPlayer1().IsKO() || match.GetPlayer2().IsKO())
@@ -67,5 +72,12 @@ public class MatchGameHandler : MonoBehaviour
     private void EndGame()
     {
         // TODO: Do something here
+    }
+
+
+
+    public void BeginFight()
+    {
+        ready = true;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ImitationSystem : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class ImitationSystem : MonoBehaviour
     public float inactivityTimeout = 2;
 
     private float lastMoveTime;
+
+    public UnityEvent rewardEvent = new UnityEvent();
 
     void Start()
     {
@@ -40,6 +43,7 @@ public class ImitationSystem : MonoBehaviour
         {
             // Reward the boxer for acting the same as the teacher
             me.AddReward(myRewards.imitationReward * Time.fixedDeltaTime);
+            rewardEvent.Invoke();
         }
         else
         { 

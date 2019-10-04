@@ -1,5 +1,6 @@
 ﻿using MLAgents;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Boxer : Agent
 {
@@ -49,6 +50,7 @@ public class Boxer : Agent
     public Action punchAction;
     public Action dodgeAction;
 
+    public UnityEvent hitEvent;
 
     /// <summary>
     /// Initialize the agent
@@ -67,6 +69,8 @@ public class Boxer : Agent
         punchAction = new Action(punchDuration, punchCooldown, punchEventDelay);
         punchAction.animationStart.AddListener(RegisterPunch);
         punchAction.animationEnd.AddListener(DeregisterPunch);
+
+        hitEvent = new UnityEvent();
     }
 
     void FixedUpdate()
@@ -244,6 +248,8 @@ public class Boxer : Agent
     private void TakeDamage(float damage)
     {
         health.health -= (int) damage;
+        hitEvent.Invoke();
+
     }
 
     private void RegisterDodge(int dodgeType)

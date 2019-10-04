@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 public class GameHandler : MonoBehaviour
 {
+
+    public float maxTime = 60f;
+
     public Transform cameraTransform;
     private Vector3 cameraVelocity = Vector3.zero;
     public Vector3 offenseLocation, defenseLocation, matchLocation;
@@ -85,7 +88,7 @@ public class GameHandler : MonoBehaviour
     private void StartOffensive()
     {
         state = STATE_OFFENSIVE;
-        timeLeft = 60f;
+        timeLeft = maxTime;
         timer.text = "Time Left: " + (int)timeLeft;
 
         offensiveTraining.SetActive(true);
@@ -93,16 +96,11 @@ public class GameHandler : MonoBehaviour
         match.SetActive(false);
     }
 
-    //private void OffensiveUpdate()
-    //{
-    //    TimeUpdate();
-    //}
-
     
     private void SwitchDefensive()
     {
         state = STATE_TO_DEFENSIVE;
-        timeLeft = 60f;
+        timeLeft = maxTime;
         timer.text = "Press Space to Start";
 
         offensiveTraining.SetActive(false);
@@ -114,26 +112,29 @@ public class GameHandler : MonoBehaviour
     {
         state = STATE_DEFENSIVE;
         timer.text = "Time Left: " + (int)timeLeft;
+        defensiveTraining.GetComponentInChildren<DefensiveTrainingMatchHandler>().BeginTraining();
     }
 
 
     private void SwitchMatch()
     {
         state = STATE_TO_MATCH;
-        timeLeft = 60f;
+        timeLeft = maxTime;
         timer.text = "Press Space to Start";
 
         offensiveTraining.SetActive(false);
         defensiveTraining.SetActive(false);
         match.SetActive(true);
-        match.GetComponent<Match>().StopFight();
+        //match.GetComponent<Match>().StopFight();
+        //match.transform.Find("Match").GetComponent<Match>().StopFight();
     }
 
     private void StartMatch()
     {
         state = STATE_MATCH;
         timer.text = "Fight!";
-        match.GetComponent<Match>().StartFight();
+        //match.GetComponent<Match>().StartFight();
+        match.GetComponentInChildren<MatchGameHandler>().BeginFight();
     }
 
     private void TimeUpdate()
