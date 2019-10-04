@@ -1,5 +1,6 @@
 ﻿using MLAgents;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Boxer : Agent
 {
@@ -15,8 +16,6 @@ public class Boxer : Agent
 
     public float[] lastActions;
 
-    private bool firstGame = true;
-
     public float punchCooldown = 0.1f;
     public float dodgeCooldown = 0.1f;
     public float punchDuration = 0.1f;
@@ -26,15 +25,11 @@ public class Boxer : Agent
 
     public bool isFighting = false;
 
+    public Reward rewards;
+
     // COMPONENTS
     Health health;
     ComboTracker comboTracker;
-    RewardComponent rewards;
-
-    /// <summary>
-    /// The name of the boxer
-    /// </summary>
-    public string name;
 
     /// <summary>
     /// The multiplier to apply to incoming damage when blocking.
@@ -57,10 +52,8 @@ public class Boxer : Agent
     public Action punchAction;
     public Action dodgeAction;
 
-    void Start()
-    {
-        anim = GetComponent<Animator>();
-    }
+    public UnityEvent hitEvent;
+
     /// <summary>
     /// Initialize the agent
     /// </summary>
@@ -70,7 +63,6 @@ public class Boxer : Agent
         stats = new BoxerStats();
         health = GetComponent<Health>();
         comboTracker = GetComponent<ComboTracker>();
-        rewards = GetComponent<RewardComponent>();
 
         dodgeAction = new Action(dodgeDuration, dodgeCooldown, dodgeEventDelay);
         dodgeAction.animationStart.AddListener(RegisterDodge);
@@ -79,6 +71,8 @@ public class Boxer : Agent
         punchAction = new Action(punchDuration, punchCooldown, punchEventDelay);
         punchAction.animationStart.AddListener(RegisterPunch);
         punchAction.animationEnd.AddListener(DeregisterPunch);
+
+        hitEvent = new UnityEvent();
     }
 
     void FixedUpdate()
@@ -256,6 +250,8 @@ public class Boxer : Agent
     private void TakeDamage(float damage)
     {
         health.health -= (int) damage;
+        hitEvent.Invoke();
+
     }
 
     private void RegisterDodge(int dodgeType)

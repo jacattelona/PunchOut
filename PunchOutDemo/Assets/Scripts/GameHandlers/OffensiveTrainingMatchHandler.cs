@@ -147,7 +147,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
     {
         for (int i = 0; i < trainingProgress.Count; i++)
         {
-            trainingProgress[i].SetEnabled(i == currentTrainingProgressIdx);
+            trainingProgress[i].SetEnabled(true);
         }
     }
 

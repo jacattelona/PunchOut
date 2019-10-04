@@ -28,22 +28,14 @@ public class BoxerSprite : MonoBehaviour
     private Punch lastPunchState;
     private DodgeState lastDodgeState;
 
-    private Renderer leftGloveRenderer, rightGloveRenderer;
+    private Renderer leftGloveRenderer, rightGloveRenderer, bodyRenderer;
 
     private Color gloveColor;
 
     private Vector3 DEFAULT = new Vector3(0, 0, 0);                  //Default position of the boxer
 
-    enum Telegraphing
-    {
-        None,
-        PunchLeft,
-        PunchRight,
-        DodgeLeft,
-        DodgeRight
-    }
-    private Telegraphing tel = Telegraphing.None;
-    private float intensity = 0;
+    float damageTime = 0;
+    float maxDamageTime = .25f;
 
     // Start is called before the first frame update
     void Start()
@@ -58,11 +50,15 @@ public class BoxerSprite : MonoBehaviour
         boxer.punchAction.animationEnd.AddListener(StopPunchAnimation);
         boxer.punchAction.action.AddListener(PunchAction);
 
+        boxer.hitEvent.AddListener(ShowDamage);
+
         GameObject lg = this.transform.Find("Sprite").Find("LeftArm").gameObject;
         leftGloveRenderer = lg.GetComponent<Renderer>();
 
         GameObject rg = this.transform.Find("Sprite").Find("RightArm").gameObject;
         rightGloveRenderer = rg.GetComponent<Renderer>();
+
+        bodyRenderer = this.transform.Find("Sprite").Find("Body").GetComponent<Renderer>();
 
         gloveColor = rightGloveRenderer.material.color;
 
@@ -145,6 +141,13 @@ public class BoxerSprite : MonoBehaviour
         rightGloveRenderer.material.color = gloveColor;
     }
 
+    public void ShowDamage()
+    {
+        damageTime = maxDamageTime;
+        bodyRenderer.material.color = Color.red;
+        //print("Invoked");
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -165,19 +168,12 @@ public class BoxerSprite : MonoBehaviour
             // Reset opacity of dodge icon
         }
 
-        if (tel == Telegraphing.PunchLeft)
+        if (damageTime > 0)
         {
-            Transform left = this.transform.Find("Sprite").Find("LeftArm");
-            intensity += Time.deltaTime;
-            left.localPosition = Random.insideUnitSphere*.5f*intensity + LDEFAULT;
-            //print("Telegraphing Left "+ left.localPosition);
-        }
-        if (tel == Telegraphing.PunchRight)
-        {
-            Transform right = this.transform.Find("Sprite").Find("RightArm");
-            intensity += Time.deltaTime;
-            right.localPosition = Random.insideUnitSphere*.5f*intensity + RDEFAULT;
-            //print("Telegraphing Right "+ right.localPosition);
+            damageTime -= Time.deltaTime;
+
+            if (damageTime <= 0)
+                bodyRenderer.material.color = gloveColor;
         }
     }
 }

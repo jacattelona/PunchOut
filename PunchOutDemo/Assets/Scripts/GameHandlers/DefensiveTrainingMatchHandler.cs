@@ -12,11 +12,15 @@ public class DefensiveTrainingMatchHandler : MonoBehaviour
     public Boxer aiBoxer;
 
     [SerializeField]
-    public TrainingLevels trainingProgress;
+    public List<TrainingProgress> trainingProgress;
+
+    public float minScore, maxScore;
 
     private const int STATE_WAITING = 0, STATE_FIGHTING = 1, STATE_KO = 2, STATE_END = 3;
 
     private int state;
+
+    private bool ready = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,8 +35,11 @@ public class DefensiveTrainingMatchHandler : MonoBehaviour
         {
             case STATE_WAITING:
                 // When trigger condition
-                match.StartFight();
-                state = STATE_FIGHTING;
+                if (ready)
+                {
+                    match.StartFight();
+                    state = STATE_FIGHTING;
+                }
                 break;
             case STATE_FIGHTING:
                 if (match.GetPlayer1().IsKO() || match.GetPlayer2().IsKO())
@@ -60,13 +67,27 @@ public class DefensiveTrainingMatchHandler : MonoBehaviour
     {
         // Notify of KO
         Debug.Log(aiBoxer.GetPerformanceScore());
-        trainingProgress.value = aiBoxer.GetPerformanceScore();
+        var performance = MathUtils.Map01(aiBoxer.GetPerformanceScore(), minScore, maxScore);
+        SetProgress(performance);
         aiBoxer.Train();
         match.ResetMatch();
+    }
+
+    private void SetProgress(float progress)
+    {
+        foreach (var tp in trainingProgress)
+        {
+            tp.SetProgress(progress);
+        }
     }
 
     private void SwitchToNextScene()
     {
         // TODO: Do something here
+    }
+
+    public void BeginTraining()
+    {
+        ready = true;
     }
 }
