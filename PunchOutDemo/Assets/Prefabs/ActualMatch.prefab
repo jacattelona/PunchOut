@@ -196,6 +196,26 @@ PrefabInstance:
       propertyPath: broadcastPunch
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6354354638454309235, guid: a7560c8ccc8a19d45b389b5bf8e2d220,
+        type: 3}
+      propertyPath: punchCooldown
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354354638454309235, guid: a7560c8ccc8a19d45b389b5bf8e2d220,
+        type: 3}
+      propertyPath: dodgeCooldown
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354354638454309235, guid: a7560c8ccc8a19d45b389b5bf8e2d220,
+        type: 3}
+      propertyPath: punchDuration
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354354638454309235, guid: a7560c8ccc8a19d45b389b5bf8e2d220,
+        type: 3}
+      propertyPath: dodgeDuration
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7560c8ccc8a19d45b389b5bf8e2d220, type: 3}
 --- !u!4 &55310362651588174 stripped

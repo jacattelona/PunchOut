@@ -357,7 +357,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1.5
   m_Text: "A\t\t\t\t\t\tDodge (L)\nD\t\t\t\t\t\tDodge (R)\nMouse (L)\t\tPunch (L)\nMouse
-    (R)\t\tPunch (R)\nSpace\t\t\t\tSwap boxer\nTab\t\t\t\t\tSwap graph\t"
+    (R)\t\tPunch (R)\nSpace\t\t\t\tSwap boxer\t"
 --- !u!1 &4305874329062114037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1539,6 +1539,26 @@ PrefabInstance:
       propertyPath: shouldImitate
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6354354638454309235, guid: a7560c8ccc8a19d45b389b5bf8e2d220,
+        type: 3}
+      propertyPath: punchCooldown
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354354638454309235, guid: a7560c8ccc8a19d45b389b5bf8e2d220,
+        type: 3}
+      propertyPath: dodgeCooldown
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354354638454309235, guid: a7560c8ccc8a19d45b389b5bf8e2d220,
+        type: 3}
+      propertyPath: punchDuration
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354354638454309235, guid: a7560c8ccc8a19d45b389b5bf8e2d220,
+        type: 3}
+      propertyPath: dodgeDuration
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 6354354638454309130, guid: a7560c8ccc8a19d45b389b5bf8e2d220,
         type: 3}
       propertyPath: punchReward
@@ -1836,6 +1856,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7268841130584151477, guid: c99a95530accf9b4788d6e8f7f33cf97,
+        type: 3}
+      propertyPath: punchCooldown
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7268841130584151477, guid: c99a95530accf9b4788d6e8f7f33cf97,
+        type: 3}
+      propertyPath: dodgeCooldown
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7268841130584151477, guid: c99a95530accf9b4788d6e8f7f33cf97,
+        type: 3}
+      propertyPath: punchDuration
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7268841130584151477, guid: c99a95530accf9b4788d6e8f7f33cf97,
+        type: 3}
+      propertyPath: dodgeDuration
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7268841130584151475, guid: c99a95530accf9b4788d6e8f7f33cf97,
         type: 3}
