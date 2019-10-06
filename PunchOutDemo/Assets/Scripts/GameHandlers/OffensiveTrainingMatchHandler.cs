@@ -101,12 +101,14 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
     {
         // Start coach's match 
         coachMatch.GetPlayer1().transform.Find("Sprite").localEulerAngles = Vector3.zero;
+        coachMatch.GetPlayer1().transform.localPosition = new Vector3(-3, 0);
         coachMatch.StartFight();
 
         // Stop AI's match and look at the coach
         Boxer AI = aiMatches[0].GetPlayer1();
         aiMatches[0].StopFight();
         AI.transform.Find("Sprite").localEulerAngles = new Vector3(0, 0, 90);
+        AI.transform.localPosition = new Vector3(3, 2);
 
         // Start the hidden AIs
         StartHiddenAIMatches();       
@@ -117,12 +119,14 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
         // Stop coach's match and look at AI
         coachMatch.StopFight();
-        coachMatch.GetPlayer1().transform.Find("Sprite").localEulerAngles = new Vector3(0, 0, -90);
+        coachMatch.GetPlayer1().transform.Find("Sprite").localEulerAngles = new Vector3(0, 0, 90);
+        coachMatch.GetPlayer1().transform.localPosition = new Vector3(3, 1);
 
         // Start the AI's match
         Boxer AI = aiMatches[0].GetPlayer1();
         aiMatches[0].StartFight();
         AI.transform.Find("Sprite").localEulerAngles = Vector3.zero;
+        AI.transform.localPosition = new Vector3(-3, 0);
 
         // Stop the hidden matches
         StopHiddenAIMatches();        
