@@ -20,17 +20,31 @@ public class GameHandler : MonoBehaviour
 
     float timeLeft = 0;
 
+    private float timeScale, fixedDt;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         state = STATE_MAIN_MENU;
+        timeScale = Time.timeScale;
+        fixedDt = Time.fixedDeltaTime;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0) // Pause
+        {
+            Time.timeScale = 0;
+            Time.fixedDeltaTime = 0;
+        } else if (Time.timeScale == 0 && Input.GetKeyDown(KeyCode.Escape)) // Unpause
+        {
+            Time.timeScale = timeScale;
+            Time.fixedDeltaTime = fixedDt;
+        }
+
         // TODO: Move between the phases
         switch (state)
         {
