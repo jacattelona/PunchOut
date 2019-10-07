@@ -24,6 +24,7 @@ public class Boxer : Agent
     public float dodgeEventDelay = 0.0f;
 
     public bool isFighting = false;
+    public bool inverted = false;
 
     public Reward rewards;
 
@@ -159,7 +160,7 @@ public class Boxer : Agent
         stats.AddOpponentPunch();
 
         // Dodged
-        if (transform.Find("Sprite").localEulerAngles.z == 0) // If the player is flipped, this appears opposite
+        if (!inverted) // If the player is flipped, this appears opposite
         {
             if (dodgeState == DodgeState.LEFT && punch.GetHand() == Hand.LEFT)
             {
