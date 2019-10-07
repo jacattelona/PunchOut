@@ -37,6 +37,17 @@ public class BoxerSprite : MonoBehaviour
     float damageTime = 0;
     float maxDamageTime = .25f;
 
+    enum Telegraphing
+    {
+        None,
+        PunchLeft,
+        PunchRight,
+        DodgeLeft,
+        DodgeRight
+    }
+    private Telegraphing tel = Telegraphing.None;
+    private float intensity = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,6 +95,7 @@ public class BoxerSprite : MonoBehaviour
     private void StopDodgeAnimation(int direction)
     {
         this.transform.Find("Sprite").localPosition = DEFAULT;
+        //anim.Play("Base");
         //Transform left = this.transform.Find("Sprite").Find("LeftArm");
         //Transform right = this.transform.Find("Sprite").Find("RightArm");
 
@@ -93,17 +105,18 @@ public class BoxerSprite : MonoBehaviour
 
     private void StartPunchAnimation(int side)
     {
-        if (!boxer.broadcastPunch) return;
+        //if (!boxer.broadcastPunch) return;
         Color broadcastColor = Color.red;
-        anim.Play("None");
         if (side == 1)
         {
-            leftGloveRenderer.material.color = broadcastColor;
-            tel = Telegraphing.PunchLeft;
+            //leftGloveRenderer.material.color = broadcastColor;
+            //tel = Telegraphing.PunchLeft;
+            anim.Play("PunchLeft");
         } else
         {
-            rightGloveRenderer.material.color = broadcastColor;
-            tel = Telegraphing.PunchRight;
+            //rightGloveRenderer.material.color = broadcastColor;
+            //tel = Telegraphing.PunchRight;
+            anim.Play("PunchRight");
         }
     }
 
@@ -114,17 +127,17 @@ public class BoxerSprite : MonoBehaviour
         if (side == 1)
         {
             Transform t = this.transform.Find("Sprite").Find("LeftArm");
-            t.localPosition = LDEFAULT;
+            //t.localPosition = LDEFAULT;
             leftGloveRenderer.material.color = gloveColor;
             //t.localPosition = t.localPosition + PUNCH;
-            anim.Play("PunchLeft");
+            //anim.Play("PunchLeft");
         }
         else
         {
             Transform t = this.transform.Find("Sprite").Find("RightArm");
-            t.localPosition = RDEFAULT;
+            //t.localPosition = RDEFAULT;
             rightGloveRenderer.material.color = gloveColor;
-            anim.Play("PunchRight");
+           //anim.Play("PunchRight");
             //t.localPosition = t.localPosition + PUNCH;
         }
     }
