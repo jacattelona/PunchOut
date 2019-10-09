@@ -180,6 +180,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
     private void TrainAIs()
     {
         float reward = GetAveragePerformanceScore();
+        Debug.Log(reward);
         foreach (TrainingProgress progress in trainingProgress)
         {
             progress.SetProgress(MathUtils.Map01(reward, minReward, maxReward));

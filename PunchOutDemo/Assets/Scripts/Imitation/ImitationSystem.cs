@@ -21,11 +21,14 @@ public class ImitationSystem : MonoBehaviour
 
     public UnityEvent rewardEvent = new UnityEvent();
 
+    private IImitationStrategy strategy;
+
     void Start()
     {
         me = GetComponent<Boxer>();
         myRewards = me.rewards;
         lastMoveTime = 0;
+        strategy = new RecentMoveImitationStrategy();
     }
 
     void Update()
@@ -39,22 +42,11 @@ public class ImitationSystem : MonoBehaviour
             return;
         }
 
-        if (ArePerformingSameAction())
-        {
-            // Reward the boxer for acting the same as the teacher
-            me.AddReward(myRewards.imitationReward * Time.fixedDeltaTime);
-            rewardEvent.Invoke();
-        }
-        else
-        { 
-            // Penalize the boxer for acting differently from the teacher
-            me.AddReward(myRewards.imitationPenalty * Time.fixedDeltaTime);
-        }
-    }
+        float reward = strategy.Execute(me, teacher, myRewards);
 
-    private bool ArePerformingSameAction()
-    {
-        return teacher.GetPunchState().GetHand() == me.GetPunchState().GetHand() && teacher.GetDodgeState() == me.GetDodgeState();
+        if (reward > 0) rewardEvent.Invoke();
+
+        me.AddReward(reward);
     }
 
     private bool IsTeachingToPerformInaction()

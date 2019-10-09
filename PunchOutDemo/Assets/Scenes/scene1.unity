@@ -1035,11 +1035,27 @@ PrefabInstance:
       propertyPath: aiMatches.Array.data[1]
       value: 
       objectReference: {fileID: 1967836925}
+    - target: {fileID: 4710161894825432417, guid: b57c866fb8120fb4caa40af74f67c994,
+        type: 3}
+      propertyPath: minReward
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4710161894825432417, guid: b57c866fb8120fb4caa40af74f67c994,
+        type: 3}
+      propertyPath: maxReward
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7397736420718900521, guid: b57c866fb8120fb4caa40af74f67c994,
         type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6784984025631178711, guid: b57c866fb8120fb4caa40af74f67c994,
+        type: 3}
+      propertyPath: brain
+      value: 
+      objectReference: {fileID: 11400000, guid: 28327d844c23eec458c5328c80d86790,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b57c866fb8120fb4caa40af74f67c994, type: 3}
 --- !u!1001 &6579244799903481118

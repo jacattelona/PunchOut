@@ -50,6 +50,8 @@ public class Boxer : Agent
     public Action punchAction;
     public Action dodgeAction;
 
+    public ActionHistory actionHistory;
+
     public UnityEvent hitEvent;
 
     /// <summary>
@@ -71,6 +73,8 @@ public class Boxer : Agent
         punchAction.animationEnd.AddListener(DeregisterPunch);
 
         hitEvent = new UnityEvent();
+
+        actionHistory = new ActionHistory();
     }
 
     void FixedUpdate()
@@ -123,8 +127,8 @@ public class Boxer : Agent
 
         if (!isFighting) return;
 
-        HandleDodgeInput(vectorAction[0]);
         HandlePunchInput(vectorAction[1]);
+        HandleDodgeInput(vectorAction[0]);
         if (rewards != null) AddReward(rewards.existancePenalty);
     }
 
@@ -255,6 +259,7 @@ public class Boxer : Agent
     private void RegisterDodge(int dodgeType)
     {
         stats.AddDodge();
+        actionHistory.Record(dodgeType == 1 ? MLAction.DODGE_LEFT : MLAction.DODGE_RIGHT);
         if (dodgeType == 1)
         {
             dodgeState = DodgeState.LEFT;
@@ -273,6 +278,7 @@ public class Boxer : Agent
     private void RegisterPunch(int punchType)
     {
         stats.AddPunch();
+        actionHistory.Record(punchType == 1 ? MLAction.PUNCH_LEFT : MLAction.PUNCH_RIGHT);
         Punch punch;
         if (punchType == 1)
         {
