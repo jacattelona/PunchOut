@@ -16,24 +16,26 @@ public class ExpertHeuristic : Decision
             return new float[] { r.Next(0, 3), r.Next(0, 3) };
         }
 
-        if (vectorObs[21] == 1)
+        MLInput input = new MLInput(vectorObs.ToArray());
+
+        if (input.GetOpponentAction() == MLAction.DODGE_LEFT)
         {
-            return new float[] { 0f, 2f };
+            return MLActionFactory.GetVectorAction(MLAction.PUNCH_RIGHT);
         }
 
-        if (vectorObs[20] == 1)
+        if (input.GetOpponentAction() == MLAction.DODGE_RIGHT)
         {
-            return new float[] { 0f, 1f };
+            return MLActionFactory.GetVectorAction(MLAction.PUNCH_LEFT);
         }
 
-        if (vectorObs[19] == 1)
+        if (input.GetOpponentAction() == MLAction.PUNCH_LEFT)
         {
-            return new float[] { 1f, 0f };
+            return MLActionFactory.GetVectorAction(MLAction.DODGE_LEFT);
         }
 
-        if (vectorObs[18] == 1)
+        if (input.GetOpponentAction() == MLAction.PUNCH_RIGHT)
         {
-            return new float[] { 2f, 0f };
+            return MLActionFactory.GetVectorAction(MLAction.DODGE_RIGHT);
         }
         
         return new float[] { 0f, r.Next(1, 3) };

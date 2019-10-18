@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class SimpleEnemyHeuristic : Decision
 {
-    private float[] NOTHING = new float[] { 0f, 0f };
-    private float[] LEFT_PUNCH = new float[] { 0f, 1f };
-    private float[] RIGHT_PUNCH = new float[] { 0f, 2f };
-    private float[] LEFT_DODGE= new float[] { 1f, 0f };
-    private float[] RIGHT_DODGE = new float[] { 2f, 0f };
+    private float[] NOTHING = MLActionFactory.GetVectorAction(MLAction.NOTHING);
+    private float[] LEFT_PUNCH = MLActionFactory.GetVectorAction(MLAction.PUNCH_LEFT);
+    private float[] RIGHT_PUNCH = MLActionFactory.GetVectorAction(MLAction.PUNCH_RIGHT);
+    private float[] LEFT_DODGE= MLActionFactory.GetVectorAction(MLAction.DODGE_LEFT);
+    private float[] RIGHT_DODGE = MLActionFactory.GetVectorAction(MLAction.DODGE_RIGHT);
 
     private float[][] moves;
 
@@ -37,7 +37,9 @@ public class SimpleEnemyHeuristic : Decision
             return NOTHING;
         }
 
-        if (vectorObs[0] == 1 && vectorObs[1] == 1) // Can punch / dodge
+        MLInput input = new MLInput(vectorObs.ToArray());
+
+        if (input.IsPunchReady() && input.IsDodgeReady()) // Can punch / dodge
         {
             float[] move = moves[moveIdx];
             moveIdx = (moveIdx + 1) % moves.Length;
