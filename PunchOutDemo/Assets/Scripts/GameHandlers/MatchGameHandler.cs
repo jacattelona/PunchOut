@@ -61,10 +61,10 @@ public class MatchGameHandler : MonoBehaviour
 
         if (match.GetPlayer1().IsKO())
         {
-            winner = "AI";
+            winner = "Opponent";
         } else
         {
-            winner = "Opponent";
+            winner = "AI";
         }
 
     }

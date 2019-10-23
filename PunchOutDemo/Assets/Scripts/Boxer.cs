@@ -4,6 +4,8 @@ using UnityEngine.Events;
 
 public class Boxer : Agent
 {
+    private Animator anim;
+
     private Boxer opponent;
 
     private BoxerStats stats;
@@ -22,6 +24,7 @@ public class Boxer : Agent
     public float dodgeEventDelay = 0.0f;
 
     public bool isFighting = false;
+    public bool inverted = false;
 
     public Reward rewards;
 
@@ -161,7 +164,7 @@ public class Boxer : Agent
         stats.AddOpponentPunch();
 
         // Dodged
-        if (transform.Find("Sprite").localEulerAngles.z == 0) // If the player is flipped, this appears opposite
+        if (!inverted) // If the player is flipped, this appears opposite
         {
             if (dodgeState == DodgeState.LEFT && punch.GetHand() == Hand.LEFT)
             {
@@ -305,7 +308,16 @@ public class Boxer : Agent
     {
         if (dodgeInput != 0 && (allowPunchWhileDodging || !punchAction.IsRunning()))
         {
-            dodgeAction.Run((int)dodgeInput);
+            //if (anim.GetCurrentAnimatorStateInfo(0).shortNameHash == Animator.StringToHash("Base"))
+            //{
+                int input = (int)dodgeInput;
+                //if (input == 1)
+                //    animate.Play("DodgeLeft", -1, 0);
+                //if (input == 2)
+                //    animate.Play("DodgeRight", -1, 0);
+                dodgeAction.Run(input);
+           // }
+
         }
     }
 
@@ -319,6 +331,7 @@ public class Boxer : Agent
         if (punchInput != 0 && (allowPunchWhileDodging || !dodgeAction.IsRunning()))
         {
             punchAction.Run((int) punchInput);
+
         }
     }
 
