@@ -15,11 +15,10 @@ MonoBehaviour:
   brainParameters:
     vectorObservationSize: 22
     numStackedVectorObservations: 1
-    vectorActionSize: 0300000003000000
+    vectorActionSize: 05000000
     cameraResolutions: []
     vectorActionDescriptions:
-    - Dodge
-    - Punch
+    - Action
     vectorActionSpaceType: 0
   decision: {fileID: 0}
   decisionScript: {fileID: 11500000, guid: 787993c0a808c3d4594fd60639a9e73a, type: 3}

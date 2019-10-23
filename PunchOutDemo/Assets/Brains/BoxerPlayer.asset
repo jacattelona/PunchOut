@@ -15,36 +15,23 @@ MonoBehaviour:
   brainParameters:
     vectorObservationSize: 22
     numStackedVectorObservations: 1
-    vectorActionSize: 0300000003000000
+    vectorActionSize: 05000000
     cameraResolutions: []
     vectorActionDescriptions:
-    - Dodge
-    - Punch
+    - Action
     vectorActionSpaceType: 0
   keyContinuousPlayerActions: []
   axisContinuousPlayerActions: []
   discretePlayerActions:
   - key: 97
     branchIndex: 0
-    value: 1
-  - key: 100
-    branchIndex: 0
-    value: 2
-  - key: 274
-    branchIndex: 0
     value: 3
-  - key: 273
+  - key: 100
     branchIndex: 0
     value: 4
   - key: 323
-    branchIndex: 1
+    branchIndex: 0
     value: 1
   - key: 324
-    branchIndex: 1
+    branchIndex: 0
     value: 2
-  - key: 113
-    branchIndex: 1
-    value: 3
-  - key: 122
-    branchIndex: 1
-    value: 4

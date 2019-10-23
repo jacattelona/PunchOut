@@ -18,19 +18,15 @@ public class MLActionFactory
     /// <returns>The action that the Brain predicts</returns>
     public static MLAction GetAction(float[] vectorAction)
     {
-        switch (vectorAction[1])
+        switch (vectorAction[0])
         {
             case 1:
                 return MLAction.PUNCH_LEFT;
             case 2:
                 return MLAction.PUNCH_RIGHT;
-        }
-
-        switch (vectorAction[0])
-        {
-            case 1:
+            case 3:
                 return MLAction.DODGE_LEFT;
-            case 2:
+            case 4:
                 return MLAction.DODGE_RIGHT;
         }
 
@@ -47,16 +43,16 @@ public class MLActionFactory
         switch (action)
         {
             case MLAction.NOTHING:
-                return new float[] { 0f, 0f };
+                return new float[] { 0f};
             case MLAction.PUNCH_LEFT:
-                return new float[] { 0f, 1f };
+                return new float[] { 1f };
             case MLAction.PUNCH_RIGHT:
-                return new float[] { 0f, 2f };
+                return new float[] { 2f };
             case MLAction.DODGE_LEFT:
-                return new float[] { 1f, 0f };
+                return new float[] { 3f };
             case MLAction.DODGE_RIGHT:
-                return new float[] { 2f, 0f };
+                return new float[] { 4f };
         }
-        return new float[] { 0f, 0f };
+        return new float[] { 0f };
     }
 }

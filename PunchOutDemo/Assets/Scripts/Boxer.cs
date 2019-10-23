@@ -135,12 +135,13 @@ public class Boxer : Agent
 
         if (!isFighting) return;
 
-        if (vectorAction[1] != 0)
+        // TODO: Neaten this up
+        if (vectorAction[0] <= 2)
         {
-            HandlePunchInput(vectorAction[1]);
+            HandlePunchInput(vectorAction[0]);
         } else
         {
-            HandleDodgeInput(vectorAction[0]);
+            HandleDodgeInput(vectorAction[0] - 2);
         }
         if (rewards != null) AddReward(rewards.existancePenalty);
     }

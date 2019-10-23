@@ -990,6 +990,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1833783813145780960, guid: b57c866fb8120fb4caa40af74f67c994,
+        type: 3}
+      propertyPath: shouldImitate
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1833783813695127718, guid: b57c866fb8120fb4caa40af74f67c994,
         type: 3}
       propertyPath: ignoreInaction
@@ -1245,6 +1250,12 @@ PrefabInstance:
       propertyPath: dodgeEventDelay
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6784984025631178711, guid: b57c866fb8120fb4caa40af74f67c994,
+        type: 3}
+      propertyPath: brain
+      value: 
+      objectReference: {fileID: 11400000, guid: 5551af24ea95a994083527fdaa432c95,
+        type: 2}
     - target: {fileID: 6784984025631178710, guid: b57c866fb8120fb4caa40af74f67c994,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1320,6 +1331,12 @@ PrefabInstance:
       propertyPath: inverted
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7397736419390889480, guid: b57c866fb8120fb4caa40af74f67c994,
+        type: 3}
+      propertyPath: brain
+      value: 
+      objectReference: {fileID: 11400000, guid: 5386e1be819b5324c8358238fd75c0e1,
+        type: 2}
     - target: {fileID: 7397736420718900535, guid: b57c866fb8120fb4caa40af74f67c994,
         type: 3}
       propertyPath: dodgeCooldown
@@ -1345,6 +1362,12 @@ PrefabInstance:
       propertyPath: inverted
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7397736420718900535, guid: b57c866fb8120fb4caa40af74f67c994,
+        type: 3}
+      propertyPath: brain
+      value: 
+      objectReference: {fileID: 11400000, guid: b5f284420043bc446b2401142e5c80e9,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b57c866fb8120fb4caa40af74f67c994, type: 3}
 --- !u!114 &4710161895769684308 stripped
