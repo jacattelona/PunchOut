@@ -57,6 +57,9 @@ public class Boxer : Agent
 
     public UnityEvent hitEvent;
 
+    public MLAction currentAction;
+
+
     /// <summary>
     /// Initialize the agent
     /// </summary>
@@ -78,6 +81,8 @@ public class Boxer : Agent
         hitEvent = new UnityEvent();
 
         actionHistory = new ActionHistory();
+
+        currentAction = MLAction.NOTHING;
     }
 
     void FixedUpdate()
@@ -130,8 +135,13 @@ public class Boxer : Agent
 
         if (!isFighting) return;
 
-        HandlePunchInput(vectorAction[1]);
-        HandleDodgeInput(vectorAction[0]);
+        if (vectorAction[1] != 0)
+        {
+            HandlePunchInput(vectorAction[1]);
+        } else
+        {
+            HandleDodgeInput(vectorAction[0]);
+        }
         if (rewards != null) AddReward(rewards.existancePenalty);
     }
 
@@ -266,16 +276,19 @@ public class Boxer : Agent
         if (dodgeType == 1)
         {
             dodgeState = DodgeState.LEFT;
+            currentAction = MLAction.DODGE_LEFT;
         }
         else
         {
             dodgeState = DodgeState.RIGHT;
+            currentAction = MLAction.DODGE_RIGHT;
         }
     }
 
     private void DeregisterDodge(int dodgeType)
     {
         dodgeState = DodgeState.NONE;
+        currentAction = MLAction.NOTHING;
     }
 
     private void RegisterPunch(int punchType)
@@ -286,10 +299,12 @@ public class Boxer : Agent
         if (punchType == 1)
         {
             punch = new Punch(weakPunch, Hand.LEFT, weakPunchStrength);
+            currentAction = MLAction.PUNCH_LEFT;
         }
         else
         {
             punch = new Punch(weakPunch, Hand.RIGHT, weakPunchStrength);
+            currentAction = MLAction.PUNCH_RIGHT;
         }
         punchState = punch;
     }
@@ -297,6 +312,7 @@ public class Boxer : Agent
     private void DeregisterPunch(int punchType)
     {
         punchState = Punch.NULL_PUNCH;
+        currentAction = MLAction.NOTHING;
     }
 
 

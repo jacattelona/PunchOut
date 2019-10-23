@@ -18,7 +18,7 @@ public class Evaluator: MonoBehaviour
 
     private void Update()
     {
-        var match = MLActionFactory.GetAction(trainee.lastActions) == MLActionFactory.GetAction(coach.lastActions);
+        var match = trainee.currentAction == coach.currentAction;//MLActionFactory.GetAction(trainee.lastActions) == MLActionFactory.GetAction(coach.lastActions);
         AddSample(match);
     }
 
