@@ -17,9 +17,14 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
     [SerializeField]
     public List<TrainingProgress> trainingProgress;
 
-    private int currentTrainingProgressIdx = 0;
 
-    public float minReward, maxReward;
+    [SerializeField]
+    public bool displayEvaluationData = false;
+
+    private Evaluator evaluator;
+    private int cycles = 0;
+
+    private int currentTrainingProgressIdx = 0;
 
     public float trainTime;
 
@@ -35,6 +40,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
     void Start()
     {
         state = STATE_WAITING;
+        evaluator = transform.parent.GetComponentInChildren<Evaluator>();
     }
 
     // Update is called once per frame
@@ -70,6 +76,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                     coachMatch.StartFight();
                     demoStartTime = Time.time;
                     startTime = Time.time;
+                    evaluator.Reset();
                     state = STATE_DEMONSTRATING;
                 }
                 break;
@@ -77,6 +84,16 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                 if (shouldTrain && Time.time - demoStartTime >= trainTime) // Train if the train time has been complete since switching to demo mode
                 {
                     TrainAIs();
+
+                    if (displayEvaluationData)
+                    {
+                        // Display evaluation data
+                        cycles++;
+                        var score = evaluator.GetScore();
+                        Debug.Log("Cycle: " + cycles + ", Score: " + score);
+                        evaluator.Reset();
+                    }
+
                 }
 
                 if (Input.GetKeyDown(KeyCode.Space))
@@ -108,6 +125,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                 {
                     demoStartTime = Time.time;
                     coachMatch.StartFight();
+                    evaluator.Reset();
                     state = STATE_DEMONSTRATING;
                 }
                 MoveTowardsDemoPosition(lerpProgress);
@@ -179,11 +197,10 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
     private void TrainAIs()
     {
-        float reward = GetAveragePerformanceScore();
-        Debug.Log(reward);
+        float reward = evaluator.GetScore();
         foreach (TrainingProgress progress in trainingProgress)
         {
-            progress.SetProgress(MathUtils.Map01(reward, minReward, maxReward));
+            progress.SetProgress(reward);
         }
         
         Train(coachMatch);

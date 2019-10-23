@@ -5,13 +5,23 @@ using UnityEngine;
 /// <summary>
 /// A class to evaluate an imitation learning algorithm
 /// </summary>
-public class Evaluator
+public class Evaluator: MonoBehaviour
 {
-    private const float SIGNIFICANT_PERCENT = 0.75f;
-
-
     private int matching = 0;
     private int total = 0;
+
+    [SerializeField]
+    private Boxer trainee;
+
+    [SerializeField]
+    private Boxer coach;
+
+    private void Update()
+    {
+        var match = MLActionFactory.GetAction(trainee.lastActions) == MLActionFactory.GetAction(coach.lastActions);
+        AddSample(match);
+    }
+
 
     /// <summary>
     /// Add a sample to the evaluator
@@ -31,15 +41,6 @@ public class Evaluator
     {
         if (total == 0) return 0f;
         return matching / (float) total;
-    }
-
-    /// <summary>
-    /// Determines if a score is significant
-    /// </summary>
-    /// <returns>True if the score shows significant performance</returns>
-    public bool IsSignificant()
-    {
-        return GetScore() >= SIGNIFICANT_PERCENT;
     }
 
     /// <summary>
