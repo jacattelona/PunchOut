@@ -6,7 +6,10 @@ public class moveLog : MonoBehaviour
 {
     string myLog;
     Queue myLogQueue = new Queue();
+    Queue myPics = new Queue();
     int count = 0;
+    Texture2D LP, LD, RP, RD;
+    
 
 
     public Boxer boxer;
@@ -16,6 +19,10 @@ public class moveLog : MonoBehaviour
         boxer = GetComponent<Boxer>();
         boxer.punchAction.action.AddListener(logPunch);
         boxer.dodgeAction.action.AddListener(logDodge);
+        LP = Resources.Load("Key Logs/Left Punch") as Texture2D;
+        LD = Resources.Load("Key Logs/Left Dodge") as Texture2D;
+        RP = Resources.Load("Key Logs/Right Punch") as Texture2D;
+        RD = Resources.Load("Key Logs/Right Dodge") as Texture2D;
     }
 
     // Update is called once per frame
@@ -28,12 +35,15 @@ public class moveLog : MonoBehaviour
     {
         if (side == 1)
         {
-            HandleLog("Left Punch");
+            //HandleLog("Left Punch");
+            HandlePic(LP);
+            
         }
 
         if (side == 2)
         {
-            HandleLog("Right Punch");
+          //  HandleLog("Right Punch");
+            HandlePic(RP);
         }
     }
 
@@ -41,12 +51,14 @@ public class moveLog : MonoBehaviour
     {
         if (side == 1)
         {
-            HandleLog("Left Dodge");
+           // HandleLog("Left Dodge");
+            HandlePic(LD);
         }
 
         if (side == 2)
         {
-            HandleLog("Right Dodge");
+          //  HandleLog("Right Dodge");
+            HandlePic(RD);
         }
     }
 
@@ -73,9 +85,28 @@ public class moveLog : MonoBehaviour
         }
     }
 
+    void HandlePic(Texture tex)
+    {
+        
+        myPics.Enqueue(tex);
+        count++;
+        if (count >= 5)
+        {
+            myPics.Dequeue();
+        }
+
+        
+       
+    }
+
     void OnGUI()
     {
-        GUILayout.Label(myLog);
+        // GUILayout.Label(myLog);
+        foreach(Texture2D tx in myPics)
+        {
+            GUILayout.Label(tx);
+        }
+        
     }
 
 }
