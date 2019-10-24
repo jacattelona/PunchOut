@@ -6,14 +6,36 @@ public class ExpertHeuristic : Decision
 {
 
     public float noise = 0f;
+    private MLAction lastAction;
 
     public override float[] Decide(List<float> vectorObs, List<Texture2D> visualObs, float reward, bool done, List<float> memory)
     {
-        return OnlyDo(vectorObs, MLAction.PUNCH_LEFT);
+        return OnlyDoAndDodge(vectorObs, MLAction.PUNCH_LEFT);
     }
 
     public float[] OnlyDo(List<float> vectorObs, MLAction action)
     {
+        return MLActionFactory.GetVectorAction(action);
+    }
+
+    public float[] OnlyDoAndDodge(List<float> vectorObs, MLAction action)
+    {
+        MLInput input = new MLInput(vectorObs.ToArray());
+
+        if (lastAction != input.GetOpponentAction() && input.GetOpponentAction() == MLAction.PUNCH_LEFT)
+        {
+            lastAction = input.GetOpponentAction();
+            return MLActionFactory.GetVectorAction(MLAction.DODGE_RIGHT);
+        }
+
+        if (lastAction != input.GetOpponentAction() && input.GetOpponentAction() == MLAction.PUNCH_RIGHT)
+        {
+            lastAction = input.GetOpponentAction();
+            return MLActionFactory.GetVectorAction(MLAction.DODGE_LEFT);
+        }
+
+        lastAction = input.GetOpponentAction();
+
         return MLActionFactory.GetVectorAction(action);
     }
    

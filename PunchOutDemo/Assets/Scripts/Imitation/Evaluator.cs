@@ -37,11 +37,80 @@ public class Evaluator: MonoBehaviour
     /// Get the current score of the algorithm
     /// </summary>
     /// <returns>A score between 0 and 1, where 1 is a complete match</returns>
-    public float GetScore()
+    public float GetMatchingScore()
     {
         if (total == 0) return 0f;
         return matching / (float) total;
     }
+
+    /// <summary>
+    /// Get the Needleman-Wunsch score of the boxers' move histories
+    /// </summary>
+    /// <returns>The alignment score</returns>
+    public float GetNeedlemanWunschScore()
+    {
+        const float GAP_PENALTY = -1f;
+        const float MATCH_AWARD = 1f;
+        const float MISMATCH_PENALTY = -1f;
+
+        var coachActions = coach.actionHistory.GetActions();
+        var traineeActions = trainee.actionHistory.GetActions();
+
+        var n = coachActions.Count;
+        var m = traineeActions.Count;
+
+        var score = new float[m + 1, n + 1];
+
+        for (var i = 0; i < m + 1; i++)
+        {
+            score[i, 0] = GAP_PENALTY * i;
+        }
+
+        for (var j = 0; j < n + 1; j++)
+        {
+            score[0, j] = GAP_PENALTY * j;
+        }
+
+        for (var i = 1; i < m + 1; i++)
+        {
+            for (var j = 1; j < n + 1; j++)
+            {
+
+                var first = coachActions[j - 1].action;
+                var second = traineeActions[i - 1].action;
+                float match = score[i - 1, j - 1] + (first == second ? MATCH_AWARD : MISMATCH_PENALTY);
+                float delete = score[i - 1, j] + GAP_PENALTY;
+                float insert = score[i, j - 1] + GAP_PENALTY;
+                score[i, j] = Mathf.Max(match, delete, insert);
+            }
+        }
+
+        return score[m, n];
+
+    }
+
+
+    /// <summary>
+    /// Get the identify score of the two boxers (how many of their actions matched)
+    /// </summary>
+    /// <returns>A score between 0 and 1</returns>
+    public float GetIdentityScore()
+    {
+        var coachActions = coach.actionHistory.GetActions();
+        var traineeActions = trainee.actionHistory.GetActions();
+        if (coachActions.Count == 0) return 0f;
+        int minLength = Mathf.Min(coachActions.Count, traineeActions.Count);
+        int matches = 0;
+        for (var i = 0; i < minLength; i++)
+        {
+            if (coachActions[i].action == traineeActions[i].action)
+            {
+                matches++;
+            }
+        }
+        return matches / (float) coachActions.Count;
+    }
+    
 
     /// <summary>
     /// Reset the evaluator
@@ -50,6 +119,8 @@ public class Evaluator: MonoBehaviour
     {
         total = 0;
         matching = 0;
+        coach.actionHistory = new ActionHistory();
+        trainee.actionHistory = new ActionHistory();
     }
 
 }

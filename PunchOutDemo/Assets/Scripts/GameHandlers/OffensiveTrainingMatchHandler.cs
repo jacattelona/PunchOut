@@ -89,8 +89,8 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                     {
                         // Display evaluation data
                         cycles++;
-                        var score = evaluator.GetScore();
-                        Debug.Log("Cycle: " + cycles + ", Score: " + score);
+                        var score = evaluator.GetMatchingScore();
+                        Debug.Log("Cycle: " + cycles + ", Time Score: " + score + ", NW Score: " + evaluator.GetNeedlemanWunschScore() + ", Matching Score: " + evaluator.GetIdentityScore());
                         evaluator.Reset();
                     }
 
@@ -197,7 +197,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
     private void TrainAIs()
     {
-        float reward = evaluator.GetScore();
+        float reward = evaluator.GetMatchingScore();
         foreach (TrainingProgress progress in trainingProgress)
         {
             progress.SetProgress(reward);

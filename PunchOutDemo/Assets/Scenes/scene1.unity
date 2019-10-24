@@ -1235,6 +1235,11 @@ PrefabInstance:
       propertyPath: displayEvaluationData
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4710161894825432417, guid: b57c866fb8120fb4caa40af74f67c994,
+        type: 3}
+      propertyPath: trainTime
+      value: 11.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7397736420718900521, guid: b57c866fb8120fb4caa40af74f67c994,
         type: 3}
       propertyPath: m_Enabled
@@ -1324,7 +1329,7 @@ PrefabInstance:
     - target: {fileID: 7397736419390889480, guid: b57c866fb8120fb4caa40af74f67c994,
         type: 3}
       propertyPath: dodgeCooldown
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7397736419390889480, guid: b57c866fb8120fb4caa40af74f67c994,
         type: 3}
@@ -1337,10 +1342,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 5386e1be819b5324c8358238fd75c0e1,
         type: 2}
+    - target: {fileID: 7397736419390889480, guid: b57c866fb8120fb4caa40af74f67c994,
+        type: 3}
+      propertyPath: punchCooldown
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7397736420718900535, guid: b57c866fb8120fb4caa40af74f67c994,
         type: 3}
       propertyPath: dodgeCooldown
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7397736420718900535, guid: b57c866fb8120fb4caa40af74f67c994,
         type: 3}
@@ -1368,6 +1378,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: b5f284420043bc446b2401142e5c80e9,
         type: 2}
+    - target: {fileID: 7397736420718900535, guid: b57c866fb8120fb4caa40af74f67c994,
+        type: 3}
+      propertyPath: punchCooldown
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b57c866fb8120fb4caa40af74f67c994, type: 3}
 --- !u!114 &4710161895769684308 stripped
