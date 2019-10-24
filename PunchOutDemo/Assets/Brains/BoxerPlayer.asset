@@ -23,15 +23,15 @@ MonoBehaviour:
   keyContinuousPlayerActions: []
   axisContinuousPlayerActions: []
   discretePlayerActions:
-  - key: 97
-    branchIndex: 0
-    value: 3
   - key: 100
     branchIndex: 0
+    value: 3
+  - key: 107
+    branchIndex: 0
     value: 4
-  - key: 323
+  - key: 102
     branchIndex: 0
     value: 1
-  - key: 324
+  - key: 106
     branchIndex: 0
     value: 2

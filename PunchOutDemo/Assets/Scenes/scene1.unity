@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -256,6 +256,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &388834719 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1833783813695127713, guid: b57c866fb8120fb4caa40af74f67c994,
+    type: 3}
+  m_PrefabInstance: {fileID: 4710161895769684307}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &388834725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388834719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ad80e39795f1194dba542858dc37d03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxer: {fileID: 4710161895769684309}
 --- !u!1 &401503812 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7397736419390889485, guid: b57c866fb8120fb4caa40af74f67c994,
@@ -601,7 +620,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 4710161895769684307}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 388834719}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 600ea164314b67d42bc44323d39962eb, type: 3}
@@ -1383,6 +1402,12 @@ PrefabInstance:
       propertyPath: punchCooldown
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3280554337019829901, guid: b57c866fb8120fb4caa40af74f67c994,
+        type: 3}
+      propertyPath: m_Text
+      value: "D\t\t\t\t\t\tDodge (L)\nK\t\t\t\t\t\tDodge (R)\nF\t\t\t\t\t\tPunch (L)\nJ\t\t\t\t\t\tPunch
+        (R)\nSpace\t\t\t\tSwap boxer\t"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b57c866fb8120fb4caa40af74f67c994, type: 3}
 --- !u!114 &4710161895769684308 stripped
@@ -1403,7 +1428,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 4710161895769684307}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 388834719}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 737dac66e5c910c41b6abea29306a37f, type: 3}
