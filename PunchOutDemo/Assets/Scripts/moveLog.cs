@@ -90,7 +90,7 @@ public class moveLog : MonoBehaviour
         
         myPics.Enqueue(tex);
         count++;
-        if (count >= 5)
+        if (count >= 10)
         {
             myPics.Dequeue();
         }
@@ -101,11 +101,15 @@ public class moveLog : MonoBehaviour
 
     void OnGUI()
     {
+        GUILayout.BeginArea(new Rect(1750, 10, 100, 1200));
+        
         // GUILayout.Label(myLog);
         foreach(Texture2D tx in myPics)
         {
             GUILayout.Label(tx);
         }
+
+        GUILayout.EndArea();
         
     }
 
