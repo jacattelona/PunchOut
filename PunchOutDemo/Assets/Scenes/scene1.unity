@@ -1259,7 +1259,7 @@ PrefabInstance:
         type: 3}
       propertyPath: brain
       value: 
-      objectReference: {fileID: 11400000, guid: 5551af24ea95a994083527fdaa432c95,
+      objectReference: {fileID: 11400000, guid: 28327d844c23eec458c5328c80d86790,
         type: 2}
     - target: {fileID: 6784984025631178710, guid: b57c866fb8120fb4caa40af74f67c994,
         type: 3}
