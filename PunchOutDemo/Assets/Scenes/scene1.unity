@@ -471,7 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c51403fd769168642a0e224f725a430a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime: 120
+  maxTime: 20
   cameraTransform: {fileID: 2050802708}
   offenseLocation: {x: 0, y: 1, z: -10}
   defenseLocation: {x: 0, y: 32, z: -10}
@@ -1587,7 +1587,7 @@ PrefabInstance:
     - target: {fileID: 6579244800610239655, guid: 7c559d5c15f040742a94e1e9e5cba59e,
         type: 3}
       propertyPath: inverted
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6579244800610239655, guid: 7c559d5c15f040742a94e1e9e5cba59e,
         type: 3}
