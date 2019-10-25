@@ -501,7 +501,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Watch Out! Its about to attack back! Press A to dodge to the left!
+  m_Text: 'Watch Out! Its about to attack back! Press D to dodge to the left!
 
 '
 --- !u!222 &643796079
@@ -1385,7 +1385,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Punch it with Left Mouse Click!
+  m_Text: 'Punch it with F!
 
 '
 --- !u!222 &1122900796
@@ -1656,7 +1656,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Watch out its going to attack again! Press d to dodge to theright instead!
+  m_Text: 'Watch out its going to attack again! Press K to dodge to theright instead!
 
 '
 --- !u!222 &1583449423
@@ -2037,7 +2037,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Now hit it with a right hook! Press Right Mouse button!
+  m_Text: 'Now hit it with a right hook! Press J!
 
 '
 --- !u!222 &1855647619
