@@ -101,8 +101,9 @@ public class moveLog : MonoBehaviour
 
     void OnGUI()
     {
-        GUILayout.BeginArea(new Rect(1750, 10, 100, 1200));
-
+        var center = Camera.main.WorldToScreenPoint(new Vector3(8, -5, 0));
+        GUILayout.BeginArea(new Rect(center.x, center.y, 100, 1200));
+            
         // GUILayout.Label(myLog);
         foreach (Texture2D tx in myPics)
         {
