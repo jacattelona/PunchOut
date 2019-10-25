@@ -31,12 +31,12 @@ public class TutorialManager : MonoBehaviour
             anim.SetTrigger("gotoPunch1Setup");
             
         }
-        else if(Input.GetKeyDown("d") && state == 5)
+        else if(Input.GetKeyDown("k") && state == 5)
         {
             anim.SetTrigger("gotoDodge2");
             state++;
         }
-        else if (Input.GetKeyDown("a") && state == 4)
+        else if (Input.GetKeyDown("d") && state == 4)
         {
             anim.SetTrigger("gotoDodge1");
             state++;
@@ -45,13 +45,13 @@ public class TutorialManager : MonoBehaviour
         {
             SceneManager.LoadScene("scene1");
         }
-        else if (Input.GetMouseButtonDown(0) && state == 2)
+        else if (Input.GetKeyDown("f") && state == 2)
         {
             punch1Set1.SetActive(false);
             anim.SetTrigger("gotoPunch1");
             state++;
         }
-        else if (Input.GetMouseButtonDown(1) && state == 3)
+        else if (Input.GetKeyDown("j") && state == 3)
         {
             //punch1Set1.SetActive(false);
             anim.SetTrigger("gotoPunch2");
