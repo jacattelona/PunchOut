@@ -110,6 +110,52 @@ public class Evaluator: MonoBehaviour
         }
         return matches / (float) coachActions.Count;
     }
+
+    /// <summary>
+    /// Get the Dynamic Time Warping score of the two agents
+    /// </summary>
+    /// <returns>The DTW score</returns>
+    public float GetDTWScore()
+    {
+        var coachActions = coach.actionHistory.GetActions();
+        var traineeActions = trainee.actionHistory.GetActions();
+
+        var n = coachActions.Count;
+        var m = traineeActions.Count;
+
+        var MISMATCH_COST= 1f;
+        var MATCH_COST = 0f;
+        var GAP_COST = 1f;
+
+        var dtw = new float[n + 1, m + 1];
+        for(var i = 1; i <= n; i++)
+        {
+            for(var j = 1; j <= m; j++)
+            {
+                dtw[i, j] = float.PositiveInfinity;
+            }
+        }
+        dtw[0, 0] = 0;
+
+        for (var i = 1; i <= n; i++)
+        {
+            for (var j = 1; j <= m; j++)
+            {
+                var cost = GetDTWDistance(coachActions[i - 1], traineeActions[j - 1]);
+                dtw[i, j] = cost + Mathf.Min(dtw[i - 1, j] + GAP_COST,
+                                             dtw[i, j - 1] + GAP_COST,
+                                             dtw[i - 1, j - 1] + (coachActions[i - 1].action == traineeActions[j - 1].action ? MATCH_COST : MISMATCH_COST));
+
+            }
+        }
+
+        return dtw[n, m];
+    }
+
+    private float GetDTWDistance(ActionHistory.MLActionEvent e1, ActionHistory.MLActionEvent e2)
+    {
+        return Mathf.Abs(e1.time - e2.time);
+    }
     
 
     /// <summary>
