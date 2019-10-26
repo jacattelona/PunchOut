@@ -123,10 +123,6 @@ public class Evaluator: MonoBehaviour
         var n = coachActions.Count;
         var m = traineeActions.Count;
 
-        var MISMATCH_COST= 1f;
-        var MATCH_COST = 0f;
-        var GAP_COST = 1f;
-
         var dtw = new float[n + 1, m + 1];
         for(var i = 1; i <= n; i++)
         {
@@ -142,9 +138,9 @@ public class Evaluator: MonoBehaviour
             for (var j = 1; j <= m; j++)
             {
                 var cost = GetDTWDistance(coachActions[i - 1], traineeActions[j - 1]);
-                dtw[i, j] = cost + Mathf.Min(dtw[i - 1, j] + GAP_COST,
-                                             dtw[i, j - 1] + GAP_COST,
-                                             dtw[i - 1, j - 1] + (coachActions[i - 1].action == traineeActions[j - 1].action ? MATCH_COST : MISMATCH_COST));
+                dtw[i, j] = cost + Mathf.Min(dtw[i - 1, j],
+                                             dtw[i, j - 1],
+                                             dtw[i - 1, j - 1]);
 
             }
         }
@@ -152,9 +148,34 @@ public class Evaluator: MonoBehaviour
         return dtw[n, m];
     }
 
+    /// <summary>
+    /// Get the Dynamic Time Warping score of the two agents (normalized)
+    /// </summary>
+    /// <returns>The normalized DTW score between 0 and 1, where 1 is 100% similar</returns>
+    public float GetNormalizedDTWScore()
+    {
+        var coachActions = coach.actionHistory.GetActions();
+        var traineeActions = trainee.actionHistory.GetActions();
+
+        var n = coachActions.Count;
+        var m = traineeActions.Count;
+
+        if (n == 0 || m == 0) return 0;
+
+        var dtw = GetDTWScore();
+
+        var largestDistance = Mathf.Sqrt(1 + Mathf.Pow(Mathf.Max(m, n), 2));
+
+        return Mathf.Clamp01((largestDistance - dtw) / largestDistance);
+    }
+
     private float GetDTWDistance(ActionHistory.MLActionEvent e1, ActionHistory.MLActionEvent e2)
     {
-        return Mathf.Abs(e1.time - e2.time);
+        var MISMATCH_COST = 1f;
+        var actionDelta = e1.action == e2.action ? 0f: MISMATCH_COST;
+
+        var timeDelta = e2.time - e1.time;
+        return Mathf.Sqrt(actionDelta * actionDelta + timeDelta * timeDelta);
     }
     
 

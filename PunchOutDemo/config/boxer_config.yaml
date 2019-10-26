@@ -23,16 +23,17 @@ default:
             
 BoxerLearning:
     summary_freq: 200
-    time_horizon: 64
+    time_horizon: 32
     batch_size: 64
     buffer_size: 1028
-    hidden_units: 128
+    hidden_units: 256
     num_layers: 2
     beta: 1.0e-2
-    learning_rate: 0.001
+    epsilon: 0.3
+    learning_rate: 1.0e-3
     max_steps: 5.0e6
     num_epoch: 4
     reward_signals:
         extrinsic:
             strength: 1.0
-            gamma: 0.99
+            gamma: 0.95

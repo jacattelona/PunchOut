@@ -90,7 +90,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                         // Display evaluation data
                         cycles++;
                         var score = evaluator.GetMatchingScore();
-                        Debug.Log("Cycle: " + cycles + ", Time Score: " + score + ", NW Score: " + evaluator.GetNeedlemanWunschScore() + ", DTW Score: " + evaluator.GetDTWScore());
+                        Debug.Log("Cycle: " + cycles + ", Time Score: " + score + ", NW Score: " + evaluator.GetNeedlemanWunschScore() + ", DTW Score: " + evaluator.GetNormalizedDTWScore());
                         evaluator.Reset();
                     }
 
@@ -197,7 +197,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
     private void TrainAIs()
     {
-        float reward = evaluator.GetMatchingScore();
+        float reward = evaluator.GetNormalizedDTWScore();
         foreach (TrainingProgress progress in trainingProgress)
         {
             progress.SetProgress(reward);
