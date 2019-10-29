@@ -94,6 +94,7 @@ public class BoxerSprite : MonoBehaviour
 
     private void StopDodgeAnimation(int direction)
     {
+        anim.StopPlayback();
         this.transform.Find("Sprite").localPosition = DEFAULT;
         //anim.Play("Base");
         //Transform left = this.transform.Find("Sprite").Find("LeftArm");
@@ -152,6 +153,7 @@ public class BoxerSprite : MonoBehaviour
 
         leftGloveRenderer.material.color = gloveColor;
         rightGloveRenderer.material.color = gloveColor;
+        anim.StopPlayback();
     }
 
     public void ShowDamage()

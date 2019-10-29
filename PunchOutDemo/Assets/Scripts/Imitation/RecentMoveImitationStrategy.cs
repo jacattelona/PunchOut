@@ -13,15 +13,16 @@ public class RecentMoveImitationStrategy : IImitationStrategy
         ActionHistory.MLActionEvent studentAction = myHistory.GetLastAction();
 
         float dt = Mathf.Abs(teacherAction.time - studentAction.time);
-        float rewardMultipler = 1 - Mathf.Clamp01(dt);
+        float maxTime = 0.75f;
+        float rewardMultipler = (maxTime - Mathf.Clamp(dt, 0, maxTime)) / maxTime;
 
         if (teacherAction.action == studentAction.action)
         {
-            return rewardMultipler * reward.imitationReward * 0.1f;
+            return rewardMultipler * reward.imitationReward;
         }
         else
         {
-            return rewardMultipler * reward.imitationPenalty * 0.1f;
+            return rewardMultipler * reward.imitationPenalty;
         }
     }
 

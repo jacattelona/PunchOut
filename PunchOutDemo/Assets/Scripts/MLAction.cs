@@ -34,6 +34,26 @@ public class MLActionFactory
     }
 
     /// <summary>
+    /// Determine if an action is a dodge
+    /// </summary>
+    /// <param name="action">The action</param>
+    /// <returns>True if the action is a dodge, false otherwise</returns>
+    public static bool IsDodge(MLAction action)
+    {
+        return action == MLAction.DODGE_LEFT || action == MLAction.DODGE_RIGHT;
+    }
+
+    /// <summary>
+    /// Determine if an action is a punch
+    /// </summary>
+    /// <param name="action">The action</param>
+    /// <returns>True if the action is a punch, false otherwise</returns>
+    public static bool IsPunch(MLAction action)
+    {
+        return action == MLAction.PUNCH_LEFT || action == MLAction.PUNCH_RIGHT;
+    }
+
+    /// <summary>
     /// Get the vector action from an action
     /// </summary>
     /// <param name="action">The action</param>

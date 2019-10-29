@@ -23,4 +23,34 @@ public class MathUtils
     {
         return (value - min) / (max - min);
     }
+
+    /// <summary>
+    /// Calculate the cross entropy of a probability
+    /// </summary>
+    /// <param name="probability">The probability of the action taken</param>
+    /// <param name="correct">True if the action was correct, false otherwise</param>
+    /// <returns>The cross entropy of the action</returns>
+    public static float CrossEntropy(float probability, bool correct)
+    {
+        if (correct)
+        {
+            return -Mathf.Log(probability);
+        } else
+        {
+            return -Mathf.Log(1 - probability);
+        }
+    }
+
+    /// <summary>
+    /// Calculate the cross entropy of a probability in a multi-class scenario
+    /// </summary>
+    /// <param name="probability">The probability of the action taken</param>
+    /// <param name="predictedClass">The predicted action</param>
+    /// <param name="actualClass">The actual action</param>
+    /// <returns>The cross entropy of the action</returns>
+    public static float CrossEntropy(float probability, int predictedClass, int actualClass)
+    {
+        var multiplier = predictedClass == actualClass ? 1 : 0;
+        return -multiplier * Mathf.Log(probability);
+    }
 }
