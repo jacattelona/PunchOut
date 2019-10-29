@@ -9,6 +9,8 @@ public class moveLog : MonoBehaviour
     Queue myPics = new Queue();
     int count = 0;
     Texture2D LP, LD, RP, RD;
+    [SerializeField]
+    public GameObject myPrefab;
 
 
 
@@ -17,6 +19,7 @@ public class moveLog : MonoBehaviour
     void Start()
     {
         boxer = GetComponent<Boxer>();
+
         boxer.punchAction.action.AddListener(logPunch);
         boxer.dodgeAction.action.AddListener(logDodge);
         LP = Resources.Load("Key Logs/Left Punch") as Texture2D;
@@ -53,6 +56,7 @@ public class moveLog : MonoBehaviour
         {
             // HandleLog("Left Dodge");
             HandlePic(LD);
+            Instantiate(myPrefab, new Vector3(1000, 1000, 0), Quaternion.identity);
         }
 
         if (side == 2)
