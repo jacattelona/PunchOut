@@ -83,6 +83,8 @@ public class Boxer : Agent
         actionHistory = new ActionHistory();
 
         currentAction = MLAction.NOTHING;
+
+        //SetActionMask(0, new int[] { 1, 2, 3, 4 });
     }
 
     void FixedUpdate()
