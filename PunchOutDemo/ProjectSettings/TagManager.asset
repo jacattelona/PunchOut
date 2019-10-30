@@ -6,27 +6,29 @@ TagManager:
   tags:
   - agent
   - iWall
-  - banana
   - wall
-  - badBanana
   - pit
   - frozenAgent
   - ball
-  - redGoal
   - blueGoal
   - blueAgent
-  - redAgent
-  - redBlock
   - goal
   - ground
-  - orangeBlock
   - block
-  - orangeGoal
   - switchOff
   - pyramid
   - switchOn
-  - AI
-  - Dummy
+  - stone
+  - target
+  - badFood
+  - food
+  - walkableSurface
+  - symbol_X
+  - symbol_O
+  - symbol_X_Goal
+  - symbol_O_Goal
+  - purpleAgent
+  - purpleGoal
   layers:
   - Default
   - TransparentFX
@@ -61,18 +63,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 803838735
-    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Player
-    uniqueID: 3151505131
-    locked: 0
-  - name: UI
-    uniqueID: 279770081
-    locked: 0
-  - name: Overlay
-    uniqueID: 4041652075
     locked: 0

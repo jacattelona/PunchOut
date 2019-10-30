@@ -1,1 +1,1 @@
-mlagents-learn config\boxer_config.yaml --train --slow
+mlagents-learn config\boxer_config.yaml --train --slow --debug
