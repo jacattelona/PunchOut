@@ -37,3 +37,7 @@ BoxerLearning:
         extrinsic:
             strength: 1.0
             gamma: 0.95
+        curiosity:
+            strength: 0.02
+            gamma: 0.99
+            encoding_size: 256

@@ -1279,7 +1279,7 @@ PrefabInstance:
         type: 3}
       propertyPath: brain
       value: 
-      objectReference: {fileID: 11400000, guid: 28327d844c23eec458c5328c80d86790,
+      objectReference: {fileID: 11400000, guid: 5551af24ea95a994083527fdaa432c95,
         type: 2}
     - target: {fileID: 6784984025631178710, guid: b57c866fb8120fb4caa40af74f67c994,
         type: 3}
@@ -1299,7 +1299,7 @@ PrefabInstance:
     - target: {fileID: 1833783813145780966, guid: b57c866fb8120fb4caa40af74f67c994,
         type: 3}
       propertyPath: minConfidence
-      value: 0.4
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1833783813695127712, guid: b57c866fb8120fb4caa40af74f67c994,
         type: 3}
@@ -1319,7 +1319,7 @@ PrefabInstance:
     - target: {fileID: 1833783813695127712, guid: b57c866fb8120fb4caa40af74f67c994,
         type: 3}
       propertyPath: minConfidence
-      value: 0.4
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4710161894766934589, guid: b57c866fb8120fb4caa40af74f67c994,
         type: 3}
