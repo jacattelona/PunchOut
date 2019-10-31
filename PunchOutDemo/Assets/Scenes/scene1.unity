@@ -225,23 +225,22 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 28327d844c23eec458c5328c80d86790, type: 2}
     - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
     - {fileID: 11400000, guid: 5551af24ea95a994083527fdaa432c95, type: 2}
-    _brainsToControl:
+    m_BrainsToControl:
     - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
-  maxSteps: 0
-  trainingConfiguration:
+  m_TrainingConfiguration:
     width: 80
     height: 80
     qualityLevel: 1
     timeScale: 100
     targetFrameRate: -1
-  inferenceConfiguration:
+  m_InferenceConfiguration:
     width: 1280
     height: 720
     qualityLevel: 5
     timeScale: 1
     targetFrameRate: 60
   resetParameters:
-    resetParameters: []
+    m_ResetParameters: []
 --- !u!4 &358356813
 Transform:
   m_ObjectHideFlags: 0
@@ -1297,6 +1296,11 @@ PrefabInstance:
       propertyPath: dodgeEventDelay
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1833783813145780966, guid: b57c866fb8120fb4caa40af74f67c994,
+        type: 3}
+      propertyPath: minConfidence
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 1833783813695127712, guid: b57c866fb8120fb4caa40af74f67c994,
         type: 3}
       propertyPath: inverted
@@ -1311,6 +1315,11 @@ PrefabInstance:
         type: 3}
       propertyPath: dodgeEventDelay
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833783813695127712, guid: b57c866fb8120fb4caa40af74f67c994,
+        type: 3}
+      propertyPath: minConfidence
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 4710161894766934589, guid: b57c866fb8120fb4caa40af74f67c994,
         type: 3}

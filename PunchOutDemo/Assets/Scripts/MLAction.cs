@@ -63,16 +63,16 @@ public class MLActionFactory
         switch (action)
         {
             case MLAction.NOTHING:
-                return new float[] { 0f};
+                return new float[] { 0f, 0f };
             case MLAction.PUNCH_LEFT:
-                return new float[] { 1f };
+                return new float[] { 1f, 0f };
             case MLAction.PUNCH_RIGHT:
-                return new float[] { 2f };
+                return new float[] { 2f, 0f };
             case MLAction.DODGE_LEFT:
-                return new float[] { 3f };
+                return new float[] { 3f, 0f };
             case MLAction.DODGE_RIGHT:
-                return new float[] { 4f };
+                return new float[] { 4f, 0f };
         }
-        return new float[] { 0f };
+        return new float[] { 0f, 0f };
     }
 }

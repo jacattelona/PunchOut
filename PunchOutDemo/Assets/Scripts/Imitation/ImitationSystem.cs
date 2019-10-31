@@ -28,7 +28,7 @@ public class ImitationSystem : MonoBehaviour
         me = GetComponent<Boxer>();
         myRewards = me.rewards;
         lastMoveTime = 0;
-        strategy = new MLActionMatchImitationStrategy();
+        strategy = new MLOutputMatchImitationStrategy();
     }
 
     void Update()

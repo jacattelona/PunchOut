@@ -26,6 +26,8 @@ public class Boxer : Agent
     public bool isFighting = false;
     public bool inverted = false;
 
+    public float minConfidence = 0;
+
     public Reward rewards;
 
     // COMPONENTS
@@ -135,7 +137,12 @@ public class Boxer : Agent
         base.AgentAction(vectorAction, textAction);
         lastActions = vectorAction;
 
+        var confidence = vectorAction[1] / 10000.0f;
+
         if (!isFighting) return;
+
+        // Only perform confident moves
+        if (!Mathf.Approximately(confidence, 0) && confidence < minConfidence) return;
 
         // TODO: Neaten this up
         if (vectorAction[0] <= 2)
