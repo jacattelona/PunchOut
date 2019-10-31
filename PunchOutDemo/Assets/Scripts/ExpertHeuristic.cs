@@ -21,7 +21,7 @@ public class ExpertHeuristic : Decision
         };
         var idx = Mathf.FloorToInt(Random.Range(0, possibleMoves.Length));
         moves = new List<MLAction>(possibleMoves[idx]);
-        shouldDodge = Random.value < 0.5;
+        shouldDodge = Random.Range(0f, 1f) < 0.5;
     }
 
     public override float[] Decide(List<float> vectorObs, List<Texture2D> visualObs, float reward, bool done, List<float> memory)

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ExpertHeuristic
   m_EditorClassIdentifier: 
   brainParameters:
-    vectorObservationSize: 22
+    vectorObservationSize: 14
     numStackedVectorObservations: 1
     vectorActionSize: 050000000100000001000000010000000100000001000000
     cameraResolutions: []
