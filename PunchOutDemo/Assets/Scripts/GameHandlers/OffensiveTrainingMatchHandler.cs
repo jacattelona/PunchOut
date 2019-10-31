@@ -197,7 +197,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
     private void TrainAIs()
     {
-        float reward = evaluator.GetNormalizedDTWScore();
+        float reward = 1 - Mathf.InverseLerp(0.2f, 2f, evaluator.GetCrossEntropy());
         foreach (TrainingProgress progress in trainingProgress)
         {
             progress.SetProgress(reward);
