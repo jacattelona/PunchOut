@@ -10,6 +10,8 @@ public class Evaluator: MonoBehaviour
     private int matching = 0;
     private int total = 0;
 
+    private float crossEntropy = 0;
+
     [SerializeField]
     private Boxer trainee;
 
@@ -19,6 +21,9 @@ public class Evaluator: MonoBehaviour
     private void Update()
     {
         var match = trainee.currentAction == coach.currentAction;//MLActionFactory.GetAction(trainee.lastActions) == MLActionFactory.GetAction(coach.lastActions);
+        var desiredAction = coach.currentAction;
+        var probability = MLActionFactory.GetProbabilityFromVector(desiredAction, trainee.lastActions);
+        crossEntropy += MathUtils.CrossEntropy(probability);
         AddSample(match);
     }
 
@@ -41,6 +46,16 @@ public class Evaluator: MonoBehaviour
     {
         if (total == 0) return 0f;
         return matching / (float) total;
+    }
+
+    /// <summary>
+    /// Get the average cross entropy
+    /// </summary>
+    /// <returns>The cross entropy</returns>
+    public float GetCrossEntropy()
+    {
+        if (total == 0) return 0f;
+        return crossEntropy / total;
     }
 
     /// <summary>
@@ -186,6 +201,7 @@ public class Evaluator: MonoBehaviour
     {
         total = 0;
         matching = 0;
+        crossEntropy = 0;
         coach.actionHistory = new ActionHistory();
         trainee.actionHistory = new ActionHistory();
     }

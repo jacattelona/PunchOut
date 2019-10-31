@@ -1,10 +1,10 @@
 ﻿public enum MLAction
 {
-        NOTHING,
-        PUNCH_LEFT,
-        PUNCH_RIGHT,
-        DODGE_LEFT,
-        DODGE_RIGHT
+        NOTHING = 0,
+        PUNCH_LEFT = 1,
+        PUNCH_RIGHT = 2,
+        DODGE_LEFT = 3,
+        DODGE_RIGHT = 4
 }
 
 public class MLActionFactory
@@ -60,19 +60,45 @@ public class MLActionFactory
     /// <returns>The vectorized form of the action</returns>
     public static float[] GetVectorAction(MLAction action)
     {
+        float scale = 10000f;
         switch (action)
         {
             case MLAction.NOTHING:
-                return new float[] { 0f, 0f };
+                return new float[] { 0f, scale, 0f, 0f, 0f, 0f };
             case MLAction.PUNCH_LEFT:
-                return new float[] { 1f, 0f };
+                return new float[] { 1f, 0f, scale, 0f, 0f, 0f };
             case MLAction.PUNCH_RIGHT:
-                return new float[] { 2f, 0f };
+                return new float[] { 2f, 0f, 0f, scale, 0f, 0f };
             case MLAction.DODGE_LEFT:
-                return new float[] { 3f, 0f };
+                return new float[] { 3f, 0f, 0f, 0f, scale, 0f };
             case MLAction.DODGE_RIGHT:
-                return new float[] { 4f, 0f };
+                return new float[] { 4f, 0f, 0f, 0f, 0f, scale };
         }
-        return new float[] { 0f, 0f };
+        return new float[] { 0f, scale, 0f, 0f, 0f, 0f };
+    }
+
+    private static int ActionToInt(MLAction action)
+    {
+        switch (action)
+        {
+            case MLAction.NOTHING: return 0;
+            case MLAction.PUNCH_LEFT: return 1;
+            case MLAction.PUNCH_RIGHT: return 2;
+            case MLAction.DODGE_LEFT: return 3;
+            case MLAction.DODGE_RIGHT: return 4;
+        }
+        return 0;
+    }
+
+    /// <summary>
+    /// Given the raw vectorActions, get the probability for a single action
+    /// </summary>
+    /// <param name="action">The action</param>
+    /// <param name="vectorActions">The vector actions</param>
+    /// <returns>The probability between 0 and 1 for performing the action</returns>
+    public static float GetProbabilityFromVector(MLAction action, float[] vectorActions)
+    {
+        float scale = 10000;
+        return vectorActions[ActionToInt(action) + 1] / scale;
     }
 }

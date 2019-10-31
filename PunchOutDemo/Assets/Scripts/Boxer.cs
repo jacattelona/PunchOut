@@ -137,7 +137,7 @@ public class Boxer : Agent
         base.AgentAction(vectorAction, textAction);
         lastActions = vectorAction;
 
-        var confidence = vectorAction[1] / 10000.0f;
+        var confidence = MLActionFactory.GetProbabilityFromVector(MLActionFactory.GetAction(vectorAction), vectorAction);
 
         if (!isFighting) return;
 

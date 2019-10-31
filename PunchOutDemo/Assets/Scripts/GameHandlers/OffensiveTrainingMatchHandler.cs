@@ -90,7 +90,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                         // Display evaluation data
                         cycles++;
                         var score = evaluator.GetMatchingScore();
-                        Debug.Log("Cycle: " + cycles + ", Time Score: " + score + ", NW Score: " + evaluator.GetNeedlemanWunschScore() + ", DTW Score: " + evaluator.GetNormalizedDTWScore());
+                        Debug.Log("Cycle: " + cycles + ", Time Score: " + score + ", Cross-Entropy: " + evaluator.GetCrossEntropy() + ", DTW Score: " + evaluator.GetNormalizedDTWScore());
                         evaluator.Reset();
                     }
 
