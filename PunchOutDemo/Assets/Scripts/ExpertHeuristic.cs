@@ -7,10 +7,58 @@ public class ExpertHeuristic : Decision
 
     public float noise = 0f;
     private MLAction lastAction;
+    private int actionIdx;
+
+    private List<MLAction> moves;
+    private bool shouldDodge;
+
+    private void OnEnable()
+    {
+        MLAction[][] possibleMoves = new MLAction[][]{
+            new MLAction[]{ MLAction.PUNCH_LEFT },
+            new MLAction[]{ MLAction.PUNCH_RIGHT },
+            new MLAction[]{ MLAction.PUNCH_LEFT, MLAction.PUNCH_RIGHT }
+        };
+        var idx = Mathf.FloorToInt(Random.Range(0, possibleMoves.Length));
+        moves = new List<MLAction>(possibleMoves[idx]);
+        shouldDodge = Random.value < 0.5;
+    }
 
     public override float[] Decide(List<float> vectorObs, List<Texture2D> visualObs, float reward, bool done, List<float> memory)
     {
-        return OnlyDoAndDodge(vectorObs, MLAction.PUNCH_LEFT);
+        return RepeatActions(vectorObs, moves, shouldDodge);
+    }
+
+    public float[] RepeatActions(List<float> vectorObs, List<MLAction> actions, bool shouldDodge)
+    {
+        MLInput input = new MLInput(vectorObs.ToArray());
+
+        // Sequence
+        if (input.IsPunchReady() && input.IsDodgeReady()) // Can punch / dodge
+        {
+            // Dodging
+            if (lastAction != input.GetOpponentAction() && input.GetOpponentAction() == MLAction.PUNCH_LEFT)
+            {
+                lastAction = input.GetOpponentAction();
+                actionIdx = 0;
+                return MLActionFactory.GetVectorAction(MLAction.DODGE_RIGHT);
+            }
+
+            if (lastAction != input.GetOpponentAction() && input.GetOpponentAction() == MLAction.PUNCH_RIGHT)
+            {
+                lastAction = input.GetOpponentAction();
+                actionIdx = 0;
+                return MLActionFactory.GetVectorAction(MLAction.DODGE_LEFT);
+            }
+
+            lastAction = input.GetOpponentAction();
+
+            MLAction move = actions[actionIdx];
+            actionIdx = (actionIdx + 1) % actions.Count;
+            return MLActionFactory.GetVectorAction(move);
+        }
+
+        return MLActionFactory.GetVectorAction(MLAction.NOTHING);
     }
 
     public float[] OnlyDo(List<float> vectorObs, MLAction action)

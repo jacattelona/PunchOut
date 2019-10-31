@@ -34,6 +34,6 @@ public class MathUtils
     /// <returns>The cross entropy of the action</returns>
     public static float CrossEntropy(float actualClassProbability)
     {
-        return -Mathf.Log(actualClassProbability);
+        return -Mathf.Log(actualClassProbability + Mathf.Epsilon);
     }
 }
