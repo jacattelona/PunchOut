@@ -56,7 +56,8 @@ public class moveLog : MonoBehaviour
         {
             // HandleLog("Left Dodge");
             HandlePic(LD);
-            Instantiate(myPrefab, new Vector3(1000, 1000, 0), Quaternion.identity);
+            Instantiate(myPrefab, new Vector3(0, 0, -2), Quaternion.identity);
+
         }
 
         if (side == 2)
