@@ -78,6 +78,8 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                     startTime = Time.time;
                     evaluator.Reset();
                     state = STATE_DEMONSTRATING;
+                    RewardIndicator r = transform.parent.GetComponentInChildren<RewardIndicator>();
+                    r.Activate();
                 }
                 break;
             case STATE_DEMONSTRATING:
