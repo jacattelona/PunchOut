@@ -8,7 +8,7 @@ public class Action
     /// <summary>
     /// The cooldown time of the action in seconds
     /// </summary>
-    private float cooldownTime;
+    public float cooldownTime;
 
     /// <summary>
     /// The total duration of the action in seconds (including animation)
