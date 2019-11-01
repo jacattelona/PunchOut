@@ -113,7 +113,7 @@ public class MLInput
             if (isOn)
             {
                 var offset = i - start;
-                return offset + 1;
+                return offset;
             }
         }
         return 0;

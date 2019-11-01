@@ -26,7 +26,7 @@ public class ExpertHeuristic : Decision
 
     public override float[] Decide(List<float> vectorObs, List<Texture2D> visualObs, float reward, bool done, List<float> memory)
     {
-        return RepeatActions(vectorObs, moves, shouldDodge);
+        return RepeatActions(vectorObs,moves, shouldDodge);
     }
 
     public float[] RepeatActions(List<float> vectorObs, List<MLAction> actions, bool shouldDodge)
@@ -34,17 +34,17 @@ public class ExpertHeuristic : Decision
         MLInput input = new MLInput(vectorObs.ToArray());
 
         // Sequence
-        if (input.IsPunchReady() && input.IsDodgeReady()) // Can punch / dodge
+        if (input.IsDodgeReady()) // Can punch / dodge
         {
             // Dodging
-            if (lastAction != input.GetOpponentAction() && input.GetOpponentAction() == MLAction.PUNCH_LEFT)
+            if (shouldDodge && lastAction != input.GetOpponentAction() && input.GetOpponentAction() == MLAction.PUNCH_LEFT)
             {
                 lastAction = input.GetOpponentAction();
                 actionIdx = 0;
                 return MLActionFactory.GetVectorAction(MLAction.DODGE_RIGHT);
             }
 
-            if (lastAction != input.GetOpponentAction() && input.GetOpponentAction() == MLAction.PUNCH_RIGHT)
+            if (shouldDodge && lastAction != input.GetOpponentAction() && input.GetOpponentAction() == MLAction.PUNCH_RIGHT)
             {
                 lastAction = input.GetOpponentAction();
                 actionIdx = 0;
@@ -52,10 +52,22 @@ public class ExpertHeuristic : Decision
             }
 
             lastAction = input.GetOpponentAction();
+        }
 
-            MLAction move = actions[actionIdx];
-            actionIdx = (actionIdx + 1) % actions.Count;
-            return MLActionFactory.GetVectorAction(move);
+        if (input.IsPunchReady())
+        {
+            int myComboState = input.GetMyComboState();
+            if (actions.Count == 2)
+            {
+                switch (myComboState)
+                {
+                    case 0: return MLActionFactory.GetVectorAction(actions[0]);
+                    case 1: return MLActionFactory.GetVectorAction(actions[1]);
+                    case 2: return MLActionFactory.GetVectorAction(actions[1]);
+                    default: return MLActionFactory.GetVectorAction(MLAction.NOTHING);
+                }
+            }
+            return MLActionFactory.GetVectorAction(actions[0]);
         }
 
         return MLActionFactory.GetVectorAction(MLAction.NOTHING);
