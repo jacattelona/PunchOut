@@ -45,30 +45,40 @@ public class AIEnemyHeuristic : Decision
 
         if (input.IsPunchReady() && input.IsDodgeReady()) // Can punch / dodge
         {
-            if(input.GetOpponentAction.equals( LEFT_PUNCH) )
+            if(input.GetOpponentAction() ==  MLAction.PUNCH_LEFT )
             {
-                if(Random.Range(0,100) <= 75)
+                int rand = Random.Range(0, 100);
+                if (rand <= 33)
                 {
-                    Console.Log("Left P Dodge");
+                    Debug.Log("Left P Dodge");
                     return LEFT_DODGE;
+                }
+                else if(rand > 33 && rand <= 66 )
+                {
+                    Debug.Log("Left P Wrong Dodge");
+                    return RIGHT_DODGE;
                 }
                 else
                 {
-                    Console.Log("Left P Wrong Dodge");
-                    return RIGHT_DODGE;
+                    return NOTHING;
                 }
             }
-            if (input.GetOpponentAction.equals( RIGHT_PUNCH))
+            if (input.GetOpponentAction() == MLAction.PUNCH_RIGHT)
             {
-                if (Random.Range(0, 100) <= 75)
+                int rand = Random.Range(0, 100);
+                if (rand <= 33)
                 {
-                    Console.Log("Right P Dodge");
+                    Debug.Log("Right P Dodge");
                     return RIGHT_DODGE;
+                }
+                else if(rand > 33 && rand <= 66)
+                {
+                    Debug.Log("Right P Wrong Dodge");
+                    return LEFT_DODGE;
                 }
                 else
                 {
-                    Console.Log("Right P Wrong Dodge");
-                    return LEFT_DODGE;
+                    return NOTHING;
                 }
             }
             float[] move = moves[moveIdx];
