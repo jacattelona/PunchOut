@@ -138,6 +138,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
     }
 
+
     private void Demonstrate()
     {
         // Start coach's match 
@@ -197,16 +198,21 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
     private void TrainAIs()
     {
-        float reward = 1 - Mathf.InverseLerp(0.2f, 2f, evaluator.GetCrossEntropy());
-        foreach (TrainingProgress progress in trainingProgress)
-        {
-            progress.SetProgress(reward);
-        }
+        UpdateTrainingProgress();
         
         Train(coachMatch);
         foreach (Match match in aiMatches)
         {
             Train(match);
+        }
+    }
+
+    private void UpdateTrainingProgress()
+    {
+        float reward = 1 - Mathf.InverseLerp(0.2f, 2f, evaluator.GetCrossEntropy());
+        foreach (TrainingProgress progress in trainingProgress)
+        {
+            progress.SetProgress(reward);
         }
     }
 

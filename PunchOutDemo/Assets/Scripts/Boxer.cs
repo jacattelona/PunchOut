@@ -28,6 +28,8 @@ public class Boxer : Agent
 
     public float minConfidence = 0;
 
+    public bool isTeacher = false;
+
     public Reward rewards;
 
     // COMPONENTS
@@ -61,6 +63,9 @@ public class Boxer : Agent
 
     public MLAction currentAction;
 
+    private float lastBufferResetTime;
+    private float maxBufferResetTime = 1.5f;
+
 
     /// <summary>
     /// Initialize the agent
@@ -71,6 +76,7 @@ public class Boxer : Agent
         stats = new BoxerStats();
         health = GetComponent<Health>();
         comboTracker = GetComponent<ComboTracker>();
+        lastBufferResetTime = Time.time;
 
         dodgeAction = new Action(dodgeDuration, dodgeCooldown, dodgeEventDelay);
         dodgeAction.animationStart.AddListener(RegisterDodge);
@@ -125,6 +131,15 @@ public class Boxer : Agent
         AddVectorObs(Encoder.encodeInt(comboTracker.GetState(), 0, comboTracker.GetTotalStates()));
         //AddVectorObs(Encoder.encodeInt(opponentComboState, 0, comboTracker.GetTotalStates()));
         AddVectorObs(move);
+        if (Time.time - lastBufferResetTime > maxBufferResetTime)
+        {
+            SetTextObs((isTeacher && isFighting) + "," + true);
+            lastBufferResetTime = Time.time;
+
+        } else
+        {
+            SetTextObs((isTeacher && isFighting) + "," + false);
+        }
     }
 
     /// <summary>

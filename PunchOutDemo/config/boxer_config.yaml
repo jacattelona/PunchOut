@@ -22,6 +22,9 @@ default:
             gamma: 0.99
             
 BoxerLearning:
+    trainer: online_bc
+    brain_to_imitate: BoxerPlayer
+    batches_per_epoch: 16
     summary_freq: 200
     time_horizon: 32
     batch_size: 64
@@ -32,7 +35,7 @@ BoxerLearning:
     epsilon: 0.3
     learning_rate: 1.0e-3
     max_steps: 5.0e6
-    num_epoch: 4
+    num_epoch: 6
     reward_signals:
         extrinsic:
             strength: 1.0

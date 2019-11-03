@@ -17,7 +17,9 @@ public class ExpertHeuristic : Decision
         MLAction[][] possibleMoves = new MLAction[][]{
             new MLAction[]{ MLAction.PUNCH_LEFT },
             new MLAction[]{ MLAction.PUNCH_RIGHT },
-            new MLAction[]{ MLAction.PUNCH_LEFT, MLAction.PUNCH_RIGHT }
+            new MLAction[]{ MLAction.PUNCH_LEFT, MLAction.PUNCH_RIGHT },
+            new MLAction[]{ MLAction.PUNCH_RIGHT, MLAction.PUNCH_LEFT },
+            new MLAction[]{ MLAction.PUNCH_LEFT, MLAction.PUNCH_RIGHT, MLAction.PUNCH_LEFT }
         };
         var idx = Mathf.FloorToInt(Random.Range(0, possibleMoves.Length));
         moves = new List<MLAction>(possibleMoves[idx]);

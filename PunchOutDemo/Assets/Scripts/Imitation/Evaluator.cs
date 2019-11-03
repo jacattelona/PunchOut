@@ -21,7 +21,7 @@ public class Evaluator: MonoBehaviour
     private void Update()
     {
         var match = trainee.currentAction == coach.currentAction;//MLActionFactory.GetAction(trainee.lastActions) == MLActionFactory.GetAction(coach.lastActions);
-        var desiredAction = coach.currentAction;
+        var desiredAction = MLActionFactory.GetAction(coach.lastActions);
         var probability = MLActionFactory.GetProbabilityFromVector(desiredAction, trainee.lastActions);
         crossEntropy += MathUtils.CrossEntropy(probability);
         AddSample(match);
