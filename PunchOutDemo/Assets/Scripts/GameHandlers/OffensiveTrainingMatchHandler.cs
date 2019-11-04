@@ -30,6 +30,8 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
     private float startTime, demoStartTime;
 
+    private float lastUpdateTime = 0;
+
     private const int STATE_WAITING = 0, STATE_DEMONSTRATING = 1, STATE_MOVING_COACH = 2, STATE_MOVING_AI = 3, STATE_VIEW_AI = 4, STATE_END = 5;
 
     private int state;
@@ -210,8 +212,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
     private void UpdateTrainingProgress()
     {
-        float crossEntropy = 1 - Mathf.InverseLerp(0.2f, 2f, evaluator.GetRunningCrossEntropy());
-        float p = crossEntropy;
+        float p = evaluator.GetCorrectness();
         foreach (TrainingProgress progress in trainingProgress)
         {
             progress.SetProgress(p);

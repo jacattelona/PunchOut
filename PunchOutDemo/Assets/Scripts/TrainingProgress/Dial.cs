@@ -24,7 +24,7 @@ public class Dial : TrainingProgress
     private void Update()
     {
         var diff = progressAngle - progress;
-        if (Mathf.Abs(diff) < 0.01)
+        if (Mathf.Abs(diff) < 0.05)
         {
             progressAngle = GetProgress();
         }

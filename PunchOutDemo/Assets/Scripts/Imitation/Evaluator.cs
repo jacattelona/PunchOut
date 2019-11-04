@@ -11,7 +11,8 @@ public class Evaluator: MonoBehaviour
     private int total = 0;
 
     private float crossEntropy = 0;
-    private float runningAverageCrossEntropy = -1f;
+    private float runningAverageCorrectness = 0f;
+    private float correctness = 0;
 
     [SerializeField]
     private Boxer trainee;
@@ -25,13 +26,14 @@ public class Evaluator: MonoBehaviour
         var desiredAction = MLActionFactory.GetAction(coach.lastActions);
         var probability = MLActionFactory.GetProbabilityFromVector(desiredAction, trainee.lastActions);
         crossEntropy += MathUtils.CrossEntropy(probability);
-        if (runningAverageCrossEntropy == -1)
+        //correctness += probability;
+        if (runningAverageCorrectness == 0)
         {
-            runningAverageCrossEntropy = MathUtils.CrossEntropy(probability);
+            runningAverageCorrectness = probability;
         } else
         {
-            var alpha = 0.98f;
-            runningAverageCrossEntropy = alpha * runningAverageCrossEntropy + (1 - alpha) * MathUtils.CrossEntropy(probability);
+            var alpha = 0.99f;
+            runningAverageCorrectness = alpha * runningAverageCorrectness + (1 - alpha) * probability;
         }
         AddSample(match);
     }
@@ -71,10 +73,9 @@ public class Evaluator: MonoBehaviour
     /// Get the running average cross entropy
     /// </summary>
     /// <returns>The running average cross entropy</returns>
-    public float GetRunningCrossEntropy()
+    public float GetCorrectness()
     {
-        if (runningAverageCrossEntropy == -1) return 2.0f;
-        return runningAverageCrossEntropy;
+        return runningAverageCorrectness;
     }
 
     /// <summary>

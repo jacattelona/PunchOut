@@ -1237,6 +1237,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4710161894825432417, guid: b57c866fb8120fb4caa40af74f67c994,
         type: 3}
+      propertyPath: trainingProgress.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4710161894825432417, guid: b57c866fb8120fb4caa40af74f67c994,
+        type: 3}
       propertyPath: aiMatches.Array.data[1]
       value: 
       objectReference: {fileID: 1967836925}
@@ -1483,6 +1488,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3886029179362451191, guid: b57c866fb8120fb4caa40af74f67c994,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b57c866fb8120fb4caa40af74f67c994, type: 3}
