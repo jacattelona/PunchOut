@@ -11,6 +11,7 @@ public class Evaluator: MonoBehaviour
     private int total = 0;
 
     private float crossEntropy = 0;
+    private float runningAverageCrossEntropy = -1f;
 
     [SerializeField]
     private Boxer trainee;
@@ -24,6 +25,14 @@ public class Evaluator: MonoBehaviour
         var desiredAction = MLActionFactory.GetAction(coach.lastActions);
         var probability = MLActionFactory.GetProbabilityFromVector(desiredAction, trainee.lastActions);
         crossEntropy += MathUtils.CrossEntropy(probability);
+        if (runningAverageCrossEntropy == -1)
+        {
+            runningAverageCrossEntropy = MathUtils.CrossEntropy(probability);
+        } else
+        {
+            var alpha = 0.98f;
+            runningAverageCrossEntropy = alpha * runningAverageCrossEntropy + (1 - alpha) * MathUtils.CrossEntropy(probability);
+        }
         AddSample(match);
     }
 
@@ -56,6 +65,16 @@ public class Evaluator: MonoBehaviour
     {
         if (total == 0) return 0f;
         return crossEntropy / total;
+    }
+
+    /// <summary>
+    /// Get the running average cross entropy
+    /// </summary>
+    /// <returns>The running average cross entropy</returns>
+    public float GetRunningCrossEntropy()
+    {
+        if (runningAverageCrossEntropy == -1) return 2.0f;
+        return runningAverageCrossEntropy;
     }
 
     /// <summary>

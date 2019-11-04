@@ -81,6 +81,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                 }
                 break;
             case STATE_DEMONSTRATING:
+                UpdateTrainingProgress();
                 if (shouldTrain && Time.time - demoStartTime >= trainTime) // Train if the train time has been complete since switching to demo mode
                 {
                     TrainAIs();
@@ -209,10 +210,11 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
     private void UpdateTrainingProgress()
     {
-        float reward = 1 - Mathf.InverseLerp(0.2f, 2f, evaluator.GetCrossEntropy());
+        float crossEntropy = 1 - Mathf.InverseLerp(0.2f, 2f, evaluator.GetRunningCrossEntropy());
+        float p = crossEntropy;
         foreach (TrainingProgress progress in trainingProgress)
         {
-            progress.SetProgress(reward);
+            progress.SetProgress(p);
         }
     }
 
