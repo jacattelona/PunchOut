@@ -24,6 +24,10 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown("a") && Input.GetKeyDown("c"))
+        {
+            gameHand.StartOffensive();
+        }
         if (Input.GetKeyDown("a") && state == 1)
         {
             state++;
