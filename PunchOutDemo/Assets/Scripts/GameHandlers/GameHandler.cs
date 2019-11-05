@@ -62,7 +62,7 @@ public class GameHandler : MonoBehaviour
             case STATE_OFFENSIVE:
                 TimeUpdate();
                 if (timeLeft <= 0)
-                    SwitchDefensive();
+                    SwitchMatch();
                 break;
 
 

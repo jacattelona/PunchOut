@@ -13,13 +13,13 @@ public class MLInput
     private const int MY_COMBO_START_IDX = 2;
     private const int MY_COMBO_STOP_IDX = 9;
 
-    private const int OPPONENT_COMBO_START_IDX = 10;
-    private const int OPPONENT_COMBO_STOP_IDX = 17;
+    //private const int OPPONENT_COMBO_START_IDX = 10;
+    //private const int OPPONENT_COMBO_STOP_IDX = 17;
 
-    private const int OPPONENT_LEFT_PUNCH_IDX = 18;
-    private const int OPPONENT_RIGHT_PUNCH_IDX = 19;
-    private const int OPPONENT_LEFT_DODGE_IDX = 20;
-    private const int OPPONENT_RIGHT_DODGE_IDX = 21;
+    private const int OPPONENT_LEFT_PUNCH_IDX = 10;
+    private const int OPPONENT_RIGHT_PUNCH_IDX = 11;
+    private const int OPPONENT_LEFT_DODGE_IDX = 12;
+    private const int OPPONENT_RIGHT_DODGE_IDX = 13;
 
     /// <summary>
     /// Default constructor
@@ -95,10 +95,11 @@ public class MLInput
     /// <returns>The current opponent's combo state</returns>
     public int GetOpponentComboState()
     {
-        int start = OPPONENT_COMBO_START_IDX;
-        int stop = OPPONENT_COMBO_STOP_IDX;
+        //int start = OPPONENT_COMBO_START_IDX;
+        //int stop = OPPONENT_COMBO_STOP_IDX;
 
-        return GetComboState(start, stop);
+        //return GetComboState(start, stop);
+        return 0;
     }
 
 
@@ -112,7 +113,7 @@ public class MLInput
             if (isOn)
             {
                 var offset = i - start;
-                return offset + 1;
+                return offset;
             }
         }
         return 0;
