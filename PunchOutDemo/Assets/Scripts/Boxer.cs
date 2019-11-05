@@ -32,6 +32,7 @@ public class Boxer : Agent
 
     public Reward rewards;
 
+
     // COMPONENTS
     Health health;
     ComboTracker comboTracker;
@@ -445,5 +446,21 @@ public class Boxer : Agent
     public void SetOpponent(Boxer boxer)
     {
         opponent = boxer;
+    }
+
+    /// <summary>
+    /// Warning event that an enemy punch is about to be thrown
+    /// </summary>
+    /// <param name="side">side punch will be thrown from: 1 = left, 2 = right</param>
+    public void PunchWarning(int side)
+    {
+        if (side == 1)
+        {
+            //left punch
+        }
+        else if (side == 2)
+        {
+            //right punch
+        }
     }
 }
