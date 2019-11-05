@@ -10,7 +10,10 @@ public class moveLog : MonoBehaviour
     int count = 0;
     Texture2D LP, LD, RP, RD;
     [SerializeField]
-    public GameObject myPrefab;
+    public GameObject LeftDodge;
+    public GameObject LeftPunch;
+    public GameObject RightDodge;
+    public GameObject RightPunch;
     //Vector3 center;
 
 
@@ -40,14 +43,16 @@ public class moveLog : MonoBehaviour
         if (side == 1)
         {
             //HandleLog("Left Punch");
-            HandlePic(LP);
+            //  HandlePic(LP);
+            Instantiate(LeftPunch, new Vector3(-9.24f, -2.8f, -2), Quaternion.identity);
 
         }
 
         if (side == 2)
         {
             //  HandleLog("Right Punch");
-            HandlePic(RP);
+            //  HandlePic(RP);
+            Instantiate(RightPunch, new Vector3(-9.24f, -2.8f, -2), Quaternion.identity);
         }
     }
 
@@ -56,9 +61,9 @@ public class moveLog : MonoBehaviour
         if (side == 1)
         {
             // HandleLog("Left Dodge");
-            HandlePic(LD);
+           // HandlePic(LD);
             //Instantiate(myPrefab, new Vector3(0, 0, -2), Quaternion.identity);
-            Instantiate(myPrefab, new Vector3(-9.24f, -2.8f, -2), Quaternion.identity);
+            Instantiate(LeftDodge, new Vector3(-9.24f, -2.8f, -2), Quaternion.identity);
             //Debug.Log("created l Dodge at " + center.x + ", " + center.y);
 
         }
@@ -66,7 +71,8 @@ public class moveLog : MonoBehaviour
         if (side == 2)
         {
             //  HandleLog("Right Dodge");
-            HandlePic(RD);
+           // HandlePic(RD);
+            Instantiate(RightDodge, new Vector3(-9.24f, -2.8f, -2), Quaternion.identity);
         }
     }
 
