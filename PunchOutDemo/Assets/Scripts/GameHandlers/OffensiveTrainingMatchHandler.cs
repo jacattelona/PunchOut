@@ -30,6 +30,8 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
     private float startTime, demoStartTime;
 
+    private float lastUpdateTime = 0;
+
     private const int STATE_WAITING = 0, STATE_DEMONSTRATING = 1, STATE_MOVING_COACH = 2, STATE_MOVING_AI = 3, STATE_VIEW_AI = 4, STATE_END = 5;
 
     private int state;
@@ -83,6 +85,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                 }
                 break;
             case STATE_DEMONSTRATING:
+                UpdateTrainingProgress();
                 if (shouldTrain && Time.time - demoStartTime >= trainTime) // Train if the train time has been complete since switching to demo mode
                 {
                     TrainAIs();
@@ -92,7 +95,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                         // Display evaluation data
                         cycles++;
                         var score = evaluator.GetMatchingScore();
-                        Debug.Log("Cycle: " + cycles + ", Time Score: " + score + ", NW Score: " + evaluator.GetNeedlemanWunschScore() + ", DTW Score: " + evaluator.GetNormalizedDTWScore());
+                        Debug.Log("Cycle: " + cycles + ", Time Score: " + score + ", Cross-Entropy: " + evaluator.GetCrossEntropy() + ", DTW Score: " + evaluator.GetNormalizedDTWScore());
                         evaluator.Reset();
                     }
 
@@ -139,6 +142,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
         }
 
     }
+
 
     private void Demonstrate()
     {
@@ -199,16 +203,21 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
     private void TrainAIs()
     {
-        float reward = evaluator.GetNormalizedDTWScore();
-        foreach (TrainingProgress progress in trainingProgress)
-        {
-            progress.SetProgress(reward);
-        }
+        UpdateTrainingProgress();
         
         Train(coachMatch);
         foreach (Match match in aiMatches)
         {
             Train(match);
+        }
+    }
+
+    private void UpdateTrainingProgress()
+    {
+        float p = evaluator.GetCorrectness();
+        foreach (TrainingProgress progress in trainingProgress)
+        {
+            progress.SetProgress(p);
         }
     }
 

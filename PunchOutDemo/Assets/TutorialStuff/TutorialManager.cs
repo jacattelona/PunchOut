@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class TutorialManager : MonoBehaviour
 {
     public int state;
+    public GameHandler gameHand;
     public Animator anim;
     public GameObject intro1;
     public GameObject intro2;
@@ -23,6 +24,10 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown("a") && Input.GetKeyDown("c"))
+        {
+            gameHand.StartOffensive();
+        }
         if (Input.GetKeyDown("a") && state == 1)
         {
             state++;
@@ -43,7 +48,23 @@ public class TutorialManager : MonoBehaviour
         }
         else if (Input.GetKeyDown("space") && state == 6)
         {
-            SceneManager.LoadScene("scene1");
+            anim.SetTrigger("gotoExplainOff");
+            state++;
+        }
+        else if (Input.GetKeyDown("d") && state == 7)
+        {
+            gameHand.StartOffensive();
+            state += 10;
+        }
+        else if (Input.GetKeyDown("d") && state == 8)
+        {
+            anim.SetTrigger("gotoExplainTourney");
+            state++;
+        }
+        else if (Input.GetKeyDown("space") && state == 9)
+        {
+            anim.SetTrigger("gotoExit");
+            //SceneManager.LoadScene("scene1");
         }
         else if (Input.GetKeyDown("f") && state == 2)
         {

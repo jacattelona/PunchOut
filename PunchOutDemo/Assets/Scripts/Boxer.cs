@@ -26,7 +26,12 @@ public class Boxer : Agent
     public bool isFighting = false;
     public bool inverted = false;
 
+    public float minConfidence = 0;
+
+    public bool isTeacher = false;
+
     public Reward rewards;
+
 
     // COMPONENTS
     Health health;
@@ -59,6 +64,9 @@ public class Boxer : Agent
 
     public MLAction currentAction;
 
+    private float lastBufferResetTime;
+    private float maxBufferResetTime = 1.5f;
+
 
     /// <summary>
     /// Initialize the agent
@@ -69,6 +77,7 @@ public class Boxer : Agent
         stats = new BoxerStats();
         health = GetComponent<Health>();
         comboTracker = GetComponent<ComboTracker>();
+        lastBufferResetTime = Time.time;
 
         dodgeAction = new Action(dodgeDuration, dodgeCooldown, dodgeEventDelay);
         dodgeAction.animationStart.AddListener(RegisterDodge);
@@ -83,6 +92,8 @@ public class Boxer : Agent
         actionHistory = new ActionHistory();
 
         currentAction = MLAction.NOTHING;
+
+        //SetActionMask(0, new int[] { 1, 2, 3, 4 });
     }
 
     void FixedUpdate()
@@ -119,8 +130,17 @@ public class Boxer : Agent
         }
 
         AddVectorObs(Encoder.encodeInt(comboTracker.GetState(), 0, comboTracker.GetTotalStates()));
-        AddVectorObs(Encoder.encodeInt(opponentComboState, 0, comboTracker.GetTotalStates()));
+        //AddVectorObs(Encoder.encodeInt(opponentComboState, 0, comboTracker.GetTotalStates()));
         AddVectorObs(move);
+        if (Time.time - lastBufferResetTime > maxBufferResetTime)
+        {
+            SetTextObs((isTeacher && isFighting) + "," + true);
+            lastBufferResetTime = Time.time;
+
+        } else
+        {
+            SetTextObs((isTeacher && isFighting) + "," + false);
+        }
     }
 
     /// <summary>
@@ -133,7 +153,12 @@ public class Boxer : Agent
         base.AgentAction(vectorAction, textAction);
         lastActions = vectorAction;
 
+        var confidence = MLActionFactory.GetProbabilityFromVector(MLActionFactory.GetAction(vectorAction), vectorAction);
+
         if (!isFighting) return;
+
+        // Only perform confident moves
+        if (!Mathf.Approximately(confidence, 0) && confidence < minConfidence) return;
 
         // TODO: Neaten this up
         if (vectorAction[0] <= 2)
@@ -421,5 +446,21 @@ public class Boxer : Agent
     public void SetOpponent(Boxer boxer)
     {
         opponent = boxer;
+    }
+
+    /// <summary>
+    /// Warning event that an enemy punch is about to be thrown
+    /// </summary>
+    /// <param name="side">side punch will be thrown from: 1 = left, 2 = right</param>
+    public void PunchWarning(int side)
+    {
+        if (side == 1)
+        {
+            //left punch
+        }
+        else if (side == 2)
+        {
+            //right punch
+        }
     }
 }

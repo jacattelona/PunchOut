@@ -10,6 +10,10 @@ public class Evaluator: MonoBehaviour
     private int matching = 0;
     private int total = 0;
 
+    private float crossEntropy = 0;
+    private float runningAverageCorrectness = 0f;
+    private float correctness = 0;
+
     [SerializeField]
     private Boxer trainee;
 
@@ -19,6 +23,18 @@ public class Evaluator: MonoBehaviour
     private void Update()
     {
         var match = trainee.currentAction == coach.currentAction;//MLActionFactory.GetAction(trainee.lastActions) == MLActionFactory.GetAction(coach.lastActions);
+        var desiredAction = MLActionFactory.GetAction(coach.lastActions);
+        var probability = MLActionFactory.GetProbabilityFromVector(desiredAction, trainee.lastActions);
+        crossEntropy += MathUtils.CrossEntropy(probability);
+        //correctness += probability;
+        if (runningAverageCorrectness == 0)
+        {
+            runningAverageCorrectness = probability;
+        } else
+        {
+            var alpha = 0.99f;
+            runningAverageCorrectness = alpha * runningAverageCorrectness + (1 - alpha) * probability;
+        }
         AddSample(match);
     }
 
@@ -41,6 +57,25 @@ public class Evaluator: MonoBehaviour
     {
         if (total == 0) return 0f;
         return matching / (float) total;
+    }
+
+    /// <summary>
+    /// Get the average cross entropy
+    /// </summary>
+    /// <returns>The cross entropy</returns>
+    public float GetCrossEntropy()
+    {
+        if (total == 0) return 0f;
+        return crossEntropy / total;
+    }
+
+    /// <summary>
+    /// Get the running average cross entropy
+    /// </summary>
+    /// <returns>The running average cross entropy</returns>
+    public float GetCorrectness()
+    {
+        return runningAverageCorrectness;
     }
 
     /// <summary>
@@ -186,6 +221,7 @@ public class Evaluator: MonoBehaviour
     {
         total = 0;
         matching = 0;
+        crossEntropy = 0;
         coach.actionHistory = new ActionHistory();
         trainee.actionHistory = new ActionHistory();
     }

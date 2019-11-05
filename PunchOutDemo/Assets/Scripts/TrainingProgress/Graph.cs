@@ -113,6 +113,10 @@ public class Graph : TrainingProgress
     public override void SetProgress(float progress)
     {
         data.Add(Mathf.Clamp01(progress));
+        if (data.Count > 25)
+        {
+            data.RemoveAt(0);
+        }
     }
 
     public override float GetProgress()
