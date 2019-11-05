@@ -43,7 +43,23 @@ public class TutorialManager : MonoBehaviour
         }
         else if (Input.GetKeyDown("space") && state == 6)
         {
-            SceneManager.LoadScene("scene1");
+            anim.SetTrigger("gotoExplainOff");
+            state++;
+        }
+        else if (Input.GetKeyDown("d") && state == 7)
+        {
+            anim.SetTrigger("gotoExplainDeff");
+            state++;
+        }
+        else if (Input.GetKeyDown("d") && state == 8)
+        {
+            anim.SetTrigger("gotoExplainTourney");
+            state++;
+        }
+        else if (Input.GetKeyDown("space") && state == 9)
+        {
+            anim.SetTrigger("gotoExit");
+            //SceneManager.LoadScene("scene1");
         }
         else if (Input.GetKeyDown("f") && state == 2)
         {

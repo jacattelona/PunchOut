@@ -10,11 +10,15 @@ public class GameHandler : MonoBehaviour
     private Vector3 cameraVelocity = Vector3.zero;
     public Vector3 offenseLocation, defenseLocation, matchLocation;
 
+    public TutorialManager tutorialManager;
+    public GameObject tutorial = GameObject.Find("Animated");
+    public GameObject timerOb;
+
     [SerializeField]
     public GameObject mainMenu, offensiveTraining, defensiveTraining, match;
     public Text timer;
 
-    private const int STATE_MAIN_MENU = 0, STATE_OFFENSIVE = 1, STATE_DEFENSIVE = 3, STATE_MATCH = 4, STATE_TO_DEFENSIVE = 5, STATE_TO_MATCH = 6;
+    private const int STATE_MAIN_MENU = 0, STATE_OFFENSIVE = 1, STATE_DEFENSIVE = 3, STATE_MATCH = 4, STATE_TO_DEFENSIVE = 5, STATE_TO_MATCH = 6, STATE_TUTORIAL1 = 7, STATE_TUTORIAL2 = 8;
 
     private int state = STATE_MAIN_MENU;
 
@@ -27,7 +31,7 @@ public class GameHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        state = STATE_MAIN_MENU;
+        state = STATE_TUTORIAL1;
         timeScale = Time.timeScale;
         fixedDt = Time.fixedDeltaTime;
     }
@@ -49,7 +53,7 @@ public class GameHandler : MonoBehaviour
         switch (state)
         {
             case STATE_MAIN_MENU:
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space) && tutorialManager.state == 5)
                 {
                     StartOffensive();
                 }
@@ -61,11 +65,20 @@ public class GameHandler : MonoBehaviour
                     SwitchDefensive();
                 break;
 
-            case STATE_DEFENSIVE:
+
+            case STATE_TUTORIAL1:
+                StartTutorial();
+                break;
+
+            case STATE_TUTORIAL2:
+                StartTutorial2();
+                break;
+
+            /*case STATE_DEFENSIVE:
                 TimeUpdate();
                 if (timeLeft <= 0)
                     SwitchMatch();
-                break;
+                break;*/
 
             case STATE_MATCH:
                 break;
@@ -97,6 +110,22 @@ public class GameHandler : MonoBehaviour
     {
         cameraTransform.position = Vector3.SmoothDamp(cameraTransform.position, position, ref cameraVelocity, .5f);
         return Vector3.Distance(cameraTransform.position, position) < .01f;
+    }
+
+    private void StartTutorial()
+    {
+        timer.text = " ";
+        offensiveTraining.SetActive(false);
+        defensiveTraining.SetActive(false);
+        match.SetActive(false);
+    }
+
+    private void StartTutorial2()
+    {
+        timer.text = " ";
+        offensiveTraining.SetActive(false);
+        defensiveTraining.SetActive(false);
+        match.SetActive(false);
     }
 
     private void StartOffensive()
