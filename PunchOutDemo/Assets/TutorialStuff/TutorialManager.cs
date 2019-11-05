@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class TutorialManager : MonoBehaviour
 {
     public int state;
+    public GameHandler gameHand;
     public Animator anim;
     public GameObject intro1;
     public GameObject intro2;
@@ -48,8 +49,8 @@ public class TutorialManager : MonoBehaviour
         }
         else if (Input.GetKeyDown("d") && state == 7)
         {
-            anim.SetTrigger("gotoExplainDeff");
-            state++;
+            gameHand.StartOffensive();
+            state += 10;
         }
         else if (Input.GetKeyDown("d") && state == 8)
         {

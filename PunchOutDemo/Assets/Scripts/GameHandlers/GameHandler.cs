@@ -11,7 +11,7 @@ public class GameHandler : MonoBehaviour
     public Vector3 offenseLocation, defenseLocation, matchLocation;
 
     public TutorialManager tutorialManager;
-    public GameObject tutorial = GameObject.Find("Animated");
+    public GameObject tutorial;
     public GameObject timerOb;
 
     [SerializeField]
@@ -31,6 +31,7 @@ public class GameHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        tutorial = GameObject.Find("Animated");
         state = STATE_TUTORIAL1;
         timeScale = Time.timeScale;
         fixedDt = Time.fixedDeltaTime;
@@ -62,7 +63,7 @@ public class GameHandler : MonoBehaviour
             case STATE_OFFENSIVE:
                 TimeUpdate();
                 if (timeLeft <= 0)
-                    SwitchDefensive();
+                    SwitchMatch();
                 break;
 
 
@@ -123,17 +124,18 @@ public class GameHandler : MonoBehaviour
     private void StartTutorial2()
     {
         timer.text = " ";
+        
         offensiveTraining.SetActive(false);
         defensiveTraining.SetActive(false);
         match.SetActive(false);
     }
 
-    private void StartOffensive()
+    public void StartOffensive()
     {
         state = STATE_OFFENSIVE;
         timeLeft = maxTime;
         timer.text = "Time Left: " + (int)timeLeft;
-
+        tutorial.SetActive(false);
         offensiveTraining.SetActive(true);
         defensiveTraining.SetActive(false);
         match.SetActive(false);
@@ -161,13 +163,16 @@ public class GameHandler : MonoBehaviour
 
     private void SwitchMatch()
     {
-        state = STATE_TO_MATCH;
+        state = STATE_TUTORIAL2;
+        
         timeLeft = maxTime;
         timer.text = "Press Space to Start";
-
+        tutorial.SetActive(true);
+        tutorialManager.state = 8;
+        tutorialManager.anim.SetTrigger("gotoExplainTourney");
         offensiveTraining.SetActive(false);
         defensiveTraining.SetActive(false);
-        match.SetActive(true);
+        match.SetActive(false);
         //match.GetComponent<Match>().StopFight();
         //match.transform.Find("Match").GetComponent<Match>().StopFight();
     }
