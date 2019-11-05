@@ -15,10 +15,14 @@ public class RewardIndicator : MonoBehaviour
     bool active = false;
     int activeCounter = 0;
 
+    Transform parent;
+    float sizeMax = .5f;
+
     void Awake()
     {
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
+        parent = transform.parent;
     }
 
     // Start is called before the first frame update
@@ -39,23 +43,35 @@ public class RewardIndicator : MonoBehaviour
         }
 
 
-        if (rewardsActive >= -0)
+        if (rewardsActive >= 0)
             rewardsActive -= Time.deltaTime*decayRate;
+        
+        if (rewardsActive >= sizeMax) rewardsActive = sizeMax;
 
-        //float scale = rewardsActive * .1f + 1.0f;
-        if (rewardsActive >= 3.0f) rewardsActive = 3.0f;
+        float scale = rewardsActive + .1f;
+
+        parent.localScale = new Vector3(1.0f, scale, 1.0f);
         //transform.localScale = new Vector3(scale, scale, scale);
-        rend.material.SetColor("_EmissionColor", new Color(1.0f, 1.0f, 1.0f, 1.0f) * rewardsActive);
+        //rend.material.SetColor("_EmissionColor", new Color(1.0f, 1.0f, 1.0f, 1.0f) * rewardsActive);
     }
 
     void FixedUpdate()
     {
-        activeCounter++;
-        if (activeCounter > 100) active = true;
+        //activeCounter++;
+        //if (activeCounter > 100) active = true;
+        if (sizeMax < 3.0f)
+        {
+            sizeMax += Time.deltaTime * .05f;
+        }
     }
 
     void TrackReward()
     {
         if (active) rewardsActive += addRate;
+    }
+
+    public void Activate()
+    {
+        active = true;
     }
 }
