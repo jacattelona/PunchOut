@@ -21,9 +21,9 @@ public class ExpertHeuristic : Decision
             new MLAction[]{ MLAction.PUNCH_RIGHT, MLAction.PUNCH_LEFT },
             new MLAction[]{ MLAction.PUNCH_LEFT, MLAction.PUNCH_RIGHT, MLAction.PUNCH_LEFT }
         };
-        var idx = Mathf.FloorToInt(Random.Range(0, possibleMoves.Length));
+        var idx = 0; // Order: 0 (no dodge), 1 (dodge), 2 (no dodge), 3 (dodge), 4 (no dodge) // Mathf.FloorToInt(Random.Range(0, possibleMoves.Length));
         moves = new List<MLAction>(possibleMoves[idx]);
-        shouldDodge = Random.Range(0f, 1f) < 0.5;
+        shouldDodge = false;//Random.Range(0f, 1f) < 0.5;
     }
 
     public override float[] Decide(List<float> vectorObs, List<Texture2D> visualObs, float reward, bool done, List<float> memory)
