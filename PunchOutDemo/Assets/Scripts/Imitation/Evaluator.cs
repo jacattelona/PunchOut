@@ -27,14 +27,8 @@ public class Evaluator: MonoBehaviour
         var probability = MLActionFactory.GetProbabilityFromVector(desiredAction, trainee.lastActions);
         crossEntropy += MathUtils.CrossEntropy(probability);
         //correctness += probability;
-        if (runningAverageCorrectness == 0)
-        {
-            runningAverageCorrectness = probability;
-        } else
-        {
-            var alpha = 0.99f;
-            runningAverageCorrectness = alpha * runningAverageCorrectness + (1 - alpha) * probability;
-        }
+        var alpha = 0.995f;
+        runningAverageCorrectness = alpha * runningAverageCorrectness + (1 - alpha) * probability;
         AddSample(match);
     }
 
