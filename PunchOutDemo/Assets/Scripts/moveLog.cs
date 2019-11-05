@@ -11,7 +11,7 @@ public class moveLog : MonoBehaviour
     Texture2D LP, LD, RP, RD;
     [SerializeField]
     public GameObject myPrefab;
-
+    //Vector3 center;
 
 
     public Boxer boxer;
@@ -20,12 +20,13 @@ public class moveLog : MonoBehaviour
     {
         boxer = GetComponent<Boxer>();
 
-        boxer.punchAction.action.AddListener(logPunch);
-        boxer.dodgeAction.action.AddListener(logDodge);
+        boxer.punchAction.animationStart.AddListener(logPunch);
+        boxer.dodgeAction.animationStart.AddListener(logDodge);
         LP = Resources.Load("Key Logs/Left Punch") as Texture2D;
         LD = Resources.Load("Key Logs/Left Dodge") as Texture2D;
         RP = Resources.Load("Key Logs/Right Punch") as Texture2D;
         RD = Resources.Load("Key Logs/Right Dodge") as Texture2D;
+        //center = Camera.main.WorldToScreenPoint(new Vector3(0, 0, -2));
     }
 
     // Update is called once per frame
@@ -56,7 +57,9 @@ public class moveLog : MonoBehaviour
         {
             // HandleLog("Left Dodge");
             HandlePic(LD);
-            Instantiate(myPrefab, new Vector3(0, 0, -2), Quaternion.identity);
+            //Instantiate(myPrefab, new Vector3(0, 0, -2), Quaternion.identity);
+            Instantiate(myPrefab, new Vector3(-9.24f, -2.8f, -2), Quaternion.identity);
+            //Debug.Log("created l Dodge at " + center.x + ", " + center.y);
 
         }
 
@@ -103,10 +106,10 @@ public class moveLog : MonoBehaviour
 
 
     }
-
+/*
     void OnGUI()
     {
-        var center = Camera.main.WorldToScreenPoint(new Vector3(8, -5, 0));
+        //var center = Camera.main.WorldToScreenPoint(new Vector3(8, -5, 0));
         GUILayout.BeginArea(new Rect(center.x, center.y, 100, 1200));
             
         // GUILayout.Label(myLog);
@@ -118,5 +121,7 @@ public class moveLog : MonoBehaviour
         GUILayout.EndArea();
 
     }
+
+    */
 
 }
