@@ -17,8 +17,8 @@ public class moveLog : MonoBehaviour
     void Start()
     {
         boxer = GetComponent<Boxer>();
-        boxer.punchAction.action.AddListener(logPunch);
-        boxer.dodgeAction.action.AddListener(logDodge);
+        boxer.punchAction.animationStart.AddListener(logPunch);
+        boxer.dodgeAction.animationStart.AddListener(logDodge);
         LP = Resources.Load("Key Logs/Left Punch") as Texture2D;
         LD = Resources.Load("Key Logs/Left Dodge") as Texture2D;
         RP = Resources.Load("Key Logs/Right Punch") as Texture2D;
