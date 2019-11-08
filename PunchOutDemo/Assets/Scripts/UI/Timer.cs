@@ -30,6 +30,9 @@ public class Timer : MonoBehaviour
         {
             TimerExpired();
             return;
+        } else
+        {
+            timeTxt.color = new Color(1, 1, 1);
         }
 
         int minutes = Mathf.FloorToInt(timeLeft) / 60;

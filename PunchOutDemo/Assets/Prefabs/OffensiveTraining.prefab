@@ -692,6 +692,7 @@ MonoBehaviour:
   - {fileID: 6213711253179403215}
   displayEvaluationData: 0
   trainingTimer: {fileID: 8217467465353349520}
+  selectScreen: {fileID: 0}
   trainTime: 7.5
 --- !u!1 &4710161894859041882
 GameObject:
@@ -1388,7 +1389,7 @@ PrefabInstance:
     - target: {fileID: 6592264174824707279, guid: cea5513dd16899045a5409f6fd946d1f,
         type: 3}
       propertyPath: maxTime
-      value: 15
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6592264174705167839, guid: cea5513dd16899045a5409f6fd946d1f,
         type: 3}

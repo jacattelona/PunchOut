@@ -18,8 +18,8 @@ public class matchtutorialManage : MonoBehaviour
         anim.SetTrigger("trigger1");
         retrain = new UnityEvent();
         match = new UnityEvent();
-        //fight.onClick.AddListener(goFight);
-        //train.onClick.AddListener(goTrain);
+        fight.onClick.AddListener(goFight);
+        train.onClick.AddListener(goTrain);
     }
 
     // Update is called once per frame
