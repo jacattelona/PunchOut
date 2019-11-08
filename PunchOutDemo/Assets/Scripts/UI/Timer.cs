@@ -21,7 +21,6 @@ public class Timer : MonoBehaviour
         timeTxt = transform.Find("Time").GetComponent<TextMeshPro>();
         progressCircle = transform.Find("Progress Circle").GetComponentInChildren<Image>();
         ResetTimer();
-        StartTimer();
     }
 
     private void Update()
