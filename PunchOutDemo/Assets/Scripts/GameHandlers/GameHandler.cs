@@ -12,12 +12,10 @@ public class GameHandler : MonoBehaviour
 
     public TutorialManager tutorialManager;
     public GameObject tutorial;
-    public GameObject timerOb;
     public GameObject matchTutorial;
 
     [SerializeField]
     public GameObject mainMenu, offensiveTraining, defensiveTraining, match;
-    public Text timer;
 
     private const int STATE_MAIN_MENU = 0, STATE_OFFENSIVE = 1, STATE_DEFENSIVE = 3, STATE_MATCH = 4, STATE_TO_DEFENSIVE = 5, STATE_TO_MATCH = 6, STATE_TUTORIAL1 = 7, STATE_TUTORIAL2 = 8;
 
@@ -66,8 +64,7 @@ public class GameHandler : MonoBehaviour
                 break;
 
             case STATE_OFFENSIVE:
-                TimeUpdate();
-                if (timeLeft <= 0)
+                if (offensiveTraining.GetComponentInChildren<OffensiveTrainingMatchHandler>().IsDone())
                     SwitchMatch();
                 break;
 
@@ -102,7 +99,7 @@ public class GameHandler : MonoBehaviour
             case STATE_TO_MATCH:
                 if (MoveCameraToPosition(matchLocation))
                 {
-                    matchTutorial.SetActive(false);
+                    //matchTutorial.SetActive(false);
                     match.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
@@ -122,17 +119,14 @@ public class GameHandler : MonoBehaviour
 
     private void StartTutorial()
     {
-        timer.text = " ";
         //offensiveTraining.SetActive(false);
         defensiveTraining.SetActive(false);
         match.SetActive(false);
-        matchTutorial.SetActive(false);
+        //matchTutorial.SetActive(false);
     }
 
     private void StartTutorial2()
-    {
-        timer.text = " ";
-        
+    {        
         //offensiveTraining.SetActive(false);
         defensiveTraining.SetActive(false);
         match.SetActive(false);
@@ -142,12 +136,11 @@ public class GameHandler : MonoBehaviour
     {
         state = STATE_OFFENSIVE;
         timeLeft = 10;
-        timer.text = "Time Left: " + (int)timeLeft;
         tutorial.SetActive(false);
         offensiveTraining.SetActive(true);
         defensiveTraining.SetActive(false);
         match.SetActive(false);
-        matchTutorial.SetActive(false);
+        //matchTutorial.SetActive(false);
     }
 
     
@@ -155,18 +148,16 @@ public class GameHandler : MonoBehaviour
     {
         state = STATE_TO_DEFENSIVE;
         timeLeft = maxTime;
-        timer.text = "Press Space to Start";
 
         //offensiveTraining.SetActive(false);
         defensiveTraining.SetActive(true);
         match.SetActive(false);
-        matchTutorial.SetActive(false);
+        //matchTutorial.SetActive(false);
     }
 
     private void StartDefensive()
     {
         state = STATE_DEFENSIVE;
-        timer.text = "Time Left: " + (int)timeLeft;
         defensiveTraining.GetComponentInChildren<DefensiveTrainingMatchHandler>().BeginTraining();
     }
 
@@ -176,14 +167,13 @@ public class GameHandler : MonoBehaviour
         state = STATE_TUTORIAL2;
 
         timeLeft = maxTime;
-        timer.text = "Press Space to Start";
-        matchTutorial.SetActive(true);
+        //matchTutorial.SetActive(true);
         //tutorial.SetActive(true);
         //tutorialManager.state = 9;
         //tutorialManager.anim.SetTrigger("gotoExplainTourney");
         //offensiveTraining.SetActive(false);
         defensiveTraining.SetActive(false);
-        match.SetActive(false);
+        match.SetActive(true);
         //match.GetComponent<Match>().StopFight();
         //match.transform.Find("Match").GetComponent<Match>().StopFight();
     }
@@ -192,15 +182,9 @@ public class GameHandler : MonoBehaviour
     {
         state = STATE_MATCH;
         
-        timer.text = "Fight!";
         //match.GetComponent<Match>().StartFight();
         match.GetComponentInChildren<MatchGameHandler>().BeginFight();
     }
 
-    private void TimeUpdate()
-    {
-        timeLeft -= Time.deltaTime;
-        timer.text = "Time Left: " + (int)timeLeft;
-    }
 
 }

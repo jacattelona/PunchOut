@@ -21,6 +21,8 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
     [SerializeField]
     public bool displayEvaluationData = false;
 
+    [SerializeField]
+    public Timer trainingTimer;
 
     private Evaluator evaluator;
     private int cycles = 0;
@@ -29,11 +31,11 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
     public float trainTime;
 
-    private float startTime, demoStartTime;
+    private float viewTimer;
 
     private float lastUpdateTime = 0;
 
-    private const int STATE_WAITING = 0, STATE_TRAIN = 1, STATE_MOVING_COACH = 2, STATE_MOVING_AI = 3, STATE_VIEW_AI = 4, STATE_END = 5;
+    private const int STATE_WAITING = 0, STATE_TRAIN = 1, STATE_MOVING_COACH = 2, STATE_MOVING_AI = 3, STATE_VIEW_AI = 4, STATE_CHOOSE_NEXT = 5, STATE_END = 6;
 
     private int state;
 
@@ -49,13 +51,6 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool shouldTrain = Time.time - startTime >= trainTime;
-
-        if (shouldTrain)
-        {
-            startTime = Time.time;
-        }
-
         ReviveKOBoxers();
 
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -84,22 +79,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                 UpdateTrainingProgress();
 
                 // Check to see if the training phase is over
-                if (shouldTrain && Time.time - demoStartTime >= trainTime) // Train if the train time has been complete since switching to demo mode
-                {
-                    TrainAIs();
-
-                    if (displayEvaluationData)
-                    {
-                        // Display evaluation data
-                        cycles++;
-                        var score = evaluator.GetMatchingScore();
-                        Debug.Log("Cycle: " + cycles + ", Time Score: " + score + ", Cross-Entropy: " + evaluator.GetCrossEntropy() + ", DTW Score: " + evaluator.GetNormalizedDTWScore());
-                        evaluator.Reset();
-                    }
-
-                }
-
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (trainingTimer.IsExpired())
                 {
                     Watch();
                     lerpProgress = 0;
@@ -110,32 +90,41 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                 if (lerpProgress > 1)
                 {
                     aiMatches[0].StartFight();
+                    viewTimer = trainTime;
                     state = STATE_VIEW_AI;
                 }
                 MoveTowardsWatchPosition(lerpProgress);
                 lerpProgress += 0.1f;
                 break;
             case STATE_VIEW_AI:
-                if (Input.GetKeyDown(KeyCode.Space))
+                // Watch the AI fight for 1 cycle
+                viewTimer -= Time.deltaTime;
+                if (viewTimer <= 0)
+                {
+                    state = STATE_CHOOSE_NEXT;
+                }
+                break;
+            case STATE_CHOOSE_NEXT:
+                // TODO: Replace this with the 
+                if (Input.GetKeyDown(KeyCode.T))
                 {
                     Demonstrate();
                     lerpProgress = 0;
                     state = STATE_MOVING_COACH;
+                } else if (Input.GetKeyDown(KeyCode.M))
+                {
+                    state = STATE_END;
                 }
                 break;
             case STATE_MOVING_COACH:
                 if (lerpProgress > 1)
                 {
-                    demoStartTime = Time.time;
-                    coachMatch.StartFight();
-                    evaluator.Reset();
-                    state = STATE_TRAIN;
+                    SwitchToTrainingState();
                 }
                 MoveTowardsDemoPosition(lerpProgress);
                 lerpProgress += 0.1f;
                 break;
             case STATE_END:
-                SwitchToNextScene();
                 break;
         }
 
@@ -144,14 +133,23 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
     private void SwitchToTrainingState()
     {
+        // Stop the AI matches, move everyone to the correct location
         Demonstrate();
+
+        // Start the coach's match
         coachMatch.StartFight();
-        demoStartTime = Time.time;
-        startTime = Time.time;
+
+        // Start the countdown timer
+        trainingTimer.ResetTimer();
+        trainingTimer.StartTimer();
+
+        // Reset the evaluation metrics
         evaluator.Reset();
-        state = STATE_TRAIN;
         RewardIndicator r = transform.parent.GetComponentInChildren<RewardIndicator>();
         r.Activate();
+
+        // Switch to training
+        state = STATE_TRAIN;
     }
 
 
