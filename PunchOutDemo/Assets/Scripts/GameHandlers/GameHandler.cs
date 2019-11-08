@@ -141,7 +141,7 @@ public class GameHandler : MonoBehaviour
     public void StartOffensive()
     {
         state = STATE_OFFENSIVE;
-        timeLeft = 10;
+        timeLeft = 120;
         timer.text = "Time Left: " + (int)timeLeft;
         tutorial.SetActive(false);
         offensiveTraining.SetActive(true);
