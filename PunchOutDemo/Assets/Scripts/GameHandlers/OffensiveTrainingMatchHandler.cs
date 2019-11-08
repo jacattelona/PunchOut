@@ -147,14 +147,14 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
     private void Demonstrate()
     {
         // Start coach's match 
-        coachMatch.GetPlayer1().transform.Find("Sprite").localEulerAngles = Vector3.zero;
-        coachMatch.GetPlayer1().transform.localPosition = new Vector3(-3, 0);
+        coachMatch.GetPlayer1().transform.localEulerAngles = Vector3.zero;
+        coachMatch.GetPlayer1().transform.localPosition = new Vector3(0, 0);
 
         // Stop AI's match and look at the coach
         Boxer AI = aiMatches[0].GetPlayer1();
         aiMatches[0].StopFight();
-        AI.transform.Find("Sprite").localEulerAngles = new Vector3(0, 0, 90);
-        AI.transform.localPosition = new Vector3(3, 2);
+        AI.transform.localEulerAngles = new Vector3(0, 0, -90);
+        AI.transform.localPosition = new Vector3(-9.24f, -3.61f);
 
         // Start the hidden AIs
         StartHiddenAIMatches();       
@@ -163,26 +163,26 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
     private void MoveTowardsWatchPosition(float lerp)
     {
         Boxer AI = aiMatches[0].GetPlayer1();
-        var aiX = Mathf.Lerp(3, -3, lerp);
-        var aiY = Mathf.Lerp(2, 0, lerp);
+        var aiX = Mathf.Lerp(-9.24f, 0, lerp);
+        var aiY = Mathf.Lerp(-3.61f, 0, lerp);
         AI.transform.localPosition = new Vector3(aiX, aiY);
 
         Boxer coach = coachMatch.GetPlayer1();
-        var coachX = Mathf.Lerp(-3, 3, lerp);
-        var coachY = Mathf.Lerp(0, 2, lerp);
+        var coachX = Mathf.Lerp(0, -9.24f, lerp);
+        var coachY = Mathf.Lerp(0, -3.61f, lerp);
         coach.transform.localPosition = new Vector3(coachX, coachY);
     }
 
     private void MoveTowardsDemoPosition(float lerp)
     {
         Boxer AI = aiMatches[0].GetPlayer1();
-        var aiX = Mathf.Lerp(-3, 3, lerp);
-        var aiY = Mathf.Lerp(0, 2, lerp);
+        var aiX = Mathf.Lerp(0, -9.24f, lerp);
+        var aiY = Mathf.Lerp(0, -3.61f, lerp);
         AI.transform.localPosition = new Vector3(aiX, aiY);
 
         Boxer coach = coachMatch.GetPlayer1();
-        var coachX = Mathf.Lerp(3, -3, lerp);
-        var coachY = Mathf.Lerp(2, 0, lerp);
+        var coachX = Mathf.Lerp(-9.24f, 0, lerp);
+        var coachY = Mathf.Lerp(-3.61f, 0, lerp);
         coach.transform.localPosition = new Vector3(coachX, coachY);
     }
 
@@ -191,11 +191,11 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
         // Stop coach's match and look at AI
         coachMatch.StopFight();
-        coachMatch.GetPlayer1().transform.Find("Sprite").localEulerAngles = new Vector3(0, 0, 90);
+        coachMatch.GetPlayer1().transform.localEulerAngles = new Vector3(0, 0, -90);
 
         // Start the AI's match
         Boxer AI = aiMatches[0].GetPlayer1();
-        AI.transform.Find("Sprite").localEulerAngles = Vector3.zero;
+        AI.transform.localEulerAngles = Vector3.zero;
 
         // Stop the hidden matches
         StopHiddenAIMatches();        
