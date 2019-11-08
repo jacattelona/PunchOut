@@ -26,7 +26,14 @@ public class AIEnemyHeuristic : Decision
             RIGHT_PUNCH,
             RIGHT_PUNCH,
             LEFT_PUNCH,
-            NOTHING
+            NOTHING,
+            RIGHT_PUNCH,
+            RIGHT_PUNCH,
+            RIGHT_PUNCH,
+            NOTHING,
+            LEFT_PUNCH,
+            LEFT_PUNCH,
+            LEFT_PUNCH
 
         };
 
@@ -48,37 +55,37 @@ public class AIEnemyHeuristic : Decision
             if(input.GetOpponentAction() ==  MLAction.PUNCH_LEFT )
             {
                 int rand = Random.Range(0, 100);
-                if (rand <= 33)
+                if (rand <= 25)
                 {
                     Debug.Log("Left P Dodge");
                     return LEFT_DODGE;
                 }
-                else if(rand > 33 && rand <= 66 )
+                else if(rand > 25 && rand <= 50 )
                 {
                     Debug.Log("Left P Wrong Dodge");
                     return RIGHT_DODGE;
                 }
                 else
                 {
-                    return NOTHING;
+                   // return NOTHING;
                 }
             }
             if (input.GetOpponentAction() == MLAction.PUNCH_RIGHT)
             {
                 int rand = Random.Range(0, 100);
-                if (rand <= 33)
+                if (rand <= 25)
                 {
                     Debug.Log("Right P Dodge");
                     return RIGHT_DODGE;
                 }
-                else if(rand > 33 && rand <= 66)
+                else if(rand > 25 && rand <= 50)
                 {
                     Debug.Log("Right P Wrong Dodge");
                     return LEFT_DODGE;
                 }
                 else
                 {
-                    return NOTHING;
+                    //return NOTHING;
                 }
             }
             float[] move = moves[moveIdx];
