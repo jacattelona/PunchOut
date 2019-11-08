@@ -18,6 +18,7 @@ public class MLActionFactory
     /// <returns>The action that the Brain predicts</returns>
     public static MLAction GetAction(float[] vectorAction)
     {
+        if (vectorAction.Length < 1) return MLAction.NOTHING;
         switch (vectorAction[0])
         {
             case 1:

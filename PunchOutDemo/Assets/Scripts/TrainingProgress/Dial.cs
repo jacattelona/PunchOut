@@ -7,6 +7,8 @@ public class Dial : TrainingProgress
     private Transform needle;
     private TextMeshPro percentageTxt;
 
+    private GameObject backgroundLow, backgroundMed, backgroundHigh;
+
     private const float MIN_ANGLE = 18.0f;
     private const float MAX_ANGLE = -197.0f;
 
@@ -19,6 +21,10 @@ public class Dial : TrainingProgress
     {
         needle = transform.Find("Needle");
         percentageTxt = transform.Find("Percentage").GetComponent<TextMeshPro>();
+        backgroundLow = transform.Find("Background Low").gameObject;
+        backgroundMed = transform.Find("Background Medium").gameObject;
+        backgroundHigh = transform.Find("Background High").gameObject;
+        Clear();
     }
 
     private void Update()
@@ -36,6 +42,22 @@ public class Dial : TrainingProgress
         var angle = MIN_ANGLE - progressAngle * range;
         percentageTxt.text = Mathf.RoundToInt(progressAngle * 100).ToString() + " %";
         needle.eulerAngles = new Vector3(0, 0, angle);
+        if (progressAngle < 0.25)
+        {
+            backgroundLow.SetActive(true);
+            backgroundMed.SetActive(false);
+            backgroundHigh.SetActive(false);
+        } else if (progressAngle < 0.74)
+        {
+            backgroundLow.SetActive(false);
+            backgroundMed.SetActive(true);
+            backgroundHigh.SetActive(false);
+        } else
+        {
+            backgroundLow.SetActive(false);
+            backgroundMed.SetActive(false);
+            backgroundHigh.SetActive(true);
+        }
     }
 
     public override void Clear()

@@ -14,6 +14,7 @@ public class ExpertHeuristic : Decision
 
     private void OnEnable()
     {
+        var idx = 4; // 0 - 4
         MLAction[][] possibleMoves = new MLAction[][]{
             new MLAction[]{ MLAction.PUNCH_LEFT },
             new MLAction[]{ MLAction.PUNCH_RIGHT },
@@ -21,9 +22,8 @@ public class ExpertHeuristic : Decision
             new MLAction[]{ MLAction.PUNCH_RIGHT, MLAction.PUNCH_LEFT },
             new MLAction[]{ MLAction.PUNCH_LEFT, MLAction.PUNCH_RIGHT, MLAction.PUNCH_LEFT }
         };
-        var idx = 0; // Order: 0 (no dodge), 1 (dodge), 2 (no dodge), 3 (dodge), 4 (no dodge) // Mathf.FloorToInt(Random.Range(0, possibleMoves.Length));
         moves = new List<MLAction>(possibleMoves[idx]);
-        shouldDodge = false;//Random.Range(0f, 1f) < 0.5;
+        shouldDodge = idx == 1 || idx == 3;
     }
 
     public override float[] Decide(List<float> vectorObs, List<Texture2D> visualObs, float reward, bool done, List<float> memory)
@@ -66,6 +66,18 @@ public class ExpertHeuristic : Decision
                     case 0: return MLActionFactory.GetVectorAction(actions[0]);
                     case 1: return MLActionFactory.GetVectorAction(actions[1]);
                     case 2: return MLActionFactory.GetVectorAction(actions[1]);
+                    default: return MLActionFactory.GetVectorAction(MLAction.NOTHING);
+                }
+            }
+            if (actions.Count == 3)
+            {
+                switch (myComboState)
+                {
+                    case 0: return MLActionFactory.GetVectorAction(actions[0]);
+                    case 1: return MLActionFactory.GetVectorAction(actions[1]);
+                    case 2: return MLActionFactory.GetVectorAction(actions[1]);
+                    case 3: return MLActionFactory.GetVectorAction(actions[2]);
+                    case 4: return MLActionFactory.GetVectorAction(actions[2]);
                     default: return MLActionFactory.GetVectorAction(MLAction.NOTHING);
                 }
             }
