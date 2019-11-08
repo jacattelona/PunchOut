@@ -123,7 +123,7 @@ public class GameHandler : MonoBehaviour
     private void StartTutorial()
     {
         timer.text = " ";
-        offensiveTraining.SetActive(false);
+        //offensiveTraining.SetActive(false);
         defensiveTraining.SetActive(false);
         match.SetActive(false);
         matchTutorial.SetActive(false);
@@ -133,7 +133,7 @@ public class GameHandler : MonoBehaviour
     {
         timer.text = " ";
         
-        offensiveTraining.SetActive(false);
+        //offensiveTraining.SetActive(false);
         defensiveTraining.SetActive(false);
         match.SetActive(false);
     }
@@ -157,7 +157,7 @@ public class GameHandler : MonoBehaviour
         timeLeft = maxTime;
         timer.text = "Press Space to Start";
 
-        offensiveTraining.SetActive(false);
+        //offensiveTraining.SetActive(false);
         defensiveTraining.SetActive(true);
         match.SetActive(false);
         matchTutorial.SetActive(false);
@@ -181,7 +181,7 @@ public class GameHandler : MonoBehaviour
         //tutorial.SetActive(true);
         //tutorialManager.state = 9;
         //tutorialManager.anim.SetTrigger("gotoExplainTourney");
-        offensiveTraining.SetActive(false);
+        //offensiveTraining.SetActive(false);
         defensiveTraining.SetActive(false);
         match.SetActive(false);
         //match.GetComponent<Match>().StopFight();
