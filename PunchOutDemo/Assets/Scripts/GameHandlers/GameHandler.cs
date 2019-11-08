@@ -12,12 +12,11 @@ public class GameHandler : MonoBehaviour
 
     public TutorialManager tutorialManager;
     public GameObject tutorial;
-    public GameObject matchTutorial;
 
     [SerializeField]
-    public GameObject mainMenu, offensiveTraining, defensiveTraining, match;
+    public GameObject offensiveTraining, match;
 
-    private const int STATE_MAIN_MENU = 0, STATE_OFFENSIVE = 1, STATE_DEFENSIVE = 3, STATE_MATCH = 4, STATE_TO_DEFENSIVE = 5, STATE_TO_MATCH = 6, STATE_TUTORIAL1 = 7, STATE_TUTORIAL2 = 8;
+    private const int STATE_MAIN_MENU = 0, STATE_OFFENSIVE = 1, STATE_MATCH = 4, STATE_TO_MATCH = 6, STATE_TUTORIAL1 = 7, STATE_TUTORIAL2 = 8;
 
     private int state = STATE_MAIN_MENU;
 
@@ -30,16 +29,11 @@ public class GameHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tutorial = GameObject.Find("Animated");
         state = STATE_TUTORIAL1;
         timeScale = Time.timeScale;
         fixedDt = Time.fixedDeltaTime;
     }
 
-    public void setState(int stateNew)
-    {
-        state = stateNew;
-    }
     // Update is called once per frame
     void Update()
     {
@@ -57,45 +51,31 @@ public class GameHandler : MonoBehaviour
         switch (state)
         {
             case STATE_MAIN_MENU:
-                if (Input.GetKeyDown(KeyCode.Space) && tutorialManager.state == 5)
-                {
-                    StartOffensive();
-                }
                 break;
 
             case STATE_OFFENSIVE:
                 if (offensiveTraining.GetComponentInChildren<OffensiveTrainingMatchHandler>().IsDone())
+                {
                     SwitchMatch();
+                }
                 break;
 
 
             case STATE_TUTORIAL1:
                 StartTutorial();
+                if (tutorialManager.IsDone())
+                {
+                    StartOffensive();
+                }
                 break;
 
             case STATE_TUTORIAL2:
                 StartTutorial2();
                 break;
 
-            /*case STATE_DEFENSIVE:
-                TimeUpdate();
-                if (timeLeft <= 0)
-                    SwitchMatch();
-                break;*/
-
             case STATE_MATCH:
                 break;
 
-            case STATE_TO_DEFENSIVE:
-                if (MoveCameraToPosition(defenseLocation))
-                {
-                    if (Input.GetKeyDown(KeyCode.Space))
-                    {
-                        StartDefensive();
-                    }
-                    //StartDefensive();
-                }
-                break;
             case STATE_TO_MATCH:
                 if (MoveCameraToPosition(matchLocation))
                 {
@@ -119,16 +99,14 @@ public class GameHandler : MonoBehaviour
 
     private void StartTutorial()
     {
-        //offensiveTraining.SetActive(false);
-        defensiveTraining.SetActive(false);
+        tutorial.SetActive(true);
+        offensiveTraining.SetActive(false);
         match.SetActive(false);
-        //matchTutorial.SetActive(false);
     }
 
     private void StartTutorial2()
     {        
-        //offensiveTraining.SetActive(false);
-        defensiveTraining.SetActive(false);
+        offensiveTraining.SetActive(false);
         match.SetActive(false);
     }
 
@@ -138,33 +116,14 @@ public class GameHandler : MonoBehaviour
         timeLeft = 10;
         tutorial.SetActive(false);
         offensiveTraining.SetActive(true);
-        defensiveTraining.SetActive(false);
         match.SetActive(false);
-        //matchTutorial.SetActive(false);
     }
 
-    
-    private void SwitchDefensive()
-    {
-        state = STATE_TO_DEFENSIVE;
-        timeLeft = maxTime;
-
-        //offensiveTraining.SetActive(false);
-        defensiveTraining.SetActive(true);
-        match.SetActive(false);
-        //matchTutorial.SetActive(false);
-    }
-
-    private void StartDefensive()
-    {
-        state = STATE_DEFENSIVE;
-        defensiveTraining.GetComponentInChildren<DefensiveTrainingMatchHandler>().BeginTraining();
-    }
 
 
     private void SwitchMatch()
     {
-        state = STATE_TUTORIAL2;
+        state = STATE_TO_MATCH;
 
         timeLeft = maxTime;
         //matchTutorial.SetActive(true);
@@ -172,14 +131,14 @@ public class GameHandler : MonoBehaviour
         //tutorialManager.state = 9;
         //tutorialManager.anim.SetTrigger("gotoExplainTourney");
         //offensiveTraining.SetActive(false);
-        defensiveTraining.SetActive(false);
-        match.SetActive(true);
+        match.SetActive(false);
         //match.GetComponent<Match>().StopFight();
         //match.transform.Find("Match").GetComponent<Match>().StopFight();
     }
 
     private void StartMatch()
     {
+        match.SetActive(true);
         state = STATE_MATCH;
         
         //match.GetComponent<Match>().StartFight();

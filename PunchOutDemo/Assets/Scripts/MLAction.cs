@@ -99,6 +99,7 @@ public class MLActionFactory
     /// <returns>The probability between 0 and 1 for performing the action</returns>
     public static float GetProbabilityFromVector(MLAction action, float[] vectorActions)
     {
+        if (vectorActions.Length < 1) return 1;
         float scale = 10000;
         return vectorActions[ActionToInt(action) + 1] / scale;
     }

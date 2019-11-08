@@ -24,6 +24,9 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
     [SerializeField]
     public Timer trainingTimer;
 
+    [SerializeField]
+    public matchtutorialManage selectScreen;
+
     private Evaluator evaluator;
     private int cycles = 0;
 
@@ -105,16 +108,22 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                 }
                 break;
             case STATE_CHOOSE_NEXT:
+                Debug.Log("Choose next state");
+                selectScreen.gameObject.SetActive(true);
                 // TODO: Replace this with the 
-                if (Input.GetKeyDown(KeyCode.T))
+                selectScreen.match.AddListener(() =>
+                {
+                    state = STATE_END;
+                    selectScreen.gameObject.SetActive(false);
+                });
+
+                selectScreen.retrain.AddListener(() =>
                 {
                     Demonstrate();
                     lerpProgress = 0;
                     state = STATE_MOVING_COACH;
-                } else if (Input.GetKeyDown(KeyCode.M))
-                {
-                    state = STATE_END;
-                }
+                    selectScreen.gameObject.SetActive(false);
+                });
                 break;
             case STATE_MOVING_COACH:
                 if (lerpProgress > 1)

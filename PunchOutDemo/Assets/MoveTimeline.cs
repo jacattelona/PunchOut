@@ -28,7 +28,6 @@ public class MoveTimeline : MonoBehaviour
         if (this.gameObject.transform.position.y >= 12f)
         {
             Destroy(this.gameObject);
-            Debug.Log("Destroyed");
         }
     }
 

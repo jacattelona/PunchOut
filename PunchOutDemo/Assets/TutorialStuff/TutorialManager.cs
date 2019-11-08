@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class TutorialManager : MonoBehaviour
 {
     public int state;
-    public GameHandler gameHand;
     public Animator anim;
     public GameObject intro1;
     public GameObject intro2;
@@ -14,6 +13,8 @@ public class TutorialManager : MonoBehaviour
     public GameObject punch1Set2;
     public GameObject punchSet21;
     public GameObject punchSet22;
+
+    private int endState = 10;
     
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,7 @@ public class TutorialManager : MonoBehaviour
     {
         if(Input.GetKeyDown("a") && Input.GetKeyDown("c"))
         {
-            gameHand.StartOffensive();
+            state = endState;
         }
         if (Input.GetKeyDown("a") && state == 1)
         {
@@ -53,8 +54,7 @@ public class TutorialManager : MonoBehaviour
         }
         else if (Input.GetKeyDown("d") && state == 7)
         {
-            gameHand.StartOffensive();
-            state += 10;
+            state = endState;
         }
         else if (Input.GetKeyDown("d") && state == 8)
         {
@@ -65,6 +65,7 @@ public class TutorialManager : MonoBehaviour
         {
             anim.SetTrigger("gotoExit");
             //SceneManager.LoadScene("scene1");
+            state = endState;
         }
         else if (Input.GetKeyDown("f") && state == 2)
         {
@@ -78,5 +79,10 @@ public class TutorialManager : MonoBehaviour
             anim.SetTrigger("gotoPunch2");
             state++;
         }
+    }
+
+    public bool IsDone()
+    {
+        return state == endState;
     }
 }
