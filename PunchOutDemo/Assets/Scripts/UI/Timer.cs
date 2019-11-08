@@ -6,9 +6,7 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
 
-    private Transform needle;
     private TextMeshPro timeTxt;
-    private Image progressCircle;
 
     public float maxTime = 1;
 
@@ -17,9 +15,7 @@ public class Timer : MonoBehaviour
 
     void Start()
     {
-        needle = transform.Find("Needle");
         timeTxt = transform.Find("Time").GetComponent<TextMeshPro>();
-        progressCircle = transform.Find("Progress Circle").GetComponentInChildren<Image>();
         ResetTimer();
     }
 
@@ -35,9 +31,6 @@ public class Timer : MonoBehaviour
             TimerExpired();
             return;
         }
-
-        needle.eulerAngles = new Vector3(0, 0, (1 - GetTimePercent()) * 360f - 90f);
-        progressCircle.fillAmount = 1 - GetTimePercent();
 
         int minutes = Mathf.FloorToInt(timeLeft) / 60;
         int seconds = Mathf.FloorToInt(timeLeft - minutes * 60);
@@ -56,7 +49,7 @@ public class Timer : MonoBehaviour
     /// </summary>
     private void TimerExpired()
     {
-        // TODO: Flash
+        timeTxt.color = new Color(1, 0, 0);
     }
 
     /// <summary>
