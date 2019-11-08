@@ -21,6 +21,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
     [SerializeField]
     public bool displayEvaluationData = false;
 
+
     private Evaluator evaluator;
     private int cycles = 0;
 
@@ -32,7 +33,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
     private float lastUpdateTime = 0;
 
-    private const int STATE_WAITING = 0, STATE_DEMONSTRATING = 1, STATE_MOVING_COACH = 2, STATE_MOVING_AI = 3, STATE_VIEW_AI = 4, STATE_END = 5;
+    private const int STATE_WAITING = 0, STATE_TRAIN = 1, STATE_MOVING_COACH = 2, STATE_MOVING_AI = 3, STATE_VIEW_AI = 4, STATE_END = 5;
 
     private int state;
 
@@ -70,22 +71,19 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
         switch (state)
         {
             case STATE_WAITING:
+                // The initial waiting screen
                 waitingScreen.SetActive(true);
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     waitingScreen.SetActive(false);
-                    Demonstrate();
-                    coachMatch.StartFight();
-                    demoStartTime = Time.time;
-                    startTime = Time.time;
-                    evaluator.Reset();
-                    state = STATE_DEMONSTRATING;
-                    RewardIndicator r = transform.parent.GetComponentInChildren<RewardIndicator>();
-                    r.Activate();
+                    SwitchToTrainingState();
                 }
                 break;
-            case STATE_DEMONSTRATING:
+            case STATE_TRAIN:
+                // Update the training progress indicators
                 UpdateTrainingProgress();
+
+                // Check to see if the training phase is over
                 if (shouldTrain && Time.time - demoStartTime >= trainTime) // Train if the train time has been complete since switching to demo mode
                 {
                     TrainAIs();
@@ -131,7 +129,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                     demoStartTime = Time.time;
                     coachMatch.StartFight();
                     evaluator.Reset();
-                    state = STATE_DEMONSTRATING;
+                    state = STATE_TRAIN;
                 }
                 MoveTowardsDemoPosition(lerpProgress);
                 lerpProgress += 0.1f;
@@ -141,6 +139,25 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                 break;
         }
 
+    }
+
+
+    private void SwitchToTrainingState()
+    {
+        Demonstrate();
+        coachMatch.StartFight();
+        demoStartTime = Time.time;
+        startTime = Time.time;
+        evaluator.Reset();
+        state = STATE_TRAIN;
+        RewardIndicator r = transform.parent.GetComponentInChildren<RewardIndicator>();
+        r.Activate();
+    }
+
+
+    public bool IsDone()
+    {
+        return state == STATE_END;
     }
 
 
