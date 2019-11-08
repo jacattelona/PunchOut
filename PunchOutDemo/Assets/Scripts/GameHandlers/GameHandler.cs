@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class GameHandler : MonoBehaviour
 {
 
-    public float maxTime = 60f;
+    public float maxTime = 2f;
 
     public Transform cameraTransform;
     private Vector3 cameraVelocity = Vector3.zero;
@@ -13,6 +13,7 @@ public class GameHandler : MonoBehaviour
     public TutorialManager tutorialManager;
     public GameObject tutorial;
     public GameObject timerOb;
+    public GameObject matchTutorial;
 
     [SerializeField]
     public GameObject mainMenu, offensiveTraining, defensiveTraining, match;
@@ -37,6 +38,10 @@ public class GameHandler : MonoBehaviour
         fixedDt = Time.fixedDeltaTime;
     }
 
+    public void setState(int stateNew)
+    {
+        state = stateNew;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -97,6 +102,8 @@ public class GameHandler : MonoBehaviour
             case STATE_TO_MATCH:
                 if (MoveCameraToPosition(matchLocation))
                 {
+                    matchTutorial.SetActive(false);
+                    match.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
                         StartMatch();
@@ -119,6 +126,7 @@ public class GameHandler : MonoBehaviour
         offensiveTraining.SetActive(false);
         defensiveTraining.SetActive(false);
         match.SetActive(false);
+        matchTutorial.SetActive(false);
     }
 
     private void StartTutorial2()
@@ -133,12 +141,13 @@ public class GameHandler : MonoBehaviour
     public void StartOffensive()
     {
         state = STATE_OFFENSIVE;
-        timeLeft = maxTime;
+        timeLeft = 10;
         timer.text = "Time Left: " + (int)timeLeft;
         tutorial.SetActive(false);
         offensiveTraining.SetActive(true);
         defensiveTraining.SetActive(false);
         match.SetActive(false);
+        matchTutorial.SetActive(false);
     }
 
     
@@ -151,6 +160,7 @@ public class GameHandler : MonoBehaviour
         offensiveTraining.SetActive(false);
         defensiveTraining.SetActive(true);
         match.SetActive(false);
+        matchTutorial.SetActive(false);
     }
 
     private void StartDefensive()
@@ -164,12 +174,13 @@ public class GameHandler : MonoBehaviour
     private void SwitchMatch()
     {
         state = STATE_TUTORIAL2;
-        
+
         timeLeft = maxTime;
         timer.text = "Press Space to Start";
-        tutorial.SetActive(true);
-        tutorialManager.state = 8;
-        tutorialManager.anim.SetTrigger("gotoExplainTourney");
+        matchTutorial.SetActive(true);
+        //tutorial.SetActive(true);
+        //tutorialManager.state = 9;
+        //tutorialManager.anim.SetTrigger("gotoExplainTourney");
         offensiveTraining.SetActive(false);
         defensiveTraining.SetActive(false);
         match.SetActive(false);
@@ -180,6 +191,7 @@ public class GameHandler : MonoBehaviour
     private void StartMatch()
     {
         state = STATE_MATCH;
+        
         timer.text = "Fight!";
         //match.GetComponent<Match>().StartFight();
         match.GetComponentInChildren<MatchGameHandler>().BeginFight();
