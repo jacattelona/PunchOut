@@ -245,6 +245,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 28327d844c23eec458c5328c80d86790, type: 2}
     - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
     - {fileID: 11400000, guid: 5551af24ea95a994083527fdaa432c95, type: 2}
+    - {fileID: 11400000, guid: a8aabdc8cc0798b429d5fdd980cd8469, type: 2}
     m_BrainsToControl:
     - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
   m_TrainingConfiguration:
@@ -1935,7 +1936,7 @@ PrefabInstance:
         type: 3}
       propertyPath: brain
       value: 
-      objectReference: {fileID: 11400000, guid: 28327d844c23eec458c5328c80d86790,
+      objectReference: {fileID: 11400000, guid: a8aabdc8cc0798b429d5fdd980cd8469,
         type: 2}
     - target: {fileID: 6784984025631178711, guid: b57c866fb8120fb4caa40af74f67c994,
         type: 3}

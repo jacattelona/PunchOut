@@ -21,6 +21,9 @@ public class MLInput
     private const int OPPONENT_LEFT_DODGE_IDX = 12;
     private const int OPPONENT_RIGHT_DODGE_IDX = 13;
 
+    private const int MY_MOVE_START_IDX = 14;
+    private const int MY_MOVE_END_IDX = 17;
+
     /// <summary>
     /// Default constructor
     /// </summary>
@@ -102,6 +105,26 @@ public class MLInput
         return 0;
     }
 
+
+    public MLAction GetMyMove()
+    {
+
+        if (input[MY_MOVE_START_IDX] == 1)
+        {
+            return MLAction.PUNCH_LEFT;
+        } else if (input[MY_MOVE_START_IDX + 1] == 1)
+        {
+            return MLAction.PUNCH_RIGHT;
+        } else if (input[MY_MOVE_START_IDX + 2] == 1)
+        {
+            return MLAction.DODGE_LEFT;
+        } else if (input[MY_MOVE_START_IDX + 3] == 1)
+        {
+            return MLAction.DODGE_RIGHT;
+        }
+
+        return MLAction.NOTHING;
+    }
 
     // Private helpers
 
