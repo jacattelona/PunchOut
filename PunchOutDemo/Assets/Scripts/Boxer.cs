@@ -132,6 +132,10 @@ public class Boxer : Agent
         AddVectorObs(Encoder.encodeInt(comboTracker.GetState(), 0, comboTracker.GetTotalStates()));
         //AddVectorObs(Encoder.encodeInt(opponentComboState, 0, comboTracker.GetTotalStates()));
         AddVectorObs(move);
+        AddVectorObs(currentAction == MLAction.PUNCH_LEFT);
+        AddVectorObs(currentAction == MLAction.PUNCH_RIGHT);
+        AddVectorObs(currentAction == MLAction.DODGE_LEFT);
+        AddVectorObs(currentAction == MLAction.DODGE_RIGHT);
         if (Time.time - lastBufferResetTime > maxBufferResetTime)
         {
             SetTextObs((isTeacher && isFighting) + "," + true);

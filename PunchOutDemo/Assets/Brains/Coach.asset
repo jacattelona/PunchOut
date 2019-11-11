@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 943466ab374444748a364f9d6c3e2fe2, type: 3}
-  m_Name: Dummy1
+  m_Name: Coach
   m_EditorClassIdentifier: 
   brainParameters:
     vectorObservationSize: 18
@@ -26,5 +26,5 @@ MonoBehaviour:
     - Confidence5
     vectorActionSpaceType: 0
   decision: {fileID: 0}
-  decisionScript: {fileID: 11500000, guid: 44211187e3953fa49a939744acd14d6c, type: 3}
-  cDecision: SimpleEnemyHeuristic
+  decisionScript: {fileID: 0}
+  cDecision: 
