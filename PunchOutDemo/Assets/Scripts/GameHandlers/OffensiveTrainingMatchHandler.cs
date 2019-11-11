@@ -86,6 +86,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                 {
                     Watch();
                     lerpProgress = 0;
+                    CoachDialog.instance?.Show("Coach: Let's see how much of that you picked up.");
                     state = STATE_MOVING_AI;
                 }
                 break;
@@ -104,11 +105,11 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                 viewTimer -= Time.deltaTime;
                 if (viewTimer <= 0)
                 {
+                    CoachDialog.instance?.Hide();
                     state = STATE_CHOOSE_NEXT;
                 }
                 break;
             case STATE_CHOOSE_NEXT:
-                Debug.Log("Choose next state");
                 selectScreen.gameObject.SetActive(true);
                 // TODO: Replace this with the 
                 selectScreen.match.AddListener(() =>
@@ -142,6 +143,8 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
     private void SwitchToTrainingState()
     {
+        CoachDialog.instance?.Show("Coach: AI, let me show you how to fight.", 2.0f);
+
         // Stop the AI matches, move everyone to the correct location
         Demonstrate();
 

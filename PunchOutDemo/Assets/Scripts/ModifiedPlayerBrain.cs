@@ -14,7 +14,7 @@ public class ModifiedPlayerBrain : Decision
 
         if (currentMove != MLAction.NOTHING)
         {
-            return MLActionFactory.GetVectorAction(MLAction.NOTHING);
+            return MLActionFactory.GetVectorAction(currentMove);
         }
 
         if (Input.GetKey(KeyCode.F))
