@@ -242,7 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   broadcastHub:
     broadcastingBrains:
-    - {fileID: 11400000, guid: 28327d844c23eec458c5328c80d86790, type: 2}
+    - {fileID: 0}
     - {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
     - {fileID: 11400000, guid: 5551af24ea95a994083527fdaa432c95, type: 2}
     - {fileID: 11400000, guid: a8aabdc8cc0798b429d5fdd980cd8469, type: 2}
@@ -2100,7 +2100,7 @@ PrefabInstance:
     - target: {fileID: 1833783813145780966, guid: b57c866fb8120fb4caa40af74f67c994,
         type: 3}
       propertyPath: minConfidence
-      value: 0.21
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1833783813695127712, guid: b57c866fb8120fb4caa40af74f67c994,
         type: 3}
@@ -2404,6 +2404,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8217467465353349520, guid: b57c866fb8120fb4caa40af74f67c994,
+        type: 3}
+      propertyPath: maxTime
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b57c866fb8120fb4caa40af74f67c994, type: 3}

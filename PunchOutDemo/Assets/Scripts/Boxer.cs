@@ -64,8 +64,8 @@ public class Boxer : Agent
 
     public MLAction currentAction;
 
-    private float lastBufferResetTime;
-    private float maxBufferResetTime = 1.5f;
+    private int bufferSize;
+    private int maxBufferSize = 200;
 
 
     /// <summary>
@@ -77,7 +77,7 @@ public class Boxer : Agent
         stats = new BoxerStats();
         health = GetComponent<Health>();
         comboTracker = GetComponent<ComboTracker>();
-        lastBufferResetTime = Time.time;
+        bufferSize = 0;
 
         dodgeAction = new Action(dodgeDuration, dodgeCooldown, dodgeEventDelay);
         dodgeAction.animationStart.AddListener(RegisterDodge);
@@ -136,14 +136,15 @@ public class Boxer : Agent
         AddVectorObs(currentAction == MLAction.PUNCH_RIGHT);
         AddVectorObs(currentAction == MLAction.DODGE_LEFT);
         AddVectorObs(currentAction == MLAction.DODGE_RIGHT);
-        if (Time.time - lastBufferResetTime > maxBufferResetTime)
+        if (bufferSize >= maxBufferSize)
         {
             SetTextObs((isTeacher && isFighting) + "," + true);
-            lastBufferResetTime = Time.time;
+            bufferSize = 0;
 
         } else
         {
             SetTextObs((isTeacher && isFighting) + "," + false);
+            bufferSize++;
         }
     }
 

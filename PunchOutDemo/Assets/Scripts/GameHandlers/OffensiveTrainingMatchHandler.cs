@@ -81,6 +81,13 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                 // Update the training progress indicators
                 UpdateTrainingProgress();
 
+                if (Time.time - lastUpdateTime >= 11.5)
+                {
+                    Debug.Log(evaluator.GetCrossEntropy());
+                    evaluator.Reset();
+                    lastUpdateTime = Time.time;
+                }
+
                 // Check to see if the training phase is over
                 if (trainingTimer.IsExpired())
                 {

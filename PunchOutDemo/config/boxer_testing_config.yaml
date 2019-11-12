@@ -19,5 +19,5 @@ BoxerLearning:
     batch_size: 16
     batches_per_epoch: 5
     hidden_units: 256
-    num_layers: 2
-    learning_rate: 1.0e-3
+    num_layers: 1
+    learning_rate: 0.001
