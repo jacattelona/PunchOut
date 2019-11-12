@@ -25,7 +25,7 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown("a") && Input.GetKeyDown("c"))
+        if(Input.GetKeyDown("."))
         {
             state = endState;
         }
@@ -54,17 +54,16 @@ public class TutorialManager : MonoBehaviour
         }
         else if (Input.GetKeyDown("d") && state == 7)
         {
-            state = endState;
+            anim.SetTrigger("gotoExplainDeff");
+            state++;
         }
-        else if (Input.GetKeyDown("d") && state == 8)
+        else if (Input.GetKeyDown("k") && state == 8)
         {
             anim.SetTrigger("gotoExplainTourney");
             state++;
         }
         else if (Input.GetKeyDown("space") && state == 9)
         {
-            anim.SetTrigger("gotoExit");
-            //SceneManager.LoadScene("scene1");
             state = endState;
         }
         else if (Input.GetKeyDown("f") && state == 2)
