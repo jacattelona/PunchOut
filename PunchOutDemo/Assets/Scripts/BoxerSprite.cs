@@ -11,6 +11,7 @@ public class BoxerSprite : MonoBehaviour
     Animator anim;
 
     private Boxer boxer;
+    private BoxerAudio boxerAudio;
 
     //Const Values (you can't declare Vector3s const, so just pretend)
     protected Vector3 LDEFAULT = new Vector3(-1, 0, 0);             //Default position of the left glove
@@ -77,10 +78,15 @@ public class BoxerSprite : MonoBehaviour
         RDODGELOC = new Vector3(dodgeDistance, 0, 0);
 
         anim = GetComponent<Animator>();
+        boxerAudio = GetComponent<BoxerAudio>();
     }
 
     private void StartDodgeAnimation(int direction)
     {     
+        if (boxerAudio != null)
+        {
+            boxerAudio.PlayDodge();
+        }
         if (direction == 1)
         {
             //this.transform.Find("Sprite").localPosition = DEFAULT + LDODGELOC;
@@ -94,8 +100,9 @@ public class BoxerSprite : MonoBehaviour
 
     private void StopDodgeAnimation(int direction)
     {
-        anim.StopPlayback();
-        this.transform.Find("Sprite").localPosition = DEFAULT;
+        //anim.StopPlayback();
+        //this.transform.Find("Sprite").localPosition = DEFAULT;
+        anim.SetTrigger("DodgeEnd");
         //anim.Play("Base");
         //Transform left = this.transform.Find("Sprite").Find("LeftArm");
         //Transform right = this.transform.Find("Sprite").Find("RightArm");
@@ -160,6 +167,10 @@ public class BoxerSprite : MonoBehaviour
     {
         damageTime = maxDamageTime;
         bodyRenderer.material.color = Color.red;
+        if (boxerAudio != null)
+        {
+            boxerAudio.PlayHit();
+        }
         //print("Invoked");
     }
 
