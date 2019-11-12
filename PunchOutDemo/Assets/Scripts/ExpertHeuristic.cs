@@ -14,7 +14,7 @@ public class ExpertHeuristic : Decision
 
     private void OnEnable()
     {
-        var idx = 2; // 0 - 4
+        var idx = 4; // 0 - 4
         MLAction[][] possibleMoves = new MLAction[][]{
             new MLAction[]{ MLAction.PUNCH_LEFT },
             new MLAction[]{ MLAction.PUNCH_RIGHT },

@@ -65,7 +65,7 @@ public class Boxer : Agent
     public MLAction currentAction;
 
     private int bufferSize;
-    private int maxBufferSize = 200;
+    private int maxBufferSize = 400;
 
 
     /// <summary>
