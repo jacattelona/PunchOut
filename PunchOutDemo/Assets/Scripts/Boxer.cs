@@ -235,21 +235,6 @@ public class Boxer : Agent
             }
         }
         
-
-        // Blocked
-        //if (dodgeState != DodgeState.NONE)
-        //{
-        //    TakeDamage(punch.GetStrength() * blockMultiplier);
-        //    if (IsKO())
-        //    {
-        //        AddReward(gotKOPenalty);
-        //        return PunchOutcome.KO;
-        //    } else
-        //    {
-        //        return PunchOutcome.BLOCKED;
-        //    }
-        //}
-        
         // Hit
         TakeDamage(punch.GetStrength());
         if (IsKO())
