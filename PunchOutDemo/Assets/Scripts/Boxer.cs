@@ -67,6 +67,8 @@ public class Boxer : Agent
     private int bufferSize;
     private int maxBufferSize = 400;
 
+    private float nothingDuration = 0;
+
 
     /// <summary>
     /// Initialize the agent
@@ -136,6 +138,16 @@ public class Boxer : Agent
         AddVectorObs(currentAction == MLAction.PUNCH_RIGHT);
         AddVectorObs(currentAction == MLAction.DODGE_LEFT);
         AddVectorObs(currentAction == MLAction.DODGE_RIGHT);
+
+        if (currentAction == MLAction.NOTHING)
+        {
+            nothingDuration += Time.deltaTime;
+        }
+        else
+        {
+            nothingDuration = 0;
+        }
+
         if (bufferSize >= maxBufferSize)
         {
             SetTextObs((isTeacher && isFighting) + "," + true);
