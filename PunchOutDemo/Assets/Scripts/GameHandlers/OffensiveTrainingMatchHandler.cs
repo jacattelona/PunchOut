@@ -83,7 +83,6 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
                 if (Time.time - lastUpdateTime >= 11.5)
                 {
-                    Debug.Log(evaluator.GetCrossEntropy());
                     evaluator.Reset();
                     lastUpdateTime = Time.time;
                 }
@@ -113,6 +112,11 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                 if (viewTimer <= 0)
                 {
                     CoachDialog.instance?.Hide();
+                    coachMatch.StopFight();
+                    foreach (var match in aiMatches)
+                    {
+                        match.StopFight();
+                    }
                     state = STATE_CHOOSE_NEXT;
                 }
                 break;
