@@ -13,7 +13,7 @@ public class ControlsPanel : MonoBehaviour
 
     private Color buttonPressed, buttonUnpressed;
 
-    private GameObject leftPunch, rightPunch, leftDodge, rightDodge, viewAI;
+    private GameObject leftPunch, rightPunch, leftDodge, rightDodge;
 
     // Start is called before the first frame update
     void Start()
@@ -22,10 +22,9 @@ public class ControlsPanel : MonoBehaviour
         rightPunch = transform.Find("Right Punch").gameObject;
         leftDodge = transform.Find("Left Dodge").gameObject;
         rightDodge = transform.Find("Right Dodge").gameObject;
-        viewAI = transform.Find("View AI").gameObject;
 
         buttonPressed = new Color(1, 1, 1, 1);
-        buttonUnpressed = new Color(1, 1, 1, 0.5f);
+        buttonUnpressed = new Color(1, 1, 1, 0.7f);
     }
 
     // Update is called once per frame
