@@ -98,10 +98,12 @@ public class Boxer : Agent
         //SetActionMask(0, new int[] { 1, 2, 3, 4 });
     }
 
-    void FixedUpdate()
+    private void Update()
     {
         punchAction.Update();
         dodgeAction.Update();
+        minConfidence -= Time.deltaTime * 0.03f;
+        minConfidence = Mathf.Clamp01(minConfidence);
     }
 
     /// <summary>

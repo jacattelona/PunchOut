@@ -117,7 +117,7 @@ public class Action
         this.data = data;
 
         // Switch states
-        lastStartTime = Time.fixedTime;
+        lastStartTime = Time.time;
         animationStart.Invoke(data);
         state.TakeAction(ACTION_START);
     }
@@ -127,22 +127,22 @@ public class Action
         switch (state.GetCurrentState())
         {
             case STATE_ANIMATION_STARTED:
-                if (Time.fixedTime - lastStartTime >= actionTriggerTime)
+                if (Time.time - lastStartTime >= actionTriggerTime)
                 {
                     action.Invoke(data);
                     state.TakeAction(ACTION_TRIGGER_EVENT);
                 }
                 break;
             case STATE_EVENT_FIRED:
-                if (Time.fixedTime - lastStartTime >= duration)
+                if (Time.time - lastStartTime >= duration)
                 {
                     animationEnd.Invoke(data);
-                    lastFinishTime = Time.fixedTime;
+                    lastFinishTime = Time.time;
                     state.TakeAction(ACTION_ANIMATION_OVER);
                 }
                 break;
             case STATE_ON_COOLDOWN:
-                if (Time.fixedTime - lastFinishTime >= cooldownTime)
+                if (Time.time - lastFinishTime >= cooldownTime)
                 {
                     state.TakeAction(ACTION_COOLDOWN_OVER);
                 }
@@ -164,7 +164,7 @@ public class Action
             case STATE_ANIMATION_STARTED:
             case STATE_EVENT_FIRED:
                 animationEnd.Invoke(data);
-                lastFinishTime = Time.fixedTime;
+                lastFinishTime = Time.time;
                 state.TakeAction(ACTION_INTERRUPT);
                 break;
         }
