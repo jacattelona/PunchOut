@@ -69,6 +69,8 @@ public class Boxer : Agent
 
     private float nothingDuration = 0;
 
+    private float lastLoss = float.PositiveInfinity;
+
 
     /// <summary>
     /// Initialize the agent
@@ -171,6 +173,8 @@ public class Boxer : Agent
     {
         base.AgentAction(vectorAction, textAction);
         lastActions = vectorAction;
+
+        lastLoss = MLActionFactory.GetLoss(vectorAction);
 
         var confidence = MLActionFactory.GetProbabilityFromVector(MLActionFactory.GetAction(vectorAction), vectorAction);
 
@@ -407,6 +411,15 @@ public class Boxer : Agent
     public void Train()
     {
         Done();
+    }
+
+    /// <summary>
+    /// Get the current cloning loss of the boxer
+    /// </summary>
+    /// <returns>The cloning loss (cross-entropy)</returns>
+    public float GetLoss()
+    {
+        return lastLoss;
     }
 
     /// <summary>

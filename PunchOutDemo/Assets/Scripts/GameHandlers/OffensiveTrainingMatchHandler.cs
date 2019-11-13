@@ -44,6 +44,9 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
     private float lerpProgress = 0;
 
+    private float lastProgress = 0;
+    private float alphaProgress = 0.99f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -252,7 +255,10 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
     private void UpdateTrainingProgress()
     {
-        float p = evaluator.GetCorrectness();
+        var loss = aiMatches[1].GetPlayer1().GetLoss();
+        var l = Mathf.Pow(Mathf.Exp(-loss), 2);
+        lastProgress = alphaProgress * lastProgress + (1 - alphaProgress) * l;
+        float p = lastProgress;//evaluator.GetCorrectness();
         foreach (TrainingProgress progress in trainingProgress)
         {
             progress.SetProgress(p);
