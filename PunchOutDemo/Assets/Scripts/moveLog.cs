@@ -43,7 +43,7 @@ public class moveLog : MonoBehaviour
         {
             //HandleLog("Left Punch");
             //  HandlePic(LP);
-            Instantiate(LeftPunch, new Vector3(-9.5f, -2.8f, -2), Quaternion.identity);
+            Instantiate(LeftPunch, new Vector3(-9.5f, -1.5f, -2), Quaternion.identity);
 
         }
 
@@ -51,7 +51,7 @@ public class moveLog : MonoBehaviour
         {
             //  HandleLog("Right Punch");
             //  HandlePic(RP);
-            Instantiate(RightPunch, new Vector3(-9.5f, -2.8f, -2), Quaternion.identity);
+            Instantiate(RightPunch, new Vector3(-9.5f, -1.5f, -2), Quaternion.identity);
         }
     }
 
@@ -62,7 +62,7 @@ public class moveLog : MonoBehaviour
             // HandleLog("Left Dodge");
            // HandlePic(LD);
             //Instantiate(myPrefab, new Vector3(0, 0, -2), Quaternion.identity);
-            Instantiate(LeftDodge, new Vector3(-9.5f, -2.8f, -2), Quaternion.identity);
+            Instantiate(LeftDodge, new Vector3(-9.5f, -1.5f, -2), Quaternion.identity);
             //Debug.Log("created l Dodge at " + center.x + ", " + center.y);
 
         }
@@ -71,7 +71,7 @@ public class moveLog : MonoBehaviour
         {
             //  HandleLog("Right Dodge");
            // HandlePic(RD);
-            Instantiate(RightDodge, new Vector3(-9.5f, -2.8f, -2), Quaternion.identity);
+            Instantiate(RightDodge, new Vector3(-9.5f, -1.5f, -2), Quaternion.identity);
         }
     }
 
