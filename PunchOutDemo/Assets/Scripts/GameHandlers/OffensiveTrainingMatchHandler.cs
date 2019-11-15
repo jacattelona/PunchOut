@@ -41,6 +41,8 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
     private const int STATE_WAITING = 0, STATE_TRAIN = 1, STATE_MOVING_COACH = 2, STATE_MOVING_AI = 3, STATE_VIEW_AI = 4, STATE_CHOOSE_NEXT = 5, STATE_END = 6;
 
     private int state;
+    private float trainStartTime;
+    private int seqState = 0;
 
     private float lerpProgress = 0;
 
@@ -84,10 +86,10 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                 // Update the training progress indicators
                 UpdateTrainingProgress();
 
-                if (Time.time - lastUpdateTime >= 11.5)
+                if (Time.time - trainStartTime >= 35 && seqState == 0)
                 {
-                    evaluator.Reset();
-                    lastUpdateTime = Time.time;
+                    CoachDialog.instance?.Show("Coach: Now I will teach you a sequence of punches, such as RIGHT-LEFT, or LEFT-RIGHT-LEFT", 2f);
+                    seqState = 1;
                 }
 
                 // Check to see if the training phase is over
@@ -157,7 +159,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
     private void SwitchToTrainingState()
     {
-        CoachDialog.instance?.Show("Coach: AI, let me show you how to fight.", 2.0f);
+        CoachDialog.instance?.Show("Coach: Let me teach you how to dodge the incoming punches, I won't throw any punches just yet.", 3.0f);
 
         // Stop the AI matches, move everyone to the correct location
         Demonstrate();
@@ -173,6 +175,15 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
         evaluator.Reset();
         RewardIndicator r = transform.parent.GetComponentInChildren<RewardIndicator>();
         r.Activate();
+
+        foreach(var h in SimpleEnemyHeuristic.instances)
+        {
+            h.Reset();
+        }
+
+
+        seqState = 0;
+        trainStartTime = Time.time;
 
         // Switch to training
         state = STATE_TRAIN;

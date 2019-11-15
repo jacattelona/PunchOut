@@ -30,6 +30,9 @@ public class Boxer : Agent
 
     public bool isTeacher = false;
 
+    private int nothingBuffer = 0;
+    private int nothingBufferSize = 50;
+
     public Reward rewards;
 
 
@@ -65,7 +68,7 @@ public class Boxer : Agent
     public MLAction currentAction;
 
     private int bufferSize;
-    private int maxBufferSize = 400;
+    private int maxBufferSize = 200;
 
     private float nothingDuration = 0;
 
@@ -154,13 +157,17 @@ public class Boxer : Agent
 
         if (bufferSize >= maxBufferSize)
         {
-            SetTextObs((isTeacher && isFighting) + "," + true);
+            SetTextObs((isTeacher && isFighting && MLActionFactory.GetAction(lastActions) != MLAction.NOTHING) + "," + true);
             bufferSize = 0;
 
         } else
         {
-            SetTextObs((isTeacher && isFighting) + "," + false);
-            bufferSize++;
+            var training = isTeacher && isFighting && (MLActionFactory.GetAction(lastActions) != MLAction.NOTHING || nothingBuffer < nothingBufferSize);
+            if (training) bufferSize++;
+            if (MLActionFactory.GetAction(lastActions) == MLAction.NOTHING) nothingBuffer++;
+            SetTextObs(training + "," + false);
+            if (bufferSize > 0) Debug.Log(bufferSize);
+            //bufferSize++;
         }
     }
 

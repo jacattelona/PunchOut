@@ -5,6 +5,9 @@ using UnityEngine;
 public class ModifiedPlayerBrain : Decision
 {
 
+    private int moveCount = 0;
+    private int maxMoveCount = 10;
+
     public override float[] Decide(List<float> vectorObs, List<Texture2D> visualObs, float reward, bool done, List<float> memory)
     {
         MLInput input = new MLInput(vectorObs.ToArray());
@@ -12,9 +15,22 @@ public class ModifiedPlayerBrain : Decision
 
         MLAction currentMove = input.GetMyMove();
 
+        //if (MLActionFactory.IsDodge(currentMove))
+        //{
+        //    return MLActionFactory.GetVectorAction(currentMove);
+        //}
+
         if (currentMove != MLAction.NOTHING)
         {
-            return MLActionFactory.GetVectorAction(currentMove);
+            if (moveCount < maxMoveCount)
+            {
+                moveCount++;
+                return MLActionFactory.GetVectorAction(currentMove);
+            }
+            return MLActionFactory.GetVectorAction(MLAction.NOTHING);
+        } else
+        {
+            moveCount = 0;
         }
 
         if (Input.GetKey(KeyCode.F))
