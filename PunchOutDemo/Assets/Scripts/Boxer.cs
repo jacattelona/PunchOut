@@ -66,8 +66,12 @@ public class Boxer : Agent
 
     public MLAction currentAction;
 
-    private float lastBufferResetTime;
-    private float maxBufferResetTime = 1.5f;
+    private int bufferSize;
+    private int maxBufferSize = 400;
+
+    private float nothingDuration = 0;
+
+    private float lastLoss = float.PositiveInfinity;
 
 
     /// <summary>
@@ -79,7 +83,7 @@ public class Boxer : Agent
         stats = new BoxerStats();
         health = GetComponent<Health>();
         comboTracker = GetComponent<ComboTracker>();
-        lastBufferResetTime = Time.time;
+        bufferSize = 0;
 
         //dodgeAction = new Action(dodgeDuration, dodgeCooldown, dodgeEventDelay);
         dodgeAction = new Action(dodgeCooldown);
@@ -99,11 +103,12 @@ public class Boxer : Agent
         //SetActionMask(0, new int[] { 1, 2, 3, 4 });
     }
 
-    void FixedUpdate()
+    private void Update()
     {
         punchAction.Update();
         dodgeAction.Update();
-
+        minConfidence -= Time.deltaTime * 0.03f;
+        minConfidence = Mathf.Clamp01(minConfidence);
         if (isTeacher)
             HandleEndDodge();
     }
@@ -142,14 +147,25 @@ public class Boxer : Agent
         AddVectorObs(currentAction == MLAction.PUNCH_RIGHT);
         AddVectorObs(currentAction == MLAction.DODGE_LEFT);
         AddVectorObs(currentAction == MLAction.DODGE_RIGHT);
-        if (Time.time - lastBufferResetTime > maxBufferResetTime)
+
+        if (currentAction == MLAction.NOTHING)
+        {
+            nothingDuration += Time.deltaTime;
+        }
+        else
+        {
+            nothingDuration = 0;
+        }
+
+        if (bufferSize >= maxBufferSize)
         {
             SetTextObs((isTeacher && isFighting) + "," + true);
-            lastBufferResetTime = Time.time;
+            bufferSize = 0;
 
         } else
         {
             SetTextObs((isTeacher && isFighting) + "," + false);
+            bufferSize++;
         }
     }
 
@@ -162,6 +178,8 @@ public class Boxer : Agent
     {
         base.AgentAction(vectorAction, textAction);
         lastActions = vectorAction;
+
+        lastLoss = MLActionFactory.GetLoss(vectorAction);
 
         var confidence = MLActionFactory.GetProbabilityFromVector(MLActionFactory.GetAction(vectorAction), vectorAction);
 
@@ -244,21 +262,6 @@ public class Boxer : Agent
                 return PunchOutcome.DODGED;
             }
         }
-        
-
-        // Blocked
-        //if (dodgeState != DodgeState.NONE)
-        //{
-        //    TakeDamage(punch.GetStrength() * blockMultiplier);
-        //    if (IsKO())
-        //    {
-        //        AddReward(gotKOPenalty);
-        //        return PunchOutcome.KO;
-        //    } else
-        //    {
-        //        return PunchOutcome.BLOCKED;
-        //    }
-        //}
         
         // Hit
         TakeDamage(punch.GetStrength());
@@ -433,6 +436,15 @@ public class Boxer : Agent
     public void Train()
     {
         Done();
+    }
+
+    /// <summary>
+    /// Get the current cloning loss of the boxer
+    /// </summary>
+    /// <returns>The cloning loss (cross-entropy)</returns>
+    public float GetLoss()
+    {
+        return lastLoss;
     }
 
     /// <summary>

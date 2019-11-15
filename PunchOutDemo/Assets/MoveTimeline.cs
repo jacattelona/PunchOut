@@ -24,8 +24,8 @@ public class MoveTimeline : MonoBehaviour
           //  thought.transform.position = new Vector3(thought.transform.position.x, thought.transform.position.y + .1f, thought.transform.position.z);
             
        // }
-       this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + .1f, this.gameObject.transform.position.z);
-        if (this.gameObject.transform.position.y >= 5f)
+       this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + .05f, this.gameObject.transform.position.z);
+        if (this.gameObject.transform.position.y >= 2f)
         {
             Destroy(this.gameObject);
         }

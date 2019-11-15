@@ -65,17 +65,32 @@ public class MLActionFactory
         switch (action)
         {
             case MLAction.NOTHING:
-                return new float[] { 0f, scale, 0f, 0f, 0f, 0f };
+                return new float[] { 0f, scale, 0f, 0f, 0f, 0f, 0f };
             case MLAction.PUNCH_LEFT:
-                return new float[] { 1f, 0f, scale, 0f, 0f, 0f };
+                return new float[] { 1f, 0f, scale, 0f, 0f, 0f, 0f };
             case MLAction.PUNCH_RIGHT:
-                return new float[] { 2f, 0f, 0f, scale, 0f, 0f };
+                return new float[] { 2f, 0f, 0f, scale, 0f, 0f, 0f };
             case MLAction.DODGE_LEFT:
-                return new float[] { 3f, 0f, 0f, 0f, scale, 0f };
+                return new float[] { 3f, 0f, 0f, 0f, scale, 0f, 0f };
             case MLAction.DODGE_RIGHT:
-                return new float[] { 4f, 0f, 0f, 0f, 0f, scale };
+                return new float[] { 4f, 0f, 0f, 0f, 0f, scale, 0f };
         }
-        return new float[] { 0f, scale, 0f, 0f, 0f, 0f };
+        return new float[] { 0f, scale, 0f, 0f, 0f, 0f, 0f };
+    }
+
+    /// <summary>
+    /// Get the current loss from the vector action
+    /// </summary>
+    /// <param name="vectorAction"></param>
+    /// <returns></returns>
+    public static float GetLoss(float[] vectorAction)
+    {
+        if (vectorAction.Length == 7)
+        {
+            return vectorAction[6] / 100000.0f;
+        }
+
+        return float.PositiveInfinity;
     }
 
     private static int ActionToInt(MLAction action)

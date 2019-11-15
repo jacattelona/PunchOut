@@ -44,6 +44,9 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
     private float lerpProgress = 0;
 
+    private float lastProgress = 0;
+    private float alphaProgress = 0.99f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -81,6 +84,12 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                 // Update the training progress indicators
                 UpdateTrainingProgress();
 
+                if (Time.time - lastUpdateTime >= 11.5)
+                {
+                    evaluator.Reset();
+                    lastUpdateTime = Time.time;
+                }
+
                 // Check to see if the training phase is over
                 if (trainingTimer.IsExpired())
                 {
@@ -106,6 +115,11 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                 if (viewTimer <= 0)
                 {
                     CoachDialog.instance?.Hide();
+                    coachMatch.StopFight();
+                    foreach (var match in aiMatches)
+                    {
+                        match.StopFight();
+                    }
                     state = STATE_CHOOSE_NEXT;
                 }
                 break;
@@ -241,7 +255,10 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
     private void UpdateTrainingProgress()
     {
-        float p = evaluator.GetCorrectness();
+        var loss = aiMatches[1].GetPlayer1().GetLoss();
+        var l = Mathf.Pow(Mathf.Exp(-loss), 2);
+        lastProgress = alphaProgress * lastProgress + (1 - alphaProgress) * l;
+        float p = lastProgress;//evaluator.GetCorrectness();
         foreach (TrainingProgress progress in trainingProgress)
         {
             progress.SetProgress(p);

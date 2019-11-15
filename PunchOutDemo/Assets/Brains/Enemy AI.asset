@@ -15,7 +15,7 @@ MonoBehaviour:
   brainParameters:
     vectorObservationSize: 18
     numStackedVectorObservations: 2
-    vectorActionSize: 050000000100000001000000010000000100000001000000
+    vectorActionSize: 05000000010000000100000001000000010000000100000001000000
     cameraResolutions: []
     vectorActionDescriptions:
     - Action
@@ -24,6 +24,7 @@ MonoBehaviour:
     - Confidence3
     - Confidence4
     - Confidence5
+    - Loss
     vectorActionSpaceType: 0
   decision: {fileID: 0}
   decisionScript: {fileID: 11500000, guid: 4c0c3dc0aa619b0458ff3cc1e3dc9183, type: 3}

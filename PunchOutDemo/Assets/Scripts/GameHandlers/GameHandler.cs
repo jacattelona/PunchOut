@@ -80,6 +80,7 @@ public class GameHandler : MonoBehaviour
                 if (MoveCameraToPosition(matchLocation))
                 {
                     //matchTutorial.SetActive(false);
+                    offensiveTraining.SetActive(false);
                     match.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
