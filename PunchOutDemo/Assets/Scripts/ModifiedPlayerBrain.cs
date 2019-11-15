@@ -6,7 +6,8 @@ public class ModifiedPlayerBrain : Decision
 {
 
     private int moveCount = 0;
-    private int maxMoveCount = 10;
+    private int maxDodgeCount = 40;
+    private int maxPunchCount = 5;
 
     public override float[] Decide(List<float> vectorObs, List<Texture2D> visualObs, float reward, bool done, List<float> memory)
     {
@@ -22,6 +23,7 @@ public class ModifiedPlayerBrain : Decision
 
         if (currentMove != MLAction.NOTHING)
         {
+            var maxMoveCount = MLActionFactory.IsDodge(currentMove) ? maxDodgeCount : maxPunchCount;
             if (moveCount < maxMoveCount)
             {
                 moveCount++;

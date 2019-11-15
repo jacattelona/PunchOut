@@ -86,7 +86,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                 // Update the training progress indicators
                 UpdateTrainingProgress();
 
-                if (Time.time - trainStartTime >= 35 && seqState == 0)
+                if (Time.time - trainStartTime >= 30 && seqState == 0)
                 {
                     CoachDialog.instance?.Show("Coach: Now I will teach you a sequence of punches, such as RIGHT-LEFT, or LEFT-RIGHT-LEFT", 2f);
                     seqState = 1;

@@ -107,7 +107,7 @@ public class SimpleEnemyHeuristic : Decision
             Reset();
         }
 
-        if (Time.time - seqStartTime > 35 && seqIdx == 0)
+        if (Time.time - seqStartTime > 30 && seqIdx == 0)
         {
             seqIdx = 1;
             moveIdx = 0;

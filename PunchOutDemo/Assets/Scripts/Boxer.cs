@@ -68,7 +68,7 @@ public class Boxer : Agent
     public MLAction currentAction;
 
     private int bufferSize;
-    private int maxBufferSize = 200;
+    private int maxBufferSize = 70;
 
     private float nothingDuration = 0;
 
@@ -108,7 +108,7 @@ public class Boxer : Agent
         punchAction.Update();
         dodgeAction.Update();
         minConfidence -= Time.deltaTime * 0.03f;
-        minConfidence = Mathf.Clamp01(minConfidence);
+        minConfidence = Mathf.Clamp(minConfidence, 0.2f, 1);
     }
 
     /// <summary>
