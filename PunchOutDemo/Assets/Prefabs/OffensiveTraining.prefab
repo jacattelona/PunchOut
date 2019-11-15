@@ -1298,6 +1298,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4710161895209631402}
     m_Modifications:
+    - target: {fileID: 6354354638454309234, guid: a7560c8ccc8a19d45b389b5bf8e2d220,
+        type: 3}
+      propertyPath: m_Name
+      value: AI
+      objectReference: {fileID: 0}
     - target: {fileID: 6354354638454309232, guid: a7560c8ccc8a19d45b389b5bf8e2d220,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1353,6 +1358,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6354354638454309237, guid: a7560c8ccc8a19d45b389b5bf8e2d220,
+        type: 3}
+      propertyPath: teacher
+      value: 
+      objectReference: {fileID: 6784984025631178711}
+    - target: {fileID: 6354354638454309237, guid: a7560c8ccc8a19d45b389b5bf8e2d220,
+        type: 3}
+      propertyPath: shouldImitate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6354354638454309235, guid: a7560c8ccc8a19d45b389b5bf8e2d220,
         type: 3}
       propertyPath: punchCooldown
@@ -1372,21 +1387,6 @@ PrefabInstance:
         type: 3}
       propertyPath: dodgeDuration
       value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6354354638454309234, guid: a7560c8ccc8a19d45b389b5bf8e2d220,
-        type: 3}
-      propertyPath: m_Name
-      value: AI
-      objectReference: {fileID: 0}
-    - target: {fileID: 6354354638454309237, guid: a7560c8ccc8a19d45b389b5bf8e2d220,
-        type: 3}
-      propertyPath: teacher
-      value: 
-      objectReference: {fileID: 6784984025631178711}
-    - target: {fileID: 6354354638454309237, guid: a7560c8ccc8a19d45b389b5bf8e2d220,
-        type: 3}
-      propertyPath: shouldImitate
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6354354638454309130, guid: a7560c8ccc8a19d45b389b5bf8e2d220,
         type: 3}
@@ -1435,6 +1435,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4710161895209631402}
     m_Modifications:
+    - target: {fileID: 6051454165954777889, guid: 837498174bde05e4bb2c1f0099150b6d,
+        type: 3}
+      propertyPath: m_Name
+      value: Dial
+      objectReference: {fileID: 0}
     - target: {fileID: 6051454165954777888, guid: 837498174bde05e4bb2c1f0099150b6d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1499,11 +1504,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6051454165954777889, guid: 837498174bde05e4bb2c1f0099150b6d,
-        type: 3}
-      propertyPath: m_Name
-      value: Dial
       objectReference: {fileID: 0}
     - target: {fileID: 6051454167730894752, guid: 837498174bde05e4bb2c1f0099150b6d,
         type: 3}
@@ -1774,25 +1774,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4710161895209631402}
     m_Modifications:
-    - target: {fileID: 7268841130584151477, guid: c99a95530accf9b4788d6e8f7f33cf97,
+    - target: {fileID: 7268841130584151476, guid: c99a95530accf9b4788d6e8f7f33cf97,
         type: 3}
-      propertyPath: punchCooldown
-      value: 0.2
+      propertyPath: m_Name
+      value: HiddenAI
       objectReference: {fileID: 0}
-    - target: {fileID: 7268841130584151477, guid: c99a95530accf9b4788d6e8f7f33cf97,
+    - target: {fileID: 7268841130584151476, guid: c99a95530accf9b4788d6e8f7f33cf97,
         type: 3}
-      propertyPath: dodgeCooldown
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7268841130584151477, guid: c99a95530accf9b4788d6e8f7f33cf97,
-        type: 3}
-      propertyPath: punchDuration
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7268841130584151477, guid: c99a95530accf9b4788d6e8f7f33cf97,
-        type: 3}
-      propertyPath: dodgeDuration
-      value: 0.3
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7268841130584151478, guid: c99a95530accf9b4788d6e8f7f33cf97,
         type: 3}
@@ -1849,15 +1839,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7268841130584151476, guid: c99a95530accf9b4788d6e8f7f33cf97,
+    - target: {fileID: 7268841130584151477, guid: c99a95530accf9b4788d6e8f7f33cf97,
         type: 3}
-      propertyPath: m_Name
-      value: HiddenAI
+      propertyPath: punchCooldown
+      value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 7268841130584151476, guid: c99a95530accf9b4788d6e8f7f33cf97,
+    - target: {fileID: 7268841130584151477, guid: c99a95530accf9b4788d6e8f7f33cf97,
         type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: dodgeCooldown
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7268841130584151477, guid: c99a95530accf9b4788d6e8f7f33cf97,
+        type: 3}
+      propertyPath: punchDuration
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7268841130584151477, guid: c99a95530accf9b4788d6e8f7f33cf97,
+        type: 3}
+      propertyPath: dodgeDuration
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7268841130584151475, guid: c99a95530accf9b4788d6e8f7f33cf97,
         type: 3}
