@@ -66,6 +66,22 @@ public class Action
     {
     }
 
+    //Indefinite length action constructor
+    public Action(float cooldownTime)
+    {
+        state = new FSM(STATE_READY);
+        state.AddTransition(STATE_READY, ACTION_START, STATE_ANIMATION_STARTED);
+        state.AddTransition(STATE_ANIMATION_STARTED, ACTION_TRIGGER_EVENT, STATE_EVENT_FIRED);
+        state.AddTransition(STATE_ANIMATION_STARTED, ACTION_INTERRUPT, STATE_ON_COOLDOWN);
+        state.AddTransition(STATE_EVENT_FIRED, ACTION_INTERRUPT, STATE_ON_COOLDOWN);
+        state.AddTransition(STATE_ON_COOLDOWN, ACTION_COOLDOWN_OVER, STATE_READY);
+        duration = 1000f;
+        this.cooldownTime = cooldownTime;
+        actionTriggerTime = 0f;
+        action = new IntEvent();
+        animationStart = new IntEvent();
+        animationEnd = new IntEvent();
+    }
 
     public Action(float duration, float cooldownTime, float actionTriggerTime = 0.0f)
     {

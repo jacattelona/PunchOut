@@ -10,6 +10,8 @@ public class Boxer : Agent
 
     private BoxerStats stats;
 
+    private bool wasDodging = false;
+
     public bool allowPunchWhileDodging = false;
 
     public bool broadcastPunch = false;
@@ -79,7 +81,8 @@ public class Boxer : Agent
         comboTracker = GetComponent<ComboTracker>();
         lastBufferResetTime = Time.time;
 
-        dodgeAction = new Action(dodgeDuration, dodgeCooldown, dodgeEventDelay);
+        //dodgeAction = new Action(dodgeDuration, dodgeCooldown, dodgeEventDelay);
+        dodgeAction = new Action(dodgeCooldown);
         dodgeAction.animationStart.AddListener(RegisterDodge);
         dodgeAction.animationEnd.AddListener(DeregisterDodge);
 
@@ -100,6 +103,9 @@ public class Boxer : Agent
     {
         punchAction.Update();
         dodgeAction.Update();
+
+        if (isTeacher)
+            HandleEndDodge();
     }
 
     /// <summary>
@@ -164,8 +170,12 @@ public class Boxer : Agent
         // Only perform confident moves
         if (!Mathf.Approximately(confidence, 0) && confidence < minConfidence) return;
 
+        if (vectorAction[0] == 0)
+        {
+            HandleDodgeInput(0);
+        }
         // TODO: Neaten this up
-        if (vectorAction[0] <= 2)
+        else if (vectorAction[0] <= 2)
         {
             HandlePunchInput(vectorAction[0]);
         } else
@@ -352,18 +362,34 @@ public class Boxer : Agent
     /// <param name="dodgeInput">The dodge input value</param>
     private void HandleDodgeInput(float dodgeInput)
     {
+        int input = (int)dodgeInput;
+        if (input == 0 && wasDodging)
+        {
+            //if (isTeacher) print("End Dodge");
+            dodgeAction.Interrupt();
+            wasDodging = false;
+        }
+
+
         if (dodgeInput != 0 && (allowPunchWhileDodging || !punchAction.IsRunning()))
         {
-            //if (anim.GetCurrentAnimatorStateInfo(0).shortNameHash == Animator.StringToHash("Base"))
-            //{
-                int input = (int)dodgeInput;
-                //if (input == 1)
-                //    animate.Play("DodgeLeft", -1, 0);
-                //if (input == 2)
-                //    animate.Play("DodgeRight", -1, 0);
-                dodgeAction.Run(input);
-           // }
+            wasDodging = true;
+            //if (isTeacher) print("Started dodge");
+            dodgeAction.Run(input);
+        }
+    }
 
+    private void HandleEndDodge()
+    {
+        if (!Input.GetKey(KeyCode.D) && dodgeState == DodgeState.LEFT)
+        {
+            print("Ending left dodge");
+            dodgeAction.Interrupt();
+        }
+        else if (!Input.GetKey(KeyCode.K) && dodgeState == DodgeState.RIGHT)
+        {
+            print("Ending right dodge");
+            dodgeAction.Interrupt();
         }
     }
 
