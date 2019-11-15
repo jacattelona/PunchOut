@@ -383,12 +383,12 @@ public class Boxer : Agent
     {
         if (!Input.GetKey(KeyCode.D) && dodgeState == DodgeState.LEFT)
         {
-            print("Ending left dodge");
+            //print("Ending left dodge");
             dodgeAction.Interrupt();
         }
         else if (!Input.GetKey(KeyCode.K) && dodgeState == DodgeState.RIGHT)
         {
-            print("Ending right dodge");
+            //print("Ending right dodge");
             dodgeAction.Interrupt();
         }
     }
