@@ -24,6 +24,8 @@ public class SimpleEnemyHeuristic : Decision
     private float nothingStartTime = 0;
     private bool didAction = false;
 
+    public static bool useOldVersion = false;
+
     public static List<SimpleEnemyHeuristic> instances = new List<SimpleEnemyHeuristic>();
 
 
@@ -41,8 +43,8 @@ public class SimpleEnemyHeuristic : Decision
         moveSequences = new MLAction[][]
         {
             new MLAction[]{ MLAction.PUNCH_LEFT, MLAction.PUNCH_RIGHT },
-            new MLAction[]{ MLAction.NOTHING },
-            new MLAction[]{ MLAction.PUNCH_LEFT, MLAction.NOTHING, MLAction.PUNCH_RIGHT }
+            new MLAction[]{ MLAction.NOTHING, MLAction.NOTHING, MLAction.DODGE_LEFT, MLAction.NOTHING, MLAction.NOTHING, MLAction.DODGE_RIGHT },
+            new MLAction[]{ MLAction.PUNCH_LEFT, MLAction.NOTHING, MLAction.PUNCH_RIGHT, MLAction.NOTHING, MLAction.DODGE_LEFT }
         };
 
         instances.Add(this);
@@ -102,47 +104,50 @@ public class SimpleEnemyHeuristic : Decision
     public override float[] Decide(List<float> vectorObs, List<Texture2D> visualObs, float reward, bool done, List<float> memory)
     {
 
-        if (Mathf.Approximately(seqStartTime, 0))
+        if (!useOldVersion)
         {
-            Reset();
+            if (Mathf.Approximately(seqStartTime, 0))
+            {
+                Reset();
+            }
+
+            if (Time.time - seqStartTime > 30 && seqIdx == 0)
+            {
+                seqIdx = 1;
+                moveIdx = 0;
+                didAction = false;
+                nothingStartTime = Time.time;
+            }
+            else if (Time.time - seqStartTime > 60 && seqIdx == 1)
+            {
+                seqIdx = 2;
+                moveIdx = 0;
+                didAction = false;
+                nothingStartTime = Time.time;
+            }
+
+            MLAction nextMove = runMoves(vectorObs, moveSequences[seqIdx]);
+            return MLActionFactory.GetVectorAction(nextMove);
+        } else
+        {
+            if (done)
+            {
+                moveIdx = 0;
+                return NOTHING;
+            }
+
+
+            MLInput input = new MLInput(vectorObs.ToArray());
+
+            if (input.IsPunchReady() && input.IsDodgeReady()) // Can punch / dodge
+            {
+                float[] move = moves[moveIdx];
+                moveIdx = (moveIdx + 1) % moves.Length;
+                return move;
+            }
+
+            return NOTHING;
         }
-
-        if (Time.time - seqStartTime > 30 && seqIdx == 0)
-        {
-            seqIdx = 1;
-            moveIdx = 0;
-            didAction = false;
-            nothingStartTime = Time.time;
-        } else if (Time.time - seqStartTime > 60 && seqIdx == 1)
-        {
-            seqIdx = 2;
-            moveIdx = 0;
-            didAction = false;
-            nothingStartTime = Time.time;
-        }
-
-        MLAction nextMove = runMoves(vectorObs, moveSequences[seqIdx]);
-        return MLActionFactory.GetVectorAction(nextMove);
-
-
-
-        //if (done)
-        //{
-        //    moveIdx = 0;
-        //    return NOTHING;
-        //}
-
-
-        //MLInput input = new MLInput(vectorObs.ToArray());
-
-        //if (input.IsPunchReady() && input.IsDodgeReady()) // Can punch / dodge
-        //{
-        //    float[] move = moves[moveIdx];
-        //    moveIdx = (moveIdx + 1) % moves.Length;
-        //    return move;
-        //}
-
-        //return NOTHING;
     }
 
     public void Reset()
