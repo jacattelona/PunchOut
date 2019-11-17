@@ -1,10 +1,17 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class MatchGameHandler : MonoBehaviour
 {
 
     [SerializeField]
     public Match match;
+
+    [SerializeField]
+    private GameObject waitingScreen;
+
+    [SerializeField]
+    private GameObject endingScreen;
 
     private string winner;
 
@@ -13,6 +20,8 @@ public class MatchGameHandler : MonoBehaviour
     private int state;
 
     private bool ready = false;
+
+    private bool spoke = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,9 +35,19 @@ public class MatchGameHandler : MonoBehaviour
         switch (state)
         {
             case STATE_WAITING:
+
+                if (!spoke)
+                {
+                    CoachDialog.instance?.Show("Coach to Roboxer: Good luck in the fight, I'll be watching from the sidelines.", 4.0f);
+                    spoke = true;
+                }
+                endingScreen.SetActive(false);
+
                 // When trigger condition
+                waitingScreen.SetActive(true);
                 if (ready)
                 {
+                    waitingScreen.SetActive(false);
                     match.StartFight();
                     state = STATE_FIGHTING;
                 }
@@ -49,7 +68,6 @@ public class MatchGameHandler : MonoBehaviour
                 // If time out
                 break;
             case STATE_END:
-                // Maybe wait a little
                 EndGame();
                 break;
         }
@@ -61,17 +79,18 @@ public class MatchGameHandler : MonoBehaviour
 
         if (match.GetPlayer1().IsKO())
         {
-            winner = "Opponent";
+            winner = "The Opponent";
         } else
         {
-            winner = "AI";
+            winner = "Roboxer";
         }
 
     }
 
     private void EndGame()
     {
-        // TODO: Do something here
+        endingScreen.SetActive(true);
+        endingScreen.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = winner + " won!";
     }
 
 
