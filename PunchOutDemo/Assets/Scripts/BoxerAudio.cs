@@ -26,13 +26,13 @@ public class BoxerAudio : MonoBehaviour
 
     public void PlayDodge()
     {
-        int choice = (int)Random.Range(0, punches.Length);
+        int choice = (int)Random.Range(0, dodges.Length);
         source.PlayOneShot(dodges[choice]);
     }
 
     public void PlayHit()
     {
-        int choice = (int)Random.Range(0, punches.Length);
+        int choice = (int)Random.Range(0, hits.Length);
         source.PlayOneShot(hits[choice]);
     }
 }
