@@ -62,10 +62,10 @@ public class ComboTracker: MonoBehaviour
         }
     }
 
-    private void TrackPunch(int side)
+    private void TrackPunch(Direction direction)
     {
         lastPunchTime = Time.fixedTime;
-        fsm.TakeAction(side);
+        fsm.TakeAction(direction == Direction.LEFT ? 1 : 2);
     }
 
     /// <summary>

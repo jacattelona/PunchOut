@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RewardIndicator : MonoBehaviour
 {
-    public ImitationSystem visibleAI, invisibleAI;
+    public Evaluator evaluator;
     float rewardsActive = 0;
     [SerializeField]
     float decayRate = 3f;
@@ -28,8 +28,7 @@ public class RewardIndicator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        visibleAI.rewardEvent.AddListener(TrackReward);
-        invisibleAI.rewardEvent.AddListener(TrackReward);
+        evaluator.matchingEvent.AddListener(TrackReward);
         rend = GetComponent<MeshRenderer>();
         rend.material.SetColor("_EmissionColor", new Color(.8f, .8f, 0.0f, 1.0f) * rewardsActive);
     }

@@ -26,8 +26,6 @@ public class BoxerSprite : MonoBehaviour
     Vector3 BLOCKANGLE = new Vector3(0, 0, 45);                     //Angle to move arms inward when blocking
 
     protected int punchTime = 0;                                    //number of frames left in punch animation
-    private Punch lastPunchState;
-    private DodgeState lastDodgeState;
 
     private Renderer leftGloveRenderer, rightGloveRenderer, bodyRenderer;
 
@@ -54,8 +52,6 @@ public class BoxerSprite : MonoBehaviour
     {
         boxer = GetComponent<Boxer>();
         DEFAULT = this.transform.Find("Sprite").localPosition;
-        lastPunchState = boxer.GetPunchState();
-        lastDodgeState = boxer.GetDodgeState();
         boxer.dodgeAction.animationStart.AddListener(StartDodgeAnimation);
         boxer.dodgeAction.animationEnd.AddListener(StopDodgeAnimation);
         boxer.punchAction.animationStart.AddListener(StartPunchAnimation);
@@ -81,13 +77,13 @@ public class BoxerSprite : MonoBehaviour
         boxerAudio = GetComponent<BoxerAudio>();
     }
 
-    private void StartDodgeAnimation(int direction)
+    private void StartDodgeAnimation(Direction direction)
     {     
         if (boxerAudio != null)
         {
             boxerAudio.PlayDodge();
         }
-        if (direction == 1)
+        if (direction == Direction.LEFT)
         {
             //this.transform.Find("Sprite").localPosition = DEFAULT + LDODGELOC;
             anim.Play("DodgeLeft");
@@ -98,7 +94,7 @@ public class BoxerSprite : MonoBehaviour
         }
     }
 
-    private void StopDodgeAnimation(int direction)
+    private void StopDodgeAnimation(Direction direction)
     {
         //anim.StopPlayback();
         //this.transform.Find("Sprite").localPosition = DEFAULT;
@@ -111,11 +107,11 @@ public class BoxerSprite : MonoBehaviour
         //right.localEulerAngles = new Vector3(0, 0, 0);
     }
 
-    private void StartPunchAnimation(int side)
+    private void StartPunchAnimation(Direction side)
     {
         //if (!boxer.broadcastPunch) return;
         Color broadcastColor = Color.red;
-        if (side == 1)
+        if (side == Direction.LEFT)
         {
             //leftGloveRenderer.material.color = broadcastColor;
             //tel = Telegraphing.PunchLeft;
@@ -128,11 +124,11 @@ public class BoxerSprite : MonoBehaviour
         }
     }
 
-    private void PunchAction(int side)
+    private void PunchAction(Direction side)
     {
         tel = Telegraphing.None;
         intensity = 0;
-        if (side == 1)
+        if (side == Direction.LEFT)
         {
             Transform t = this.transform.Find("Sprite").Find("LeftArm");
             //t.localPosition = LDEFAULT;
@@ -150,7 +146,7 @@ public class BoxerSprite : MonoBehaviour
         }
     }
 
-    private void StopPunchAnimation(int side)
+    private void StopPunchAnimation(Direction side)
     {
         Transform left = this.transform.Find("Sprite").Find("LeftArm");
         //left.localPosition = LDEFAULT;
@@ -177,23 +173,6 @@ public class BoxerSprite : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (boxer.punchAction.IsOnCooldown() || boxer.dodgeAction.IsRunning() || boxer.punchAction.IsRunning())
-        {
-            // Lower opacity of punch icon
-        } else
-        {
-            // Reset opacity of punch icon
-        }
-
-        if (boxer.dodgeAction.IsOnCooldown() || boxer.punchAction.IsRunning() || boxer.dodgeAction.IsRunning())
-        {
-            // Lower opacity of dodge icon
-        }
-        else
-        {
-            // Reset opacity of dodge icon
-        }
-
         if (damageTime > 0)
         {
             damageTime -= Time.deltaTime;

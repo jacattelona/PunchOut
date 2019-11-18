@@ -8,7 +8,7 @@ public class GameHandler : MonoBehaviour
 
     public Transform cameraTransform;
     private Vector3 cameraVelocity = Vector3.zero;
-    public Vector3 offenseLocation, defenseLocation, matchLocation;
+    public Vector3 offenseLocation, matchLocation;
 
     public TutorialManager tutorialManager;
     public GameObject tutorial;

@@ -66,15 +66,15 @@ public class Match : Area
         return player2;
     }
 
-    private void Player1Punched(int side)
+    private void Player1Punched(Direction side)
     {
-        PunchOutcome outcome = player1.onPunched(player2.GetPunchState());
+        PunchOutcome outcome = player1.onPunched(player2.currentAction, player2.GetStrength());
         player2.RewardOutcome(outcome);
     }
 
-    private void Player2Punched(int side)
+    private void Player2Punched(Direction side)
     {
-        PunchOutcome outcome = player2.onPunched(player1.GetPunchState());
+        PunchOutcome outcome = player2.onPunched(player1.GetCurrentAction(), player1.GetStrength());
         player1.RewardOutcome(outcome);
     }
 

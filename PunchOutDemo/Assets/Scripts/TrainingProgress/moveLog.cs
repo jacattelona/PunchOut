@@ -37,27 +37,25 @@ public class moveLog : MonoBehaviour
 
     }
 
-    void logPunch(int side)
+    void logPunch(Direction side)
     {
-        if (side == 1)
+        if (side == Direction.LEFT)
         {
             //HandleLog("Left Punch");
             //  HandlePic(LP);
             Instantiate(LeftPunch, new Vector3(-9.5f, -1.5f, -2), Quaternion.identity);
 
         }
-
-        if (side == 2)
-        {
+        else {
             //  HandleLog("Right Punch");
             //  HandlePic(RP);
             Instantiate(RightPunch, new Vector3(-9.5f, -1.5f, -2), Quaternion.identity);
         }
     }
 
-    void logDodge(int side)
+    void logDodge(Direction side)
     {
-        if (side == 1)
+        if (side == Direction.LEFT)
         {
             // HandleLog("Left Dodge");
            // HandlePic(LD);
@@ -66,9 +64,7 @@ public class moveLog : MonoBehaviour
             //Debug.Log("created l Dodge at " + center.x + ", " + center.y);
 
         }
-
-        if (side == 2)
-        {
+        else {
             //  HandleLog("Right Dodge");
            // HandlePic(RD);
             Instantiate(RightDodge, new Vector3(-9.5f, -1.5f, -2), Quaternion.identity);

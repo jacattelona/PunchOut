@@ -45,23 +45,14 @@ public class Boxer : Agent
     /// </summary>
     public float blockMultiplier = 0.1f;
 
-    /// <summary>
-    /// The weak punch type
-    /// </summary>
-    public PunchType weakPunch = PunchType.STRAIGHT;
 
     /// <summary>
     /// The weak punch strength
     /// </summary>
     public float weakPunchStrength = 10;
 
-    private DodgeState dodgeState = DodgeState.NONE;
-    private Punch punchState = Punch.NULL_PUNCH;
-
     public Action punchAction;
     public Action dodgeAction;
-
-    public ActionHistory actionHistory;
 
     public UnityEvent hitEvent;
 
@@ -96,8 +87,6 @@ public class Boxer : Agent
 
         hitEvent = new UnityEvent();
 
-        actionHistory = new ActionHistory();
-
         currentAction = MLAction.NOTHING;
 
         //SetActionMask(0, new int[] { 1, 2, 3, 4 });
@@ -119,28 +108,30 @@ public class Boxer : Agent
         AddVectorObs(!punchAction.IsOnCooldown() && !punchAction.IsRunning());
         AddVectorObs(!dodgeAction.IsOnCooldown() && !dodgeAction.IsRunning());
 
-        float[] move;
+        bool[] move;
         int opponentComboState = 0;
 
         if (opponent != null)
         {
-            move = new float[] {
-                opponent.GetPunchState().GetHand() == Hand.RIGHT ? 1f : 0f,
-                opponent.GetPunchState().GetHand() == Hand.LEFT ? 1f : 0f,
-                opponent.GetDodgeState() == DodgeState.LEFT ? 1f : 0f,
-                opponent.GetDodgeState() == DodgeState.RIGHT ? 1f : 0f
+            move = new bool[] {
+                opponent.currentAction == MLAction.PUNCH_RIGHT,
+                opponent.currentAction == MLAction.PUNCH_LEFT,
+                opponent.currentAction == MLAction.DODGE_LEFT,
+                opponent.currentAction == MLAction.DODGE_RIGHT
             };
 
             opponentComboState = opponent.comboTracker.GetState();
         } else
         {
-            move = new float[] { 0, 0, 0, 0 };
+            move = new bool[] { false, false, false, false };
             opponentComboState = 0;
         }
 
         AddVectorObs(Encoder.encodeInt(comboTracker.GetState(), 0, comboTracker.GetTotalStates()));
-        //AddVectorObs(Encoder.encodeInt(opponentComboState, 0, comboTracker.GetTotalStates()));
-        AddVectorObs(move);
+        foreach(var m in move)
+        {
+            AddVectorObs(m);
+        }
         AddVectorObs(currentAction == MLAction.PUNCH_LEFT);
         AddVectorObs(currentAction == MLAction.PUNCH_RIGHT);
         AddVectorObs(currentAction == MLAction.DODGE_LEFT);
@@ -166,8 +157,6 @@ public class Boxer : Agent
             if (training) bufferSize++;
             if (MLActionFactory.GetAction(lastActions) == MLAction.NOTHING) nothingBuffer++;
             SetTextObs(training + "," + false);
-            if (bufferSize > 0) Debug.Log(bufferSize);
-            //bufferSize++;
         }
     }
 
@@ -183,40 +172,38 @@ public class Boxer : Agent
 
         lastLoss = MLActionFactory.GetLoss(vectorAction);
 
-        var confidence = MLActionFactory.GetProbabilityFromVector(MLActionFactory.GetAction(vectorAction), vectorAction);
-
         if (!isFighting) return;
 
         // Only perform confident moves
+        var confidence = MLActionFactory.GetProbabilityFromVector(MLActionFactory.GetAction(vectorAction), vectorAction);
         if (!Mathf.Approximately(confidence, 0) && confidence < minConfidence) return;
 
-        // TODO: Neaten this up
-        if (vectorAction[0] <= 2)
+        // Try to perform action
+        TryToTakeAction(MLActionFactory.GetAction(vectorAction));
+    }
+
+
+    private void TryToTakeAction(MLAction action)
+    {
+        if (IsPerformingMove()) return;
+
+        if (MLActionFactory.IsPunch(action))
         {
-            HandlePunchInput(vectorAction[0]);
-        } else
-        {
-            HandleDodgeInput(vectorAction[0] - 2);
+            if (punchAction.IsOnCooldown()) return;
+            punchAction.Run(action == MLAction.PUNCH_LEFT ? Direction.LEFT : Direction.RIGHT);
         }
-        if (rewards != null) AddReward(rewards.existancePenalty);
+
+        if (MLActionFactory.IsDodge(action))
+        {
+            if (dodgeAction.IsOnCooldown()) return;
+            dodgeAction.Run(action == MLAction.DODGE_LEFT ? Direction.LEFT : Direction.RIGHT);
+        }
+
     }
 
-    /// <summary>
-    /// Get the current dodge state of the boxer
-    /// </summary>
-    /// <returns>The dodge state</returns>
-    public DodgeState GetDodgeState()
+    private bool IsPerformingMove()
     {
-        return dodgeState;
-    }
-
-    /// <summary>
-    /// Get the current punch state of the boxer
-    /// </summary>
-    /// <returns>The punch state</returns>
-    public Punch GetPunchState()
-    {
-        return punchState;
+        return currentAction != MLAction.NOTHING;
     }
 
     /// <summary>
@@ -224,7 +211,7 @@ public class Boxer : Agent
     /// </summary>
     /// <param name="punch">The punch</param>
     /// <returns>The outcome of the punch</returns>
-    public PunchOutcome onPunched(Punch punch)
+    public PunchOutcome onPunched(MLAction action, float damage)
     {
 
         stats.AddOpponentPunch();
@@ -232,45 +219,39 @@ public class Boxer : Agent
         // Dodged
         if (!inverted) // If the player is flipped, this appears opposite
         {
-            if (dodgeState == DodgeState.LEFT && punch.GetHand() == Hand.LEFT)
+            if (currentAction == MLAction.DODGE_LEFT && action == MLAction.PUNCH_LEFT)
             {
-                if (rewards != null) AddReward(rewards.dodgeReward);
                 stats.AddSuccessfulDodge();
                 return PunchOutcome.DODGED;
             }
-            else if (dodgeState == DodgeState.RIGHT && punch.GetHand() == Hand.RIGHT)
+            else if (currentAction == MLAction.DODGE_RIGHT && action == MLAction.PUNCH_RIGHT)
             {
-                if (rewards != null) AddReward(rewards.dodgeReward);
                 stats.AddSuccessfulDodge();
                 return PunchOutcome.DODGED;
             }
         }
         else
         {
-            if (dodgeState == DodgeState.RIGHT && punch.GetHand() == Hand.LEFT)
+            if (currentAction == MLAction.DODGE_RIGHT && action == MLAction.PUNCH_LEFT)
             {
-                if (rewards != null) AddReward(rewards.dodgeReward);
                 stats.AddSuccessfulDodge();
                 return PunchOutcome.DODGED;
             }
-            else if (dodgeState == DodgeState.LEFT && punch.GetHand() == Hand.RIGHT)
+            else if (currentAction == MLAction.DODGE_LEFT && action == MLAction.PUNCH_RIGHT)
             {
-                if (rewards != null) AddReward(rewards.dodgeReward);
                 stats.AddSuccessfulDodge();
                 return PunchOutcome.DODGED;
             }
         }
         
         // Hit
-        TakeDamage(punch.GetStrength());
+        TakeDamage(damage);
         if (IsKO())
         {
-            if (rewards != null) AddReward(rewards.knockOutPenalty);
             return PunchOutcome.KO;
         }
         else
         {
-            if (rewards != null) AddReward(rewards.punchPenalty);
             return PunchOutcome.HIT;
         }
     }
@@ -290,13 +271,11 @@ public class Boxer : Agent
     void ResetDodgeState()
     {
         dodgeAction.Reset();
-        dodgeState = DodgeState.NONE;
     }
 
     void ResetPunchState()
     {
         punchAction.Reset();
-        punchState = Punch.NULL_PUNCH;
     }
 
     /// <summary>
@@ -307,89 +286,28 @@ public class Boxer : Agent
     {
         health.health -= (int) damage;
         hitEvent.Invoke();
-
     }
 
-    private void RegisterDodge(int dodgeType)
+    private void RegisterDodge(Direction direction)
     {
         stats.AddDodge();
-        actionHistory.Record(dodgeType == 1 ? MLAction.DODGE_LEFT : MLAction.DODGE_RIGHT);
-        if (dodgeType == 1)
-        {
-            dodgeState = DodgeState.LEFT;
-            currentAction = MLAction.DODGE_LEFT;
-        }
-        else
-        {
-            dodgeState = DodgeState.RIGHT;
-            currentAction = MLAction.DODGE_RIGHT;
-        }
+        currentAction = direction == Direction.LEFT ? MLAction.DODGE_LEFT : MLAction.DODGE_RIGHT;
     }
 
-    private void DeregisterDodge(int dodgeType)
+    private void DeregisterDodge(Direction direction)
     {
-        dodgeState = DodgeState.NONE;
         currentAction = MLAction.NOTHING;
     }
 
-    private void RegisterPunch(int punchType)
+    private void RegisterPunch(Direction direction)
     {
         stats.AddPunch();
-        actionHistory.Record(punchType == 1 ? MLAction.PUNCH_LEFT : MLAction.PUNCH_RIGHT);
-        Punch punch;
-        if (punchType == 1)
-        {
-            punch = new Punch(weakPunch, Hand.LEFT, weakPunchStrength);
-            currentAction = MLAction.PUNCH_LEFT;
-        }
-        else
-        {
-            punch = new Punch(weakPunch, Hand.RIGHT, weakPunchStrength);
-            currentAction = MLAction.PUNCH_RIGHT;
-        }
-        punchState = punch;
+        currentAction = direction == Direction.LEFT ? MLAction.PUNCH_LEFT : MLAction.PUNCH_RIGHT;
     }
 
-    private void DeregisterPunch(int punchType)
+    private void DeregisterPunch(Direction direction)
     {
-        punchState = Punch.NULL_PUNCH;
         currentAction = MLAction.NOTHING;
-    }
-
-
-    /// <summary>
-    /// Handle the dodge input
-    /// </summary>
-    /// <param name="dodgeInput">The dodge input value</param>
-    private void HandleDodgeInput(float dodgeInput)
-    {
-        if (dodgeInput != 0 && (allowPunchWhileDodging || !punchAction.IsRunning()))
-        {
-            //if (anim.GetCurrentAnimatorStateInfo(0).shortNameHash == Animator.StringToHash("Base"))
-            //{
-                int input = (int)dodgeInput;
-                //if (input == 1)
-                //    animate.Play("DodgeLeft", -1, 0);
-                //if (input == 2)
-                //    animate.Play("DodgeRight", -1, 0);
-                dodgeAction.Run(input);
-           // }
-
-        }
-    }
-
-    /// <summary>
-    /// Handle the punch input
-    /// </summary>
-    /// <param name="punchInput">The punch input value</param>
-    private void HandlePunchInput(float punchInput)
-    {
-
-        if (punchInput != 0 && (allowPunchWhileDodging || !dodgeAction.IsRunning()))
-        {
-            punchAction.Run((int) punchInput);
-
-        }
     }
 
     public void RewardOutcome(PunchOutcome outcome)
@@ -399,14 +317,11 @@ public class Boxer : Agent
             case PunchOutcome.BLOCKED:
                 break;
             case PunchOutcome.DODGED:
-                if (rewards != null) AddReward(rewards.dodgePenalty);
                 break;
             case PunchOutcome.HIT:
-                if (rewards != null) AddReward(rewards.punchReward);
                 stats.AddHit();
                 break;
             case PunchOutcome.KO:
-                if (rewards != null) AddReward(rewards.knockOutReward);
                 stats.AddHit();
                 break;
         }
@@ -441,6 +356,16 @@ public class Boxer : Agent
     public float GetOverallScore()
     {
         return GetPerformanceScore(); // TODO: make this a weighted combination of hit percentage, reward, dodge percentage, etc
+    }
+
+    public MLAction GetCurrentAction()
+    {
+        return currentAction;
+    }
+
+    public float GetStrength()
+    {
+        return weakPunchStrength;
     }
 
     /// <summary>

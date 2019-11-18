@@ -23,17 +23,17 @@ public class Action
     /// <summary>
     /// The event that triggers when the action occurs (may occur after animation start)
     /// </summary>
-    public UnityEvent<int> action;
+    public UnityEvent<Direction> action;
 
     /// <summary>
     /// The event that triggers when the animation is started
     /// </summary>
-    public UnityEvent<int> animationStart;
+    public UnityEvent<Direction> animationStart;
 
     /// <summary>
     /// The event that triggers when the animation is stopped
     /// </summary>
-    public UnityEvent<int> animationEnd;
+    public UnityEvent<Direction> animationEnd;
 
 
     /// <summary>
@@ -59,10 +59,10 @@ public class Action
     private const int STATE_ANIMATION_STARTED = 2;
     private const int STATE_EVENT_FIRED = 3;
 
-    private int data;
+    private Direction data;
 
     [System.Serializable]
-    private class IntEvent : UnityEvent<int>
+    private class DirectionEvent : UnityEvent<Direction>
     {
     }
 
@@ -81,9 +81,9 @@ public class Action
         this.duration = duration;
         this.cooldownTime = cooldownTime;
         this.actionTriggerTime = actionTriggerTime;
-        action = new IntEvent();
-        animationStart = new IntEvent();
-        animationEnd = new IntEvent();
+        action = new DirectionEvent();
+        animationStart = new DirectionEvent();
+        animationEnd = new DirectionEvent();
     }
 
     /// <summary>
@@ -107,7 +107,7 @@ public class Action
     /// <summary>
     /// Run the action
     /// </summary>
-    public void Run(int data)
+    public void Run(Direction data)
     {
         if (state.GetCurrentState() != STATE_READY)
         {

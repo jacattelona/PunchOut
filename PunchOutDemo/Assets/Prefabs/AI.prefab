@@ -256,7 +256,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 279770081
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: 101e8365fd83bff479cf7ba04bbfd3a2, type: 3}
   m_Color: {r: 0.3773585, g: 0.3755785, b: 0.3755785, a: 1}
@@ -414,7 +414,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 279770081
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 110
   m_Sprite: {fileID: 21300000, guid: 101e8365fd83bff479cf7ba04bbfd3a2, type: 3}
   m_Color: {r: 0, g: 1, b: 0, a: 1}
@@ -493,7 +493,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 279770081
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 90
   m_Sprite: {fileID: 21300000, guid: 101e8365fd83bff479cf7ba04bbfd3a2, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -743,7 +743,6 @@ GameObject:
   - component: {fileID: 6354354638454309238}
   - component: {fileID: 6354354638454309236}
   - component: {fileID: 6354354638454309239}
-  - component: {fileID: 6354354638454309237}
   m_Layer: 0
   m_Name: AI
   m_TagString: Untagged
@@ -799,15 +798,18 @@ MonoBehaviour:
   punchEventDelay: 0.25
   dodgeEventDelay: 0.25
   isFighting: 0
+  inverted: 0
+  minConfidence: 0
+  isTeacher: 0
   rewards: {fileID: 11400000, guid: 47087f9f46c325143aebf372bbffd33b, type: 2}
   blockMultiplier: 0.1
-  weakPunch: 0
   weakPunchStrength: 10
   hitEvent:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  currentAction: 0
 --- !u!114 &6354354638454309233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -860,28 +862,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79b6e82b11cb6cd4ca4d5138c5345f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6354354638454309237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6354354638454309234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 600ea164314b67d42bc44323d39962eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teacher: {fileID: 0}
-  shouldImitate: 0
-  ignoreInaction: 1
-  noOpKey: 99
-  inactivityTimeout: 2
-  rewardEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1 &9091160625699738442
 GameObject:
   m_ObjectHideFlags: 0
