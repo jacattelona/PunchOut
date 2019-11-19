@@ -66,6 +66,24 @@ public class Action
     {
     }
 
+    public Action(float cooldownTime)
+    {
+        state = new FSM(STATE_READY);
+        state.AddTransition(STATE_READY, ACTION_START, STATE_ANIMATION_STARTED);
+        state.AddTransition(STATE_ANIMATION_STARTED, ACTION_TRIGGER_EVENT, STATE_EVENT_FIRED);
+        state.AddTransition(STATE_ANIMATION_STARTED, ACTION_INTERRUPT, STATE_ON_COOLDOWN);
+        state.AddTransition(STATE_EVENT_FIRED, ACTION_INTERRUPT, STATE_ON_COOLDOWN);
+        //state.AddTransition(STATE_EVENT_FIRED, ACTION_ANIMATION_OVER, STATE_ON_COOLDOWN);
+        state.AddTransition(STATE_ON_COOLDOWN, ACTION_COOLDOWN_OVER, STATE_READY);
+
+        this.duration = 100f;
+        this.cooldownTime = cooldownTime;
+        this.actionTriggerTime = 0f;
+        action = new DirectionEvent();
+        animationStart = new DirectionEvent();
+        animationEnd = new DirectionEvent();
+
+    }
 
     public Action(float duration, float cooldownTime, float actionTriggerTime = 0.0f)
     {
@@ -168,6 +186,12 @@ public class Action
                 state.TakeAction(ACTION_INTERRUPT);
                 break;
         }
+    }
+
+
+    public Direction GetData()
+    {
+        return data;
     }
 
 

@@ -78,6 +78,8 @@ public class Boxer : Agent
         bufferSize = 0;
 
         dodgeAction = new Action(dodgeDuration, dodgeCooldown, dodgeEventDelay);
+        if (isTeacher)
+            dodgeAction = new Action(dodgeCooldown);
         dodgeAction.animationStart.AddListener(RegisterDodge);
         dodgeAction.animationEnd.AddListener(DeregisterDodge);
 
@@ -98,6 +100,8 @@ public class Boxer : Agent
         dodgeAction.Update();
         minConfidence -= Time.deltaTime * 0.03f;
         minConfidence = Mathf.Clamp(minConfidence, 0.2f, 1);
+        if (isTeacher)
+            HandleRelease();
     }
 
     /// <summary>
@@ -198,7 +202,16 @@ public class Boxer : Agent
             if (dodgeAction.IsOnCooldown()) return;
             dodgeAction.Run(action == MLAction.DODGE_LEFT ? Direction.LEFT : Direction.RIGHT);
         }
+    }
 
+    private void HandleRelease()
+    {
+        bool left = (!Input.GetKey(KeyCode.D) && dodgeAction.IsRunning() && dodgeAction.GetData() == Direction.LEFT);
+        bool right = (!Input.GetKey(KeyCode.K) && dodgeAction.IsRunning() && dodgeAction.GetData() == Direction.RIGHT);
+        if (left || right)
+        {
+            dodgeAction.Interrupt();
+        }
     }
 
     private bool IsPerformingMove()
