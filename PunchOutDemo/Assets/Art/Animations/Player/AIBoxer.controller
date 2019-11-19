@@ -6,7 +6,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CoachBoxer
+  m_Name: AIBoxer
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: DodgeEnd
@@ -243,7 +243,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DodgeRightOld
+  m_Name: DodgeRight
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -270,7 +270,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DodgeLeft
+  m_Name: DodgeLeftHold
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -404,7 +404,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DodgeRight
+  m_Name: DodgeRightHold
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -431,7 +431,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DodgeLeftOld
+  m_Name: DodgeLeft
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:

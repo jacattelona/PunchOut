@@ -96,15 +96,7 @@ public class BoxerSprite : MonoBehaviour
 
     private void StopDodgeAnimation(Direction direction)
     {
-        //anim.StopPlayback();
-        //this.transform.Find("Sprite").localPosition = DEFAULT;
         anim.SetTrigger("DodgeEnd");
-        //anim.Play("Base");
-        //Transform left = this.transform.Find("Sprite").Find("LeftArm");
-        //Transform right = this.transform.Find("Sprite").Find("RightArm");
-
-        //left.localEulerAngles = new Vector3(0, 0, 0);
-        //right.localEulerAngles = new Vector3(0, 0, 0);
     }
 
     private void StartPunchAnimation(Direction side)

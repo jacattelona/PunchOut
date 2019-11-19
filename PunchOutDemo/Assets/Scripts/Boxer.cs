@@ -4,11 +4,11 @@ using UnityEngine.Events;
 
 public class Boxer : Agent
 {
-    private Animator anim;
-
     private Boxer opponent;
 
     private BoxerStats stats;
+
+    private BoxerSprite sprite;
 
     public bool allowPunchWhileDodging = false;
 
@@ -67,7 +67,10 @@ public class Boxer : Agent
 
     private float lastLoss = float.PositiveInfinity;
 
-
+    void Awake()
+    {
+        sprite = GetComponent<BoxerSprite>();
+    }
     /// <summary>
     /// Initialize the agent
     /// </summary>
@@ -92,8 +95,6 @@ public class Boxer : Agent
         hitEvent = new UnityEvent();
 
         currentAction = MLAction.NOTHING;
-
-        //SetActionMask(0, new int[] { 1, 2, 3, 4 });
     }
 
     private void Update()
@@ -316,6 +317,10 @@ public class Boxer : Agent
     private void DeregisterDodge(Direction direction)
     {
         currentAction = MLAction.NOTHING;
+        if (sprite != null)
+        {
+            //dodgeAction.Interrupt();
+        }
     }
 
     private void RegisterPunch(Direction direction)
