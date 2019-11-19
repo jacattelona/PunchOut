@@ -31,7 +31,7 @@ public class Boxer : Agent
     public bool isTeacher = false;
 
     private int nothingBuffer = 0;
-    private int nothingBufferSize = 50;
+    private int nothingBufferSize = 1;
 
     public Reward rewards;
 
@@ -59,7 +59,9 @@ public class Boxer : Agent
     public MLAction currentAction;
 
     private int bufferSize;
-    private int maxBufferSize = 70;
+    private int maxBufferSize = 2000;
+
+    private int punchCount, dodgeCount;
 
     private float nothingDuration = 0;
 
@@ -141,15 +143,6 @@ public class Boxer : Agent
         AddVectorObs(currentAction == MLAction.DODGE_LEFT);
         AddVectorObs(currentAction == MLAction.DODGE_RIGHT);
 
-        if (currentAction == MLAction.NOTHING)
-        {
-            nothingDuration += Time.deltaTime;
-        }
-        else
-        {
-            nothingDuration = 0;
-        }
-
         if (bufferSize >= maxBufferSize)
         {
             SetTextObs((isTeacher && isFighting && MLActionFactory.GetAction(lastActions) != MLAction.NOTHING) + "," + true);
@@ -157,6 +150,19 @@ public class Boxer : Agent
 
         } else
         {
+            if (MLActionFactory.IsPunch(MLActionFactory.GetAction(lastActions)))
+            {
+                punchCount++;
+            } else if (MLActionFactory.IsDodge(MLActionFactory.GetAction(lastActions)))
+            {
+                dodgeCount++;
+            }
+
+            if (isTeacher)
+            {
+                Debug.Log(punchCount + ", " + dodgeCount);
+            }
+
             var training = isTeacher && isFighting && (MLActionFactory.GetAction(lastActions) != MLAction.NOTHING || nothingBuffer < nothingBufferSize);
             if (training) bufferSize++;
             if (MLActionFactory.GetAction(lastActions) == MLAction.NOTHING) nothingBuffer++;
@@ -345,6 +351,7 @@ public class Boxer : Agent
     /// </summary>
     public void Train()
     {
+        SetTextObs(false + "," + false);
         Done();
     }
 
