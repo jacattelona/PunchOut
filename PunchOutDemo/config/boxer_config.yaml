@@ -16,7 +16,7 @@ BoxerLearning:
     trainer: online_bc
     brain_to_imitate: Coach
     summary_freq: 200
-    batch_size: 16
+    batch_size: 8
     time_horizon: 32
     batches_per_epoch: 10
     hidden_units: 128

@@ -99,7 +99,6 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                 // Check to see if the training phase is over
                 if (trainingTimer.IsExpired())
                 {
-                    TrainAIs();
                     Watch();
                     lerpProgress = 0;
                     CoachDialog.instance?.Show("Coach to Roboxer: Let's see how much of that you picked up.");
@@ -265,7 +264,9 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
     }
 
     private void TrainAIs()
-    {        
+    {
+        UpdateTrainingProgress();
+        
         Train(coachMatch);
         foreach (Match match in aiMatches)
         {
