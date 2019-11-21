@@ -67,10 +67,11 @@ public class Boxer : Agent
 
     private float lastLoss = float.PositiveInfinity;
 
-    void Awake()
-    {
-        sprite = GetComponent<BoxerSprite>();
-    }
+    //void Awake()
+    //{
+    //    sprite = GetComponent<BoxerSprite>();
+    //}
+
     /// <summary>
     /// Initialize the agent
     /// </summary>
@@ -161,7 +162,7 @@ public class Boxer : Agent
 
             if (isTeacher)
             {
-                Debug.Log(punchCount + ", " + dodgeCount);
+                //Debug.Log(punchCount + ", " + dodgeCount);
             }
 
             var training = isTeacher && isFighting && (MLActionFactory.GetAction(lastActions) != MLAction.NOTHING || nothingBuffer < nothingBufferSize);
@@ -317,10 +318,10 @@ public class Boxer : Agent
     private void DeregisterDodge(Direction direction)
     {
         currentAction = MLAction.NOTHING;
-        if (sprite != null)
-        {
-            //dodgeAction.Interrupt();
-        }
+        //if (sprite != null && dodgeAction.IsRunning())
+        //{
+        //    dodgeAction.Interrupt();
+        //}
     }
 
     private void RegisterPunch(Direction direction)
