@@ -8,8 +8,6 @@ public class Boxer : Agent
 
     private BoxerStats stats;
 
-    private BoxerSprite sprite;
-
     public bool allowPunchWhileDodging = false;
 
     public bool broadcastPunch = false;
@@ -71,10 +69,6 @@ public class Boxer : Agent
 
     private float lastLoss = float.PositiveInfinity;
 
-    //void Awake()
-    //{
-    //    sprite = GetComponent<BoxerSprite>();
-    //}
 
     /// <summary>
     /// Initialize the agent
@@ -258,11 +252,15 @@ public class Boxer : Agent
             if (currentAction == MLAction.DODGE_LEFT && action == MLAction.PUNCH_LEFT)
             {
                 stats.AddSuccessfulDodge();
+                //if (!isTeacher)
+                //    dodgeAction.Interrupt();
                 return PunchOutcome.DODGED;
             }
             else if (currentAction == MLAction.DODGE_RIGHT && action == MLAction.PUNCH_RIGHT)
             {
                 stats.AddSuccessfulDodge();
+                //if (!isTeacher)
+                //    dodgeAction.Interrupt();
                 return PunchOutcome.DODGED;
             }
         }
@@ -271,11 +269,15 @@ public class Boxer : Agent
             if (currentAction == MLAction.DODGE_RIGHT && action == MLAction.PUNCH_LEFT)
             {
                 stats.AddSuccessfulDodge();
+                //if (!isTeacher)
+                //    dodgeAction.Interrupt();
                 return PunchOutcome.DODGED;
             }
             else if (currentAction == MLAction.DODGE_LEFT && action == MLAction.PUNCH_RIGHT)
             {
                 stats.AddSuccessfulDodge();
+                //if (!isTeacher)
+                //    dodgeAction.Interrupt();
                 return PunchOutcome.DODGED;
             }
         }
@@ -333,10 +335,6 @@ public class Boxer : Agent
     private void DeregisterDodge(Direction direction)
     {
         currentAction = MLAction.NOTHING;
-        //if (sprite != null && dodgeAction.IsRunning())
-        //{
-        //    dodgeAction.Interrupt();
-        //}
     }
 
     private void RegisterPunch(Direction direction)
