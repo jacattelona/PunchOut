@@ -35,6 +35,10 @@ public class Boxer : Agent
 
     public Reward rewards;
 
+    public bool endDodgeEarly = false;
+
+    private MLAction lastEnemyState = MLAction.NOTHING;
+
 
     // COMPONENTS
     Health health;
@@ -192,6 +196,17 @@ public class Boxer : Agent
 
         // Try to perform action
         TryToTakeAction(MLActionFactory.GetAction(vectorAction));
+
+        // Interrupt dodges early
+        if (endDodgeEarly && MLActionFactory.IsDodge(currentAction))
+        {
+            if (MLActionFactory.IsPunch(lastEnemyState) && !MLActionFactory.IsPunch(opponent.GetCurrentAction())) {
+                // Opponent finished punching, so stop dodging
+                dodgeAction.Interrupt();
+            }
+        }
+
+        lastEnemyState = opponent.GetCurrentAction();
     }
 
 
