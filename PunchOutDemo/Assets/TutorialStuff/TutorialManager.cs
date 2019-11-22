@@ -13,6 +13,7 @@ public class TutorialManager : MonoBehaviour
     public GameObject punch1Set2;
     public GameObject punchSet21;
     public GameObject punchSet22;
+    
 
     private int endState = 10;
     
@@ -32,8 +33,8 @@ public class TutorialManager : MonoBehaviour
         if (Input.GetKeyDown("a") && state == 1)
         {
             state++;
-            intro1.SetActive(false);
-            intro2.SetActive(false);
+            //intro1.SetActive(false);
+            //intro2.SetActive(false);
             anim.SetTrigger("gotoPunch1Setup");
             
         }
@@ -68,7 +69,7 @@ public class TutorialManager : MonoBehaviour
         }
         else if (Input.GetKeyDown("f") && state == 2)
         {
-            punch1Set1.SetActive(false);
+            //punch1Set1.SetActive(false);
             anim.SetTrigger("gotoPunch1");
             state++;
         }
