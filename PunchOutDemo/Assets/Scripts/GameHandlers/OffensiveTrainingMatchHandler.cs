@@ -88,11 +88,11 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
                 if (Time.time - trainStartTime >= 30 && seqState == 0 && !SimpleEnemyHeuristic.useOldVersion)
                 {
-                    CoachDialog.instance?.Show("Coach to Roboxer: Now I will teach you a sequence of punches, such as RIGHT-LEFT or LEFT-RIGHT-LEFT", 4f);
+                    CoachDialog.instance?.Show("Now only throw punches, such as RIGHT-LEFT or LEFT-RIGHT-LEFT. Keep doing the same set of punches though!", 4f);
                     seqState = 1;
                 } else if (Time.time - trainStartTime >= 60 && seqState == 1 && !SimpleEnemyHeuristic.useOldVersion)
                 {
-                    CoachDialog.instance?.Show("Coach to Roboxer: Now I will put that all together for you, I set the dummy up to simulate your upcoming fight.", 4f);
+                    CoachDialog.instance?.Show("Now put your dodges and punches together. Stay consistent!", 4f);
                     seqState = 2;
                 }
 
@@ -102,7 +102,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                     TrainAIs();
                     Watch();
                     lerpProgress = 0;
-                    CoachDialog.instance?.Show("Coach to Roboxer: Let's see how much of that you picked up.");
+                    CoachDialog.instance?.Show("Now watch Roboxer fight the training dummy.");
                     state = STATE_MOVING_AI;
                 }
                 break;
@@ -166,10 +166,10 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
     {
         if (!SimpleEnemyHeuristic.useOldVersion)
         {
-            CoachDialog.instance?.Show("Coach to Roboxer: Let me teach you how to dodge the incoming punches, I won't throw any punches just yet.", 4.0f);
+            CoachDialog.instance?.Show("Only dodge that training dummy's moves right now.", 4.0f);
         } else
         {
-            CoachDialog.instance?.Show("Coach to Roboxer: Let me teach you how to fight. The dummy is set up to simulate your upcoming fight.", 4.0f);
+            CoachDialog.instance?.Show("Fight the training dummy to teach Roboxer how to fight.", 4.0f);
         }
 
         // Stop the AI matches, move everyone to the correct location
