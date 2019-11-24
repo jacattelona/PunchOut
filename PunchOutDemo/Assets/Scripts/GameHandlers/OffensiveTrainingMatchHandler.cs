@@ -86,13 +86,13 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                 // Update the training progress indicators
                 UpdateTrainingProgress();
 
-                if (Time.time - trainStartTime >= 30 && seqState == 0 && !SimpleEnemyHeuristic.useOldVersion)
+                if (Time.time - trainStartTime >= 15 && seqState == 0 && !SimpleEnemyHeuristic.useOldVersion)
                 {
-                    CoachDialog.instance?.Show("Now only throw punches, such as RIGHT-LEFT or LEFT-RIGHT-LEFT. Keep doing the same set of punches though!", 4f);
+                    CoachDialog.instance?.Show("Now only throw punches, such as RIGHT-LEFT or LEFT-RIGHT-LEFT. Keep doing the same set of punches though!", 3f);
                     seqState = 1;
-                } else if (Time.time - trainStartTime >= 60 && seqState == 1 && !SimpleEnemyHeuristic.useOldVersion)
+                } else if (Time.time - trainStartTime >= 30 && seqState == 1 && !SimpleEnemyHeuristic.useOldVersion)
                 {
-                    CoachDialog.instance?.Show("Now put your dodges and punches together. Stay consistent!", 4f);
+                    CoachDialog.instance?.Show("Now put your dodges and punches together. Stay consistent!", 3f);
                     seqState = 2;
                 }
 
@@ -102,7 +102,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                     //TrainAIs();
                     Watch();
                     lerpProgress = 0;
-                    CoachDialog.instance?.Show("Now watch Roboxer fight the training dummy.");
+                    CoachDialog.instance?.Show("Now watch Roboxer fight the training dummy.", 2f);
                     state = STATE_MOVING_AI;
                 }
                 break;
@@ -166,10 +166,10 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
     {
         if (!SimpleEnemyHeuristic.useOldVersion)
         {
-            CoachDialog.instance?.Show("Only dodge that training dummy's moves right now.", 4.0f);
+            CoachDialog.instance?.Show("Only dodge that training dummy's moves right now.", 3.0f);
         } else
         {
-            CoachDialog.instance?.Show("Fight the training dummy to teach Roboxer how to fight.", 4.0f);
+            CoachDialog.instance?.Show("Fight the training dummy to teach Roboxer how to fight.", 3.0f);
         }
 
         // Stop the AI matches, move everyone to the correct location

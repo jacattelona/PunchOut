@@ -111,14 +111,14 @@ public class SimpleEnemyHeuristic : Decision
                 Reset();
             }
 
-            if (Time.time - seqStartTime > 30 && seqIdx == 0)
+            if (Time.time - seqStartTime > 15 && seqIdx == 0)
             {
                 seqIdx = 1;
                 moveIdx = 0;
                 didAction = false;
                 nothingStartTime = Time.time;
             }
-            else if (Time.time - seqStartTime > 60 && seqIdx == 1)
+            else if (Time.time - seqStartTime > 30 && seqIdx == 1)
             {
                 seqIdx = 2;
                 moveIdx = 0;

@@ -101,7 +101,7 @@ public class Boxer : Agent
         punchAction.Update();
         dodgeAction.Update();
         minConfidence -= Time.deltaTime * 0.03f;
-        minConfidence = Mathf.Clamp(minConfidence, 0.25f, 1);
+        minConfidence = Mathf.Clamp(minConfidence, 0.21f, 1);
         if (isTeacher)
             HandleRelease();
     }
