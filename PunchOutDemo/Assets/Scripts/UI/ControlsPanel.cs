@@ -6,9 +6,6 @@ using UnityEngine.UI;
 public class ControlsPanel : MonoBehaviour
 {
 
-    [SerializeField]
-    public Boxer boxer;
-
     public bool reactive = true;
 
     private Color buttonPressed, buttonUnpressed;
@@ -45,41 +42,10 @@ public class ControlsPanel : MonoBehaviour
             return;
         }
 
-        MLAction action = boxer.currentAction;
-        bool punchCooldown = boxer.punchAction.IsOnCooldown();
-        bool dodgeCooldown = boxer.dodgeAction.IsOnCooldown();
-
         SetButtonColor(leftPunch, Input.GetKey(KeyCode.F) ? buttonPressed : buttonUnpressed);
         SetButtonColor(rightPunch, Input.GetKey(KeyCode.J) ? buttonPressed : buttonUnpressed);
         SetButtonColor(leftDodge, Input.GetKey(KeyCode.D) ? buttonPressed : buttonUnpressed);
         SetButtonColor(rightDodge, Input.GetKey(KeyCode.K) ? buttonPressed : buttonUnpressed);
-
-        if (action != MLAction.NOTHING)
-        {
-            SetDisabled(leftPunch);
-            SetDisabled(rightPunch);
-            SetDisabled(leftDodge);
-            SetDisabled(rightDodge);
-        } else
-        {
-            SetEnabled(leftPunch);
-            SetEnabled(rightPunch);
-            SetEnabled(leftDodge);
-            SetEnabled(rightDodge);
-        }
-
-        if (punchCooldown)
-        {
-            SetDisabled(leftPunch);
-            SetDisabled(rightPunch);
-        }
-
-        if (dodgeCooldown)
-        {
-            SetDisabled(leftDodge);
-            SetDisabled(rightDodge);
-        }
-
     }
 
     void SetButtonColor(GameObject action, Color buttonColor)

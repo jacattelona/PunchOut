@@ -14,7 +14,7 @@ public class Coach : MonoBehaviour
     public string positiveMessage = "Good job, keep it up!";
     public string negativeMessage = "Don't do that again!";
 
-    private Boxer playerBoxer;
+    private Boxer2 playerBoxer;
     public Text display;
 
     private float displayTimeout = 1f;
@@ -24,7 +24,7 @@ public class Coach : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerBoxer = player.GetComponent<Boxer>();
+        playerBoxer = player.GetComponent<Boxer2>();
     }
 
     // Update is called once per frame

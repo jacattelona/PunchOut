@@ -18,14 +18,14 @@ public class Evaluator: MonoBehaviour
     public UnityEvent matchingEvent = new UnityEvent();
 
     [SerializeField]
-    private Boxer trainee;
+    private Boxer2 trainee;
 
     [SerializeField]
-    private Boxer coach;
+    private Boxer2 coach;
 
     private void Update()
     {
-        var match = trainee.currentAction == coach.currentAction;//MLActionFactory.GetAction(trainee.lastActions) == MLActionFactory.GetAction(coach.lastActions);
+        var match = trainee.GetCurrentAction() == coach.GetCurrentAction();//MLActionFactory.GetAction(trainee.lastActions) == MLActionFactory.GetAction(coach.lastActions);
         if (match) matchingEvent.Invoke();
         var desiredAction = MLActionFactory.GetAction(coach.lastActions);
         var probability = MLActionFactory.GetProbabilityFromVector(desiredAction, trainee.lastActions);

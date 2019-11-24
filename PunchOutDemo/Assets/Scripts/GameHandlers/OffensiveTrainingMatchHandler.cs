@@ -214,7 +214,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
         coachMatch.GetPlayer1().transform.localPosition = new Vector3(0, 0);
 
         // Stop AI's match and look at the coach
-        Boxer AI = aiMatches[0].GetPlayer1();
+        Boxer2 AI = aiMatches[0].GetPlayer1();
         aiMatches[0].StopFight();
         AI.transform.localEulerAngles = new Vector3(0, 0, -90);
         AI.transform.localPosition = new Vector3(-9.24f, -3.61f);
@@ -225,12 +225,12 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
     private void MoveTowardsWatchPosition(float lerp)
     {
-        Boxer AI = aiMatches[0].GetPlayer1();
+        Boxer2 AI = aiMatches[0].GetPlayer1();
         var aiX = Mathf.Lerp(-9.24f, 0, lerp);
         var aiY = Mathf.Lerp(-3.61f, 0, lerp);
         AI.transform.localPosition = new Vector3(aiX, aiY);
 
-        Boxer coach = coachMatch.GetPlayer1();
+        Boxer2 coach = coachMatch.GetPlayer1();
         var coachX = Mathf.Lerp(0, -9.24f, lerp);
         var coachY = Mathf.Lerp(0, -3.61f, lerp);
         coach.transform.localPosition = new Vector3(coachX, coachY);
@@ -238,12 +238,12 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
 
     private void MoveTowardsDemoPosition(float lerp)
     {
-        Boxer AI = aiMatches[0].GetPlayer1();
+        Boxer2 AI = aiMatches[0].GetPlayer1();
         var aiX = Mathf.Lerp(0, -9.24f, lerp);
         var aiY = Mathf.Lerp(0, -3.61f, lerp);
         AI.transform.localPosition = new Vector3(aiX, aiY);
 
-        Boxer coach = coachMatch.GetPlayer1();
+        Boxer2 coach = coachMatch.GetPlayer1();
         var coachX = Mathf.Lerp(-9.24f, 0, lerp);
         var coachY = Mathf.Lerp(-3.61f, 0, lerp);
         coach.transform.localPosition = new Vector3(coachX, coachY);
@@ -257,7 +257,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
         coachMatch.GetPlayer1().transform.localEulerAngles = new Vector3(0, 0, -90);
 
         // Start the AI's match
-        Boxer AI = aiMatches[0].GetPlayer1();
+        Boxer2 AI = aiMatches[0].GetPlayer1();
         AI.transform.localEulerAngles = Vector3.zero;
 
         // Stop the hidden matches
@@ -298,18 +298,6 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
         currentTrainingProgressIdx++;
         currentTrainingProgressIdx = currentTrainingProgressIdx % trainingProgress.Count;
         ShowCurrentTrainingProgress();
-    }
-
-    private float GetAveragePerformanceScore()
-    {
-        if (aiMatches.Count == 0) return 0;
-        float sum = 0;
-        for(int i = 1; i < aiMatches.Count; i++)
-        {
-            float score = aiMatches[i].GetPlayer1().GetPerformanceScore();
-            sum += score;
-        }
-        return sum / aiMatches.Count;
     }
 
     private void Train(Match match)

@@ -17,13 +17,13 @@ public class moveLog : MonoBehaviour
     //Vector3 center;
 
 
-    public Boxer boxer;
+    public Boxer2 boxer;
     // Start is called before the first frame update
     void Start()
     {
-        boxer = GetComponent<Boxer>();
-        boxer.punchAction.animationStart.AddListener(logPunch);
-        boxer.dodgeAction.animationStart.AddListener(logDodge);
+        boxer = GetComponent<Boxer2>();
+        boxer.punchEvent.AddListener(logPunch);
+        boxer.dodgeEvent.AddListener(logDodge);
         LP = Resources.Load("Key Logs/Left Punch") as Texture2D;
         LD = Resources.Load("Key Logs/Left Dodge") as Texture2D;
         RP = Resources.Load("Key Logs/Right Punch") as Texture2D;

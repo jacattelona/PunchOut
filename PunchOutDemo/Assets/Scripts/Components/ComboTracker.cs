@@ -4,7 +4,7 @@ public class ComboTracker: MonoBehaviour
 {
 
     public float comboTimeout;
-    private Boxer boxer;
+    private Boxer2 boxer;
 
     private FSM fsm;
     private int numStates;
@@ -49,9 +49,6 @@ public class ComboTracker: MonoBehaviour
         fsm.AddTransition(6, 2, 2);
 
         lastPunchTime = 0;
-
-        boxer = GetComponent<Boxer>();
-        boxer.punchAction.action.AddListener(TrackPunch);
     }
 
     void FixedUpdate()
@@ -62,7 +59,7 @@ public class ComboTracker: MonoBehaviour
         }
     }
 
-    private void TrackPunch(Direction direction)
+    public void TrackPunch(Direction direction)
     {
         lastPunchTime = Time.fixedTime;
         fsm.TakeAction(direction == Direction.LEFT ? 1 : 2);

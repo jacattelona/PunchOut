@@ -5,27 +5,28 @@ using UnityEngine;
 public class HealthBar : MonoBehaviour
 {
 
-    private Health health;
+    private Boxer2 boxer;
+
     private Transform bar;
 
-    private int lastHealth = -1;
+    private float lastHealth = -1;
 
     // Start is called before the first frame update
     void Start()
     {
 
-        health = GetComponent<Health>();
+        boxer = GetComponent<Boxer2>();
         bar = transform.Find("HealthBar").Find("Bar");        
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (lastHealth == health.health)
+        if (Mathf.Approximately(lastHealth, boxer.hp))
         {
             return;
         }
-        float healthPct = health.health / (float)health.maxHealth;
+        float healthPct = boxer.hp/ (float)boxer.maxHP;
         bar.localScale = new Vector3(healthPct, 1f);
         if (healthPct <= 0.3f)
         {
@@ -38,7 +39,7 @@ public class HealthBar : MonoBehaviour
             SetBarColor(new Color(0, 255, 0));
         }
 
-        lastHealth = health.health;
+        lastHealth = boxer.hp;
     }
 
     private void SetBarColor(Color color)

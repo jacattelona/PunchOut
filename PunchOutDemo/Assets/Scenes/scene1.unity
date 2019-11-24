@@ -499,6 +499,71 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4710161895769684307}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &388834720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388834719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720378fd5b0084644add7ca54a32bc84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brain: {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
+  agentParameters:
+    agentCameras: []
+    agentRenderTextures: []
+    maxStep: 0
+    resetOnDone: 1
+    onDemandDecision: 0
+    numberOfActionsBetweenDecisions: 1
+  punchCooldownDuration: 0
+  dodgeCooldownDuration: 0
+  maxHP: 100
+  hp: 0
+  punchDamage: 10
+  punchEventDelay: 0.25
+  hitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  punchEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Boxer2+DirectionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  dodgeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Boxer2+DirectionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isFighting: 0
+  lastActions: []
+  minConfidence: 0.4
+  isTeacher: 0
+  inverted: 0
+--- !u!95 &388834721
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388834719}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3d0ec17734953ed4cbbba506a889c816, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &388834725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -645,6 +710,52 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ef48ecc9b3ce92049b3bd116fc00f160, type: 3}
   - {fileID: 8300000, guid: 4d93e7f32ab92d1419c947ffa561428b, type: 3}
   - {fileID: 8300000, guid: c5917af2c3e44094eb3427e4a74ec727, type: 3}
+--- !u!114 &401503815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401503812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720378fd5b0084644add7ca54a32bc84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brain: {fileID: 11400000, guid: 5386e1be819b5324c8358238fd75c0e1, type: 2}
+  agentParameters:
+    agentCameras: []
+    agentRenderTextures: []
+    maxStep: 0
+    resetOnDone: 1
+    onDemandDecision: 0
+    numberOfActionsBetweenDecisions: 1
+  punchCooldownDuration: 0
+  dodgeCooldownDuration: 0
+  maxHP: 100
+  hp: 0
+  punchDamage: 10
+  punchEventDelay: 1.5
+  hitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  punchEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Boxer2+DirectionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  dodgeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Boxer2+DirectionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isFighting: 0
+  lastActions: []
+  minConfidence: 0
+  isTeacher: 0
+  inverted: 1
 --- !u!95 &401503819
 Animator:
   serializedVersion: 3
@@ -2191,6 +2302,52 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ef48ecc9b3ce92049b3bd116fc00f160, type: 3}
   - {fileID: 8300000, guid: 4d93e7f32ab92d1419c947ffa561428b, type: 3}
   - {fileID: 8300000, guid: c5917af2c3e44094eb3427e4a74ec727, type: 3}
+--- !u!114 &654471673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654471670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720378fd5b0084644add7ca54a32bc84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brain: {fileID: 11400000, guid: a3f823cb402785044a73cc45b7a589c4, type: 2}
+  agentParameters:
+    agentCameras: []
+    agentRenderTextures: []
+    maxStep: 0
+    resetOnDone: 1
+    onDemandDecision: 0
+    numberOfActionsBetweenDecisions: 1
+  punchCooldownDuration: 2
+  dodgeCooldownDuration: 2
+  maxHP: 400
+  hp: 0
+  punchDamage: 10
+  punchEventDelay: 1.5
+  hitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  punchEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Boxer2+DirectionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  dodgeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Boxer2+DirectionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isFighting: 0
+  lastActions: []
+  minConfidence: 0
+  isTeacher: 0
+  inverted: 1
 --- !u!95 &654471677
 Animator:
   serializedVersion: 3
@@ -3814,6 +3971,52 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1317000283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317000280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720378fd5b0084644add7ca54a32bc84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brain: {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
+  agentParameters:
+    agentCameras: []
+    agentRenderTextures: []
+    maxStep: 0
+    resetOnDone: 1
+    onDemandDecision: 0
+    numberOfActionsBetweenDecisions: 1
+  punchCooldownDuration: 0
+  dodgeCooldownDuration: 0
+  maxHP: 100
+  hp: 0
+  punchDamage: 10
+  punchEventDelay: 0.25
+  hitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  punchEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Boxer2+DirectionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  dodgeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Boxer2+DirectionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isFighting: 0
+  lastActions: []
+  minConfidence: 0
+  isTeacher: 0
+  inverted: 0
 --- !u!95 &1317000288
 Animator:
   serializedVersion: 3
@@ -4220,6 +4423,52 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ef48ecc9b3ce92049b3bd116fc00f160, type: 3}
   - {fileID: 8300000, guid: 4d93e7f32ab92d1419c947ffa561428b, type: 3}
   - {fileID: 8300000, guid: c5917af2c3e44094eb3427e4a74ec727, type: 3}
+--- !u!114 &1466489544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1466489540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720378fd5b0084644add7ca54a32bc84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brain: {fileID: 11400000, guid: a8aabdc8cc0798b429d5fdd980cd8469, type: 2}
+  agentParameters:
+    agentCameras: []
+    agentRenderTextures: []
+    maxStep: 0
+    resetOnDone: 1
+    onDemandDecision: 0
+    numberOfActionsBetweenDecisions: 1
+  punchCooldownDuration: 0
+  dodgeCooldownDuration: 0
+  maxHP: 100
+  hp: 0
+  punchDamage: 10
+  punchEventDelay: 0.25
+  hitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  punchEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Boxer2+DirectionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  dodgeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Boxer2+DirectionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isFighting: 0
+  lastActions: []
+  minConfidence: 0
+  isTeacher: 1
+  inverted: 0
 --- !u!1 &1550855244 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4710161895209631403, guid: b57c866fb8120fb4caa40af74f67c994,
@@ -5240,6 +5489,52 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ef48ecc9b3ce92049b3bd116fc00f160, type: 3}
   - {fileID: 8300000, guid: 4d93e7f32ab92d1419c947ffa561428b, type: 3}
   - {fileID: 8300000, guid: c5917af2c3e44094eb3427e4a74ec727, type: 3}
+--- !u!114 &2137450917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137450914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720378fd5b0084644add7ca54a32bc84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brain: {fileID: 11400000, guid: d18ca5f2c8957d846aed6006b04199b1, type: 2}
+  agentParameters:
+    agentCameras: []
+    agentRenderTextures: []
+    maxStep: 0
+    resetOnDone: 1
+    onDemandDecision: 0
+    numberOfActionsBetweenDecisions: 1
+  punchCooldownDuration: 0
+  dodgeCooldownDuration: 0
+  maxHP: 100
+  hp: 0
+  punchDamage: 10
+  punchEventDelay: 0.25
+  hitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  punchEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Boxer2+DirectionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  dodgeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Boxer2+DirectionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isFighting: 0
+  lastActions: []
+  minConfidence: 0.4
+  isTeacher: 0
+  inverted: 0
 --- !u!95 &2137450921
 Animator:
   serializedVersion: 3
@@ -5336,6 +5631,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4710161894859041880, guid: b57c866fb8120fb4caa40af74f67c994,
+        type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 388834720}
+    - target: {fileID: 4710161894859041880, guid: b57c866fb8120fb4caa40af74f67c994,
+        type: 3}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 4710161895769684314}
     - target: {fileID: 1833783813145780960, guid: b57c866fb8120fb4caa40af74f67c994,
         type: 3}
       propertyPath: shouldImitate
@@ -5980,22 +6285,30 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 4710161895164186199, guid: b57c866fb8120fb4caa40af74f67c994,
+        type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 2137450917}
+    - target: {fileID: 4710161895164186199, guid: b57c866fb8120fb4caa40af74f67c994,
+        type: 3}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 401503815}
+    - target: {fileID: 4710161895795954335, guid: b57c866fb8120fb4caa40af74f67c994,
+        type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 1466489544}
+    - target: {fileID: 4710161895795954335, guid: b57c866fb8120fb4caa40af74f67c994,
+        type: 3}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 401503815}
     m_RemovedComponents:
     - {fileID: 1833783813695127718, guid: b57c866fb8120fb4caa40af74f67c994, type: 3}
     - {fileID: 1833783813145780960, guid: b57c866fb8120fb4caa40af74f67c994, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b57c866fb8120fb4caa40af74f67c994, type: 3}
---- !u!114 &4710161895769684308 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6784984025631178711, guid: b57c866fb8120fb4caa40af74f67c994,
-    type: 3}
-  m_PrefabInstance: {fileID: 4710161895769684307}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1466489540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 737dac66e5c910c41b6abea29306a37f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4710161895769684309 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1833783813695127712, guid: b57c866fb8120fb4caa40af74f67c994,
@@ -6031,14 +6344,85 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  trainee: {fileID: 4710161895769684309}
-  coach: {fileID: 4710161895769684308}
+  trainee: {fileID: 388834720}
+  coach: {fileID: 1466489544}
 --- !u!4 &4710161895769684312 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 440742655591569567, guid: b57c866fb8120fb4caa40af74f67c994,
     type: 3}
   m_PrefabInstance: {fileID: 4710161895769684307}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4710161895769684313 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7397736420718900530, guid: b57c866fb8120fb4caa40af74f67c994,
+    type: 3}
+  m_PrefabInstance: {fileID: 4710161895769684307}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4710161895769684314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4710161895769684313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720378fd5b0084644add7ca54a32bc84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brain: {fileID: 11400000, guid: b5f284420043bc446b2401142e5c80e9, type: 2}
+  agentParameters:
+    agentCameras: []
+    agentRenderTextures: []
+    maxStep: 0
+    resetOnDone: 1
+    onDemandDecision: 0
+    numberOfActionsBetweenDecisions: 1
+  punchCooldownDuration: 0
+  dodgeCooldownDuration: 0
+  maxHP: 100
+  hp: 0
+  punchDamage: 10
+  punchEventDelay: 1.5
+  hitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  punchEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Boxer2+DirectionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  dodgeEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: Boxer2+DirectionEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  isFighting: 0
+  lastActions: []
+  minConfidence: 0
+  isTeacher: 0
+  inverted: 1
+--- !u!95 &4710161895769684323
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4710161895769684313}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3637f7cdd8247bf4fa3d279871ab4067, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8535763850500345762 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 55310362206732582, guid: f0b1da16af0632d4db5060961485f552,
