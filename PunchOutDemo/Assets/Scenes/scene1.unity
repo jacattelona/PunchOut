@@ -5539,7 +5539,7 @@ PrefabInstance:
     - target: {fileID: 4710161894825432417, guid: b57c866fb8120fb4caa40af74f67c994,
         type: 3}
       propertyPath: trainTime
-      value: 11.5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4710161894825432417, guid: b57c866fb8120fb4caa40af74f67c994,
         type: 3}
