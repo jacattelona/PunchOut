@@ -101,7 +101,7 @@ public class Boxer : Agent
         punchAction.Update();
         dodgeAction.Update();
         minConfidence -= Time.deltaTime * 0.03f;
-        minConfidence = Mathf.Clamp(minConfidence, 0.2f, 1);
+        minConfidence = Mathf.Clamp(minConfidence, 0.25f, 1);
         if (isTeacher)
             HandleRelease();
     }
@@ -163,11 +163,26 @@ public class Boxer : Agent
                 //Debug.Log(punchCount + ", " + dodgeCount);
             }
 
-            var training = isTeacher && isFighting && (MLActionFactory.GetAction(lastActions) != MLAction.NOTHING || nothingBuffer < nothingBufferSize);
+            var training = isTeacher && isFighting && (MLActionFactory.GetAction(lastActions) != MLAction.NOTHING || nothingBuffer < nothingBufferSize) && IsGoodMove();
             if (training) bufferSize++;
             if (MLActionFactory.GetAction(lastActions) == MLAction.NOTHING) nothingBuffer++;
             SetTextObs(training + "," + false);
         }
+    }
+
+    private bool IsGoodMove()
+    {
+        if (opponent == null) return false;
+        var opponentMove = opponent.GetCurrentAction();
+        var myMove = MLActionFactory.GetAction(lastActions);
+
+        if (myMove == MLAction.NOTHING) return true;
+
+        if (MLActionFactory.IsPunch(opponentMove) && !MLActionFactory.IsDodge(myMove)) return false;
+
+        if (!MLActionFactory.IsPunch(opponentMove) && MLActionFactory.IsDodge(myMove)) return false;
+
+        return true;
     }
 
     /// <summary>

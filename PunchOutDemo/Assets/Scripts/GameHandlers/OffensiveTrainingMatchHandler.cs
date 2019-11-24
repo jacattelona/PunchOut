@@ -99,7 +99,7 @@ public class OffensiveTrainingMatchHandler : MonoBehaviour
                 // Check to see if the training phase is over
                 if (trainingTimer.IsExpired())
                 {
-                    TrainAIs();
+                    //TrainAIs();
                     Watch();
                     lerpProgress = 0;
                     CoachDialog.instance?.Show("Now watch Roboxer fight the training dummy.");
