@@ -38,7 +38,7 @@ public class MatchGameHandler : MonoBehaviour
 
                 if (!spoke)
                 {
-                    CoachDialog.instance?.Show("Coach to Roboxer: Good luck in the fight, I'll be watching from the sidelines.", 4.0f);
+                    CoachDialog.instance?.Show("Now sit back and watch Roboxer fight in the Machine Learning Arena!", 3.0f);
                     spoke = true;
                 }
                 endingScreen.SetActive(false);

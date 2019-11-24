@@ -77,11 +77,13 @@ public class GameHandler : MonoBehaviour
                 break;
 
             case STATE_TO_MATCH:
+                match.SetActive(true);
+                match.transform.Find("WaitingScreen").gameObject.SetActive(false);
                 if (MoveCameraToPosition(matchLocation))
                 {
-                    //matchTutorial.SetActive(false);
                     offensiveTraining.SetActive(false);
                     match.SetActive(true);
+                    match.transform.Find("WaitingScreen").gameObject.SetActive(true);
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
                         StartMatch();
@@ -94,7 +96,7 @@ public class GameHandler : MonoBehaviour
     
     private bool MoveCameraToPosition(Vector3 position)
     {
-        cameraTransform.position = Vector3.SmoothDamp(cameraTransform.position, position, ref cameraVelocity, .5f);
+        cameraTransform.position = Vector3.SmoothDamp(cameraTransform.position, position, ref cameraVelocity, .2f);
         return Vector3.Distance(cameraTransform.position, position) < .01f;
     }
 
