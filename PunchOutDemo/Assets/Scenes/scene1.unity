@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641252, b: 0.5748167, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -670,6 +670,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 487016160}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &482906419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482906418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!114 &482906420 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2023864915784759693, guid: 4963fa7a7faf39c4e894a9c1c947b247,
@@ -787,7 +802,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fece86f3cb5d6b94fab734f85268e20e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0fa7f35f684b6fd4d996a9b61d593cfe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -846,7 +861,7 @@ PrefabInstance:
     - target: {fileID: 2023864916837202487, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_Text
-      value: 'To begin your bot''s training, press Space!
+      value: '
 
 '
       objectReference: {fileID: 0}
@@ -858,12 +873,24 @@ PrefabInstance:
     - target: {fileID: 2023864915784759693, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_Text
-      value: Well done! You now have what it takes to train your own robot fighter!
+      value: 'Well done! You now have what it takes to train your own robot fighter!
+
+
+        This is your Roboboxer, it will try and do exactly as you do, but give it
+        some time to learn!
+
+
+        To continue with the tutorial press SPACE'
       objectReference: {fileID: 0}
     - target: {fileID: 2023864915784759693, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_Color.a
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023864915784759693, guid: 4963fa7a7faf39c4e894a9c1c947b247,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 2023864916026778528, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
@@ -1203,22 +1230,22 @@ PrefabInstance:
     - target: {fileID: 2023864917596969739, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.0000076293945
+      value: 122.75
       objectReference: {fileID: 0}
     - target: {fileID: 2023864917596969739, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 182.83
+      value: 332.5
       objectReference: {fileID: 0}
     - target: {fileID: 2023864917596969739, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -29
+      value: -63.322
       objectReference: {fileID: 0}
     - target: {fileID: 2023864917596969739, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 75.7
+      value: 146.04
       objectReference: {fileID: 0}
     - target: {fileID: 2023864917596969739, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
@@ -1303,32 +1330,42 @@ PrefabInstance:
     - target: {fileID: 2023864917015510452, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 12.47998
+      value: 97.708
       objectReference: {fileID: 0}
     - target: {fileID: 2023864917015510452, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -15.959
+      value: -76.36
       objectReference: {fileID: 0}
     - target: {fileID: 2023864917015510452, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 253.20001
+      value: 391.95
       objectReference: {fileID: 0}
     - target: {fileID: 2023864917015510452, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 127.68
+      value: 295.7
       objectReference: {fileID: 0}
     - target: {fileID: 2023864917015510452, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.7616036
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2023864917015510452, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.7616036
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023864917015510452, guid: 4963fa7a7faf39c4e894a9c1c947b247,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.63900006
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023864917015510452, guid: 4963fa7a7faf39c4e894a9c1c947b247,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.63900006
       objectReference: {fileID: 0}
     - target: {fileID: 2023864915784364025, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
@@ -1413,7 +1450,7 @@ PrefabInstance:
     - target: {fileID: 2023864915784364022, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_Text
-      value: Each icon is the same as your own moves down on the right!
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2023864915784364022, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
@@ -1438,7 +1475,7 @@ PrefabInstance:
     - target: {fileID: 2023864915804449946, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_Text
-      value: 'Press "D" to go to the next explanation.
+      value: '
 
 '
       objectReference: {fileID: 0}
@@ -1470,8 +1507,7 @@ PrefabInstance:
     - target: {fileID: 2023864916925823150, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_Text
-      value: 'Doing the moves consistently will make it even easier for your robo
-        friend to learn.
+      value: '
 
 '
       objectReference: {fileID: 0}
@@ -1498,8 +1534,21 @@ PrefabInstance:
     - target: {fileID: 2023864917015510453, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_Text
-      value: This is the Train of Thought, it shows what your robot is thinking about
+      value: 'This is the Train of Thought, it shows what your robot is thinking about
         doing!
+
+
+        It uses the icons on the bottom right to show what your bot is thinking of
+        doing
+
+
+        You can use this to judge whether or not your bot is copying you.
+
+
+        Press SPACE to continue on to the fight.
+
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 2023864917015510453, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
@@ -1524,10 +1573,7 @@ PrefabInstance:
     - target: {fileID: 2023864917228737157, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_Text
-      value: 'You''re now equipped with all the knowledge you need! Press space to
-        head to training!
-
-'
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2023864917228737157, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
@@ -1562,7 +1608,7 @@ PrefabInstance:
     - target: {fileID: 2023864917340264650, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_Text
-      value: Once again, consistency will make the training easier. Press K to continue.
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2023864917340264650, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
@@ -1592,12 +1638,15 @@ PrefabInstance:
     - target: {fileID: 2023864917596969736, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_Text
-      value: This is the Copy Meter, which shows how close your robot is to your actions!
+      value: 'This is the Copy Meter, which shows how close your robot is to your
+        actions!
+
+        Once again, consistency will make the training easier. Press K to continue.'
       objectReference: {fileID: 0}
     - target: {fileID: 2023864917596969736, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_FontData.m_FontSize
-      value: 12
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2023864917596969736, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
@@ -1657,8 +1706,7 @@ PrefabInstance:
     - target: {fileID: 2023864917217231933, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_Text
-      value: 'This is your Roboboxer, it will try and do exactly as you do, but give
-        it some time to learn!
+      value: '
 
 '
       objectReference: {fileID: 0}
@@ -1695,12 +1743,62 @@ PrefabInstance:
     - target: {fileID: 2023864916782376004, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 56
+      value: -0.58802
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023864916782376004, guid: 4963fa7a7faf39c4e894a9c1c947b247,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.3480072
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023864916782376004, guid: 4963fa7a7faf39c4e894a9c1c947b247,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 226.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023864916782376004, guid: 4963fa7a7faf39c4e894a9c1c947b247,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 37.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023864916782376004, guid: 4963fa7a7faf39c4e894a9c1c947b247,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023864916782376004, guid: 4963fa7a7faf39c4e894a9c1c947b247,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023864916782376004, guid: 4963fa7a7faf39c4e894a9c1c947b247,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.13186991
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023864916782376004, guid: 4963fa7a7faf39c4e894a9c1c947b247,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.13186991
       objectReference: {fileID: 0}
     - target: {fileID: 2023864917114193255, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 49
+      value: 4.1111
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023864917114193255, guid: 4963fa7a7faf39c4e894a9c1c947b247,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 158.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023864917114193255, guid: 4963fa7a7faf39c4e894a9c1c947b247,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 37.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023864917114193255, guid: 4963fa7a7faf39c4e894a9c1c947b247,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000015258789
       objectReference: {fileID: 0}
     - target: {fileID: 2023864916045500671, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
@@ -1710,7 +1808,17 @@ PrefabInstance:
     - target: {fileID: 2023864916213366254, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 19
+      value: -0.58801
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023864916213366254, guid: 4963fa7a7faf39c4e894a9c1c947b247,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 164.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023864916213366254, guid: 4963fa7a7faf39c4e894a9c1c947b247,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -4.27
       objectReference: {fileID: 0}
     - target: {fileID: 2023864917257483027, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
@@ -1730,7 +1838,22 @@ PrefabInstance:
     - target: {fileID: 2023864915784759692, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 20
+      value: -104.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023864915784759692, guid: 4963fa7a7faf39c4e894a9c1c947b247,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -120.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023864915784759692, guid: 4963fa7a7faf39c4e894a9c1c947b247,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 290.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023864915784759692, guid: 4963fa7a7faf39c4e894a9c1c947b247,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 372.38
       objectReference: {fileID: 0}
     - target: {fileID: 2023864917217231932, guid: 4963fa7a7faf39c4e894a9c1c947b247,
         type: 3}
@@ -1786,6 +1909,44 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023864916541496525, guid: 4963fa7a7faf39c4e894a9c1c947b247,
+        type: 3}
+      propertyPath: m_Text
+      value: 'This is the offensive training stage, here you will demonstrate attacks
+        and dodges that your robot will attempt to copy!
+
+
+        Consistency will make the training a lot easier and faster. Try doing the
+        same moves over and over!
+
+
+        Press "D" to go to the next explanation.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023864916541496525, guid: 4963fa7a7faf39c4e894a9c1c947b247,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023864916541496524, guid: 4963fa7a7faf39c4e894a9c1c947b247,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.16819
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023864916541496524, guid: 4963fa7a7faf39c4e894a9c1c947b247,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -118.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023864916541496524, guid: 4963fa7a7faf39c4e894a9c1c947b247,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 456.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2023864916541496524, guid: 4963fa7a7faf39c4e894a9c1c947b247,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 256.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4963fa7a7faf39c4e894a9c1c947b247, type: 3}
@@ -3428,7 +3589,7 @@ PrefabInstance:
     - target: {fileID: 6641241798004280964, guid: 01166ca0edf505045aff4ad107a76883,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6641241798004280960, guid: 01166ca0edf505045aff4ad107a76883,
         type: 3}
