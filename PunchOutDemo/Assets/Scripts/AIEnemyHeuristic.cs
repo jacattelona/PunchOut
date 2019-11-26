@@ -11,29 +11,35 @@ public class AIEnemyHeuristic : Decision
     private float[] LEFT_DODGE= MLActionFactory.GetVectorAction(MLAction.DODGE_LEFT);
     private float[] RIGHT_DODGE = MLActionFactory.GetVectorAction(MLAction.DODGE_RIGHT);
 
-    private float[][] moves;
+    private MLAction[] moves;
+
+    private float seqDuration = 30f;
+    private float seqStartTime = 0f;
+    private float nothingDuration = 1f;
+    private float nothingStartTime = 0;
+    private bool didAction = false;
 
     private int moveIdx;
 
     public AIEnemyHeuristic()
     {
-        moves = new float[][]
+        moves = new MLAction[]
         {
-            LEFT_PUNCH,
-            LEFT_PUNCH,
-            RIGHT_PUNCH,
-            NOTHING,
-            RIGHT_PUNCH,
-            RIGHT_PUNCH,
-            LEFT_PUNCH,
-            NOTHING,
-            RIGHT_PUNCH,
-            RIGHT_PUNCH,
-            RIGHT_PUNCH,
-            NOTHING,
-            LEFT_PUNCH,
-            LEFT_PUNCH,
-            LEFT_PUNCH
+            MLAction.PUNCH_LEFT,
+            MLAction.PUNCH_LEFT,
+            MLAction.PUNCH_RIGHT,
+            MLAction.NOTHING,
+            MLAction.PUNCH_RIGHT,
+            MLAction.PUNCH_RIGHT,
+            MLAction.PUNCH_LEFT,
+            MLAction.NOTHING,
+            MLAction.PUNCH_RIGHT,
+            MLAction.PUNCH_RIGHT,
+            MLAction.PUNCH_RIGHT,
+            MLAction.NOTHING,
+            MLAction.PUNCH_LEFT,
+            MLAction.PUNCH_LEFT,
+            MLAction.PUNCH_LEFT
 
         };
 
@@ -88,14 +94,65 @@ public class AIEnemyHeuristic : Decision
                     //return NOTHING;
                 }
             }
-            float[] move = moves[moveIdx];
-            moveIdx = (moveIdx + 1) % moves.Length;
-            return move;
+            return MLActionFactory.GetVectorAction(runMoves(vectorObs, moves));
         }
 
         return NOTHING;
     }
-    
+
+    private MLAction runMoves(List<float> vectorObs, MLAction[] moves)
+    {
+        MLInput input = new MLInput(vectorObs.ToArray());
+
+        var currentMove = moves[moveIdx];
+
+        if (currentMove == MLAction.NOTHING && Time.time - nothingStartTime >= nothingDuration)
+        {
+            // Doing nothing ended
+            return runNextMove(moves, input);
+        }
+        else if (didAction && MLActionFactory.IsPunch(currentMove) && input.GetMyMove() == MLAction.NOTHING)
+        {
+            // Punch ended
+            return runNextMove(moves, input);
+        }
+        else if (didAction && MLActionFactory.IsDodge(currentMove) && input.GetMyMove() == MLAction.NOTHING)
+        {
+            // Dodge ended
+            return runNextMove(moves, input);
+        }
+
+        if (!didAction && MLActionFactory.IsPunch(currentMove))
+        {
+            didAction = input.IsPunchReady();
+        }
+        else if (!didAction && MLActionFactory.IsDodge(currentMove))
+        {
+            didAction = input.IsDodgeReady();
+        }
+
+        return moves[moveIdx];
+    }
+
+    private MLAction runNextMove(MLAction[] moves, MLInput input)
+    {
+        didAction = false;
+        nothingStartTime = Time.time;
+        moveIdx = (moveIdx + 1) % moves.Length;
+        MLAction nextMove = moves[moveIdx];
+
+        if (MLActionFactory.IsPunch(nextMove))
+        {
+            didAction = input.IsPunchReady();
+        }
+        else if (MLActionFactory.IsDodge(nextMove))
+        {
+            didAction = input.IsDodgeReady();
+        }
+
+        return nextMove;
+    }
+
 
     public override List<float> MakeMemory(List<float> vectorObs, List<Texture2D> visualObs, float reward, bool done, List<float> memory)
     {
