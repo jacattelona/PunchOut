@@ -58,14 +58,7 @@ AnimationClip:
     path: Arrow
   m_ScaleCurves: []
   m_FloatCurves: []
-  m_PPtrCurves:
-  - curve:
-    - time: 0
-      value: {fileID: 21300000, guid: a2d90f793721bbc40b8ffcb408d77c25, type: 3}
-    attribute: m_Sprite
-    path: OffensiveScreen1
-    classID: 212
-    script: {fileID: 0}
+  m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
@@ -82,20 +75,12 @@ AnimationClip:
       isPPtrCurve: 0
     - serializedVersion: 2
       path: 750789392
-      attribute: 0
-      script: {fileID: 0}
-      typeID: 212
-      customType: 23
-      isPPtrCurve: 1
-    - serializedVersion: 2
-      path: 750789392
       attribute: 1
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
-    pptrCurveMapping:
-    - {fileID: 21300000, guid: a2d90f793721bbc40b8ffcb408d77c25, type: 3}
+    pptrCurveMapping: []
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
