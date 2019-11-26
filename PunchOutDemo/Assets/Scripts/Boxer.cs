@@ -209,7 +209,7 @@ public class Boxer : Agent
         // Interrupt dodges early
         if (endDodgeEarly && MLActionFactory.IsDodge(currentAction))
         {
-            if (MLActionFactory.IsPunch(lastEnemyState) && !MLActionFactory.IsPunch(opponent.GetCurrentAction())) {
+            if (!MLActionFactory.IsPunch(opponent.GetCurrentAction())) {
                 // Opponent finished punching, so stop dodging
                 dodgeAction.Interrupt();
             }
