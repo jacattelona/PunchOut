@@ -78,7 +78,8 @@ public class BoxerSprite : MonoBehaviour
     }
 
     private void StartDodgeAnimation(Direction direction)
-    {     
+    {
+        anim.ResetTrigger("DodgeEnd");
         if (boxerAudio != null)
         {
             boxerAudio.PlayDodge();
