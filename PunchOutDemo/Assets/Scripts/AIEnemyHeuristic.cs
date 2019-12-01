@@ -15,7 +15,7 @@ public class AIEnemyHeuristic : Decision
 
     private float seqDuration = 30f;
     private float seqStartTime = 0f;
-    private float nothingDuration = 1f;
+    private float nothingDuration = 2.5f;
     private float nothingStartTime = 0;
     private bool didAction = false;
 
@@ -56,48 +56,43 @@ public class AIEnemyHeuristic : Decision
 
         MLInput input = new MLInput(vectorObs.ToArray());
 
-        if (input.IsPunchReady() && input.IsDodgeReady()) // Can punch / dodge
+        if (input.GetMyMove() == MLAction.NOTHING && input.IsDodgeReady()) // Can dodge
         {
-            if(input.GetOpponentAction() ==  MLAction.PUNCH_LEFT )
+            if(input.GetOpponentAction() == MLAction.PUNCH_LEFT )
             {
                 int rand = Random.Range(0, 100);
-                if (rand <= 25)
+                if (rand <= 30)
                 {
-                    Debug.Log("Left P Dodge");
                     return LEFT_DODGE;
                 }
-                else if(rand > 25 && rand <= 50 )
+                else if(rand <= 50 )
                 {
-                    Debug.Log("Left P Wrong Dodge");
                     return RIGHT_DODGE;
                 }
                 else
                 {
-                   // return NOTHING;
+                   // Run the normal moves
                 }
             }
             if (input.GetOpponentAction() == MLAction.PUNCH_RIGHT)
             {
                 int rand = Random.Range(0, 100);
-                if (rand <= 25)
+                if (rand <= 30)
                 {
-                    Debug.Log("Right P Dodge");
                     return RIGHT_DODGE;
                 }
-                else if(rand > 25 && rand <= 50)
+                else if(rand <= 50)
                 {
-                    Debug.Log("Right P Wrong Dodge");
                     return LEFT_DODGE;
                 }
                 else
                 {
-                    //return NOTHING;
+                    // Run the normal moves
                 }
             }
-            return MLActionFactory.GetVectorAction(runMoves(vectorObs, moves));
         }
 
-        return NOTHING;
+        return MLActionFactory.GetVectorAction(runMoves(vectorObs, moves));
     }
 
     private MLAction runMoves(List<float> vectorObs, MLAction[] moves)
