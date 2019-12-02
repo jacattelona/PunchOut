@@ -37,6 +37,8 @@ public class Boxer : Agent
 
     private MLAction lastEnemyState = MLAction.NOTHING;
 
+    bool isAnim = false;
+
 
     // COMPONENTS
     Health health;
@@ -222,7 +224,7 @@ public class Boxer : Agent
     private void TryToTakeAction(MLAction action)
     {
         if (IsPerformingMove()) return;
-
+        if (isAnim) return;
         if (MLActionFactory.IsPunch(action))
         {
             if (punchAction.IsOnCooldown()) return;
@@ -465,5 +467,17 @@ public class Boxer : Agent
         {
             //right punch
         }
+    }
+
+    //As stupid as this looks, need both of these functions
+    //A function that takes a bool parameter won't show up in the animation event options
+    public void SetAnimFalse()
+    {
+        isAnim = false;
+    }
+
+    public void SetAnimTrue()
+    {
+        isAnim = true;
     }
 }
