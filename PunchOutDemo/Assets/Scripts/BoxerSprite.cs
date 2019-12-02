@@ -174,4 +174,9 @@ public class BoxerSprite : MonoBehaviour
                 bodyRenderer.material.color = gloveColor;
         }
     }
+
+    void ResetAnim()
+    {
+        anim.ResetTrigger("DodgeEnd");
+    }
 }
