@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 943466ab374444748a364f9d6c3e2fe2, type: 3}
+  m_Name: RandomAI
+  m_EditorClassIdentifier: 
+  brainParameters:
+    vectorObservationSize: 18
+    numStackedVectorObservations: 2
+    vectorActionSize: 05000000010000000100000001000000010000000100000001000000
+    cameraResolutions: []
+    vectorActionDescriptions:
+    - Action
+    - Confidence1
+    - Confidence2
+    - Confidence3
+    - Confidence4
+    - Confidence5
+    - Loss
+    vectorActionSpaceType: 0
+  decision: {fileID: 0}
+  decisionScript: {fileID: 11500000, guid: 835cb11501387624bb41ba5ba0a8f0e9, type: 3}
+  cDecision: 
